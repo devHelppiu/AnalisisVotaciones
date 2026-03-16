@@ -3,7 +3,7 @@ Analisis de Votaciones - Camara de Representantes, Valle del Cauca
 =================================================================
 
 Cruza resultados electorales (CAMARA valle.xlsx) con base de simpatizantes
-(Simpatizantes.xlsx) para medir la efectividad de la candidata por zona,
+(Registros_simpatizantes_13Mar.xlsx) para medir la efectividad de la candidata por zona,
 municipio y lider.
 
 Uso:
@@ -65,8 +65,12 @@ def cargar_datos(camara_path, simpatizantes_path):
             df_sim[col] = df_sim[col].astype(str).str.strip().str.upper()
             df_sim.loc[df_sim[col] == 'NAN', col] = None
 
+    # Normalizar nombres de municipio para que coincidan con MPIO_MAP
+    mpio_fixes = {'CALIMA (DARIEN)': 'CALIMA', 'CALIMA(DARIEN)': 'CALIMA'}
+    df_sim['Municipio'] = df_sim['Municipio'].replace(mpio_fixes)
+
     df_sim['mpio_code'] = df_sim['Municipio'].map(MPIO_NAME_TO_CODE)
-    df_sim['zona_code'] = df_sim['Comuna']
+    df_sim['zona_code'] = pd.to_numeric(df_sim['Comuna'], errors='coerce')
 
     df_sim_valle = df_sim[df_sim['Departamento'] == 'VALLE'].copy()
 
@@ -247,7 +251,7 @@ def exportar(output_path, resumen_mpio, analisis_zona, puestos, lideres, ranking
 def main():
     base_dir = Path(__file__).parent
     camara_path = base_dir / 'CAMARA valle.xlsx'
-    simpatizantes_path = base_dir / 'Simpatizantes.xlsx'
+    simpatizantes_path = base_dir / 'Registros_simpatizantes_13Mar.xlsx'
     output_path = base_dir / 'Resultado_Analisis_Votaciones.xlsx'
 
     print(f'Cargando datos...')
