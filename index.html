@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Votaciones - Camara Valle del Cauca</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2b6cb0;
+            --accent: #e53e3e;
+            --accent-light: #fc8181;
+            --green: #38a169;
+            --green-light: #68d391;
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,.07), 0 2px 4px -1px rgba(0,0,0,.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.08), 0 4px 6px -2px rgba(0,0,0,.04);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .header h1 { font-size: 2rem; font-weight: 700; margin-bottom: .25rem; }
+        .header .subtitle { font-size: 1.1rem; opacity: .85; }
+        .header .candidate-badge {
+            display: inline-block;
+            background: rgba(255,255,255,.15);
+            border: 1px solid rgba(255,255,255,.3);
+            border-radius: 2rem;
+            padding: .4rem 1.2rem;
+            margin-top: .75rem;
+            font-size: .95rem;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Container */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: -2rem 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .kpi-card {
+            background: var(--card-bg);
+            border-radius: .75rem;
+            padding: 1.25rem;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            border-top: 3px solid var(--primary-light);
+        }
+        .kpi-card.accent { border-top-color: var(--accent); }
+        .kpi-card.green { border-top-color: var(--green); }
+        .kpi-value { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+        .kpi-card.accent .kpi-value { color: var(--accent); }
+        .kpi-card.green .kpi-value { color: var(--green); }
+        .kpi-label { font-size: .8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: .05em; margin-top: .25rem; }
+
+        /* Section */
+        .section { margin-bottom: 2.5rem; }
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: .5rem;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        .section-title .icon { font-size: 1.4rem; }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: .75rem;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Charts grid */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 1.5rem;
+        }
+        .chart-container { position: relative; width: 100%; }
+        .chart-container canvas { max-height: 400px; }
+
+        /* Tables */
+        .table-wrapper { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+        th {
+            background: var(--primary);
+            color: white;
+            padding: .6rem .75rem;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            white-space: nowrap;
+        }
+        td { padding: .55rem .75rem; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: #edf2f7; }
+        .num { text-align: right; font-variant-numeric: tabular-nums; }
+        .highlight-row td { background: #fff5f5; font-weight: 600; }
+        .badge {
+            display: inline-block;
+            padding: .15rem .6rem;
+            border-radius: 1rem;
+            font-size: .75rem;
+            font-weight: 600;
+        }
+        .badge-green { background: #c6f6d5; color: #22543d; }
+        .badge-red { background: #fed7d7; color: #9b2c2c; }
+        .badge-blue { background: #bee3f8; color: #2a4365; }
+        .badge-yellow { background: #fefcbf; color: #744210; }
+
+        /* Search/Filter */
+        .filter-bar {
+            display: flex;
+            gap: .75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-bar input, .filter-bar select {
+            padding: .5rem .75rem;
+            border: 1px solid var(--border);
+            border-radius: .5rem;
+            font-size: .875rem;
+            background: white;
+        }
+        .filter-bar input:focus, .filter-bar select:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(43,108,176,.15);
+        }
+        .filter-bar input { flex: 1; min-width: 200px; }
+
+        /* Tabs */
+        .tabs { display: flex; gap: .25rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border); }
+        .tab {
+            padding: .6rem 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: .875rem;
+            color: var(--text-light);
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all .2s;
+            background: none;
+            border-top: none; border-left: none; border-right: none;
+        }
+        .tab:hover { color: var(--primary); }
+        .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: .8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.4rem; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .charts-grid { grid-template-columns: 1fr; }
+            .container { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="container">
+        <h1>Analisis de Votaciones</h1>
+        <div class="subtitle">Camara de Representantes &mdash; Valle del Cauca</div>
+        <div class="candidate-badge">Candidata: Ana Maria Sanclemente &middot; Cambio Radical / ALMA</div>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="container" style="padding-top: 1rem;">
+
+    <!-- KPIs -->
+    <div class="kpi-grid">
+        <div class="kpi-card accent">
+            <div class="kpi-value">54,121</div>
+            <div class="kpi-label">Votos Candidata</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-value">7,888</div>
+            <div class="kpi-label">Simpatizantes</div>
+        </div>
+        <div class="kpi-card green">
+            <div class="kpi-value">6.86x</div>
+            <div class="kpi-label">Ratio Votos / Simpatizantes</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-value">97,234</div>
+            <div class="kpi-label">Votos Partido</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-value">30</div>
+            <div class="kpi-label">Municipios con Simpatizantes</div>
+        </div>
+        <div class="kpi-card green">
+            <div class="kpi-value">14</div>
+            <div class="kpi-label">Lideres Activos</div>
+        </div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="section">
+        <div class="section-title"><span class="icon">📊</span> Panorama General</div>
+        <div class="charts-grid">
+            <div class="card">
+                <h3 style="margin-bottom:.75rem; font-size:.95rem; color:var(--text-light);">Simpatizantes vs Votos por Municipio (Top 10)</h3>
+                <div class="chart-container"><canvas id="chartMunicipio"></canvas></div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:.75rem; font-size:.95rem; color:var(--text-light);">Ranking Candidatos en Zonas con Simpatizantes</h3>
+                <div class="chart-container"><canvas id="chartCandidatos"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="charts-grid">
+            <div class="card">
+                <h3 style="margin-bottom:.75rem; font-size:.95rem; color:var(--text-light);">Simpatizantes vs Votos por Zona (Top 15)</h3>
+                <div class="chart-container"><canvas id="chartZonas"></canvas></div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:.75rem; font-size:.95rem; color:var(--text-light);">Efectividad por Lider</h3>
+                <div class="chart-container"><canvas id="chartLideres"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABS: Tables -->
+    <div class="section">
+        <div class="section-title"><span class="icon">📋</span> Datos Detallados</div>
+        <div class="tabs">
+            <button class="tab active" data-tab="tab-municipios">Municipios</button>
+            <button class="tab" data-tab="tab-zonas">Zonas</button>
+            <button class="tab" data-tab="tab-puestos">Puestos de Votacion</button>
+            <button class="tab" data-tab="tab-lideres">Lideres</button>
+        </div>
+
+        <!-- Tab: Municipios -->
+        <div id="tab-municipios" class="tab-content active">
+            <div class="card">
+                <div class="filter-bar">
+                    <input type="text" id="filter-mpio" placeholder="Buscar municipio...">
+                </div>
+                <div class="table-wrapper">
+                    <table id="table-mpio">
+                        <thead>
+                            <tr>
+                                <th>Municipio</th>
+                                <th>Simpatizantes</th>
+                                <th>Votos Totales</th>
+                                <th>Votos Candidata</th>
+                                <th>Votos Partido</th>
+                                <th>Ratio V/S</th>
+                                <th>% Candidata</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Zonas -->
+        <div id="tab-zonas" class="tab-content">
+            <div class="card">
+                <div class="filter-bar">
+                    <input type="text" id="filter-zona" placeholder="Buscar municipio o zona...">
+                </div>
+                <div class="table-wrapper">
+                    <table id="table-zona">
+                        <thead>
+                            <tr>
+                                <th>Municipio</th>
+                                <th>Zona</th>
+                                <th>Simpatizantes</th>
+                                <th>Votos Totales</th>
+                                <th>Votos Candidata</th>
+                                <th>Ratio V/S</th>
+                                <th>% Candidata</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Puestos -->
+        <div id="tab-puestos" class="tab-content">
+            <div class="card">
+                <div class="filter-bar">
+                    <input type="text" id="filter-puesto" placeholder="Buscar puesto, municipio o lider...">
+                </div>
+                <div class="table-wrapper">
+                    <table id="table-puesto">
+                        <thead>
+                            <tr>
+                                <th>Municipio</th>
+                                <th>Puesto de Votacion</th>
+                                <th>Zona</th>
+                                <th>Simpatizantes</th>
+                                <th>Votos Zona</th>
+                                <th>Votos Candidata Zona</th>
+                                <th>Lideres</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Lideres -->
+        <div id="tab-lideres" class="tab-content">
+            <div class="card">
+                <div class="table-wrapper">
+                    <table id="table-lider">
+                        <thead>
+                            <tr>
+                                <th>Lider</th>
+                                <th>Simpatizantes</th>
+                                <th>Municipios</th>
+                                <th>Puestos</th>
+                                <th>Votos Candidata (zonas)</th>
+                                <th>Votos Partido (zonas)</th>
+                                <th>Ratio V/S</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    Analisis Electoral &mdash; Camara de Representantes, Valle del Cauca &middot; Ana Maria Sanclemente &middot; Cambio Radical / ALMA
+</div>
+
+<script>
+// ========== DATA ==========
+const dataMunicipios = [
+    {"municipio":"YUMBO","votos_totales":63908,"votos_candidata":4339,"votos_partido":9414,"simpatizantes":3146,"ratio":1.38,"pct":6.79},
+    {"municipio":"CALI","votos_totales":855168,"votos_candidata":28279,"votos_partido":43619,"simpatizantes":2326,"ratio":12.16,"pct":3.31},
+    {"municipio":"BUENAVENTURA","votos_totales":98250,"votos_candidata":1642,"votos_partido":5182,"simpatizantes":1632,"ratio":1.01,"pct":1.67},
+    {"municipio":"FLORIDA","votos_totales":28148,"votos_candidata":491,"votos_partido":975,"simpatizantes":352,"ratio":1.39,"pct":1.74},
+    {"municipio":"BUGA","votos_totales":57209,"votos_candidata":800,"votos_partido":1437,"simpatizantes":118,"ratio":6.78,"pct":1.40},
+    {"municipio":"PALMIRA","votos_totales":141885,"votos_candidata":2421,"votos_partido":4890,"simpatizantes":94,"ratio":25.76,"pct":1.71},
+    {"municipio":"JAMUNDI","votos_totales":62350,"votos_candidata":1671,"votos_partido":2690,"simpatizantes":61,"ratio":27.39,"pct":2.68},
+    {"municipio":"CANDELARIA","votos_totales":59965,"votos_candidata":814,"votos_partido":3887,"simpatizantes":30,"ratio":27.13,"pct":1.36},
+    {"municipio":"DAGUA","votos_totales":6809,"votos_candidata":151,"votos_partido":348,"simpatizantes":21,"ratio":7.19,"pct":2.22},
+    {"municipio":"YOTOCO","votos_totales":8469,"votos_candidata":90,"votos_partido":97,"simpatizantes":14,"ratio":6.43,"pct":1.06},
+    {"municipio":"LA UNION","votos_totales":12996,"votos_candidata":169,"votos_partido":972,"simpatizantes":10,"ratio":16.90,"pct":1.30},
+    {"municipio":"TULUA","votos_totales":85194,"votos_candidata":1651,"votos_partido":2915,"simpatizantes":9,"ratio":183.44,"pct":1.94},
+    {"municipio":"CARTAGO","votos_totales":15776,"votos_candidata":3113,"votos_partido":4004,"simpatizantes":7,"ratio":444.71,"pct":19.73},
+    {"municipio":"LA CUMBRE","votos_totales":6909,"votos_candidata":205,"votos_partido":296,"simpatizantes":7,"ratio":29.29,"pct":2.97},
+    {"municipio":"GINEBRA","votos_totales":9833,"votos_candidata":191,"votos_partido":714,"simpatizantes":7,"ratio":27.29,"pct":1.94},
+    {"municipio":"PRADERA","votos_totales":22534,"votos_candidata":539,"votos_partido":1097,"simpatizantes":6,"ratio":89.83,"pct":2.39},
+    {"municipio":"EL CAIRO","votos_totales":3126,"votos_candidata":57,"votos_partido":155,"simpatizantes":6,"ratio":9.50,"pct":1.82},
+    {"municipio":"EL CERRITO","votos_totales":16048,"votos_candidata":404,"votos_partido":919,"simpatizantes":5,"ratio":80.80,"pct":2.52},
+    {"municipio":"VIJES","votos_totales":2968,"votos_candidata":61,"votos_partido":134,"simpatizantes":5,"ratio":12.20,"pct":2.06},
+    {"municipio":"ZARZAL","votos_totales":22069,"votos_candidata":1165,"votos_partido":1786,"simpatizantes":5,"ratio":233.00,"pct":5.28},
+    {"municipio":"RESTREPO","votos_totales":6803,"votos_candidata":240,"votos_partido":370,"simpatizantes":4,"ratio":60.00,"pct":3.53},
+    {"municipio":"GUACARI","votos_totales":9040,"votos_candidata":163,"votos_partido":363,"simpatizantes":3,"ratio":54.33,"pct":1.80},
+    {"municipio":"ROLDANILLO","votos_totales":17699,"votos_candidata":543,"votos_partido":1249,"simpatizantes":3,"ratio":181.00,"pct":3.07},
+    {"municipio":"SEVILLA","votos_totales":13124,"votos_candidata":1096,"votos_partido":2183,"simpatizantes":3,"ratio":365.33,"pct":8.35},
+    {"municipio":"TRUJILLO","votos_totales":4930,"votos_candidata":163,"votos_partido":285,"simpatizantes":3,"ratio":54.33,"pct":3.31},
+    {"municipio":"CAICEDONIA","votos_totales":10135,"votos_candidata":216,"votos_partido":423,"simpatizantes":3,"ratio":72.00,"pct":2.13},
+    {"municipio":"BUGALAGRANDE","votos_totales":5927,"votos_candidata":129,"votos_partido":235,"simpatizantes":3,"ratio":43.00,"pct":2.18},
+    {"municipio":"RIOFRIO","votos_totales":5029,"votos_candidata":120,"votos_partido":274,"simpatizantes":3,"ratio":40.00,"pct":2.39},
+    {"municipio":"TORO","votos_totales":4534,"votos_candidata":101,"votos_partido":177,"simpatizantes":1,"ratio":101.00,"pct":2.23},
+    {"municipio":"OBANDO","votos_totales":3979,"votos_candidata":188,"votos_partido":276,"simpatizantes":1,"ratio":188.00,"pct":4.73}
+];
+
+const dataZonas = [
+    {"municipio":"YUMBO","zona":4,"simpatizantes":872,"votos_totales":16605,"votos_candidata":995,"ratio":1.14,"pct":5.99},
+    {"municipio":"YUMBO","zona":2,"simpatizantes":808,"votos_totales":15362,"votos_candidata":1022,"ratio":1.26,"pct":6.65},
+    {"municipio":"YUMBO","zona":1,"simpatizantes":667,"votos_totales":14962,"votos_candidata":1107,"ratio":1.66,"pct":7.40},
+    {"municipio":"BUENAVENTURA","zona":6,"simpatizantes":427,"votos_totales":19968,"votos_candidata":349,"ratio":0.82,"pct":1.75},
+    {"municipio":"YUMBO","zona":3,"simpatizantes":414,"votos_totales":8072,"votos_candidata":623,"ratio":1.50,"pct":7.72},
+    {"municipio":"BUENAVENTURA","zona":99,"simpatizantes":262,"votos_totales":15517,"votos_candidata":188,"ratio":0.72,"pct":1.21},
+    {"municipio":"YUMBO","zona":99,"simpatizantes":255,"votos_totales":6925,"votos_candidata":453,"ratio":1.78,"pct":6.54},
+    {"municipio":"BUENAVENTURA","zona":2,"simpatizantes":249,"votos_totales":18609,"votos_candidata":417,"ratio":1.67,"pct":2.24},
+    {"municipio":"BUENAVENTURA","zona":4,"simpatizantes":233,"votos_totales":13098,"votos_candidata":174,"ratio":0.75,"pct":1.33},
+    {"municipio":"BUENAVENTURA","zona":3,"simpatizantes":211,"votos_totales":11473,"votos_candidata":200,"ratio":0.95,"pct":1.74},
+    {"municipio":"CALI","zona":21,"simpatizantes":161,"votos_totales":22601,"votos_candidata":601,"ratio":3.73,"pct":2.66},
+    {"municipio":"CALI","zona":8,"simpatizantes":155,"votos_totales":24902,"votos_candidata":921,"ratio":5.94,"pct":3.70},
+    {"municipio":"FLORIDA","zona":1,"simpatizantes":146,"votos_totales":9356,"votos_candidata":177,"ratio":1.21,"pct":1.89},
+    {"municipio":"BUENAVENTURA","zona":5,"simpatizantes":141,"votos_totales":10908,"votos_candidata":145,"ratio":1.03,"pct":1.33},
+    {"municipio":"YUMBO","zona":90,"simpatizantes":130,"votos_totales":1982,"votos_candidata":139,"ratio":1.07,"pct":7.01},
+    {"municipio":"CALI","zona":32,"simpatizantes":125,"votos_totales":36748,"votos_candidata":902,"ratio":7.22,"pct":2.45},
+    {"municipio":"CALI","zona":22,"simpatizantes":122,"votos_totales":26560,"votos_candidata":586,"ratio":4.80,"pct":2.21},
+    {"municipio":"FLORIDA","zona":2,"simpatizantes":105,"votos_totales":8890,"votos_candidata":172,"ratio":1.64,"pct":1.93},
+    {"municipio":"CALI","zona":11,"simpatizantes":99,"votos_totales":21996,"votos_candidata":657,"ratio":6.64,"pct":2.99},
+    {"municipio":"CALI","zona":18,"simpatizantes":85,"votos_totales":26998,"votos_candidata":803,"ratio":9.45,"pct":2.97},
+    {"municipio":"CALI","zona":14,"simpatizantes":80,"votos_totales":19252,"votos_candidata":750,"ratio":9.38,"pct":3.90},
+    {"municipio":"CALI","zona":29,"simpatizantes":79,"votos_totales":25986,"votos_candidata":916,"ratio":11.59,"pct":3.52},
+    {"municipio":"FLORIDA","zona":99,"simpatizantes":74,"votos_totales":7809,"votos_candidata":120,"ratio":1.62,"pct":1.54},
+    {"municipio":"BUENAVENTURA","zona":1,"simpatizantes":74,"votos_totales":6719,"votos_candidata":132,"ratio":1.78,"pct":1.96},
+    {"municipio":"CALI","zona":6,"simpatizantes":71,"votos_totales":38533,"votos_candidata":1580,"ratio":22.25,"pct":4.10},
+    {"municipio":"CALI","zona":10,"simpatizantes":71,"votos_totales":13328,"votos_candidata":526,"ratio":7.41,"pct":3.95},
+    {"municipio":"CALI","zona":7,"simpatizantes":71,"votos_totales":26424,"votos_candidata":930,"ratio":13.10,"pct":3.52},
+    {"municipio":"CALI","zona":1,"simpatizantes":70,"votos_totales":18044,"votos_candidata":687,"ratio":9.81,"pct":3.81},
+    {"municipio":"CALI","zona":23,"simpatizantes":70,"votos_totales":37917,"votos_candidata":1064,"ratio":15.20,"pct":2.81},
+    {"municipio":"CALI","zona":12,"simpatizantes":69,"votos_totales":15356,"votos_candidata":501,"ratio":7.26,"pct":3.26}
+];
+
+const dataPuestos = [
+    {"municipio":"YUMBO","lugar":"I.E. JOSE MARIA CORDOBA","zona":2,"simpatizantes":285,"votos_zona":15362,"votos_cand_zona":1022,"lideres":"Andres Pachely Bustos, LUIS FELIPE CARMONA, WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"I.E. JHON F. KENNEDY","zona":4,"simpatizantes":231,"votos_zona":16605,"votos_cand_zona":995,"lideres":"Andres Pachely Bustos, WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"I.E. JUAN XXIII","zona":1,"simpatizantes":223,"votos_zona":14962,"votos_cand_zona":1107,"lideres":"CARLOS ANDRES ORDOÑEZ, CARLOS MUÑOZ, WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"I.E. FRANCISCO JAVIER","zona":2,"simpatizantes":196,"votos_zona":15362,"votos_cand_zona":1022,"lideres":"CARLOS ANDRES ORDOÑEZ, WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"I.E. PEDRO SANCHEZ TELLO","zona":3,"simpatizantes":195,"votos_zona":8072,"votos_cand_zona":623,"lideres":"CARLOS MUÑOZ, WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"I.E. MANUEL MARIA SANCHEZ","zona":1,"simpatizantes":186,"votos_zona":14962,"votos_cand_zona":1107,"lideres":"Andres Pachely Bustos, LUIS FELIPE CARMONA, WILLIAM HENAO GARCIA"},
+    {"municipio":"BUENAVENTURA","lugar":"IE SIMON BOLIVAR","zona":6,"simpatizantes":172,"votos_zona":19968,"votos_cand_zona":349,"lideres":"ANGEL TOVAR, WALTER URRESTE"},
+    {"municipio":"YUMBO","lugar":"I.E. CEAT GENERAL","zona":4,"simpatizantes":152,"votos_zona":16605,"votos_cand_zona":995,"lideres":"WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"I.E. ANTONIA SANTOS","zona":2,"simpatizantes":145,"votos_zona":15362,"votos_cand_zona":1022,"lideres":"Andres Pachely Bustos, CARLOS ANDRES ORDOÑEZ, LUIS FELIPE CARMONA, WILLIAM HENAO GARCIA"},
+    {"municipio":"BUENAVENTURA","lugar":"IE TEOFILO ROBERTO POTES","zona":4,"simpatizantes":137,"votos_zona":13098,"votos_cand_zona":174,"lideres":"ANGEL TOVAR, JUAN CARLOS BARONA, WALTER URRESTE"},
+    {"municipio":"YUMBO","lugar":"IE ALBERTO MENDOZA MAYOR","zona":90,"simpatizantes":130,"votos_zona":1982,"votos_cand_zona":139,"lideres":"LUIS FELIPE CARMONA, WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"COL COOP TECNICO IND JOSE ANTONIO GALAN","zona":2,"simpatizantes":126,"votos_zona":15362,"votos_cand_zona":1022,"lideres":"JUAN CARLOS BARONA, WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"CENTRO DEPORTIVO JAIRO LLANTEN","zona":4,"simpatizantes":119,"votos_zona":16605,"votos_cand_zona":995,"lideres":"CARLOS MUÑOZ, WILLIAM HENAO GARCIA"},
+    {"municipio":"BUENAVENTURA","lugar":"IE JUAN JOSE RONDON","zona":3,"simpatizantes":113,"votos_zona":11473,"votos_cand_zona":200,"lideres":"ANGEL TOVAR, WALTER URRESTE, WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"HOGAR INF INQUIETUDES ICBF","zona":4,"simpatizantes":110,"votos_zona":16605,"votos_cand_zona":995,"lideres":"WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"I.E. MIGUEL ANTONIO CARO SEDE 2","zona":3,"simpatizantes":108,"votos_zona":8072,"votos_cand_zona":623,"lideres":"CARLOS ANDRES ORDOÑEZ, WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"I.E. LAS AMERICAS","zona":1,"simpatizantes":105,"votos_zona":14962,"votos_cand_zona":1107,"lideres":"CARLOS ANDRES ORDOÑEZ, WILLIAM HENAO GARCIA"},
+    {"municipio":"BUENAVENTURA","lugar":"IE FRANCISCO JOSE DE CALDAS","zona":2,"simpatizantes":101,"votos_zona":18609,"votos_cand_zona":417,"lideres":"ANGEL TOVAR, WALTER URRESTE, WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"I.E. PANORAMA","zona":1,"simpatizantes":93,"votos_zona":14962,"votos_cand_zona":1107,"lideres":"WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"I.E. TITAN","zona":4,"simpatizantes":88,"votos_zona":16605,"votos_cand_zona":995,"lideres":"WILLIAM HENAO GARCIA"},
+    {"municipio":"BUENAVENTURA","lugar":"CORDOBA","zona":99,"simpatizantes":88,"votos_zona":15517,"votos_cand_zona":188,"lideres":"ANGEL TOVAR, WALTER URRESTE"},
+    {"municipio":"YUMBO","lugar":"MULALO","zona":99,"simpatizantes":87,"votos_zona":6925,"votos_cand_zona":453,"lideres":"WILLIAM HENAO GARCIA"},
+    {"municipio":"BUENAVENTURA","lugar":"IE JOSE MARIA CABAL","zona":5,"simpatizantes":85,"votos_zona":10908,"votos_cand_zona":145,"lideres":"ANGEL TOVAR, WALTER URRESTE"},
+    {"municipio":"YUMBO","lugar":"UNIVERSIDAD DEL VALLE SD YUMBO","zona":4,"simpatizantes":77,"votos_zona":16605,"votos_cand_zona":995,"lideres":"WILLIAM HENAO GARCIA"},
+    {"municipio":"YUMBO","lugar":"I.E. HECTOR A. SAAVEDRA","zona":3,"simpatizantes":76,"votos_zona":8072,"votos_cand_zona":623,"lideres":"Andres Pachely Bustos, WILLIAM HENAO GARCIA"},
+    {"municipio":"BUENAVENTURA","lugar":"IE EMILIO CARVAJAL","zona":6,"simpatizantes":72,"votos_zona":19968,"votos_cand_zona":349,"lideres":"ANGEL TOVAR, CARLOS MUÑOZ, WALTER URRESTE"},
+    {"municipio":"CALI","lugar":"IE PEDRO ANTONIO MOLINA","zona":8,"simpatizantes":70,"votos_zona":24902,"votos_cand_zona":921,"lideres":"ANGEL TOVAR, Andres Pachely Bustos, CARLOS MUÑOZ, JUAN CARLOS BARONA, LUIS FELIPE CARMONA"},
+    {"municipio":"YUMBO","lugar":"I.E. FRANCISO JOSE DE CALDAS","zona":4,"simpatizantes":68,"votos_zona":16605,"votos_cand_zona":995,"lideres":"WILLIAM HENAO GARCIA"},
+    {"municipio":"CALI","lugar":"IE LA ANUNCIACION","zona":21,"simpatizantes":67,"votos_zona":22601,"votos_cand_zona":601,"lideres":"CARLOS MUÑOZ, JUAN CARLOS BARONA, LUIS FELIPE CARMONA, Phanor peña carabali"},
+    {"municipio":"YUMBO","lugar":"DAPA","zona":99,"simpatizantes":65,"votos_zona":6925,"votos_cand_zona":453,"lideres":"CARLOS MUÑOZ, WILLIAM HENAO GARCIA"}
+];
+
+const dataLideres = [
+    {"lider":"WILLIAM HENAO GARCIA","simpatizantes":3504,"municipios":21,"puestos":188,"votos_cand":38487,"votos_part":65094,"ratio":10.98},
+    {"lider":"JUAN CARLOS BARONA","simpatizantes":898,"municipios":18,"puestos":160,"votos_cand":32872,"votos_part":52275,"ratio":36.61},
+    {"lider":"WALTER URRESTE","simpatizantes":890,"municipios":5,"puestos":56,"votos_cand":10180,"votos_part":17922,"ratio":11.44},
+    {"lider":"CARLOS MUÑOZ","simpatizantes":809,"municipios":18,"puestos":211,"votos_cand":36701,"votos_part":61982,"ratio":45.37},
+    {"lider":"ANGEL TOVAR","simpatizantes":772,"municipios":5,"puestos":59,"votos_cand":7341,"votos_part":14241,"ratio":9.51},
+    {"lider":"Andres Pachely Bustos","simpatizantes":354,"municipios":13,"puestos":158,"votos_cand":36180,"votos_part":62183,"ratio":102.20},
+    {"lider":"JHON HERRERA","simpatizantes":296,"municipios":8,"puestos":34,"votos_cand":6311,"votos_part":10562,"ratio":21.32},
+    {"lider":"LUIS FELIPE CARMONA","simpatizantes":168,"municipios":11,"puestos":93,"votos_cand":30268,"votos_part":49887,"ratio":180.17},
+    {"lider":"JOSE GOMEZ RAMIREZ","simpatizantes":105,"municipios":1,"puestos":20,"votos_cand":798,"votos_part":1437,"ratio":7.60},
+    {"lider":"Phanor peña carabali","simpatizantes":29,"municipios":2,"puestos":16,"votos_cand":6216,"votos_part":10383,"ratio":214.34},
+    {"lider":"James Ramirez","simpatizantes":23,"municipios":2,"puestos":21,"votos_cand":9635,"votos_part":15993,"ratio":418.91},
+    {"lider":"Mariana Q","simpatizantes":17,"municipios":3,"puestos":13,"votos_cand":6024,"votos_part":8774,"ratio":354.35},
+    {"lider":"CARLOS ANDRES ORDOÑEZ","simpatizantes":13,"municipios":2,"puestos":7,"votos_cand":2825,"votos_part":5763,"ratio":217.31},
+    {"lider":"Veyanir Cifuentes","simpatizantes":10,"municipios":2,"puestos":10,"votos_cand":6953,"votos_part":10159,"ratio":695.30}
+];
+
+const dataCandidatos = [
+    {"candidato":"#101","votos":172243},{"candidato":"#113","votos":135097},
+    {"candidato":"#104","votos":89856},{"candidato":"#111","votos":59983},
+    {"candidato":"#102","votos":58343},{"candidato":"#105","votos":55577},
+    {"candidato":"#112","votos":51876},{"candidato":"#107 ★","votos":44371},
+    {"candidato":"#103","votos":27869},{"candidato":"#110","votos":19238},
+    {"candidato":"#109","votos":15423},{"candidato":"#108","votos":12528},
+    {"candidato":"#106","votos":11393}
+];
+
+// ========== UTILITY ==========
+const fmt = n => n.toLocaleString('es-CO');
+const fmtPct = n => n.toFixed(2) + '%';
+
+function ratioBadge(r) {
+    if (r >= 5) return `<span class="badge badge-green">${r.toFixed(1)}x</span>`;
+    if (r >= 1) return `<span class="badge badge-blue">${r.toFixed(1)}x</span>`;
+    return `<span class="badge badge-red">${r.toFixed(1)}x</span>`;
+}
+
+// ========== TABS ==========
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+});
+
+// ========== TABLES ==========
+function renderTableMpio(filter = '') {
+    const tbody = document.querySelector('#table-mpio tbody');
+    const f = filter.toLowerCase();
+    const rows = dataMunicipios.filter(d => d.municipio.toLowerCase().includes(f));
+    tbody.innerHTML = rows.map(d => `
+        <tr>
+            <td><strong>${d.municipio}</strong></td>
+            <td class="num">${fmt(d.simpatizantes)}</td>
+            <td class="num">${fmt(d.votos_totales)}</td>
+            <td class="num">${fmt(d.votos_candidata)}</td>
+            <td class="num">${fmt(d.votos_partido)}</td>
+            <td class="num">${ratioBadge(d.ratio)}</td>
+            <td class="num">${fmtPct(d.pct)}</td>
+        </tr>`).join('');
+}
+
+function renderTableZona(filter = '') {
+    const tbody = document.querySelector('#table-zona tbody');
+    const f = filter.toLowerCase();
+    const rows = dataZonas.filter(d =>
+        d.municipio.toLowerCase().includes(f) || String(d.zona).includes(f)
+    );
+    tbody.innerHTML = rows.map(d => `
+        <tr>
+            <td><strong>${d.municipio}</strong></td>
+            <td class="num">${d.zona}</td>
+            <td class="num">${fmt(d.simpatizantes)}</td>
+            <td class="num">${fmt(d.votos_totales)}</td>
+            <td class="num">${fmt(d.votos_candidata)}</td>
+            <td class="num">${ratioBadge(d.ratio)}</td>
+            <td class="num">${fmtPct(d.pct)}</td>
+        </tr>`).join('');
+}
+
+function renderTablePuesto(filter = '') {
+    const tbody = document.querySelector('#table-puesto tbody');
+    const f = filter.toLowerCase();
+    const rows = dataPuestos.filter(d =>
+        d.municipio.toLowerCase().includes(f) ||
+        d.lugar.toLowerCase().includes(f) ||
+        d.lideres.toLowerCase().includes(f)
+    );
+    tbody.innerHTML = rows.map(d => `
+        <tr>
+            <td><strong>${d.municipio}</strong></td>
+            <td>${d.lugar}</td>
+            <td class="num">${d.zona}</td>
+            <td class="num">${fmt(d.simpatizantes)}</td>
+            <td class="num">${fmt(d.votos_zona)}</td>
+            <td class="num">${fmt(d.votos_cand_zona)}</td>
+            <td style="font-size:.8rem">${d.lideres}</td>
+        </tr>`).join('');
+}
+
+function renderTableLider() {
+    const tbody = document.querySelector('#table-lider tbody');
+    tbody.innerHTML = dataLideres.map(d => `
+        <tr>
+            <td><strong>${d.lider}</strong></td>
+            <td class="num">${fmt(d.simpatizantes)}</td>
+            <td class="num">${d.municipios}</td>
+            <td class="num">${d.puestos}</td>
+            <td class="num">${fmt(d.votos_cand)}</td>
+            <td class="num">${fmt(d.votos_part)}</td>
+            <td class="num">${ratioBadge(d.ratio)}</td>
+        </tr>`).join('');
+}
+
+// Init tables
+renderTableMpio();
+renderTableZona();
+renderTablePuesto();
+renderTableLider();
+
+// Filters
+document.getElementById('filter-mpio').addEventListener('input', e => renderTableMpio(e.target.value));
+document.getElementById('filter-zona').addEventListener('input', e => renderTableZona(e.target.value));
+document.getElementById('filter-puesto').addEventListener('input', e => renderTablePuesto(e.target.value));
+
+// ========== CHARTS ==========
+const COLORS = {
+    blue: 'rgba(43,108,176,.8)',
+    red: 'rgba(229,62,62,.8)',
+    green: 'rgba(56,161,105,.8)',
+    blueLight: 'rgba(43,108,176,.15)',
+    redLight: 'rgba(229,62,62,.15)',
+};
+
+// Chart 1: Municipios
+const mpioTop = dataMunicipios.filter(d => d.simpatizantes >= 5).slice(0, 10);
+new Chart(document.getElementById('chartMunicipio'), {
+    type: 'bar',
+    data: {
+        labels: mpioTop.map(d => d.municipio),
+        datasets: [
+            { label: 'Simpatizantes', data: mpioTop.map(d => d.simpatizantes), backgroundColor: COLORS.blue, borderRadius: 4 },
+            { label: 'Votos Candidata', data: mpioTop.map(d => d.votos_candidata), backgroundColor: COLORS.red, borderRadius: 4 }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: { legend: { position: 'top' } },
+        scales: {
+            y: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } }
+        }
+    }
+});
+
+// Chart 2: Candidatos
+new Chart(document.getElementById('chartCandidatos'), {
+    type: 'bar',
+    data: {
+        labels: dataCandidatos.map(d => d.candidato),
+        datasets: [{
+            label: 'Votos en zonas con simpatizantes',
+            data: dataCandidatos.map(d => d.votos),
+            backgroundColor: dataCandidatos.map(d => d.candidato.includes('★') ? COLORS.red : COLORS.blue),
+            borderRadius: 4
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+            x: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } }
+        }
+    }
+});
+
+// Chart 3: Zonas
+const zonaTop = dataZonas.slice(0, 15);
+new Chart(document.getElementById('chartZonas'), {
+    type: 'bar',
+    data: {
+        labels: zonaTop.map(d => `${d.municipio} Z${d.zona}`),
+        datasets: [
+            { label: 'Simpatizantes', data: zonaTop.map(d => d.simpatizantes), backgroundColor: COLORS.blue, borderRadius: 4 },
+            { label: 'Votos Candidata', data: zonaTop.map(d => d.votos_candidata), backgroundColor: COLORS.red, borderRadius: 4 }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: { legend: { position: 'top' } },
+        scales: {
+            x: { ticks: { maxRotation: 45, minRotation: 45, font: { size: 10 } } },
+            y: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } }
+        }
+    }
+});
+
+// Chart 4: Lideres
+const liderTop = dataLideres.slice(0, 10);
+new Chart(document.getElementById('chartLideres'), {
+    type: 'bar',
+    data: {
+        labels: liderTop.map(d => d.lider),
+        datasets: [
+            { label: 'Simpatizantes', data: liderTop.map(d => d.simpatizantes), backgroundColor: COLORS.blue, borderRadius: 4 },
+            { label: 'Votos Candidata (zonas)', data: liderTop.map(d => d.votos_cand), backgroundColor: COLORS.red, borderRadius: 4 }
+        ]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: { legend: { position: 'top' } },
+        scales: {
+            x: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } }
+        }
+    }
+});
+</script>
+</body>
+</html>
