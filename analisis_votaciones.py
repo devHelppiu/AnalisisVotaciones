@@ -80,7 +80,7 @@ def analisis_por_zona(df_camara, df_sim_valle):
         .sum().reset_index()
         .rename(columns={'votos': 'votos_totales_zona'}))
 
-    votos_candidata_zona = (df_camara[df_camara['candidato'] == CANDIDATA_CODE]
+    votos_candidata_zona = (df_camara[(df_camara['candidato'] == CANDIDATA_CODE) & (df_camara['partido'] == PARTIDO_CODE)]
         .groupby(['mpio', 'municipio_nombre', 'zona'])['votos']
         .sum().reset_index()
         .rename(columns={'votos': 'votos_candidata_zona'}))
@@ -125,7 +125,7 @@ def analisis_por_municipio(df_camara, df_sim_valle):
     votos_total = df_camara.groupby(['mpio', 'municipio_nombre'])['votos'].sum().reset_index()
     votos_total.columns = ['mpio', 'municipio', 'votos_totales']
 
-    votos_cand = (df_camara[df_camara['candidato'] == CANDIDATA_CODE]
+    votos_cand = (df_camara[(df_camara['candidato'] == CANDIDATA_CODE) & (df_camara['partido'] == PARTIDO_CODE)]
         .groupby('municipio_nombre')['votos'].sum().reset_index())
     votos_cand.columns = ['municipio', 'votos_candidata']
 
@@ -275,7 +275,7 @@ def main():
 
     # Resumen
     total_simp = df_sim_valle.shape[0]
-    total_votos_cand = df_camara[df_camara['candidato'] == CANDIDATA_CODE]['votos'].sum()
+    total_votos_cand = df_camara[(df_camara['candidato'] == CANDIDATA_CODE) & (df_camara['partido'] == PARTIDO_CODE)]['votos'].sum()
     print(f'\n=== RESUMEN FINAL ===')
     print(f'Total simpatizantes Valle: {total_simp:,}')
     print(f'Total votos {CANDIDATA_NOMBRE}: {total_votos_cand:,}')
