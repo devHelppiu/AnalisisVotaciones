@@ -6,3 +6,9 @@ CAMARA valle.xlsx
 Simpatizantes.xlsx
 Registros_simpatizantes_13Mar.xlsx
 Resultado_Analisis_Votaciones.xlsx
+Analisis_Mesas_Probabilidad.xlsx
+mesa_data.json
+check_data.py
+debug_mesa.py
+debug_zona.py
+inject_data.py

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probabilidad de Voto por Mesa - Ana Maria Sanclemente</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2b6cb0;
+            --accent: #e53e3e;
+            --green: #38a169;
+            --orange: #dd6b20;
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,.07), 0 2px 4px -1px rgba(0,0,0,.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.08), 0 4px 6px -2px rgba(0,0,0,.04);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+        .header { background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%); color:white; padding:2rem 0; text-align:center; }
+        .header h1 { font-size:1.8rem; font-weight:700; margin-bottom:.25rem; }
+        .header .subtitle { font-size:1.05rem; opacity:.85; }
+        .header .nav-links { margin-top:.75rem; }
+        .header .nav-links a { color:rgba(255,255,255,.85); text-decoration:none; padding:.3rem .8rem; border:1px solid rgba(255,255,255,.3); border-radius:1rem; font-size:.85rem; margin:0 .25rem; }
+        .header .nav-links a:hover { background:rgba(255,255,255,.15); }
+        .container { max-width:1320px; margin:0 auto; padding:0 1.5rem; }
+        .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:1rem; margin:-2rem 0 2rem; position:relative; z-index:1; }
+        .kpi-card { background:var(--card-bg); border-radius:.75rem; padding:1.15rem; box-shadow:var(--shadow-lg); text-align:center; border-top:3px solid var(--primary-light); }
+        .kpi-card.accent { border-top-color:var(--accent); }
+        .kpi-card.green { border-top-color:var(--green); }
+        .kpi-card.orange { border-top-color:var(--orange); }
+        .kpi-value { font-size:1.7rem; font-weight:800; color:var(--primary); }
+        .kpi-card.accent .kpi-value { color:var(--accent); }
+        .kpi-card.green .kpi-value { color:var(--green); }
+        .kpi-card.orange .kpi-value { color:var(--orange); }
+        .kpi-label { font-size:.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:.05em; margin-top:.2rem; }
+        .kpi-sub { font-size:.68rem; color:var(--text-light); margin-top:.1rem; }
+        .section { margin-bottom:2.5rem; }
+        .section-title { font-size:1.3rem; font-weight:700; color:var(--primary); margin-bottom:1rem; padding-bottom:.5rem; border-bottom:2px solid var(--border); display:flex; align-items:center; gap:.5rem; }
+        .section-title .icon { font-size:1.3rem; }
+        .card { background:var(--card-bg); border-radius:.75rem; box-shadow:var(--shadow); padding:1.5rem; margin-bottom:1.5rem; }
+        .card h3 { margin-bottom:.75rem; font-size:.95rem; color:var(--text-light); }
+        .charts-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(500px,1fr)); gap:1.5rem; }
+        .chart-container { position:relative; width:100%; }
+        .chart-container canvas { max-height:500px; }
+        .chart-container.tall canvas { max-height:600px; }
+        .summary-row { display:flex; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+        .summary-box { flex:1; min-width:220px; background:var(--card-bg); border-radius:.75rem; padding:1rem 1.25rem; box-shadow:var(--shadow); display:flex; align-items:center; gap:.75rem; }
+        .summary-box .sb-icon { font-size:2rem; }
+        .summary-box .sb-value { font-size:1.3rem; font-weight:800; }
+        .summary-box .sb-label { font-size:.75rem; color:var(--text-light); }
+        .summary-box.good { border-left:4px solid var(--green); }
+        .summary-box.warning { border-left:4px solid var(--orange); }
+        .summary-box.bad { border-left:4px solid var(--accent); }
+        .table-wrapper { overflow-x:auto; max-height:650px; overflow-y:auto; }
+        table { width:100%; border-collapse:collapse; font-size:.83rem; }
+        th { background:var(--primary); color:white; padding:.55rem .7rem; text-align:left; font-weight:600; position:sticky; top:0; white-space:nowrap; z-index:2; }
+        td { padding:.5rem .7rem; border-bottom:1px solid var(--border); }
+        tr:hover td { background:#edf2f7; }
+        .num { text-align:right; font-variant-numeric:tabular-nums; }
+        .badge { display:inline-block; padding:.15rem .6rem; border-radius:1rem; font-size:.72rem; font-weight:600; }
+        .badge-green { background:#c6f6d5; color:#22543d; }
+        .badge-red { background:#fed7d7; color:#9b2c2c; }
+        .badge-yellow { background:#fefcbf; color:#744210; }
+        .badge-orange { background:#feebc8; color:#7b341e; }
+        .pbar { display:flex; align-items:center; gap:.5rem; min-width:120px; }
+        .pbar-track { flex:1; height:8px; background:#e2e8f0; border-radius:4px; overflow:hidden; }
+        .pbar-fill { height:100%; border-radius:4px; }
+        .pbar-label { font-size:.75rem; font-weight:700; min-width:40px; text-align:right; }
+        .filter-bar { display:flex; gap:.75rem; margin-bottom:1rem; flex-wrap:wrap; align-items:center; }
+        .filter-bar input,.filter-bar select { padding:.5rem .75rem; border:1px solid var(--border); border-radius:.5rem; font-size:.875rem; background:white; }
+        .filter-bar input:focus,.filter-bar select:focus { outline:none; border-color:var(--primary-light); box-shadow:0 0 0 3px rgba(43,108,176,.15); }
+        .filter-bar input { flex:1; min-width:200px; }
+        .tabs { display:flex; gap:.25rem; margin-bottom:1rem; border-bottom:2px solid var(--border); flex-wrap:wrap; }
+        .tab { padding:.6rem 1.1rem; cursor:pointer; font-weight:600; font-size:.85rem; color:var(--text-light); border-bottom:2px solid transparent; margin-bottom:-2px; transition:all .2s; background:none; border-top:none; border-left:none; border-right:none; }
+        .tab:hover { color:var(--primary); }
+        .tab.active { color:var(--primary); border-bottom-color:var(--primary); }
+        .tab-content { display:none; }
+        .tab-content.active { display:block; }
+        .footer { text-align:center; padding:2rem; color:var(--text-light); font-size:.8rem; border-top:1px solid var(--border); margin-top:2rem; }
+        .note { font-size:.78rem; color:var(--text-light); margin-bottom:.75rem; padding:.5rem .75rem; background:#f0f4f8; border-radius:.5rem; border-left:3px solid var(--primary-light); }
+        @media (max-width:768px) { .header h1{font-size:1.3rem;} .kpi-grid{grid-template-columns:repeat(2,1fr);} .charts-grid{grid-template-columns:1fr;} .summary-row{flex-direction:column;} .container{padding:0 1rem;} }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <h1>Probabilidad de Voto por Mesa</h1>
+        <div class="subtitle">Ana Maria Sanclemente &mdash; Analisis a nivel de mesa de votacion</div>
+        <div class="nav-links">
+            <a href="index.html">&larr; Dashboard Cumplimiento</a>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="padding-top:1rem;">
+    <div class="kpi-grid" id="kpi-grid"></div>
+    <div class="summary-row" id="summary-row"></div>
+
+    <div class="section">
+        <div class="section-title"><span class="icon">🎯</span> Probabilidad de Voto por Lider</div>
+        <div class="note">
+            <strong>Metodologia:</strong> Para cada mesa donde un lider registro simpatizantes, se cruzan los votos reales de la candidata.
+            Si votos &ge; simpatizantes en esa mesa, la probabilidad es 100% (todos votaron + hubo votos adicionales).
+            Si votos &lt; simpatizantes, la probabilidad = votos / simpatizantes.
+            El <strong>ratio</strong> muestra la relacion bruta votos/simpatizantes (puede superar 1.0x).
+        </div>
+        <div class="charts-grid">
+            <div class="card">
+                <h3>Probabilidad de Voto por Lider (Top 20)</h3>
+                <div class="chart-container tall"><canvas id="chartProbLider"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>% Mesas con Votos por Lider (Top 20)</h3>
+                <div class="chart-container tall"><canvas id="chartMesasVotos"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title"><span class="icon">📊</span> Analisis por Puesto</div>
+        <div class="charts-grid">
+            <div class="card">
+                <h3>Probabilidad de Voto por Puesto (Top 15 por simpatizantes)</h3>
+                <div class="chart-container"><canvas id="chartProbPuesto"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>Simpatizantes vs Votos Atribuidos por Puesto</h3>
+                <div class="chart-container"><canvas id="chartSimpVsPuesto"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title"><span class="icon">📋</span> Datos Detallados</div>
+        <div class="tabs">
+            <button class="tab active" data-tab="tab-lideres">Lideres</button>
+            <button class="tab" data-tab="tab-puestos">Puestos</button>
+        </div>
+
+        <div id="tab-lideres" class="tab-content active">
+            <div class="card">
+                <div class="filter-bar">
+                    <input type="text" id="filter-lider" placeholder="Buscar lider...">
+                    <select id="filter-lider-prob">
+                        <option value="">Todos</option>
+                        <option value="alto">Prob. Alta (&ge;80%)</option>
+                        <option value="medio">Prob. Media (50-79%)</option>
+                        <option value="bajo">Prob. Baja (&lt;50%)</option>
+                    </select>
+                </div>
+                <div class="table-wrapper">
+                    <table id="table-lider">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Lider</th>
+                                <th>Simpatizantes</th>
+                                <th>Mesas Presencia</th>
+                                <th>Mesas con Votos</th>
+                                <th>% Mesas</th>
+                                <th>Prob. Voto</th>
+                                <th>Ratio</th>
+                                <th>Mpios</th>
+                                <th>Puestos</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-puestos" class="tab-content">
+            <div class="card">
+                <div class="filter-bar">
+                    <input type="text" id="filter-puesto" placeholder="Buscar municipio o puesto...">
+                </div>
+                <div class="table-wrapper">
+                    <table id="table-puesto">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Municipio</th>
+                                <th>Puesto</th>
+                                <th>Zona</th>
+                                <th>Simpatizantes</th>
+                                <th>Mesas</th>
+                                <th>Mesas con Votos</th>
+                                <th>% Mesas</th>
+                                <th>Votos/Simp</th>
+                                <th>Lideres</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    Analisis de Probabilidad por Mesa &mdash; Ana Maria Sanclemente &middot; Candidata #107 &middot; Cambio Radical / ALMA
+</div>
+
+<script>
+// ========== DATA (injected by analisis_mesas.py) ==========
+var DATA = {"lideres": [{"Líder": "WALDIR  HANRRYR GOMEZ", "simpatizantes": 15136, "mesas_con_presencia": 5661, "mesas_con_votos": 4892, "votos_candidata_total": 15526, "votos_atribuidos": 9284, "municipios": 33, "puestos": 447, "pct_mesas_con_votos": 86.4, "prob_voto": 0.6134, "ratio_votos_simp": 1.03}, {"Líder": "CESAR  MONTES REINA", "simpatizantes": 10782, "mesas_con_presencia": 5101, "mesas_con_votos": 4431, "votos_candidata_total": 14107, "votos_atribuidos": 7788, "municipios": 31, "puestos": 462, "pct_mesas_con_votos": 86.9, "prob_voto": 0.7223, "ratio_votos_simp": 1.31}, {"Líder": "JUAN  LOPEZ MOSQUERA", "simpatizantes": 9714, "mesas_con_presencia": 4198, "mesas_con_votos": 3631, "votos_candidata_total": 11112, "votos_atribuidos": 5726, "municipios": 33, "puestos": 405, "pct_mesas_con_votos": 86.5, "prob_voto": 0.5895, "ratio_votos_simp": 1.14}, {"Líder": "JONATHAN  RAMIREZ QUIÑONEZ", "simpatizantes": 5348, "mesas_con_presencia": 3410, "mesas_con_votos": 2957, "votos_candidata_total": 9139, "votos_atribuidos": 4103, "municipios": 29, "puestos": 393, "pct_mesas_con_votos": 86.7, "prob_voto": 0.7672, "ratio_votos_simp": 1.71}, {"Líder": "MAROLIN  RAMIREZ SARRIA", "simpatizantes": 5044, "mesas_con_presencia": 3164, "mesas_con_votos": 2702, "votos_candidata_total": 7996, "votos_atribuidos": 3671, "municipios": 28, "puestos": 398, "pct_mesas_con_votos": 85.4, "prob_voto": 0.7278, "ratio_votos_simp": 1.59}, {"Líder": "ANGIE  GRISALES MOSQUERA", "simpatizantes": 4003, "mesas_con_presencia": 2751, "mesas_con_votos": 2336, "votos_candidata_total": 6773, "votos_atribuidos": 3052, "municipios": 23, "puestos": 339, "pct_mesas_con_votos": 84.9, "prob_voto": 0.7624, "ratio_votos_simp": 1.69}, {"Líder": "WILLIAM HENAO GARCIA", "simpatizantes": 3504, "mesas_con_presencia": 668, "mesas_con_votos": 608, "votos_candidata_total": 4361, "votos_atribuidos": 2838, "municipios": 21, "puestos": 188, "pct_mesas_con_votos": 91.0, "prob_voto": 0.8099, "ratio_votos_simp": 1.24}, {"Líder": "JORGE ELIECER LOZANO AGUDELO", "simpatizantes": 3121, "mesas_con_presencia": 2162, "mesas_con_votos": 1881, "votos_candidata_total": 5612, "votos_atribuidos": 2426, "municipios": 22, "puestos": 256, "pct_mesas_con_votos": 87.0, "prob_voto": 0.7773, "ratio_votos_simp": 1.8}, {"Líder": "ALEJANDRO  VASQUEZ ZAWAZKY", "simpatizantes": 2504, "mesas_con_presencia": 1854, "mesas_con_votos": 1581, "votos_candidata_total": 4657, "votos_atribuidos": 1958, "municipios": 27, "puestos": 363, "pct_mesas_con_votos": 85.3, "prob_voto": 0.7819, "ratio_votos_simp": 1.86}, {"Líder": "VICTOR MANUEL GARCIA GIRALDO", "simpatizantes": 2419, "mesas_con_presencia": 1933, "mesas_con_votos": 1711, "votos_candidata_total": 5416, "votos_atribuidos": 2040, "municipios": 29, "puestos": 349, "pct_mesas_con_votos": 88.5, "prob_voto": 0.8433, "ratio_votos_simp": 2.24}, {"Líder": "LEIDY  VELASQUEZ OTALVARO", "simpatizantes": 2099, "mesas_con_presencia": 1540, "mesas_con_votos": 1350, "votos_candidata_total": 4283, "votos_atribuidos": 1715, "municipios": 20, "puestos": 259, "pct_mesas_con_votos": 87.7, "prob_voto": 0.8171, "ratio_votos_simp": 2.04}, {"Líder": "LEYDI TATIANA MARTINEZ IDROBO", "simpatizantes": 1917, "mesas_con_presencia": 1211, "mesas_con_votos": 1038, "votos_candidata_total": 2891, "votos_atribuidos": 1364, "municipios": 18, "puestos": 258, "pct_mesas_con_votos": 85.7, "prob_voto": 0.7115, "ratio_votos_simp": 1.51}, {"Líder": "ANDRES FELIPE COLLAZOS MARTINEZ", "simpatizantes": 1894, "mesas_con_presencia": 632, "mesas_con_votos": 591, "votos_candidata_total": 4112, "votos_atribuidos": 1722, "municipios": 14, "puestos": 181, "pct_mesas_con_votos": 93.5, "prob_voto": 0.9092, "ratio_votos_simp": 2.17}, {"Líder": "JORGE ELIECER RAMIREZ MOSQUERA", "simpatizantes": 1446, "mesas_con_presencia": 510, "mesas_con_votos": 449, "votos_candidata_total": 1057, "votos_atribuidos": 512, "municipios": 14, "puestos": 181, "pct_mesas_con_votos": 88.0, "prob_voto": 0.3541, "ratio_votos_simp": 0.73}, {"Líder": "No encontrado No encontrado", "simpatizantes": 1438, "mesas_con_presencia": 991, "mesas_con_votos": 838, "votos_candidata_total": 2365, "votos_atribuidos": 1058, "municipios": 18, "puestos": 229, "pct_mesas_con_votos": 84.6, "prob_voto": 0.7357, "ratio_votos_simp": 1.64}, {"Líder": "PEDRO KADIR ZAMORA RENGIFO", "simpatizantes": 1377, "mesas_con_presencia": 1102, "mesas_con_votos": 941, "votos_candidata_total": 2577, "votos_atribuidos": 1057, "municipios": 14, "puestos": 242, "pct_mesas_con_votos": 85.4, "prob_voto": 0.7676, "ratio_votos_simp": 1.87}, {"Líder": "JORGE ENRIQUE CASALINS TELLO", "simpatizantes": 1354, "mesas_con_presencia": 1051, "mesas_con_votos": 891, "votos_candidata_total": 2631, "votos_atribuidos": 1027, "municipios": 20, "puestos": 260, "pct_mesas_con_votos": 84.8, "prob_voto": 0.7585, "ratio_votos_simp": 1.94}, {"Líder": "GLORIA JIMENA ARAGON VELEZ", "simpatizantes": 1307, "mesas_con_presencia": 964, "mesas_con_votos": 793, "votos_candidata_total": 2261, "votos_atribuidos": 920, "municipios": 14, "puestos": 226, "pct_mesas_con_votos": 82.3, "prob_voto": 0.7039, "ratio_votos_simp": 1.73}, {"Líder": "WILMER  VALENCIA GARCIA", "simpatizantes": 1240, "mesas_con_presencia": 587, "mesas_con_votos": 477, "votos_candidata_total": 1188, "votos_atribuidos": 714, "municipios": 9, "puestos": 112, "pct_mesas_con_votos": 81.3, "prob_voto": 0.5758, "ratio_votos_simp": 0.96}, {"Líder": "WILMAR  ORTEGA GARCIA", "simpatizantes": 1172, "mesas_con_presencia": 957, "mesas_con_votos": 836, "votos_candidata_total": 2625, "votos_atribuidos": 987, "municipios": 15, "puestos": 229, "pct_mesas_con_votos": 87.4, "prob_voto": 0.8422, "ratio_votos_simp": 2.24}], "puestos": [{"Municipio": "CALI", "Lugar": "COLISEO DEL PUEBLO", "zona_code": 90.0, "simpatizantes": 1493, "mesas_presencia": 68, "mesas_con_votos": 830, "votos_candidata_sum": 2490, "lideres": 70, "pct_mesas_con_votos": 1220.6, "votos_por_simp": 1.67}, {"Municipio": "CALI", "Lugar": "IE LA ANUNCIACION", "zona_code": 21.0, "simpatizantes": 1415, "mesas_presencia": 46, "mesas_con_votos": 493, "votos_candidata_sum": 986, "lideres": 54, "pct_mesas_con_votos": 1071.7, "votos_por_simp": 0.7}, {"Municipio": "CALI", "Lugar": "STA ISABEL DE HUNGRIA CALIMIO DECEPAZ", "zona_code": 32.0, "simpatizantes": 985, "mesas_presencia": 56, "mesas_con_votos": 409, "votos_candidata_sum": 851, "lideres": 59, "pct_mesas_con_votos": 730.4, "votos_por_simp": 0.86}, {"Municipio": "CALI", "Lugar": "IE NUEVO LATIR", "zona_code": 22.0, "simpatizantes": 968, "mesas_presencia": 59, "mesas_con_votos": 316, "votos_candidata_sum": 706, "lideres": 57, "pct_mesas_con_votos": 535.6, "votos_por_simp": 0.73}, {"Municipio": "CALI", "Lugar": "COL STA ISABEL  HUNGRIA ALFONSO LOPEZ", "zona_code": 9.0, "simpatizantes": 923, "mesas_presencia": 47, "mesas_con_votos": 377, "votos_candidata_sum": 807, "lideres": 52, "pct_mesas_con_votos": 802.1, "votos_por_simp": 0.87}, {"Municipio": "CALI", "Lugar": "IE GABRIELA MISTRAL", "zona_code": 22.0, "simpatizantes": 916, "mesas_presencia": 38, "mesas_con_votos": 279, "votos_candidata_sum": 756, "lideres": 43, "pct_mesas_con_votos": 734.2, "votos_por_simp": 0.83}, {"Municipio": "CALI", "Lugar": "IE HERNANDO NAVIA VARON", "zona_code": 18.0, "simpatizantes": 873, "mesas_presencia": 48, "mesas_con_votos": 440, "votos_candidata_sum": 1200, "lideres": 48, "pct_mesas_con_votos": 916.7, "votos_por_simp": 1.37}, {"Municipio": "CALI", "Lugar": "COLEGIO FUNDACION COMPARTIR", "zona_code": 32.0, "simpatizantes": 837, "mesas_presencia": 53, "mesas_con_votos": 500, "votos_candidata_sum": 1000, "lideres": 55, "pct_mesas_con_votos": 943.4, "votos_por_simp": 1.19}, {"Municipio": "CALI", "Lugar": "ESCUELA OLAYA HERRERA", "zona_code": 23.0, "simpatizantes": 831, "mesas_presencia": 53, "mesas_con_votos": 412, "votos_candidata_sum": 930, "lideres": 49, "pct_mesas_con_votos": 777.4, "votos_por_simp": 1.12}, {"Municipio": "CALI", "Lugar": "IE AGUSTIN NIETO CABALLERO", "zona_code": 16.0, "simpatizantes": 827, "mesas_presencia": 43, "mesas_con_votos": 374, "votos_candidata_sum": 1408, "lideres": 48, "pct_mesas_con_votos": 869.8, "votos_por_simp": 1.7}, {"Municipio": "CALI", "Lugar": "IE CELMIRA BUENO DE OREJUELA", "zona_code": 6.0, "simpatizantes": 821, "mesas_presencia": 64, "mesas_con_votos": 549, "votos_candidata_sum": 2196, "lideres": 56, "pct_mesas_con_votos": 857.8, "votos_por_simp": 2.67}, {"Municipio": "BUENAVENTURA", "Lugar": "IE LA ANUNCIACION (IFA)", "zona_code": 2.0, "simpatizantes": 808, "mesas_presencia": 26, "mesas_con_votos": 179, "votos_candidata_sum": 1385, "lideres": 29, "pct_mesas_con_votos": 688.5, "votos_por_simp": 1.71}, {"Municipio": "DAGUA", "Lugar": "PUESTO CABECERA MUNICIPAL", "zona_code": 0.0, "simpatizantes": 767, "mesas_presencia": 37, "mesas_con_votos": 325, "votos_candidata_sum": 650, "lideres": 46, "pct_mesas_con_votos": 878.4, "votos_por_simp": 0.85}, {"Municipio": "CALI", "Lugar": "IE MONSEÑOR RAMON ARCILA", "zona_code": 21.0, "simpatizantes": 759, "mesas_presencia": 36, "mesas_con_votos": 253, "votos_candidata_sum": 406, "lideres": 52, "pct_mesas_con_votos": 702.8, "votos_por_simp": 0.53}, {"Municipio": "CALI", "Lugar": "IE PEDRO ANTONIO MOLINA", "zona_code": 8.0, "simpatizantes": 758, "mesas_presencia": 45, "mesas_con_votos": 366, "votos_candidata_sum": 850, "lideres": 57, "pct_mesas_con_votos": 813.3, "votos_por_simp": 1.12}, {"Municipio": "CALI", "Lugar": "SANTA ISABEL DE HUNGRIA SAN FELIPE", "zona_code": 32.0, "simpatizantes": 737, "mesas_presencia": 42, "mesas_con_votos": 429, "votos_candidata_sum": 858, "lideres": 50, "pct_mesas_con_votos": 1021.4, "votos_por_simp": 1.16}, {"Municipio": "CALI", "Lugar": "ESCUELA RAUL SILVA HOLGUIN", "zona_code": 21.0, "simpatizantes": 733, "mesas_presencia": 33, "mesas_con_votos": 311, "votos_candidata_sum": 622, "lideres": 52, "pct_mesas_con_votos": 942.4, "votos_por_simp": 0.85}, {"Municipio": "CALI", "Lugar": "SEDE PUERTA DEL SOL", "zona_code": 21.0, "simpatizantes": 718, "mesas_presencia": 35, "mesas_con_votos": 244, "votos_candidata_sum": 376, "lideres": 50, "pct_mesas_con_votos": 697.1, "votos_por_simp": 0.52}, {"Municipio": "CALI", "Lugar": "IE VICENTE BORRERO COSTA", "zona_code": 9.0, "simpatizantes": 709, "mesas_presencia": 33, "mesas_con_votos": 373, "votos_candidata_sum": 1119, "lideres": 46, "pct_mesas_con_votos": 1130.3, "votos_por_simp": 1.58}, {"Municipio": "CALI", "Lugar": "ESCUELA MARIANO OSPINA PEREZ", "zona_code": 6.0, "simpatizantes": 687, "mesas_presencia": 46, "mesas_con_votos": 421, "votos_candidata_sum": 1949, "lideres": 50, "pct_mesas_con_votos": 915.2, "votos_por_simp": 2.84}, {"Municipio": "CALI", "Lugar": "IE MANUEL MARIA MALLARINO CEIBAS", "zona_code": 10.0, "simpatizantes": 677, "mesas_presencia": 34, "mesas_con_votos": 314, "votos_candidata_sum": 951, "lideres": 52, "pct_mesas_con_votos": 923.5, "votos_por_simp": 1.4}, {"Municipio": "CALI", "Lugar": "COL FRAY LUIS AMIGO FE Y ALEGRIA", "zona_code": 22.0, "simpatizantes": 669, "mesas_presencia": 40, "mesas_con_votos": 400, "votos_candidata_sum": 800, "lideres": 50, "pct_mesas_con_votos": 1000.0, "votos_por_simp": 1.2}, {"Municipio": "CALI", "Lugar": "ESCUELA LAS AMERICAS", "zona_code": 7.0, "simpatizantes": 657, "mesas_presencia": 42, "mesas_con_votos": 352, "votos_candidata_sum": 1339, "lideres": 46, "pct_mesas_con_votos": 838.1, "votos_por_simp": 2.04}, {"Municipio": "CALI", "Lugar": "IE CARLOS HOLMES TRUJILLO", "zona_code": 24.0, "simpatizantes": 651, "mesas_presencia": 37, "mesas_con_votos": 235, "votos_candidata_sum": 562, "lideres": 44, "pct_mesas_con_votos": 635.1, "votos_por_simp": 0.86}, {"Municipio": "CALI", "Lugar": "IE CUDAD CORDOBA", "zona_code": 23.0, "simpatizantes": 643, "mesas_presencia": 49, "mesas_con_votos": 384, "votos_candidata_sum": 768, "lideres": 53, "pct_mesas_con_votos": 783.7, "votos_por_simp": 1.19}, {"Municipio": "BUENAVENTURA", "Lugar": "IE SIMON BOLIVAR", "zona_code": 6.0, "simpatizantes": 635, "mesas_presencia": 39, "mesas_con_votos": 277, "votos_candidata_sum": 484, "lideres": 35, "pct_mesas_con_votos": 710.3, "votos_por_simp": 0.76}, {"Municipio": "CALI", "Lugar": "COLEGIO COMFANDI CALIPSO", "zona_code": 19.0, "simpatizantes": 633, "mesas_presencia": 39, "mesas_con_votos": 344, "votos_candidata_sum": 815, "lideres": 49, "pct_mesas_con_votos": 882.1, "votos_por_simp": 1.29}, {"Municipio": "CALI", "Lugar": "INST TEC COMERCIAL LAS AMERICAS", "zona_code": 11.0, "simpatizantes": 632, "mesas_presencia": 41, "mesas_con_votos": 311, "votos_candidata_sum": 738, "lideres": 47, "pct_mesas_con_votos": 758.5, "votos_por_simp": 1.17}, {"Municipio": "CALI", "Lugar": "COL PARROQUIAL SEÑOR DE LOS MILAGROS", "zona_code": 19.0, "simpatizantes": 630, "mesas_presencia": 28, "mesas_con_votos": 215, "votos_candidata_sum": 495, "lideres": 43, "pct_mesas_con_votos": 767.9, "votos_por_simp": 0.79}, {"Municipio": "CALI", "Lugar": "UNIVALLE SEDE MELENDEZ", "zona_code": 25.0, "simpatizantes": 626, "mesas_presencia": 75, "mesas_con_votos": 378, "votos_candidata_sum": 1049, "lideres": 57, "pct_mesas_con_votos": 504.0, "votos_por_simp": 1.68}], "global": {"total_simpatizantes": 103747, "total_mesas_presencia": 9274, "total_mesas_con_votos": 7786, "votos_atribuidos": 74431, "prob_global": 0.7174, "total_votos_candidata": 30237}};
+// ========== END DATA ==========
+
+var GLOB = DATA.global;
+var LIDERES = DATA.lideres;
+var PUESTOS = DATA.puestos;
+
+var fmt = function(n) { return n.toLocaleString('es-CO'); };
+
+function probBar(pct) {
+    var w = Math.min(pct, 100);
+    var color = pct >= 80 ? '#38a169' : pct >= 50 ? '#dd6b20' : '#e53e3e';
+    return '<div class="pbar"><div class="pbar-track"><div class="pbar-fill" style="width:'+w+'%;background:'+color+'"></div></div><div class="pbar-label" style="color:'+color+'">'+pct.toFixed(1)+'%</div></div>';
+}
+function probBadge(pct) {
+    if (pct >= 80) return '<span class="badge badge-green">Alta</span>';
+    if (pct >= 50) return '<span class="badge badge-yellow">Media</span>';
+    return '<span class="badge badge-red">Baja</span>';
+}
+
+// ========== KPIs ==========
+document.getElementById('kpi-grid').innerHTML =
+    '<div class="kpi-card"><div class="kpi-value">'+fmt(GLOB.total_simpatizantes)+'</div><div class="kpi-label">Simpatizantes Analizados</div><div class="kpi-sub">95.4% del total</div></div>' +
+    '<div class="kpi-card accent"><div class="kpi-value">'+fmt(GLOB.total_votos_candidata)+'</div><div class="kpi-label">Votos Candidata</div></div>' +
+    '<div class="kpi-card green"><div class="kpi-value">'+(GLOB.prob_global*100).toFixed(1)+'%</div><div class="kpi-label">Prob. Global de Voto</div><div class="kpi-sub">votos atribuidos / simpatizantes</div></div>' +
+    '<div class="kpi-card"><div class="kpi-value">'+fmt(GLOB.total_mesas_presencia)+'</div><div class="kpi-label">Mesas con Presencia</div></div>' +
+    '<div class="kpi-card orange"><div class="kpi-value">'+fmt(GLOB.total_mesas_con_votos)+'</div><div class="kpi-label">Mesas con Votos</div><div class="kpi-sub">'+(GLOB.total_mesas_con_votos/GLOB.total_mesas_presencia*100).toFixed(1)+'% del total</div></div>';
+
+// ========== SUMMARY BOXES ==========
+var probAlta = LIDERES.filter(function(d){return d.prob_voto>=0.8;}).length;
+var probMedia = LIDERES.filter(function(d){return d.prob_voto>=0.5 && d.prob_voto<0.8;}).length;
+var probBaja = LIDERES.filter(function(d){return d.prob_voto<0.5;}).length;
+document.getElementById('summary-row').innerHTML =
+    '<div class="summary-box good"><div><div class="sb-icon">🟢</div></div><div><div class="sb-value">'+probAlta+' lideres</div><div class="sb-label">Probabilidad Alta (&ge;80%)</div></div></div>' +
+    '<div class="summary-box warning"><div><div class="sb-icon">🟡</div></div><div><div class="sb-value">'+probMedia+' lideres</div><div class="sb-label">Probabilidad Media (50-79%)</div></div></div>' +
+    '<div class="summary-box bad"><div><div class="sb-icon">🔴</div></div><div><div class="sb-value">'+probBaja+' lideres</div><div class="sb-label">Probabilidad Baja (&lt;50%)</div></div></div>';
+
+// ========== TABS ==========
+document.querySelectorAll('.tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+        document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+        document.querySelectorAll('.tab-content').forEach(function(c){c.classList.remove('active');});
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+});
+
+// ========== TABLE: LIDERES ==========
+function renderLideres(filter, probFilter) {
+    filter = (filter||'').toLowerCase();
+    var rows = LIDERES.filter(function(d){return d['Líder'].toLowerCase().indexOf(filter)>=0;});
+    if (probFilter === 'alto') rows = rows.filter(function(d){return d.prob_voto>=0.8;});
+    else if (probFilter === 'medio') rows = rows.filter(function(d){return d.prob_voto>=0.5 && d.prob_voto<0.8;});
+    else if (probFilter === 'bajo') rows = rows.filter(function(d){return d.prob_voto<0.5;});
+    var tbody = document.querySelector('#table-lider tbody');
+    tbody.innerHTML = rows.map(function(d,i){
+        var p = (d.prob_voto||0)*100;
+        return '<tr><td class="num">'+(i+1)+'</td><td><strong>'+d['Líder']+'</strong></td><td class="num">'+fmt(d.simpatizantes)+'</td><td class="num">'+fmt(d.mesas_con_presencia)+'</td><td class="num">'+fmt(d.mesas_con_votos)+'</td><td class="num">'+d.pct_mesas_con_votos.toFixed(1)+'%</td><td>'+probBar(p)+'</td><td class="num">'+(d.ratio_votos_simp||0).toFixed(2)+'x</td><td class="num">'+d.municipios+'</td><td class="num">'+d.puestos+'</td></tr>';
+    }).join('');
+}
+renderLideres();
+document.getElementById('filter-lider').addEventListener('input', function(e){renderLideres(e.target.value, document.getElementById('filter-lider-prob').value);});
+document.getElementById('filter-lider-prob').addEventListener('change', function(e){renderLideres(document.getElementById('filter-lider').value, e.target.value);});
+
+// ========== TABLE: PUESTOS ==========
+function renderPuestos(filter) {
+    filter = (filter||'').toLowerCase();
+    var rows = PUESTOS.filter(function(d){return d.Municipio.toLowerCase().indexOf(filter)>=0 || d.Lugar.toLowerCase().indexOf(filter)>=0;});
+    var tbody = document.querySelector('#table-puesto tbody');
+    tbody.innerHTML = rows.map(function(d,i){
+        var vps = d.votos_por_simp || 0;
+        var pctM = d.pct_mesas_con_votos || 0;
+        return '<tr><td class="num">'+(i+1)+'</td><td><strong>'+d.Municipio+'</strong></td><td>'+d.Lugar+'</td><td class="num">'+(d.zona_code||'-')+'</td><td class="num">'+fmt(d.simpatizantes)+'</td><td class="num">'+d.mesas_presencia+'</td><td class="num">'+d.mesas_con_votos+'</td><td class="num">'+pctM.toFixed(1)+'%</td><td class="num">'+vps.toFixed(2)+'x</td><td class="num">'+d.lideres+'</td></tr>';
+    }).join('');
+}
+renderPuestos();
+document.getElementById('filter-puesto').addEventListener('input', function(e){renderPuestos(e.target.value);});
+
+// ========== CHARTS ==========
+var COLORS = {green:'rgba(56,161,105,.8)', orange:'rgba(221,107,32,.8)', red:'rgba(229,62,62,.8)', blue:'rgba(43,108,176,.8)'};
+
+// Chart 1: Probabilidad por Lider
+var liderLabels = LIDERES.map(function(d){var n=d['Líder']; return n.length>22?n.substring(0,20)+'...':n;});
+new Chart(document.getElementById('chartProbLider'), {
+    type: 'bar',
+    data: {
+        labels: liderLabels,
+        datasets: [{
+            label: 'Probabilidad de Voto (%)',
+            data: LIDERES.map(function(d){return (d.prob_voto||0)*100;}),
+            backgroundColor: LIDERES.map(function(d){var p=(d.prob_voto||0)*100; return p>=80?COLORS.green:p>=50?COLORS.orange:COLORS.red;}),
+            borderRadius: 3
+        }]
+    },
+    options: {
+        indexAxis:'y', responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}, tooltip:{callbacks:{label:function(ctx){return ctx.parsed.x.toFixed(1)+'%';}}}},
+        scales:{
+            x:{beginAtZero:true, max:100, ticks:{callback:function(v){return v+'%';}}},
+            y:{ticks:{font:{size:10}}}
+        }
+    }
+});
+
+// Chart 2: % Mesas con Votos por Lider
+new Chart(document.getElementById('chartMesasVotos'), {
+    type: 'bar',
+    data: {
+        labels: liderLabels,
+        datasets: [{
+            label: '% Mesas con Votos',
+            data: LIDERES.map(function(d){return d.pct_mesas_con_votos||0;}),
+            backgroundColor: LIDERES.map(function(d){var p=d.pct_mesas_con_votos||0; return p>=90?COLORS.green:p>=75?COLORS.orange:COLORS.red;}),
+            borderRadius: 3
+        }]
+    },
+    options: {
+        indexAxis:'y', responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}, tooltip:{callbacks:{label:function(ctx){return ctx.parsed.x.toFixed(1)+'%';}}}},
+        scales:{
+            x:{beginAtZero:true, max:100, ticks:{callback:function(v){return v+'%';}}},
+            y:{ticks:{font:{size:10}}}
+        }
+    }
+});
+
+// Chart 3: Probabilidad por Puesto
+var puestoTop15 = PUESTOS.slice(0,15);
+new Chart(document.getElementById('chartProbPuesto'), {
+    type: 'bar',
+    data: {
+        labels: puestoTop15.map(function(d){var n=d.Lugar; return n.length>25?n.substring(0,23)+'...':n;}),
+        datasets: [{
+            label: 'Votos/Simpatizante',
+            data: puestoTop15.map(function(d){return d.votos_por_simp||0;}),
+            backgroundColor: puestoTop15.map(function(d){var r=d.votos_por_simp||0; return r>=1?COLORS.green:r>=0.5?COLORS.orange:COLORS.red;}),
+            borderRadius: 4
+        }]
+    },
+    options: {
+        responsive:true,
+        plugins:{legend:{display:false}, tooltip:{callbacks:{label:function(ctx){return ctx.parsed.y.toFixed(2)+'x';}}}},
+        scales:{
+            x:{ticks:{maxRotation:45,minRotation:45,font:{size:10}}},
+            y:{beginAtZero:true, ticks:{callback:function(v){return v+'x';}}}
+        }
+    }
+});
+
+// Chart 4: Simpatizantes vs Votos por Puesto
+new Chart(document.getElementById('chartSimpVsPuesto'), {
+    type: 'bar',
+    data: {
+        labels: puestoTop15.map(function(d){var n=d.Lugar; return n.length>25?n.substring(0,23)+'...':n;}),
+        datasets: [
+            {label:'Simpatizantes', data:puestoTop15.map(function(d){return d.simpatizantes;}), backgroundColor:COLORS.blue, borderRadius:4},
+            {label:'Votos Candidata', data:puestoTop15.map(function(d){return d.votos_candidata_sum;}), backgroundColor:COLORS.red, borderRadius:4}
+        ]
+    },
+    options: {
+        responsive:true,
+        plugins:{legend:{position:'top'}},
+        scales:{
+            x:{ticks:{maxRotation:45,minRotation:45,font:{size:10}}},
+            y:{beginAtZero:true, ticks:{callback:function(v){return v.toLocaleString();}}}
+        }
+    }
+});
+</script>
+</body>
+</html>
