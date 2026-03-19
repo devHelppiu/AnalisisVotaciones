@@ -18,4 +18,6 @@ verify_votos.py
 verify_votos2.py
 verify_votos3.py
 verify_fix.py
+analyze_catalog.py
+verify_catalog.py
 ~$*

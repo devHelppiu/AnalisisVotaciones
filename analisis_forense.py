@@ -108,43 +108,42 @@ def construir_detalle_mesas(df_cam, df_sim_valle, lugar_pto_map):
     )
     detalle['simp_otros'] = detalle['simp_total'] - detalle['simp_lider']
 
-    # --- CRUCE CON MAPEO Lugar -> pto ---
+    # --- CRUCE CON MAPEO Lugar -> pto desde catalogo ---
     detalle = detalle.merge(
         lugar_pto_map[['mpio', 'zona', 'lugar', 'pto', 'match_type']],
-        left_on=['mpio_code', 'zona_code', 'Lugar'],
-        right_on=['mpio', 'zona', 'lugar'],
+        left_on=['mpio_code', 'Lugar'],
+        right_on=['mpio', 'lugar'],
         how='left'
     )
+    # Usar zona del catalogo cuando el mapeo es confiable
+    has_cat_zona = detalle['match_type'].isin(['exact', 'fuzzy'])
+    detalle.loc[has_cat_zona, 'zona_code'] = detalle.loc[has_cat_zona, 'zona']
 
-    # --- GRUPO 1: Mapeo 'exact' → cruzar por mpio+zona+pto+mesa ---
-    exact = detalle[detalle['match_type'] == 'exact'].copy()
-    exact['pto'] = exact['pto'].astype(int)
-    exact['mesa_num'] = exact['mesa_num'].astype(int)
+    # --- GRUPO 1: Mapeo 'exact' o 'fuzzy' → cruzar por mpio+zona+pto+mesa ---
+    has_pto = detalle[detalle['match_type'].isin(['exact', 'fuzzy'])].copy()
+    has_pto['pto'] = has_pto['pto'].astype(int)
+    has_pto['mesa_num'] = has_pto['mesa_num'].astype(int)
 
-    result_exact = exact.merge(
+    result_matched = has_pto.merge(
         votos_mesa_pto,
         left_on=['mpio_code', 'zona_code', 'pto', 'mesa_num'],
         right_on=['mpio', 'zona', 'pto', 'mesa'],
         how='left',
         suffixes=('', '_elec')
     )
-    result_exact['match_type'] = 'exact'
 
-    # --- GRUPO 2: Todo lo demas → cruzar por mpio+zona+mesa (suma ptos) ---
-    not_exact = detalle[detalle['match_type'] != 'exact'].copy()
-    not_exact['mesa_num'] = not_exact['mesa_num'].astype(int)
+    # --- GRUPO 2: sin mapeo → cruzar por mpio+zona+mesa (suma ptos) ---
+    no_match = detalle[~detalle['match_type'].isin(['exact', 'fuzzy'])].copy()
+    no_match['mesa_num'] = no_match['mesa_num'].astype(int)
 
-    result_zona = not_exact.merge(
+    result_zona = no_match.merge(
         votos_mesa_zona,
         left_on=['mpio_code', 'zona_code', 'mesa_num'],
         right_on=['mpio', 'zona', 'mesa'],
         how='left',
         suffixes=('', '_zona')
     )
-    # Marcar tipo de cruce
-    result_zona.loc[result_zona['match_type'].isna(), 'match_type'] = 'zona_mesa'
-    result_zona.loc[result_zona['match_type'] == 'ambiguous', 'match_type'] = 'zona_mesa'
-    result_zona.loc[result_zona['match_type'] == 'approx', 'match_type'] = 'zona_mesa'
+    result_zona['match_type'] = 'zona_mesa'
 
     # --- COMBINAR ---
     cols = ['Líder', 'Municipio', 'zona_code', 'Lugar', 'mesa_num',
@@ -152,13 +151,13 @@ def construir_detalle_mesas(df_cam, df_sim_valle, lugar_pto_map):
             'votos_candidata', 'votos_totales', 'match_type']
 
     for col in cols:
-        if col not in result_exact.columns:
-            result_exact[col] = 0
+        if col not in result_matched.columns:
+            result_matched[col] = 0
         if col not in result_zona.columns:
             result_zona[col] = 0
 
     result = pd.concat([
-        result_exact[cols],
+        result_matched[cols],
         result_zona[cols]
     ], ignore_index=True)
 

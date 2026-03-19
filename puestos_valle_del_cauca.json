@@ -1,0 +1,7214 @@
+{
+  "departamento": "VALLE DEL CAUCA",
+  "codigo_departamento": 31,
+  "total_municipios": 42,
+  "total_puestos": 1152,
+  "municipios": [
+    {
+      "codigo": 1,
+      "nombre": "CALI",
+      "total_puestos": 216,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "ESC. JOSE ACEVEDO Y GOMEZ",
+          "direccion": "AV 5 OESTE No.30-164"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "IE JOSE HOLGUIN GARCES",
+          "direccion": "AV 4A OESTE # 23-108"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "IE JOSE CELESTINO MUTIS",
+          "direccion": "AV 7 B OESTE # 18-02"
+        },
+        {
+          "zona": 1,
+          "puesto": "04",
+          "nombre": "COLISEO BAJO AGUACATAL",
+          "direccion": "CL 8 OESTE #14-04"
+        },
+        {
+          "zona": 1,
+          "puesto": "05",
+          "nombre": "IE CECILIA CABALLERO",
+          "direccion": "AV 5 OESTE # 34-100"
+        },
+        {
+          "zona": 1,
+          "puesto": "06",
+          "nombre": "SEDE MARICE SINISTERRA TERRON",
+          "direccion": "CL 30 BIS OESTE No 4A-00"
+        },
+        {
+          "zona": 1,
+          "puesto": "07",
+          "nombre": "COL SANTA ISABEL DE HUNGRIA AGUACATAL",
+          "direccion": "AV 9 OESTE No 19C 1- 100 AGUACATAL"
+        },
+        {
+          "zona": 1,
+          "puesto": "08",
+          "nombre": "IE ISAIAS GAMBOA",
+          "direccion": "AV 4 OESTE # 12-05"
+        },
+        {
+          "zona": 1,
+          "puesto": "09",
+          "nombre": "IE LUIS FERNANDO CAICEDO",
+          "direccion": "AV. 5A OESTE # 47-04"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "INST UNIV ANTONIO JOSE CAMACHO",
+          "direccion": "AV 6N # 28-102"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "EDIFICIO FERROCARRILES NACIONALES",
+          "direccion": "AV 3N #23N-59"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "C.A.M.",
+          "direccion": "AV 2N CL 10 Y 11"
+        },
+        {
+          "zona": 2,
+          "puesto": "04",
+          "nombre": "COLEGIO ODONTOLOGICO",
+          "direccion": "CL 13N #3N-13"
+        },
+        {
+          "zona": 2,
+          "puesto": "05",
+          "nombre": "ACADEMIA DE DIBUJO PROFESIONAL",
+          "direccion": "CLL 27 N #6BN-50"
+        },
+        {
+          "zona": 2,
+          "puesto": "06",
+          "nombre": "COLEGIO HISPANOAMERICANO",
+          "direccion": "AV 3 CN #35N-55"
+        },
+        {
+          "zona": 3,
+          "puesto": "01",
+          "nombre": "PARQUE DE LAS ORQUIDEAS",
+          "direccion": "AVDA 2 N # 47 - 02"
+        },
+        {
+          "zona": 3,
+          "puesto": "02",
+          "nombre": "IE SANTA CECILIA",
+          "direccion": "CL 61 AN # 2GN 62"
+        },
+        {
+          "zona": 3,
+          "puesto": "03",
+          "nombre": "ESCUELA REPUBLICA DEL BRASIL",
+          "direccion": "CLL 43N No 7N-03"
+        },
+        {
+          "zona": 3,
+          "puesto": "04",
+          "nombre": "ESCUELA BRISAS DE LOS ALAMOS",
+          "direccion": "AV 2 BN CL 72 AN"
+        },
+        {
+          "zona": 3,
+          "puesto": "05",
+          "nombre": "COLEGIO LEONISTICO LA MERCED",
+          "direccion": "CLL 44 N #3D-40"
+        },
+        {
+          "zona": 3,
+          "puesto": "06",
+          "nombre": "CORPORACION PARA LA TERCERA EDAD",
+          "direccion": "AV. 2N  #  32A - 05"
+        },
+        {
+          "zona": 4,
+          "puesto": "01",
+          "nombre": "ASAMBLEA DEPARTAMENTAL",
+          "direccion": "CL9 #8-60 EDIF. SAN LUIS"
+        },
+        {
+          "zona": 4,
+          "puesto": "02",
+          "nombre": "ESCUELA CARLOS A SARDI",
+          "direccion": "KR 5 #2-69"
+        },
+        {
+          "zona": 4,
+          "puesto": "03",
+          "nombre": "IE SANTA LIBRADA",
+          "direccion": "CL 7 #14A-06"
+        },
+        {
+          "zona": 4,
+          "puesto": "04",
+          "nombre": "IE NORMAL SUPERIOR LOS FARALLONES",
+          "direccion": "CRA 22 #2 OESTE-65"
+        },
+        {
+          "zona": 4,
+          "puesto": "05",
+          "nombre": "ESCUELA REPUBLICA DE MEXICO",
+          "direccion": "CL 20 #5-63"
+        },
+        {
+          "zona": 4,
+          "puesto": "06",
+          "nombre": "CENTRO COMERCIAL ARISTI",
+          "direccion": "CLL 11 # 9-20"
+        },
+        {
+          "zona": 4,
+          "puesto": "07",
+          "nombre": "CENTRO COMERCIAL GRAN COMERCIO",
+          "direccion": "CRA 6 #  14 - 54"
+        },
+        {
+          "zona": 5,
+          "puesto": "01",
+          "nombre": "SEDE MANUELA BELTRAN",
+          "direccion": "CARRERA 2 No. 34 -23"
+        },
+        {
+          "zona": 5,
+          "puesto": "02",
+          "nombre": "IE JOSE ANTONIO GALAN",
+          "direccion": "CLL 41N #3N-11"
+        },
+        {
+          "zona": 5,
+          "puesto": "03",
+          "nombre": "ESCUELA RAFAEL ZAMORANO",
+          "direccion": "KR 2N #45AN-12"
+        },
+        {
+          "zona": 5,
+          "puesto": "04",
+          "nombre": "COLEGIO INEM",
+          "direccion": "KR 5N #61-126"
+        },
+        {
+          "zona": 5,
+          "puesto": "05",
+          "nombre": "IE CASD SEDE SANTO TOMAS",
+          "direccion": "CL 34 #3 N 15"
+        },
+        {
+          "zona": 5,
+          "puesto": "06",
+          "nombre": "SEDE SAN VICENTE DE PAUL",
+          "direccion": "CARRERA 2B No. 45A - 20 SALOMIA"
+        },
+        {
+          "zona": 5,
+          "puesto": "07",
+          "nombre": "INSTITUTO COMERCIAL ARQUIDIOCESANO",
+          "direccion": "CLL 52 # 8N -33"
+        },
+        {
+          "zona": 5,
+          "puesto": "08",
+          "nombre": "IE LA MERCED",
+          "direccion": "CLL 47 # 4E 30"
+        },
+        {
+          "zona": 6,
+          "puesto": "01",
+          "nombre": "SENA",
+          "direccion": "CL 52 # 2B-15"
+        },
+        {
+          "zona": 6,
+          "puesto": "02",
+          "nombre": "IE CELMIRA BUENO DE OREJUELA",
+          "direccion": "CLL 62B No 1A9-250"
+        },
+        {
+          "zona": 6,
+          "puesto": "03",
+          "nombre": "ESCUELA MARIANO OSPINA PEREZ",
+          "direccion": "CLL 67 CR 2"
+        },
+        {
+          "zona": 6,
+          "puesto": "04",
+          "nombre": "ESCUELA MARIA PANESSO",
+          "direccion": "CL 46C #3-00"
+        },
+        {
+          "zona": 6,
+          "puesto": "05",
+          "nombre": "ESCUELA MARIO LLOREDA",
+          "direccion": "KR 1D #51-16"
+        },
+        {
+          "zona": 6,
+          "puesto": "06",
+          "nombre": "IE SIMON RODRIGUEZ",
+          "direccion": "CRA 1D BIS #  49 - 98"
+        },
+        {
+          "zona": 7,
+          "puesto": "01",
+          "nombre": "POLIDEPORTIVO LOS GUADUALES",
+          "direccion": "KR 9 N #71-35"
+        },
+        {
+          "zona": 7,
+          "puesto": "02",
+          "nombre": "ESCUELA LAS AMERICAS",
+          "direccion": "CL 82A KR 3N"
+        },
+        {
+          "zona": 7,
+          "puesto": "03",
+          "nombre": "ESCUELA PABLO EMILIO CAICEDO",
+          "direccion": "CRA 5 DG 7N-39"
+        },
+        {
+          "zona": 7,
+          "puesto": "04",
+          "nombre": "SANTA ISABEL DE HUNGRIA CALIMIO NORTE",
+          "direccion": "CLL 73A No 1A2-165"
+        },
+        {
+          "zona": 7,
+          "puesto": "05",
+          "nombre": "SEDE CECILIA MUÑOZ RICAURTE",
+          "direccion": "CL 78N #8N-02"
+        },
+        {
+          "zona": 8,
+          "puesto": "01",
+          "nombre": "ESCUELA SAN JORGE",
+          "direccion": "CR 1i # 74-23"
+        },
+        {
+          "zona": 8,
+          "puesto": "02",
+          "nombre": "IE PEDRO ANTONIO MOLINA",
+          "direccion": "CRA 1A 10 # 71 - 00"
+        },
+        {
+          "zona": 8,
+          "puesto": "03",
+          "nombre": "ESCUELA TRES DE JULIO",
+          "direccion": "CL 70 C #1F-00"
+        },
+        {
+          "zona": 8,
+          "puesto": "04",
+          "nombre": "ESCUELA ATANASIO GIRARDOT",
+          "direccion": "CL 70C No 1A 3-00"
+        },
+        {
+          "zona": 8,
+          "puesto": "05",
+          "nombre": "UNIDAD DEPORTIVA PETECUY II",
+          "direccion": "CL 74 #1C1-75"
+        },
+        {
+          "zona": 8,
+          "puesto": "06",
+          "nombre": "SEDE LOS VENCEDORES",
+          "direccion": "CRA 1A 4 # 72D 19 SAN LUIS II"
+        },
+        {
+          "zona": 9,
+          "puesto": "01",
+          "nombre": "COL STA ISABEL  HUNGRIA ALFONSO LOPEZ",
+          "direccion": "CR 7H BIS No 76-25 ALFONSO LOPEZ II"
+        },
+        {
+          "zona": 9,
+          "puesto": "02",
+          "nombre": "ESCUELA LOS FARALLONES",
+          "direccion": "KR 7J #72-10"
+        },
+        {
+          "zona": 9,
+          "puesto": "03",
+          "nombre": "IE VICENTE BORRERO COSTA",
+          "direccion": "CLL 76 N. CR 7S"
+        },
+        {
+          "zona": 9,
+          "puesto": "04",
+          "nombre": "ESCUELA MANUEL MARIA MALLARINO",
+          "direccion": "CR 9A # 78-14"
+        },
+        {
+          "zona": 9,
+          "puesto": "05",
+          "nombre": "IE JUAN BAUTISTA DE LA SALLE",
+          "direccion": "CLL 74 No 9-19"
+        },
+        {
+          "zona": 9,
+          "puesto": "06",
+          "nombre": "IE ALFONSO LOPEZ PUMAREJO",
+          "direccion": "CRA 7S BIS CLL 72"
+        },
+        {
+          "zona": 9,
+          "puesto": "07",
+          "nombre": "SEDE CENTRAL PROVIVIENDA",
+          "direccion": "CLL 72  #  7C BIS - 10"
+        },
+        {
+          "zona": 10,
+          "puesto": "01",
+          "nombre": "IE MANUEL MARIA MALLARINO CEIBAS",
+          "direccion": "CR 7L BIS No 63-01"
+        },
+        {
+          "zona": 10,
+          "puesto": "02",
+          "nombre": "ESCUELA CARLOS HOLGUIN SARDI",
+          "direccion": "KR 7 D BIS CL 64"
+        },
+        {
+          "zona": 10,
+          "puesto": "03",
+          "nombre": "ESCUELA ANA MARIA VERNAZA",
+          "direccion": "CL 72B #8B-37"
+        },
+        {
+          "zona": 10,
+          "puesto": "04",
+          "nombre": "IE SIETE DE AGOSTO",
+          "direccion": "CLL 72 No 11C-27"
+        },
+        {
+          "zona": 11,
+          "puesto": "01",
+          "nombre": "ESCUELA MANUEL REBOLLEDO",
+          "direccion": "DG 23 #17F-00"
+        },
+        {
+          "zona": 11,
+          "puesto": "02",
+          "nombre": "INST TEC COMERCIAL LAS AMERICAS",
+          "direccion": "CR 12 No 38-58"
+        },
+        {
+          "zona": 11,
+          "puesto": "03",
+          "nombre": "IE SANTA FE",
+          "direccion": "CLL 34 #17 B-41"
+        },
+        {
+          "zona": 11,
+          "puesto": "04",
+          "nombre": "IE BENJAMIN HERRERA",
+          "direccion": "CLL 26 No 12-34"
+        },
+        {
+          "zona": 11,
+          "puesto": "05",
+          "nombre": "IE EVARISTO GARCIA",
+          "direccion": "CLL 32 # 17- 41"
+        },
+        {
+          "zona": 12,
+          "puesto": "01",
+          "nombre": "COLEGIO LEON DE GREIFF",
+          "direccion": "CALLE 51 No. 12A-30 VILLA COLOMBIA"
+        },
+        {
+          "zona": 12,
+          "puesto": "02",
+          "nombre": "COLEGIO NUESTRA SRA DE LA ANUNCIACION",
+          "direccion": "CLL. 56 # 13 - 65"
+        },
+        {
+          "zona": 12,
+          "puesto": "03",
+          "nombre": "COLEGIO SAN FRANCISCO DE ASIS",
+          "direccion": "CL 52 CON CRA 15"
+        },
+        {
+          "zona": 12,
+          "puesto": "04",
+          "nombre": "IE ALBERTO CARVAJAL BORRERO",
+          "direccion": "CRA 14  #  58 - 00"
+        },
+        {
+          "zona": 13,
+          "puesto": "01",
+          "nombre": "ESCUELA MARCO FIDEL SUAREZ",
+          "direccion": "KR 16 #6-61"
+        },
+        {
+          "zona": 13,
+          "puesto": "02",
+          "nombre": "ESC NUESTRA SEÑORA DE LOS REMEDIOS",
+          "direccion": "CR 17D No 18-46"
+        },
+        {
+          "zona": 13,
+          "puesto": "03",
+          "nombre": "IE REPUBLICA DE ARGENTINA",
+          "direccion": "CR 11D No 23-49"
+        },
+        {
+          "zona": 13,
+          "puesto": "04",
+          "nombre": "ESCUELA OLGA LUCIA LLOREDA",
+          "direccion": "KR 23A #13B-11"
+        },
+        {
+          "zona": 13,
+          "puesto": "05",
+          "nombre": "IE ANTONIO JOSE CAMACHO",
+          "direccion": "CRA 16 No 12-00 B. GUAYAQUIL"
+        },
+        {
+          "zona": 13,
+          "puesto": "06",
+          "nombre": "IE GENERAL ALFREDO VASQUEZ COBO",
+          "direccion": "CL 15A # 22A - 37 GUAYAQUIL"
+        },
+        {
+          "zona": 14,
+          "puesto": "01",
+          "nombre": "SEDE REPUBLICA DE COSTA RICA",
+          "direccion": "CRA 40 No 14C-00"
+        },
+        {
+          "zona": 14,
+          "puesto": "02",
+          "nombre": "ESCUELA FERNANDO VELASCO",
+          "direccion": "CL 23 #44A-16"
+        },
+        {
+          "zona": 14,
+          "puesto": "03",
+          "nombre": "IE NORMAL SUPERIOR SANTIAGO",
+          "direccion": "CR 33A No 12-60"
+        },
+        {
+          "zona": 14,
+          "puesto": "04",
+          "nombre": "IE CARLOS HOLGUIN LLOREDA",
+          "direccion": "CR 40 No 18-85"
+        },
+        {
+          "zona": 14,
+          "puesto": "05",
+          "nombre": "IE JOSE MARIA VIVAS BALCAZAR",
+          "direccion": "CLL 14 # 48A- 32"
+        },
+        {
+          "zona": 15,
+          "puesto": "01",
+          "nombre": "CENTRO PARROQUIAL SAN JUAN BAUTISTA",
+          "direccion": "CR 42 No 13B-35"
+        },
+        {
+          "zona": 15,
+          "puesto": "02",
+          "nombre": "ESCUELA SAN ROQUE",
+          "direccion": "KR 32A #15A-59"
+        },
+        {
+          "zona": 15,
+          "puesto": "03",
+          "nombre": "IE RAFAEL NAVIA VARON",
+          "direccion": "CL 11 # 46-40"
+        },
+        {
+          "zona": 15,
+          "puesto": "04",
+          "nombre": "ESCUELA GENERAL CARLOS ALBAN",
+          "direccion": "CL 18 A #24 - 65"
+        },
+        {
+          "zona": 16,
+          "puesto": "01",
+          "nombre": "IE AGUSTIN NIETO CABALLERO",
+          "direccion": "CR 37 # 26C-51"
+        },
+        {
+          "zona": 16,
+          "puesto": "02",
+          "nombre": "IE CIUDAD MODELO",
+          "direccion": "CR 40B No 31C-00"
+        },
+        {
+          "zona": 16,
+          "puesto": "03",
+          "nombre": "ESCUELA  MARINO RENGIFO SALCEDO",
+          "direccion": "CLL 26B No 44-11"
+        },
+        {
+          "zona": 16,
+          "puesto": "04",
+          "nombre": "ESCUELA SUSANA VINASCO DE QUINTANA",
+          "direccion": "CLL 31 CR 33A"
+        },
+        {
+          "zona": 16,
+          "puesto": "05",
+          "nombre": "IE VILLA DEL SUR",
+          "direccion": "CLL 30A #  41E - 99"
+        },
+        {
+          "zona": 17,
+          "puesto": "01",
+          "nombre": "ESCUELA JOSE VICENTE CONCHA",
+          "direccion": "KR 30A #30A-37"
+        },
+        {
+          "zona": 17,
+          "puesto": "02",
+          "nombre": "IE CIUDAD DE CALI",
+          "direccion": "CLL 30 # 25  00"
+        },
+        {
+          "zona": 17,
+          "puesto": "03",
+          "nombre": "IE 10 DE MAYO",
+          "direccion": "CR 25A No 26A-13"
+        },
+        {
+          "zona": 17,
+          "puesto": "04",
+          "nombre": "CDI MADRE ALBERTA FE Y ALEGRIA",
+          "direccion": "DG 30 #32B-49"
+        },
+        {
+          "zona": 18,
+          "puesto": "01",
+          "nombre": "IE JUAN XXIII SEDE CIUDAD DE CALI",
+          "direccion": "CLL 46 #28F-31"
+        },
+        {
+          "zona": 18,
+          "puesto": "02",
+          "nombre": "IE MARICE SINISTERRA",
+          "direccion": "CLL 39 No 25 A -43"
+        },
+        {
+          "zona": 18,
+          "puesto": "03",
+          "nombre": "IE HERNANDO NAVIA VARON",
+          "direccion": "CRA 26P #50-39"
+        },
+        {
+          "zona": 18,
+          "puesto": "04",
+          "nombre": "ESCUELA FENALCO ASTURIAS",
+          "direccion": "CL 44 #25A-12"
+        },
+        {
+          "zona": 18,
+          "puesto": "05",
+          "nombre": "IE JULIO DE CAICEDO Y TELLEZ",
+          "direccion": "CLL 59 No 24E-40"
+        },
+        {
+          "zona": 18,
+          "puesto": "06",
+          "nombre": "COLEGIO LA PRESENTACION EL PARAISO",
+          "direccion": "CR 28 B # 33E-39"
+        },
+        {
+          "zona": 19,
+          "puesto": "01",
+          "nombre": "COL PARROQUIAL SEÑOR DE LOS MILAGROS",
+          "direccion": "CR 33 No 42C-11"
+        },
+        {
+          "zona": 19,
+          "puesto": "02",
+          "nombre": "IE EL DIAMANTE",
+          "direccion": "CRA 31 #41-00"
+        },
+        {
+          "zona": 19,
+          "puesto": "03",
+          "nombre": "ESCUELA RODRIGO LLOREDA",
+          "direccion": "CRA 30 #44A-21"
+        },
+        {
+          "zona": 19,
+          "puesto": "04",
+          "nombre": "ESCUELA MIGUEL CAMACHO PEREA",
+          "direccion": "CR 28 No 72F-09"
+        },
+        {
+          "zona": 19,
+          "puesto": "05",
+          "nombre": "CENTRO DE CAPACITACION DON BOSCO",
+          "direccion": "CR 31 No 39-42"
+        },
+        {
+          "zona": 19,
+          "puesto": "06",
+          "nombre": "COLEGIO COMFANDI CALIPSO",
+          "direccion": "CLL. 70 # 28 D3 - 129 CALIPSO"
+        },
+        {
+          "zona": 20,
+          "puesto": "01",
+          "nombre": "IE SANTA ROSA",
+          "direccion": "CLL 72X No 28 3-35"
+        },
+        {
+          "zona": 20,
+          "puesto": "02",
+          "nombre": "COLEGIO PANAMERICANO LOS LAGOS",
+          "direccion": "CLL 72U #26-H3-15"
+        },
+        {
+          "zona": 20,
+          "puesto": "03",
+          "nombre": "IE BARTOLOME LOBOGUERRERO",
+          "direccion": "CLL 71 No 26E-25"
+        },
+        {
+          "zona": 20,
+          "puesto": "04",
+          "nombre": "SENA CDTI",
+          "direccion": "CALLE 72 K  26J-97"
+        },
+        {
+          "zona": 20,
+          "puesto": "05",
+          "nombre": "IE JESUS VILLAFAÑE FRANCO",
+          "direccion": "CLL 72 P CON CR 26H2 ES"
+        },
+        {
+          "zona": 20,
+          "puesto": "06",
+          "nombre": "SEDE ENRIQUE OLAYA HERRERA",
+          "direccion": "CL 71 #25 A-15"
+        },
+        {
+          "zona": 20,
+          "puesto": "07",
+          "nombre": "IE LUZ HAYDEE GUERRERO MOLINA",
+          "direccion": "CRA 28 E2 # 72S  02"
+        },
+        {
+          "zona": 21,
+          "puesto": "01",
+          "nombre": "IE LA ANUNCIACION",
+          "direccion": "KR 26A #74-00"
+        },
+        {
+          "zona": 21,
+          "puesto": "02",
+          "nombre": "SEDE PUERTA DEL SOL",
+          "direccion": "CLL 84 No 26B- 04"
+        },
+        {
+          "zona": 21,
+          "puesto": "03",
+          "nombre": "ESCUELA RAUL SILVA HOLGUIN",
+          "direccion": "DG 26K #T83-24"
+        },
+        {
+          "zona": 21,
+          "puesto": "04",
+          "nombre": "IE MONSEÑOR RAMON ARCILA",
+          "direccion": "DG 26i3 No 80A-18"
+        },
+        {
+          "zona": 21,
+          "puesto": "05",
+          "nombre": "IE LLANO VERDE SEDE BARTOLOME MITRE",
+          "direccion": "DIAG 26B # 73-25"
+        },
+        {
+          "zona": 22,
+          "puesto": "01",
+          "nombre": "COL FRAY LUIS AMIGO FE Y ALEGRIA",
+          "direccion": "CLL 116 No 26K1-15"
+        },
+        {
+          "zona": 22,
+          "puesto": "02",
+          "nombre": "IE GABRIELA MISTRAL",
+          "direccion": "KR 27D N° 95-06"
+        },
+        {
+          "zona": 22,
+          "puesto": "03",
+          "nombre": "COL PARROQUIAL SAN FRANCISCO JAVIER",
+          "direccion": "CR 27 D No 107 B-16"
+        },
+        {
+          "zona": 22,
+          "puesto": "04",
+          "nombre": "IE ELIAS SALAZAR GARCIA",
+          "direccion": "CLL 108 No 26H1-11"
+        },
+        {
+          "zona": 22,
+          "puesto": "05",
+          "nombre": "IE NUEVO LATIR",
+          "direccion": "CLL 76 No 28-20"
+        },
+        {
+          "zona": 23,
+          "puesto": "01",
+          "nombre": "IE CUDAD CORDOBA",
+          "direccion": "CLL 50 #50-00"
+        },
+        {
+          "zona": 23,
+          "puesto": "02",
+          "nombre": "ESCUELA OLAYA HERRERA",
+          "direccion": "CL 51 #40A-08"
+        },
+        {
+          "zona": 23,
+          "puesto": "03",
+          "nombre": "ESCUELA JOSE RAMON BEJARANO",
+          "direccion": "KR 32A #49-00"
+        },
+        {
+          "zona": 23,
+          "puesto": "04",
+          "nombre": "IE GABRIEL GARCIA MARQUEZ",
+          "direccion": "CR 29B No 54-00"
+        },
+        {
+          "zona": 23,
+          "puesto": "05",
+          "nombre": "IE ISAIAS DUARTE CANCINO",
+          "direccion": "CLL 96 KR 28E3 02"
+        },
+        {
+          "zona": 23,
+          "puesto": "06",
+          "nombre": "IE CARLOS HOLGUIN MALLARINO",
+          "direccion": "CLL 55A No 30B-50"
+        },
+        {
+          "zona": 23,
+          "puesto": "07",
+          "nombre": "COLEGIO MADRE SIFFREDI FE Y ALEGRIA",
+          "direccion": "CR 39 E No 54-02"
+        },
+        {
+          "zona": 23,
+          "puesto": "08",
+          "nombre": "IE LLANO VERDE",
+          "direccion": "CRA 47 CLL 57 ESQ. B. LLANO VERDE"
+        },
+        {
+          "zona": 24,
+          "puesto": "01",
+          "nombre": "IE RODRIGO LLOREDA INTENALCO",
+          "direccion": "CLL 38 A No 47A-45"
+        },
+        {
+          "zona": 24,
+          "puesto": "02",
+          "nombre": "IE CRISTOBAL COLON",
+          "direccion": "CL 44 #47A-16"
+        },
+        {
+          "zona": 24,
+          "puesto": "03",
+          "nombre": "IE CARLOS HOLMES TRUJILLO",
+          "direccion": "CLL 44 CR 43"
+        },
+        {
+          "zona": 24,
+          "puesto": "04",
+          "nombre": "ESCUELA PABLO NERUDA",
+          "direccion": "KR 39B #38-44"
+        },
+        {
+          "zona": 24,
+          "puesto": "05",
+          "nombre": "SEDE CRISTO MAESTRO",
+          "direccion": "CL 44 CRA 41F"
+        },
+        {
+          "zona": 24,
+          "puesto": "06",
+          "nombre": "SANTA ISABEL DE HUNGRIA CIUDAD 2000",
+          "direccion": "CR 54 No 41-47"
+        },
+        {
+          "zona": 24,
+          "puesto": "07",
+          "nombre": "SEDE ANGELICA SIERRA",
+          "direccion": "CLL 40 CRA 41F"
+        },
+        {
+          "zona": 25,
+          "puesto": "01",
+          "nombre": "COLEGIO LOS ANDES",
+          "direccion": "CRA 70 #12-55"
+        },
+        {
+          "zona": 25,
+          "puesto": "02",
+          "nombre": "COLEGIO COMFANDI",
+          "direccion": "CALLE 34  No. 83B-50"
+        },
+        {
+          "zona": 25,
+          "puesto": "03",
+          "nombre": "COLEGIO REYES CATOLICOS",
+          "direccion": "CL 13 C No 70-72"
+        },
+        {
+          "zona": 25,
+          "puesto": "04",
+          "nombre": "UNIVALLE SEDE MELENDEZ",
+          "direccion": "CALLE 13 No. 100 - 00 C. UNIVERSITARIA"
+        },
+        {
+          "zona": 26,
+          "puesto": "01",
+          "nombre": "ESCUELA LUIS CARLOS ROJAS",
+          "direccion": "CRA 56 #13F-40"
+        },
+        {
+          "zona": 26,
+          "puesto": "02",
+          "nombre": "CVC",
+          "direccion": "KR 56 #11-36"
+        },
+        {
+          "zona": 26,
+          "puesto": "03",
+          "nombre": "CENTRO CULTURAL COLOMBO AMERICANO",
+          "direccion": "CR 53 No 11 A -00"
+        },
+        {
+          "zona": 26,
+          "puesto": "04",
+          "nombre": "IETI COMUNA 17",
+          "direccion": "CRA 53 No. 18A-25"
+        },
+        {
+          "zona": 26,
+          "puesto": "05",
+          "nombre": "COLEGIO NUESTRA SRA DE LA CONSOLACION",
+          "direccion": "CRA 68 # 10B - 64"
+        },
+        {
+          "zona": 27,
+          "puesto": "01",
+          "nombre": "ESCUELA ALVARO ESCOBAR NAVIA",
+          "direccion": "CRA 73D #1B-65"
+        },
+        {
+          "zona": 27,
+          "puesto": "02",
+          "nombre": "INSTITUTO CENTRAL DE COMERCIO",
+          "direccion": "CARRERA 73 No. 3C -65"
+        },
+        {
+          "zona": 27,
+          "puesto": "03",
+          "nombre": "IE JUAN PABLO II",
+          "direccion": "CL 1 OESTE #78-23"
+        },
+        {
+          "zona": 27,
+          "puesto": "04",
+          "nombre": "ESCUELA PORTETE DE TARQUI",
+          "direccion": "CL 1 #73-00"
+        },
+        {
+          "zona": 27,
+          "puesto": "05",
+          "nombre": "UNIVERSIDAD COOPERATIVA",
+          "direccion": "KR 73 #2A-80"
+        },
+        {
+          "zona": 27,
+          "puesto": "06",
+          "nombre": "SEDE CELIMO RUEDA",
+          "direccion": "CRA 73 # 3- 94"
+        },
+        {
+          "zona": 27,
+          "puesto": "07",
+          "nombre": "SEDE JHON F KENNEDY",
+          "direccion": "CRA 68 # 3-83"
+        },
+        {
+          "zona": 28,
+          "puesto": "01",
+          "nombre": "IE LA ESPERANZA",
+          "direccion": "KR 94 #1A-71 OESTE"
+        },
+        {
+          "zona": 28,
+          "puesto": "02",
+          "nombre": "COLEGIO AMERICANO",
+          "direccion": "CR 89 # 4 C-35 MELENDEZ"
+        },
+        {
+          "zona": 28,
+          "puesto": "03",
+          "nombre": "ESC MAGDALENA ORTEGA DE NARIÑO",
+          "direccion": "CLL 4 OESTE No 94-56"
+        },
+        {
+          "zona": 28,
+          "puesto": "04",
+          "nombre": "ACADEMIA JOSE MARIA CABAL",
+          "direccion": "CALLE 2C OESTE No. 83 - 20"
+        },
+        {
+          "zona": 28,
+          "puesto": "05",
+          "nombre": "UNIVERSIDAD CATOLICA SEDE MELENDEZ",
+          "direccion": "CRA 94 # 4C - 04"
+        },
+        {
+          "zona": 28,
+          "puesto": "06",
+          "nombre": "SEDE EDUARDO RIASCOS GRUESO",
+          "direccion": "CRA 92  #  2A - 00 OESTE"
+        },
+        {
+          "zona": 29,
+          "puesto": "01",
+          "nombre": "IE EUSTAQUIO PALACIOS",
+          "direccion": "CR 52 No 2-51"
+        },
+        {
+          "zona": 29,
+          "puesto": "02",
+          "nombre": "INSTITUTO PARA NIÑOS CIEGOS Y SORDOS",
+          "direccion": "CR 38 # 5 B1-39"
+        },
+        {
+          "zona": 29,
+          "puesto": "03",
+          "nombre": "COL SANTA MARIA STELLA MARIS",
+          "direccion": "CRA 38B No 3-190 B. SANTA ISABEL"
+        },
+        {
+          "zona": 29,
+          "puesto": "04",
+          "nombre": "ESCUELA 25 DE JULIO",
+          "direccion": "CLL 6A # 59A - 51"
+        },
+        {
+          "zona": 29,
+          "puesto": "05",
+          "nombre": "COLEGIO POLITECNICO",
+          "direccion": "CRA 62 #2-28"
+        },
+        {
+          "zona": 29,
+          "puesto": "06",
+          "nombre": "IE MULTIPROPOSITO",
+          "direccion": "CRA 56 # 7 OESTE 190"
+        },
+        {
+          "zona": 30,
+          "puesto": "01",
+          "nombre": "UNIVALLE SEDE SAN FERNANDO",
+          "direccion": "CL 4B #36-00"
+        },
+        {
+          "zona": 30,
+          "puesto": "02",
+          "nombre": "UNID DEP PANAM CANCHA DE TEJO",
+          "direccion": "CL 9 CON CRA 38"
+        },
+        {
+          "zona": 30,
+          "puesto": "03",
+          "nombre": "IE LICEO DEPARTAMENTAL",
+          "direccion": "CRA 37A #8-38"
+        },
+        {
+          "zona": 30,
+          "puesto": "04",
+          "nombre": "ESCUELA FRANCISCO JOSE DE CALDAS",
+          "direccion": "CR 4 OESTE # 12A-59"
+        },
+        {
+          "zona": 30,
+          "puesto": "05",
+          "nombre": "ESCUELA CAMILO TORRES",
+          "direccion": "KR 24 #10A-98"
+        },
+        {
+          "zona": 30,
+          "puesto": "06",
+          "nombre": "ESCUELA GRAN COLOMBIA",
+          "direccion": "KR 24 #7-74"
+        },
+        {
+          "zona": 30,
+          "puesto": "07",
+          "nombre": "SEDE LOS CRISTALES",
+          "direccion": "CL 11 OESTE #24C-50"
+        },
+        {
+          "zona": 31,
+          "puesto": "01",
+          "nombre": "COLEGIO ARQUIDIOCESANO JUAN PABLO II",
+          "direccion": "DIAG 51 OESTE # 10  96"
+        },
+        {
+          "zona": 31,
+          "puesto": "02",
+          "nombre": "ESCUELA LUIS LOPEZ DE MESA",
+          "direccion": "CL 3 OESTE #42 B-44"
+        },
+        {
+          "zona": 31,
+          "puesto": "03",
+          "nombre": "IE JUANA DE CAICEDO Y CUERO",
+          "direccion": "CLL 1 OESTE # 50-85"
+        },
+        {
+          "zona": 31,
+          "puesto": "04",
+          "nombre": "SEDE SIMON BOLIVAR",
+          "direccion": "CLL 1 OESTE No  42A-94"
+        },
+        {
+          "zona": 31,
+          "puesto": "05",
+          "nombre": "SEDE ANTONIA SANTOS",
+          "direccion": "CRA 38 A # 3A-14 OESTE"
+        },
+        {
+          "zona": 31,
+          "puesto": "06",
+          "nombre": "ESCUELA SOFIA CAMARGO",
+          "direccion": "KR 51 CL 12 A OESTE"
+        },
+        {
+          "zona": 32,
+          "puesto": "01",
+          "nombre": "SEDE NUEVO AMANECER",
+          "direccion": "CLL 123 # 28D4 54"
+        },
+        {
+          "zona": 32,
+          "puesto": "02",
+          "nombre": "STA ISABEL DE HUNGRIA CALIMIO DECEPAZ",
+          "direccion": "CLL 123 # 26 M3-01"
+        },
+        {
+          "zona": 32,
+          "puesto": "03",
+          "nombre": "SANTA ISABEL DE HUNGRIA SAN FELIPE",
+          "direccion": "CLL 119 CON CR 23 ESQUINA"
+        },
+        {
+          "zona": 32,
+          "puesto": "04",
+          "nombre": "COLEGIO FUNDACION COMPARTIR",
+          "direccion": "KR-25A #89 A-16"
+        },
+        {
+          "zona": 32,
+          "puesto": "05",
+          "nombre": "IE PROGRESANDO JUNTOS",
+          "direccion": "CLL 82 # 24F -30"
+        },
+        {
+          "zona": 32,
+          "puesto": "06",
+          "nombre": "COLEGIO POTREROGRANDE",
+          "direccion": "CRA 28D ENTRE CLS 123 Y 124"
+        },
+        {
+          "zona": 32,
+          "puesto": "07",
+          "nombre": "IE LLANO VERDE SEDE INVICALI",
+          "direccion": "CRA 23 # 120- 22"
+        },
+        {
+          "zona": 33,
+          "puesto": "01",
+          "nombre": "COLEGIO BENETT",
+          "direccion": "KR106 CL17 ESQ. AVENIDA CASCAJAL"
+        },
+        {
+          "zona": 33,
+          "puesto": "02",
+          "nombre": "UNIVERSIDAD DE SAN BUENAVENTURA",
+          "direccion": "AV 10 DE MAYO LA UMBRIA"
+        },
+        {
+          "zona": 33,
+          "puesto": "03",
+          "nombre": "UNIVERSIDAD ICESI",
+          "direccion": "CALL. 18 # 122 - 135 PANCE"
+        },
+        {
+          "zona": 90,
+          "puesto": "01",
+          "nombre": "COLISEO DEL PUEBLO",
+          "direccion": "CRA 52 ENTRE CALLES 2 Y 3"
+        },
+        {
+          "zona": 98,
+          "puesto": "01",
+          "nombre": "CARCEL VILLANUEVA",
+          "direccion": "TRANS 25 #31-116"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "FELIDIA",
+          "direccion": "IE FELIDIA SEDE REPUBLICA DE CUBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "HORMIGUERO A",
+          "direccion": "I.E. ANTONIO VILLAVICENCIO"
+        },
+        {
+          "zona": 99,
+          "puesto": "14",
+          "nombre": "HORMIGUERO B (BOCHALEMA)",
+          "direccion": "U AUTONOMA DEL OCCIDENTE"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "LA BUITRERA",
+          "direccion": "I.E. MARIA GARCIA TOLEDO-KM 3"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "LA SIRENA",
+          "direccion": "I.E. SANTA LUISA"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "LA CASTILLA",
+          "direccion": "I.E SAGRADO CORAZON DE JESUS"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "LA ELVIRA",
+          "direccion": "ESCUELA BOYACA"
+        },
+        {
+          "zona": 99,
+          "puesto": "26",
+          "nombre": "LA ELVIRA KILOMETRO 18",
+          "direccion": "SEDE FRANCISCO MIRANDA"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "LA LEONERA",
+          "direccion": "SEDE CULTURAL LA LEONERA"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "LA PAZ",
+          "direccion": "I.E SAAVEDRA GALINDO LA PAZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "GOLONDRINAS",
+          "direccion": "I.E GOLONDRINAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "38",
+          "nombre": "GOLONDRINAS LOS MANGOS",
+          "direccion": "IE SAN CARLOS BORROMEO"
+        },
+        {
+          "zona": 99,
+          "puesto": "41",
+          "nombre": "LOS ANDES",
+          "direccion": "VDA Ventiaderos-ESC. TIERRA DE HOMBRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "45",
+          "nombre": "VILLA CARMELO FONDA",
+          "direccion": "I.E.CACIQUE CALARCA-VDA LA FONDA"
+        },
+        {
+          "zona": 99,
+          "puesto": "46",
+          "nombre": "VILLACARMELO CABECERA",
+          "direccion": "SEDE NUESTRA SEÑORA DEL CARMEN"
+        },
+        {
+          "zona": 99,
+          "puesto": "47",
+          "nombre": "MONTEBELLO",
+          "direccion": "IE MONTEBELLO ANTONIO RICAURTE"
+        },
+        {
+          "zona": 99,
+          "puesto": "48",
+          "nombre": "MONTEBELLO CAMPOALEGRE",
+          "direccion": "SEDE ANDRES JOAQUIN LENIS"
+        },
+        {
+          "zona": 99,
+          "puesto": "49",
+          "nombre": "NAVARRO",
+          "direccion": "I.E. JUAN BAUTISTA DE LA SALLE"
+        },
+        {
+          "zona": 99,
+          "puesto": "53",
+          "nombre": "PANCE LA VORAGINE",
+          "direccion": "I.E. PANCE-VDA LA VORAGINE"
+        },
+        {
+          "zona": 99,
+          "puesto": "54",
+          "nombre": "PANCE LA VIGA",
+          "direccion": "COLEGIO BRITHIS SCHOOL"
+        },
+        {
+          "zona": 99,
+          "puesto": "57",
+          "nombre": "PICHINDE",
+          "direccion": "I.E. PICHINDE SEDE HOLGUIN GARCES"
+        },
+        {
+          "zona": 99,
+          "puesto": "65",
+          "nombre": "EL SALADITO",
+          "direccion": "IE FRANCISCO JOSE LLOREDA EL SALADITO"
+        }
+      ]
+    },
+    {
+      "codigo": 4,
+      "nombre": "ALCALA",
+      "total_puestos": 5,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "I.E.MARIA AUX. CL5 #9-43"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "MARAVELEZ",
+          "direccion": "ESC. IGNACIO RENGIFO"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "EL CONGAL",
+          "direccion": "ESC NUEVA GRANADA"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "LA CUCHILLA",
+          "direccion": "ESC. SAN AGUSTIN"
+        },
+        {
+          "zona": 99,
+          "puesto": "30",
+          "nombre": "LA ESTRELLA",
+          "direccion": "ESC. CRISTOBAL COLON"
+        }
+      ]
+    },
+    {
+      "codigo": 7,
+      "nombre": "ANDALUCIA",
+      "total_puestos": 7,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "I.E. ELEAZAR LIBREROS SALAMANCA"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "ALTAFLOR",
+          "direccion": "ESCUELA JOSE MARIA CORDOBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "CAMPOALEGRE",
+          "direccion": "I.E. AGRICOLA DE CAMPOALEGRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "EL SALTO",
+          "direccion": "ESC. ANTONIO JOSE DE SUCRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "PARDO",
+          "direccion": "ESC. JOSE ANTONIO ANZOATEGUI"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "POTRERILLO",
+          "direccion": "ESC. SAN FRANCISCO #14"
+        },
+        {
+          "zona": 99,
+          "puesto": "20",
+          "nombre": "ZABALETAS",
+          "direccion": "ESC. MARCO FIDEL SUAREZ"
+        }
+      ]
+    },
+    {
+      "codigo": 10,
+      "nombre": "ANSERMANUEVO",
+      "total_puestos": 19,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "CARRERA 3 NUMERO 8-18"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "EL BILLAR",
+          "direccion": "COLEGIO JORGE ISAAC"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "CALABAZAS",
+          "direccion": "ESCUELA SANTA CECILIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "ANACARO",
+          "direccion": "ESCUELA ANTONIO RICAURTE"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "EL ROBLE",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "ALTO TIGRE",
+          "direccion": "ESC. CRISTO REY"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "GRAMALOTE",
+          "direccion": "ESCUELA MARIA MONTESORI"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "EL CAFE",
+          "direccion": "ESCUELA NUESTRA SEÑORA DE LAS MERCEDES"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "EL VERGEL",
+          "direccion": "COL SANTA INES"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "LA CABAÑA",
+          "direccion": "ESCUELA CARTAGENA DE INDIAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "LA HONDURA",
+          "direccion": "ESC. SAGRADO CORAZON DE JESUS"
+        },
+        {
+          "zona": 99,
+          "puesto": "16",
+          "nombre": "LA PUERTA",
+          "direccion": "ESCUELA CAMILO TORRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "LA RAIZ",
+          "direccion": "ESCUELA RAFAEL POMBO"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "LA PEDRERA",
+          "direccion": "ESTADERO LA PEDRERA"
+        },
+        {
+          "zona": 99,
+          "puesto": "20",
+          "nombre": "LA POPALITA",
+          "direccion": "PUESTO DE SALUD"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "LUSITANIA",
+          "direccion": "ESCUELA JUAN 23"
+        },
+        {
+          "zona": 99,
+          "puesto": "26",
+          "nombre": "LA PRIMAVERA",
+          "direccion": "ESCUELA SEDE EL CONSUELO"
+        },
+        {
+          "zona": 99,
+          "puesto": "70",
+          "nombre": "SAN AGUSTIN",
+          "direccion": "ESCUELA GENERAL SANTANDER"
+        },
+        {
+          "zona": 99,
+          "puesto": "80",
+          "nombre": "TRES ESQUINAS",
+          "direccion": "ESCUELA SIMÓN BOLIVAR"
+        }
+      ]
+    },
+    {
+      "codigo": 13,
+      "nombre": "ARGELIA",
+      "total_puestos": 8,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "CL 3 No 1 37 ESCUELA FABIO MARTINEZ CIFUENTES"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "LA PALMA",
+          "direccion": "ESCUELA JUAN HURTADO"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "LA AURORA",
+          "direccion": "ESCUELA CRISTOBAL COLON"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "MARACAIBO",
+          "direccion": "ESCUELA SANTA ELENA"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "LA PAZ",
+          "direccion": "ESCUELA PIO XII"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "LA CRISTALINA",
+          "direccion": "ESC. BUENOS AIRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "LA MARINA",
+          "direccion": "ESC. JOSE ANTONIO GALAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "EL RAIZAL",
+          "direccion": "ESC. ANTONIA SANTOS"
+        }
+      ]
+    },
+    {
+      "codigo": 16,
+      "nombre": "BOLIVAR",
+      "total_puestos": 15,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "I.E. MANUEL DOLORES MONDRAGON -  CRA 2 No 2 - 66"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "BETANIA",
+          "direccion": "CENTRO COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "AGUAS LINDAS",
+          "direccion": "CENTRO COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "EL CATRE",
+          "direccion": "CENTRO COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "18",
+          "nombre": "GUARE",
+          "direccion": "ESC. SAN ANTONIO"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "LA HERRADURA",
+          "direccion": "IE M.D.M. SEDE CARTAGENA DE INDIAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "LA TULIA",
+          "direccion": "ESC. MARIA INMACULADA"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "LAS CABAÑAS",
+          "direccion": "ESC. SAN FRANCISCO"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "NARANJAL",
+          "direccion": "POLIDEPORTIVO"
+        },
+        {
+          "zona": 99,
+          "puesto": "27",
+          "nombre": "POTOSI",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "PRIMAVERA",
+          "direccion": "ESC. MARIA AUXILIADORA"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "RICAURTE",
+          "direccion": "IE MANUEL DOLORES MONDRAGON MARIA AGUSTINA MADRID"
+        },
+        {
+          "zona": 99,
+          "puesto": "34",
+          "nombre": "RIO DOVIO",
+          "direccion": "ESC. SANTA MONICA"
+        },
+        {
+          "zona": 99,
+          "puesto": "35",
+          "nombre": "SAN FERNANDO",
+          "direccion": "ESC.. NTRA SEÑORA DEL CARMEN"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "SANTA TERESA",
+          "direccion": "ESC. SANTA TERESA"
+        }
+      ]
+    },
+    {
+      "codigo": 19,
+      "nombre": "BUENAVENTURA",
+      "total_puestos": 87,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "IE SAN RAFAEL",
+          "direccion": "KR 6 #6-45"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "IE PASCUAL DE ANDAGOYA",
+          "direccion": "CL 9 #5-18"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "COLISEO CUBIIERTO ROBERTO LOZANO BATALLA",
+          "direccion": "CLL 9 # 2-2"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "IE FRANCISCO JOSE DE CALDAS",
+          "direccion": "CRA 19 # 4A-03"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "FUND EDUC Y SOCIAL ANA VIC",
+          "direccion": "CRA 19 . BARRIO LLERAS"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "INSTITUTO EDUCATIVO GREGORIANO",
+          "direccion": "CRA 19 # 1B-25"
+        },
+        {
+          "zona": 2,
+          "puesto": "04",
+          "nombre": "INSTITUTO SILVIA ZAYNAB",
+          "direccion": "CRA 17 NUM 2 20"
+        },
+        {
+          "zona": 2,
+          "puesto": "05",
+          "nombre": "IE REPUBLICA DE VENEZUELA",
+          "direccion": "KRA 11 # 1-04"
+        },
+        {
+          "zona": 2,
+          "puesto": "06",
+          "nombre": "CENTRO DOCENTE NELSON MANDELA",
+          "direccion": "CRA 17 CON CLL 3 No 3A-41"
+        },
+        {
+          "zona": 2,
+          "puesto": "07",
+          "nombre": "CAMINANTES DEL FUTURO",
+          "direccion": "CRA 21 # 4-20 B. PALOSECO"
+        },
+        {
+          "zona": 2,
+          "puesto": "08",
+          "nombre": "IE LA ANUNCIACION (IFA)",
+          "direccion": "CL7 #29-50"
+        },
+        {
+          "zona": 2,
+          "puesto": "09",
+          "nombre": "INST TECNICO COMERCIAL PILOTO",
+          "direccion": "CRA19 No 19B 26"
+        },
+        {
+          "zona": 3,
+          "puesto": "01",
+          "nombre": "IE JOSE RAMON BEJARANO",
+          "direccion": "CLL 7 #41A23"
+        },
+        {
+          "zona": 3,
+          "puesto": "02",
+          "nombre": "CASETA COMUNAL EL ORIENTE",
+          "direccion": "CL 10 # 47-01"
+        },
+        {
+          "zona": 3,
+          "puesto": "03",
+          "nombre": "IE JUAN JOSE RONDON",
+          "direccion": "KR 38 #2-24"
+        },
+        {
+          "zona": 3,
+          "puesto": "04",
+          "nombre": "COLEGIO PATRICIO SYMES",
+          "direccion": "CL 6 #40A-58"
+        },
+        {
+          "zona": 3,
+          "puesto": "05",
+          "nombre": "ESCUELA SAN BUENAVENTURA",
+          "direccion": "CRA50 NUM 7A 79"
+        },
+        {
+          "zona": 3,
+          "puesto": "06",
+          "nombre": "COLEGIO JHON F KENNEDY",
+          "direccion": "CRA 32 4B 26"
+        },
+        {
+          "zona": 3,
+          "puesto": "07",
+          "nombre": "IE JOSE RAMON BEJARANO SEDE LA COMUNA",
+          "direccion": "CRA 47 No 7A-44"
+        },
+        {
+          "zona": 4,
+          "puesto": "01",
+          "nombre": "IE TEOFILO ROBERTO POTES",
+          "direccion": "CRA 47 #5-17"
+        },
+        {
+          "zona": 4,
+          "puesto": "02",
+          "nombre": "IE TERMARIT",
+          "direccion": "CL 4 KR 53 # 53-72"
+        },
+        {
+          "zona": 4,
+          "puesto": "03",
+          "nombre": "IE LICEO DEL PACIFICO",
+          "direccion": "KR 6 #2-24"
+        },
+        {
+          "zona": 4,
+          "puesto": "04",
+          "nombre": "IE SAN MARTIN DE PORRAS",
+          "direccion": "KR 65 # 1-03"
+        },
+        {
+          "zona": 5,
+          "puesto": "01",
+          "nombre": "IE JOSE MARIA CABAL",
+          "direccion": "KR 62 # 11-03"
+        },
+        {
+          "zona": 5,
+          "puesto": "02",
+          "nombre": "IE LAS AMERICAS",
+          "direccion": "KR 65 # 6B06"
+        },
+        {
+          "zona": 5,
+          "puesto": "03",
+          "nombre": "PARROQUIA CRISTO REDENTOR",
+          "direccion": "KR 69 #69-68"
+        },
+        {
+          "zona": 5,
+          "puesto": "04",
+          "nombre": "COORPORACION EDUCATIVA CER",
+          "direccion": "CRA 68 CL 5A NUM 5 12"
+        },
+        {
+          "zona": 6,
+          "puesto": "01",
+          "nombre": "IE SIMON BOLIVAR",
+          "direccion": "CL 4 # 60-61"
+        },
+        {
+          "zona": 6,
+          "puesto": "02",
+          "nombre": "COLEG. ANTONIO NARIÑO",
+          "direccion": "CL 65  56-360"
+        },
+        {
+          "zona": 6,
+          "puesto": "03",
+          "nombre": "IE LOS GRANADINOS",
+          "direccion": "KR 73 CL 4 SUR"
+        },
+        {
+          "zona": 6,
+          "puesto": "04",
+          "nombre": "CASETA COMUNAL UNION DE VIVIEN",
+          "direccion": "KR 75 CL 5"
+        },
+        {
+          "zona": 6,
+          "puesto": "05",
+          "nombre": "IE EMILIO CARVAJAL",
+          "direccion": "TRNV 87 # 35-40"
+        },
+        {
+          "zona": 6,
+          "puesto": "06",
+          "nombre": "IE LA NUEVA ESPERANZA",
+          "direccion": "KR 80 #60-50   LA GLORIA"
+        },
+        {
+          "zona": 6,
+          "puesto": "07",
+          "nombre": "CTRO EDUC. EUSEBIO ANGULO",
+          "direccion": "CLL 3 No 88-62 BARRIO LA LIBERTAD"
+        },
+        {
+          "zona": 6,
+          "puesto": "08",
+          "nombre": "INSTITUCION EDUCATIVA SAN ANTONIO",
+          "direccion": "CIUDADELA SAN ANTONIO"
+        },
+        {
+          "zona": 6,
+          "puesto": "09",
+          "nombre": "CASETA COMUNAL BARRIO CALDAS",
+          "direccion": "CLL 4B TRANV 81  ESQUINA"
+        },
+        {
+          "zona": 90,
+          "puesto": "01",
+          "nombre": "INST.TEC.IND.GERARDO VALENCIA",
+          "direccion": "AV SIMON BOLIVAR KL.9"
+        },
+        {
+          "zona": 98,
+          "puesto": "01",
+          "nombre": "CARCEL",
+          "direccion": "CL 6 #51B-61 AV SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "BAJO CALIMA",
+          "direccion": "CASETA COMUNAL BAJO CALIMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "LA TROJITA",
+          "direccion": "ESC. VDA SAN ISIDRO"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "BOCAS DEL SAN JUAN",
+          "direccion": "ESC. LADRILLEROS TURISTICO"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "LA PLATA",
+          "direccion": "CASETA COMUNAL LA PLATA"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "MALAGA",
+          "direccion": "ESC. JUANCHACO"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "PUERTO ESPAÑA",
+          "direccion": "CASETA DE MADERA"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "LA BOCANA",
+          "direccion": "CASETA COMUNAL LA BOCANA"
+        },
+        {
+          "zona": 99,
+          "puesto": "16",
+          "nombre": "PUNTA SOLDADO",
+          "direccion": "ESC. PUNTA DE SOLDADO"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "BOCAS DE CALIMA",
+          "direccion": "ESC. BOCAS DEL CALIMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "CAMPO HERMOSO",
+          "direccion": "SALON COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "22",
+          "nombre": "GUADUALITO",
+          "direccion": "ESC. ANTONIO RICAUTE"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "ALTO POTEDO",
+          "direccion": "ESC. DE POTEDO (PARTE MARITIMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "AGUACLARA",
+          "direccion": "ESC. ANTONIO SANTOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "26",
+          "nombre": "LADRILLEROS",
+          "direccion": "ESC. JUAN DE LADRILLEROS"
+        },
+        {
+          "zona": 99,
+          "puesto": "27",
+          "nombre": "LLANOBAJO",
+          "direccion": "ESC. NUEVA GRANADA"
+        },
+        {
+          "zona": 99,
+          "puesto": "28",
+          "nombre": "SAN MARCOS",
+          "direccion": "CASETA COMUNAL SAN MARCOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "30",
+          "nombre": "LIMONES",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "31",
+          "nombre": "ZABALETAS",
+          "direccion": "ESC. SAN ANTONIO"
+        },
+        {
+          "zona": 99,
+          "puesto": "32",
+          "nombre": "ZACARIAS",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "34",
+          "nombre": "SAN JOSE (ANCHICAYA)",
+          "direccion": "ESC. SAN JOSE"
+        },
+        {
+          "zona": 99,
+          "puesto": "35",
+          "nombre": "TAPARAL",
+          "direccion": "ESC. TAPARAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "CARACOLI (CACOLI)",
+          "direccion": "ESC. CACOLI"
+        },
+        {
+          "zona": 99,
+          "puesto": "40",
+          "nombre": "EL TIGRE",
+          "direccion": "ESC. GABRIELA MISTRAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "43",
+          "nombre": "CALLE HONDA",
+          "direccion": "ESC. SAN JOSE"
+        },
+        {
+          "zona": 99,
+          "puesto": "46",
+          "nombre": "SAN FRANCISCO JAVIER",
+          "direccion": "ESC. SAN FRANCISCO JAVIER"
+        },
+        {
+          "zona": 99,
+          "puesto": "49",
+          "nombre": "EL PITAL",
+          "direccion": "ESC. SAN LUIS GONZAGA"
+        },
+        {
+          "zona": 99,
+          "puesto": "51",
+          "nombre": "MAYORQUIN",
+          "direccion": "ESC. FRANCO CISENOROS"
+        },
+        {
+          "zona": 99,
+          "puesto": "52",
+          "nombre": "PAPAYAL",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "54",
+          "nombre": "BARCOS",
+          "direccion": "ESC. PETRONIO ALVAREZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "55",
+          "nombre": "SAN ISIDRO",
+          "direccion": "ESC. JOSE ACEVEDO"
+        },
+        {
+          "zona": 99,
+          "puesto": "56",
+          "nombre": "SILVA",
+          "direccion": "ESC. SAN JOSE JOAQUIN"
+        },
+        {
+          "zona": 99,
+          "puesto": "58",
+          "nombre": "SAN ANTONIO (YURUMANGUI)",
+          "direccion": "ESC. SAN JOSE"
+        },
+        {
+          "zona": 99,
+          "puesto": "61",
+          "nombre": "VENERAL",
+          "direccion": "INSP DE POLICIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "64",
+          "nombre": "SAN JOSE (YURUMANGUI)",
+          "direccion": "ESC. SAN JOSE"
+        },
+        {
+          "zona": 99,
+          "puesto": "67",
+          "nombre": "JUNTAS  (YURUMANGUI)",
+          "direccion": "ESC. YURUMANGUI"
+        },
+        {
+          "zona": 99,
+          "puesto": "70",
+          "nombre": "EL PASTICO",
+          "direccion": "ESC. EDUARDO SANTOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "73",
+          "nombre": "PUERTO MERIZALDE",
+          "direccion": "ESCUELA PUERTO MERIZALDE"
+        },
+        {
+          "zona": 99,
+          "puesto": "74",
+          "nombre": "SAN PEDRO DE NAYA",
+          "direccion": "ESC. SAN PEDRO DE NAYA"
+        },
+        {
+          "zona": 99,
+          "puesto": "76",
+          "nombre": "EL CARMEN",
+          "direccion": "ESC. EL CARMEN"
+        },
+        {
+          "zona": 99,
+          "puesto": "79",
+          "nombre": "SAN FRANCISCO DE NAYA",
+          "direccion": "ESC. SANTA CECILIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "80",
+          "nombre": "LA CONCEPCION",
+          "direccion": "ESC. LA CONCEPCION"
+        },
+        {
+          "zona": 99,
+          "puesto": "81",
+          "nombre": "NICOLAS RAMOS HIDALGO",
+          "direccion": "ESC. NICOLAS RAMOS HIDALGO"
+        },
+        {
+          "zona": 99,
+          "puesto": "82",
+          "nombre": "PUERTO NAYA",
+          "direccion": "ESC. PUERTO NAYA"
+        },
+        {
+          "zona": 99,
+          "puesto": "85",
+          "nombre": "SAN LORENZO",
+          "direccion": "ESC. SAN LORENZO"
+        },
+        {
+          "zona": 99,
+          "puesto": "87",
+          "nombre": "CORDOBA",
+          "direccion": "CASETA COMUNAL CORDOBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "88",
+          "nombre": "TRIANA",
+          "direccion": "CASETA COMUNAL TRIANA"
+        },
+        {
+          "zona": 99,
+          "puesto": "89",
+          "nombre": "LA DELFINA",
+          "direccion": "SALON COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "91",
+          "nombre": "CISNEROS",
+          "direccion": "SALON COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "94",
+          "nombre": "CABECERAS DEL RIO SAN JUAN",
+          "direccion": "ESC. CABECERAS"
+        }
+      ]
+    },
+    {
+      "codigo": 22,
+      "nombre": "BUGA",
+      "total_puestos": 51,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "SEDE JULIAN MENDOZA GUERRERO",
+          "direccion": "CLL 12 A No 6E-00"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "IE MANUEL ANTONIO SANCLEMENTE",
+          "direccion": "CLL 4 A # 1A-26"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "ESCUELA JHON F. KENNEDY",
+          "direccion": "CLL 6 # 1 E -05"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "IE JOSE MARIA VILLEGAS",
+          "direccion": "CLL 13 # 9-19"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "SEDE GENERAL SANTANDER",
+          "direccion": "CLL 19 No 7- 09"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "SEDE JOAQUIN CAMILO TORRES",
+          "direccion": "CLL 14 # 9 - 38"
+        },
+        {
+          "zona": 3,
+          "puesto": "01",
+          "nombre": "SEDE GUADALAJARA",
+          "direccion": "CRA 27 No 14-23"
+        },
+        {
+          "zona": 3,
+          "puesto": "02",
+          "nombre": "SEDE TEOFILO DORRONSORO",
+          "direccion": "CLL 17 #14 B-06"
+        },
+        {
+          "zona": 3,
+          "puesto": "03",
+          "nombre": "IE GRAN COLOMBIA",
+          "direccion": "CRA 14 No 16- 67"
+        },
+        {
+          "zona": 4,
+          "puesto": "01",
+          "nombre": "IE SAN VICENTE",
+          "direccion": "CRA 15 #7-09"
+        },
+        {
+          "zona": 4,
+          "puesto": "02",
+          "nombre": "SEDE MARISCAL SUCRE",
+          "direccion": "CRA18 No 3-57"
+        },
+        {
+          "zona": 4,
+          "puesto": "03",
+          "nombre": "SEDE CARLOS ARTURO CABAL",
+          "direccion": "CRA 15 #8-08"
+        },
+        {
+          "zona": 4,
+          "puesto": "04",
+          "nombre": "SEDE MARIA AUXILIADORA",
+          "direccion": "CRA 15 # 9 - 55"
+        },
+        {
+          "zona": 4,
+          "puesto": "05",
+          "nombre": "SEDE CARLOTA ARMERO",
+          "direccion": "CRA 16 No 4 - 58"
+        },
+        {
+          "zona": 4,
+          "puesto": "06",
+          "nombre": "COLISEO DE DEPORTES ARMANDO MONCADA C",
+          "direccion": "CLL 6 # 8 - 23"
+        },
+        {
+          "zona": 4,
+          "puesto": "07",
+          "nombre": "COL MAYOR CIUDAD DE BUGA",
+          "direccion": "CRA 20 # 3-81"
+        },
+        {
+          "zona": 4,
+          "puesto": "08",
+          "nombre": "SEDE SAN JOSE",
+          "direccion": "CLL 8 No 16-38"
+        },
+        {
+          "zona": 5,
+          "puesto": "01",
+          "nombre": "SEDE MARIA LUISA DE LA ESPADA",
+          "direccion": "CRA 13 No 22A-21"
+        },
+        {
+          "zona": 5,
+          "puesto": "02",
+          "nombre": "SEDE ABSALON FERNANDEZ DE SOTO",
+          "direccion": "CLL 19 BIS No 17-75"
+        },
+        {
+          "zona": 5,
+          "puesto": "03",
+          "nombre": "SEDE ANTONIO JOSE DE SUCRE",
+          "direccion": "CLL 27 #15-39 EL JARDIN"
+        },
+        {
+          "zona": 5,
+          "puesto": "04",
+          "nombre": "CDI MANITOS CON AMOR",
+          "direccion": "CLL 32 A # 11-03"
+        },
+        {
+          "zona": 5,
+          "puesto": "05",
+          "nombre": "UTEDE",
+          "direccion": "CRA 12 No 26C - 74"
+        },
+        {
+          "zona": 5,
+          "puesto": "06",
+          "nombre": "ESCUELA OBRA SOCIAL EL MILAGRO",
+          "direccion": "CLL 23 No 15A-08"
+        },
+        {
+          "zona": 6,
+          "puesto": "01",
+          "nombre": "COLEGIO GIMNASIO CENTRAL DEL VALLE",
+          "direccion": "CLL 5 No 5-53 CARMELO"
+        },
+        {
+          "zona": 6,
+          "puesto": "02",
+          "nombre": "IE ACADEMICO",
+          "direccion": "CRA 9 No 2 SUR-55"
+        },
+        {
+          "zona": 6,
+          "puesto": "03",
+          "nombre": "IE NARCISO CABAL SALCEDO",
+          "direccion": "CLL 2 No 8-47"
+        },
+        {
+          "zona": 6,
+          "puesto": "04",
+          "nombre": "COL SANTA MARIANA DE JESUS",
+          "direccion": "CLL 6 4-45"
+        },
+        {
+          "zona": 6,
+          "puesto": "05",
+          "nombre": "COL LICEO DE LOS ANDES FUNED",
+          "direccion": "CRA 12 SALIDA SUR SN 14-60"
+        },
+        {
+          "zona": 98,
+          "puesto": "01",
+          "nombre": "CARCEL",
+          "direccion": "CRA.16 No. 32-97"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "ZANJON HONDO",
+          "direccion": "IE ANGEL CUADROS"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "QUEBRADASECA  EL MANANTIAL",
+          "direccion": "ESCUELA VEREDA EL MANANTIAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "QUEBRADASECA",
+          "direccion": "SEDE ANTONIO GUENDICA"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "CRUCERO DE NOGALES",
+          "direccion": "SEDE EL CRUCERO"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "MONTERREY",
+          "direccion": "IE AGROPECUARIO MONTERREY"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "LOS BANCOS",
+          "direccion": "SEDE LOS BANCOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "LA MARIA",
+          "direccion": "IE  NUESTRA SEÑORA DE FATIMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "LA HABANA",
+          "direccion": "SEDE MARCO FIDEL SUAREZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "LA HABANA EL JANEIRO",
+          "direccion": "SEDE EL JANEIRO"
+        },
+        {
+          "zona": 99,
+          "puesto": "12",
+          "nombre": "LA HABANA LA MAGDALENA",
+          "direccion": "IE LA MAGDALENA"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "FRISOLES",
+          "direccion": "SEDE ISIDRA VILLALOBOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "14",
+          "nombre": "EL VINCULO",
+          "direccion": "SEDE ARMANDO ROMERO LOZANO"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "EL ROSARIO",
+          "direccion": "SEDE EL ROSARIO"
+        },
+        {
+          "zona": 99,
+          "puesto": "16",
+          "nombre": "EL PLACER",
+          "direccion": "IE EL PLACER"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "EL SALADO",
+          "direccion": "SEDE EL SALADO"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "PUEBLO NUEVO",
+          "direccion": "SEDE RAFAEL URIBE URIBE"
+        },
+        {
+          "zona": 99,
+          "puesto": "20",
+          "nombre": "CHAMBIMBAL CERRO RICO",
+          "direccion": "SEDE CERRO RICO"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "CHAMBIMBAL SAN ANTONIO",
+          "direccion": "IE TULIO ENRIQUE TASCON"
+        },
+        {
+          "zona": 99,
+          "puesto": "22",
+          "nombre": "CHAMBIMBAL LA CAMPIÑA",
+          "direccion": "SEDE EL CARMEN"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "MIRAFLORES",
+          "direccion": "SEDE MIRAFLORES"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "LA PLAYA DEL BUEY",
+          "direccion": "SEDE PLAYA DEL BUEY"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "RIO LORO",
+          "direccion": "SEDE LA MESA"
+        }
+      ]
+    },
+    {
+      "codigo": 25,
+      "nombre": "BUGALAGRANDE",
+      "total_puestos": 15,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "CLL 9 No 6-8 COLEGIO ANTONIO NARIÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "CEILAN",
+          "direccion": "ESCUELA SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "CHICORAL",
+          "direccion": "ESC. JUAN JOSE RENDON"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "CHORRERAS",
+          "direccion": "SATELITE IE. ANTONIO NARIÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "EL GUAYABO",
+          "direccion": "ESC. MANUELA BELTRAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "MESTIZAL",
+          "direccion": "ESC. CAMILO TORRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "12",
+          "nombre": "EL ROCIO",
+          "direccion": "ESC. JUAN XXIII"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "EL OVERO",
+          "direccion": "ESC. ANTONIO RICAUTE"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "EL PLACER",
+          "direccion": "ESC. SAN MARTIN"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "EL RAICERO",
+          "direccion": "ESC. ATANASIO GIRARDOT"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "GALICIA",
+          "direccion": "SATELITE ANTONIO NARIÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "24",
+          "nombre": "URIBE",
+          "direccion": "SATELITE ANTONIO NARIÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "LA MORENA",
+          "direccion": "ESC. FRANCISCO DE PAULA SANTANDER"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "PAILA ARRIBA",
+          "direccion": "ESC. MARIANO OSPINA PEREZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "SAN ANTONIO",
+          "direccion": "ESC. CRISTOBAL COLON"
+        }
+      ]
+    },
+    {
+      "codigo": 28,
+      "nombre": "CAICEDONIA",
+      "total_puestos": 17,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "NORMAL SUPERIOR",
+          "direccion": "CR 15 No.3-36"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "ESCUELA JOSE EUSEBIO CARO",
+          "direccion": "CLL 5 No 11-36"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "IE ANEXA",
+          "direccion": "CLL 5 No 8-61"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "SEDE UNIVALLE",
+          "direccion": "CALLE 12 No 12-26"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "ESCUELA TRES DE AGOSTO",
+          "direccion": "CRA 19 No 16-35"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "ESCUELA GABRIELA MISTRAL",
+          "direccion": "CRA 15 No 11-50"
+        },
+        {
+          "zona": 2,
+          "puesto": "04",
+          "nombre": "CENTRO DE INTEGRACION CIUDADANA CIC",
+          "direccion": "CLL 18A CON CRA 14 ESQUINA"
+        },
+        {
+          "zona": 2,
+          "puesto": "05",
+          "nombre": "SATELITE BOLIVARIANO",
+          "direccion": "CLL 20 No 26 - 30 ZONA URBANA"
+        },
+        {
+          "zona": 98,
+          "puesto": "01",
+          "nombre": "CARCEL DEL CIRCUITO",
+          "direccion": "CLL 18 No 22-55"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "AURES",
+          "direccion": "IE GILBERTO ALZATE AVENDAÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "BAJO BARRAGAN",
+          "direccion": "ESCUELA CAMILO RESTREPO"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "BURILA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "EL CRUCERO",
+          "direccion": "ESCUELA LA POLA"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "LA RIVERA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "MONTEGRANDE",
+          "direccion": "ESCUELA SAN ISIDRO"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "SAMARIA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "SAN GERARDO",
+          "direccion": "CASETA COMUNAL"
+        }
+      ]
+    },
+    {
+      "codigo": 31,
+      "nombre": "CANDELARIA",
+      "total_puestos": 27,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "ESCUELA ANTONIO NARIÑO",
+          "direccion": "CL 13 No. 8- 28 B- LA CRUZ"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "ESC. FCO DE PAULA SANTANDER",
+          "direccion": "CRA 8 No. 11- 55 B LA CRUZ"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "POLIDEPORTIVO MUNICIPAL",
+          "direccion": "CRA.5 CALLE 7 ESQUINA BARRIO SANTA ANA"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "ESCUELA ALFONSO LOPEZ PUMAREJO",
+          "direccion": "CL 7 No. 9- 21 B OBRERO"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "COLEGIO SAGRADA FAMILIA",
+          "direccion": "CALL. 7 A #8 - 42 BARRIO MARIA AUXILIADORA"
+        },
+        {
+          "zona": 90,
+          "puesto": "01",
+          "nombre": "COLEGIO GERMAN NIETO",
+          "direccion": "CALLE 5 No. 9-59"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "BUCHITOLO",
+          "direccion": "S.E. FRANCISCO JOSE DE CALDAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "EL ARENAL",
+          "direccion": "S.E LUIS CARLOS PEÑA"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "EL CABUYAL",
+          "direccion": "S.E MARINO RENGIFO SALCEDO"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "EL CARMELO - JOSE ANTONIO GALAN",
+          "direccion": "CRA 11 CLL 13 ESQUINA"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "EL CARMELO - JUAN DE LA CRUZ HERRERA",
+          "direccion": "CRA 13 # 13 40"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "EL CARMELO - ROSENDO MONDRAGON FEIJOO",
+          "direccion": "CRA 10 OESTE # 23B 27"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "EL LAURO",
+          "direccion": "S.E MARCO FIDEL SUAREZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "EL TIPLE",
+          "direccion": "S.E JORGE ISAAC"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "JUANCHITO - CAUCASECO",
+          "direccion": "S.E. JOSE MARIA CORDOBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "22",
+          "nombre": "JUANCHITO - POBLADO CAMPESTRE",
+          "direccion": "S.E. PANEBIANCO AMERICANO"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "JUANCHITO CIUDAD DEL VALLE",
+          "direccion": "S.E. SANTA RITA DE CASSIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "24",
+          "nombre": "JUANCHITO - DOMINGO LARGO",
+          "direccion": "DOMINGO LARGO"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "JUANCHITO - ATANASIO GIRARDOT COLEGIO 10",
+          "direccion": "CRA 20 41 36"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "LA REGINA",
+          "direccion": "S.E ANTONIO VILLAVICENCIO"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "MADREVIEJA",
+          "direccion": "S.E BENJAMIN HERRERA"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "SAN JOAQUIN",
+          "direccion": "S.E SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "38",
+          "nombre": "VILLAGORGONA - SANTIAGO RENGIFO",
+          "direccion": "S.E SANTIAGO RENGIFO CRA 14 No 13 - 26"
+        },
+        {
+          "zona": 99,
+          "puesto": "39",
+          "nombre": "VILLAGORGONA - JOSE EUSEBIO CARO",
+          "direccion": "S.E. JOSE EUSEBIO CARO CLL 12 No 10-81"
+        },
+        {
+          "zona": 99,
+          "puesto": "40",
+          "nombre": "VILLAGORGONA - POLIDEPORTIVO LA ALDEA",
+          "direccion": "CLL 20 A CON CRA 9-10"
+        },
+        {
+          "zona": 99,
+          "puesto": "41",
+          "nombre": "VILLAGORGONA 20 DE JULIO",
+          "direccion": "ESCUELA MARTIN LUTHER KING"
+        },
+        {
+          "zona": 99,
+          "puesto": "42",
+          "nombre": "VILLAGORGONA - CULTIVARTE",
+          "direccion": "CLL 22A # 13 80"
+        }
+      ]
+    },
+    {
+      "codigo": 34,
+      "nombre": "CARTAGO",
+      "total_puestos": 34,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "COL RAMON MARTINEZ BENITEZ SED",
+          "direccion": "CLL 4A  NO 10-57"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "ESC SAN JUAN BOSCO",
+          "direccion": "CLL 3 No 3A-24"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "COL TECNICO CIUDAD CARTAGO",
+          "direccion": "CRA 3 CLL 2E"
+        },
+        {
+          "zona": 1,
+          "puesto": "04",
+          "nombre": "COL JUAN XXIII",
+          "direccion": "CRA 11  NO 4-135"
+        },
+        {
+          "zona": 1,
+          "puesto": "05",
+          "nombre": "COL. RAMON MARTINEZ BENITEZ PRIMARIA",
+          "direccion": "CRA. 6 No 4-70"
+        },
+        {
+          "zona": 1,
+          "puesto": "06",
+          "nombre": "ESC EMPERATRIZ BUENO",
+          "direccion": "CLL 5  NO 17-00"
+        },
+        {
+          "zona": 1,
+          "puesto": "07",
+          "nombre": "ESC HELIODORO PEÑA",
+          "direccion": "CLL 4 No 17-124"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "COLEGIO LAZARO DE GARDEA",
+          "direccion": "DG 23 No 4A-21"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "UNIVERSIDAD DEL VALLE",
+          "direccion": "CLL 10  NO 19-05"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "COL MANUEL QUINTERO PENILLA",
+          "direccion": "CLL 9 No 9-39"
+        },
+        {
+          "zona": 2,
+          "puesto": "04",
+          "nombre": "COL NACIONAL ACADEMICO",
+          "direccion": "CR 11  14-16"
+        },
+        {
+          "zona": 2,
+          "puesto": "05",
+          "nombre": "CENTRO COMERCIAL SANTIAGO PLAZA",
+          "direccion": "CLL 14 No 11-19"
+        },
+        {
+          "zona": 3,
+          "puesto": "01",
+          "nombre": "COLISEO LA ISLETA",
+          "direccion": "AV DEL RIO CON CLL 10"
+        },
+        {
+          "zona": 3,
+          "puesto": "02",
+          "nombre": "CORP DE ESTUDIOS TECNOLOGICOS",
+          "direccion": "CLL 10  N0 3-95"
+        },
+        {
+          "zona": 3,
+          "puesto": "03",
+          "nombre": "ESC. FRANCISCO DE PAULA SANTANDER",
+          "direccion": "CALLE 6 No 3 -40"
+        },
+        {
+          "zona": 4,
+          "puesto": "01",
+          "nombre": "COL MARIA AUXILIADORA",
+          "direccion": "CLL 17 # 1-168N"
+        },
+        {
+          "zona": 4,
+          "puesto": "02",
+          "nombre": "SED ED MARIA INMACULADA",
+          "direccion": "CLL 19 CRA  9AN"
+        },
+        {
+          "zona": 4,
+          "puesto": "03",
+          "nombre": "COL SOR MARIA JULIANA",
+          "direccion": "CLL 21 No 5-111"
+        },
+        {
+          "zona": 4,
+          "puesto": "04",
+          "nombre": "I E LASTENIA DURAN VERNAZA",
+          "direccion": "CR 5 CLL 20 ESQ"
+        },
+        {
+          "zona": 4,
+          "puesto": "05",
+          "nombre": "ESC. RIGOBERTO OROZCO",
+          "direccion": "CLL 21 No 2-20"
+        },
+        {
+          "zona": 5,
+          "puesto": "01",
+          "nombre": "ESC ROBERTO DELGADO",
+          "direccion": "CLL 51  N0 2-30"
+        },
+        {
+          "zona": 5,
+          "puesto": "02",
+          "nombre": "COL HOLGUIN GARCES",
+          "direccion": "CLL 48 No 2A N-45"
+        },
+        {
+          "zona": 5,
+          "puesto": "03",
+          "nombre": "COL ANTONIO NARIÑO",
+          "direccion": "CLL 37 CR 1NTE"
+        },
+        {
+          "zona": 5,
+          "puesto": "04",
+          "nombre": "COMEDOR INF CLUB ROTARIO",
+          "direccion": "CLL 55 No 5A N-10"
+        },
+        {
+          "zona": 5,
+          "puesto": "05",
+          "nombre": "I. TEC. INDUSTRIAL INDALECIO PENILLA",
+          "direccion": "CALLE 43 No. 2-199"
+        },
+        {
+          "zona": 5,
+          "puesto": "06",
+          "nombre": "CASA DE JUSTICIA",
+          "direccion": "CRA. 1 CALLE 37 ESQUINA"
+        },
+        {
+          "zona": 5,
+          "puesto": "07",
+          "nombre": "HOGAR INFANTIL SAN PABLO",
+          "direccion": "CLL 36 CRA 6N"
+        },
+        {
+          "zona": 90,
+          "puesto": "01",
+          "nombre": "ESC. JHON F. KENNEDY",
+          "direccion": "CR 8  N0 16-70"
+        },
+        {
+          "zona": 98,
+          "puesto": "01",
+          "nombre": "CARCEL",
+          "direccion": "CLL 10  N0 13-72"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "CAUCA",
+          "direccion": "ESC LUIS CARLOS PEÑA"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "COLORADAS",
+          "direccion": "COL NUEVA GRANADA"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "MODIN",
+          "direccion": "COL SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "PIEDRA DE MOLER",
+          "direccion": "ESC. MARISCAL ROBLEDO"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "ZARAGOZA",
+          "direccion": "COL. AGRICOLA ZARAGOZA"
+        }
+      ]
+    },
+    {
+      "codigo": 37,
+      "nombre": "DAGUA",
+      "total_puestos": 27,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "COL. GIMNASIO DE DAGUA KR 12"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "BORRERO AYERBE (OLAYA HERRERA",
+          "direccion": "I. E. BORRERO AYERBE SEDE CENTRAL VIA LA ZULIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "ATUNCELAS",
+          "direccion": "ESC. ROSA ZARATE DE PEÑA"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "CISNEROS JUNTAS",
+          "direccion": "BAHIA PUBLICA ENTRADA CISNEROS"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "EL CARMEN",
+          "direccion": "ESC. STA TERESITA DEL NIÑO JESUS"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "EL DANUBIO",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "EL PALMAR",
+          "direccion": "I.E. EL PALMAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "EL PIÑAL",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "EL ROCIO",
+          "direccion": "VEREDA VISTA HERMOSA CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "EL SALADO",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "22",
+          "nombre": "JIGUALES",
+          "direccion": "ESC. CARLOS LOZANO"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "JUNTAS",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "24",
+          "nombre": "KILOMETRO 18",
+          "direccion": "RESTAURANTE Y ASADOS DON JOSE N.1"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "LA CASCADA",
+          "direccion": "ESC. JOSE ANTONIO GALAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "LA ELSA",
+          "direccion": "ESC. OLAYA HERRERA"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "LA PROVIDENCIA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "EL LIMONAR",
+          "direccion": "ESC. PUBLICA"
+        },
+        {
+          "zona": 99,
+          "puesto": "41",
+          "nombre": "LOBO GUERRERO",
+          "direccion": "I.E. CAMILO TORRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "45",
+          "nombre": "EL NARANJO",
+          "direccion": "PUESTO DE SALUD"
+        },
+        {
+          "zona": 99,
+          "puesto": "53",
+          "nombre": "EL QUEREMAL",
+          "direccion": "ESC. JOSE MARIA CORDOBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "54",
+          "nombre": "LOS ALPES",
+          "direccion": "ESC. LOS ANGELES"
+        },
+        {
+          "zona": 99,
+          "puesto": "57",
+          "nombre": "SAN BERNARDO",
+          "direccion": "SALON COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "61",
+          "nombre": "SANTA MARIA",
+          "direccion": "ESC. MANUEL MEJIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "65",
+          "nombre": "SAN VICENTE (SAN JOAQUIN)",
+          "direccion": "ESC. SAN VICENTE"
+        },
+        {
+          "zona": 99,
+          "puesto": "69",
+          "nombre": "VILLAHERMOSA",
+          "direccion": "ESC. MARIO FERNANDEZ DE SOTO"
+        },
+        {
+          "zona": 99,
+          "puesto": "73",
+          "nombre": "ZABALETAS",
+          "direccion": "ANTIGUO TELECOM"
+        },
+        {
+          "zona": 99,
+          "puesto": "77",
+          "nombre": "ZELANDIA",
+          "direccion": "ESC. RAFAEL URIBE URIBE"
+        }
+      ]
+    },
+    {
+      "codigo": 40,
+      "nombre": "CALIMA (DARIEN)",
+      "total_puestos": 19,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "I.E. GIMNASIO DEL CALIMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "EL BOLEO",
+          "direccion": "ESC. SANTA TERESITA"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "EL DIAMANTE",
+          "direccion": "ESC. SANTA ANA"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "EL MIRADOR",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "JIGUALES",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "LA CECILIA",
+          "direccion": "FINCA EL DESCANSO"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "LA CRISTALINA",
+          "direccion": "CENTRO DOC. ANTONIA SANTOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "LA FLORIDA",
+          "direccion": "PUESTO DE SALUD"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "LA GAVIOTA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "LA GUAIRA",
+          "direccion": "PUESTO DE SALUD"
+        },
+        {
+          "zona": 99,
+          "puesto": "30",
+          "nombre": "LA ITALIA",
+          "direccion": "ESC. GERMAN MEJIA TASCON"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "LA RIBERA",
+          "direccion": "FINCA EL TAMBO"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "LA SAMARIA",
+          "direccion": "ESC. JOAQUIN E. PALOMINO"
+        },
+        {
+          "zona": 99,
+          "puesto": "41",
+          "nombre": "LA UNION",
+          "direccion": "SALON DE LA BOMBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "43",
+          "nombre": "LLANITOS",
+          "direccion": "ESCUELA I.E SIMON BOLIVAR SEDE LLANITOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "44",
+          "nombre": "PRIMAVERA",
+          "direccion": "ESC. NTRA. SEÑORA DE FATIMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "45",
+          "nombre": "PUENTE TIERRA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "49",
+          "nombre": "RIO BRAVO",
+          "direccion": "ESCUELA ERASMO VIVAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "53",
+          "nombre": "SAN JOSE",
+          "direccion": "CENTRO DOC. SAN JOSE"
+        }
+      ]
+    },
+    {
+      "codigo": 43,
+      "nombre": "EL AGUILA",
+      "total_puestos": 18,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "ESC. SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "LA ESPARTA",
+          "direccion": "ESC. PABLO VI #30"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "CAJONES",
+          "direccion": "ESC. SAN CAYETANO"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "EL EMBAL",
+          "direccion": "ESC. BOYACA #18"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "LA GALANA",
+          "direccion": "ESC. SOFIA AGUDELO #27"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "CHORRITOS",
+          "direccion": "ESC. MERCEDES ABREGO"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "LA LIBERTAD",
+          "direccion": "ESC. SANTA CECILIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "EL COFRE",
+          "direccion": "ESC. SEBASTIAN DE BELALCAZAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "LA MARIA",
+          "direccion": "RESTAURANTE ESCOLAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "EL RIO",
+          "direccion": "ESC. JOSE MARIA CORDOBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "LA BOCATOMA",
+          "direccion": "ESC. CAMILO TORRES #38"
+        },
+        {
+          "zona": 99,
+          "puesto": "12",
+          "nombre": "CAJA DE ORO",
+          "direccion": "ESC. MARIA INMACULADA"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "SAN JOSE",
+          "direccion": "ESC. SAN RAFAEL"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "LA JUDEA",
+          "direccion": "ESC. RICRDO NIETO #15"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "LA QUIEBRA DE SAN PABLO",
+          "direccion": "ESC. SANTA TERESITA"
+        },
+        {
+          "zona": 99,
+          "puesto": "18",
+          "nombre": "SANTA ELENA",
+          "direccion": "ESC. FRANCISCO JOSE DE CALDAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "SANTA MARTA",
+          "direccion": "CONCENTRACION DE DESARROLLO RURAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "VILLANUEVA",
+          "direccion": "I.E JUSTINIANO ECHAVARRIA"
+        }
+      ]
+    },
+    {
+      "codigo": 46,
+      "nombre": "EL CAIRO",
+      "total_puestos": 11,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "ESC. GILBERTO ALZATE KR 6 CA"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "ALBAN",
+          "direccion": "ESC. NTRA SRA DE LAS MERCEDES"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "BOQUERON",
+          "direccion": "ESC. MANUEL MALLARINO"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "BELLAVISTA",
+          "direccion": "ESC. CAMILO TORRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "LA CARBONERA",
+          "direccion": "PARADOR LOS ALPES SUIZOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "LA GUARDIA",
+          "direccion": "SALON COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "ALTO CIELO",
+          "direccion": "ESC VDA EL MADROÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "PLAYA RICA",
+          "direccion": "ESC. SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "ALTO BONITO",
+          "direccion": "SALON COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "SALMELIA",
+          "direccion": "LA FONDA"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "SAN JOSE",
+          "direccion": "SALON COMUNAL"
+        }
+      ]
+    },
+    {
+      "codigo": 49,
+      "nombre": "EL CERRITO",
+      "total_puestos": 18,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "COLEGIO PEDRO ANTONIO MOLINA",
+          "direccion": "CRA 11 No 7 - 11"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "ESC. JOSE CELESTINO MUTIS",
+          "direccion": "CARRERA 6 No. 3.52 BARRIO BUENOS AIRES"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "ESCUELA JORGE ISAAC",
+          "direccion": "CALLE 1 ESTE N 4-53 BARRIO CINCUENTENARIO"
+        },
+        {
+          "zona": 1,
+          "puesto": "04",
+          "nombre": "COLEGIO JORGE ISAAC",
+          "direccion": "CALLE 8 No 8 ESQUINA BARRIO EL ROSARIO"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "COL. JOSE IGNACIO RENGIFO",
+          "direccion": "CARRERA 17 No.9-70 BARRIO SANTA BARBARA"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "COL. SAGRADO CORAZON",
+          "direccion": "CALLE 8 No. 10-09 BARRIO EL CENTRO"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "AUJI",
+          "direccion": "COLEGIO AUJI"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "CARRIZAL",
+          "direccion": "ESCUELA CARRIZAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "EL CASTILLO",
+          "direccion": "ESC. POLICARPA SALAVARRIETA"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "EL MORAL",
+          "direccion": "ESC ROSA ZARATE PEÑA"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "EL PARAISO",
+          "direccion": "HACIENDA EL PARAISO"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "EL PLACER",
+          "direccion": "COL. JORGE ISAAC"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "EL POMO",
+          "direccion": "ESC JOSE ANTONIO G"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "LOS ANDES",
+          "direccion": "COL. JORGE ISAAC"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "SAN ANTONIO",
+          "direccion": "ESC. RICARDO CIFUENTES"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "SANTA ELENA",
+          "direccion": "COL. JORGE ISAAC"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "SANTA LUISA",
+          "direccion": "ESC ANTONIO NARIÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "TENERIFE",
+          "direccion": "ESC. HERNANDO BORRERO"
+        }
+      ]
+    },
+    {
+      "codigo": 52,
+      "nombre": "EL DOVIO",
+      "total_puestos": 14,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "CTRO REGIONAL DE EDU SUP CLL 8 CRA 7 ESQ"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "LA PRADERA",
+          "direccion": "ESC. JOSE EUSTACIO PALACIOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "BITACO",
+          "direccion": "ESC. SAN PABLO"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "EL GUACHAL",
+          "direccion": "ESC. RICARDO MUÑOZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "LA CABAÑA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "LITUANIA",
+          "direccion": "ESC. STA TERESITA DEL NIÑO JESUS"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "LA ESPERANZA",
+          "direccion": "ESC. ELVIRA PEÑA"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "CIELITO",
+          "direccion": "ESC. ISABEL MURILLO"
+        },
+        {
+          "zona": 99,
+          "puesto": "12",
+          "nombre": "EL DUMAR",
+          "direccion": "CASETA ORILLA DEL RIO"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "MONTEAZUL",
+          "direccion": "ESCUELA SAN MARTIN DE PORRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "14",
+          "nombre": "PLAYA RICA",
+          "direccion": "ESC. ROMULO RENGIFO"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "BATATAL",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "SIRIMUNDA",
+          "direccion": "ESC. SAG. CORAZON DE JESUS"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "EL FILO",
+          "direccion": "CASETA COMUNAL"
+        }
+      ]
+    },
+    {
+      "codigo": 55,
+      "nombre": "FLORIDA",
+      "total_puestos": 33,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "COL. ABSALON TORRES",
+          "direccion": "CL 8 #23-51"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "IE JULIO ARBOLEDA",
+          "direccion": "CLL 9 No 27-27"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "CASA DE LA CULTURA",
+          "direccion": "CL 9 KR 21 ESQ"
+        },
+        {
+          "zona": 1,
+          "puesto": "04",
+          "nombre": "ESC. POLICARPA SALAVARRIETA",
+          "direccion": "KR 16 #6-70"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "ESC. EMETERIO PIEDRAHITA",
+          "direccion": "CL 12 #15-20"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "IE JULIO CASTAÑO",
+          "direccion": "CRA 14 No 10-61"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "LICEO COMERCIAL FEMENINO",
+          "direccion": "CL 6 KR 13 ESQ"
+        },
+        {
+          "zona": 90,
+          "puesto": "01",
+          "nombre": "COL. INSTITUTO LAS AMERICAS",
+          "direccion": "KR 19 #9-56"
+        },
+        {
+          "zona": 98,
+          "puesto": "01",
+          "nombre": "CARCEL",
+          "direccion": "CL 10 KRS 19 y 20"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "BETANIA",
+          "direccion": "ESCUELA SAN JOAQUIN"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "CALEÑO",
+          "direccion": "ESC. ALFONSO LOPEZ PUMAREJO"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "CAÑAS ABAJO",
+          "direccion": "ESC. CRISTO REY"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "CAÑAS ARRIBA",
+          "direccion": "ESC. CAMILO TORRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "CHOCOCITO",
+          "direccion": "ESC. ATANASIO GIRARDOT"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "EL INGENIO",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "EL LIBANO",
+          "direccion": "ESC. MANUELA BELTRAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "18",
+          "nombre": "EL PEDREGAL",
+          "direccion": "ESC. JOSE CELESTINO MUTTIS"
+        },
+        {
+          "zona": 99,
+          "puesto": "20",
+          "nombre": "LA ACEQUIA",
+          "direccion": "ESC. TULIO GONZALEZ FORERO"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "LA DIANA",
+          "direccion": "ESC. ANTONIO JOSE SUCRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "LA PALMERA",
+          "direccion": "ESC. JUAN TAMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "LA RIBERA",
+          "direccion": "ESC. SAN ISIDRO"
+        },
+        {
+          "zona": 99,
+          "puesto": "26",
+          "nombre": "LA SAMARIA",
+          "direccion": "ESCUELA LA PRIMAVERA"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "LA UNION",
+          "direccion": "ESC. CARTAGENA DE INDIAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "31",
+          "nombre": "LAS GUACAS",
+          "direccion": "ESC. SAN JOSE"
+        },
+        {
+          "zona": 99,
+          "puesto": "32",
+          "nombre": "PARRAGA",
+          "direccion": "ESC. FRANCISCO JOSE CALDAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "PUEBLO NUEVO",
+          "direccion": "ESC. MARIA AUXILIADORA"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "REMOLINO",
+          "direccion": "ESC. SANTA ANA"
+        },
+        {
+          "zona": 99,
+          "puesto": "39",
+          "nombre": "MIRAVALLES",
+          "direccion": "RESGUARDO INDIGENA NASA KWES KIWE LAS BRISAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "41",
+          "nombre": "SAN ANTONIO",
+          "direccion": "CENTRO MULTIPLE"
+        },
+        {
+          "zona": 99,
+          "puesto": "45",
+          "nombre": "SAN FRANCISCO LLANITO",
+          "direccion": "ESCUELA JOSE MARIA CORDOBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "49",
+          "nombre": "SANTA ROSA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "51",
+          "nombre": "SANTO DOMINGO",
+          "direccion": "ESC. GABRIEL GARCIA MARQUEZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "53",
+          "nombre": "TARRAGONA",
+          "direccion": "ESCUELA EL BARBULA"
+        }
+      ]
+    },
+    {
+      "codigo": 58,
+      "nombre": "GINEBRA",
+      "total_puestos": 9,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "CRA 1 No 3 - 39 IE LA SALLE"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "COSTA RICA",
+          "direccion": "IE MANUELA BELTRAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "FLORESTA",
+          "direccion": "C.E. ANTONIO NARIÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "COCUYOS",
+          "direccion": "PUESTO DE SALUD"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "JUNTAS",
+          "direccion": "C.D NUESTRA SRA DEL CARMEN"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "LA NOVILLERA",
+          "direccion": "C.D GENERAL SANTANDER"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "LOS MEDIOS",
+          "direccion": "C.E. SAN JUDAS TADEO"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "LA SELVA",
+          "direccion": "INST.ED.CONCENTRACION RURAL LA SELVA"
+        },
+        {
+          "zona": 99,
+          "puesto": "85",
+          "nombre": "ZABALETAS",
+          "direccion": "INSTITUCION EDUCATIVA JOSE MARIA VILLEGAS"
+        }
+      ]
+    },
+    {
+      "codigo": 61,
+      "nombre": "GUACARI",
+      "total_puestos": 13,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "01",
+          "nombre": "ESC NORMAL SUP. MIGUEL DE CERVANTES S.",
+          "direccion": "ESC. NORMAL SUPERIOR CLL 3 # 8 65"
+        },
+        {
+          "zona": 0,
+          "puesto": "02",
+          "nombre": "CENTRO DE INTEGRACION CIUDADANA - CIC",
+          "direccion": "CIC CLL 2 # 9 - 55"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "ALTO DE LA JULIA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "CANANGUA",
+          "direccion": "SEDE CARMEN ARZAYUS DE SAAVEDRA I.E. PEDRO VICENTE"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "EL PLACER",
+          "direccion": "SEDE JOSE ARBEY GARCIA I.E. JOSE IGNACIO OSPINA"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "GUACAS",
+          "direccion": "SEDE SAN ANTONIO I.E. NORMAL SUPERIOR"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "GUABAS",
+          "direccion": "SEDE PEDRO VICENTE ABADIA IE JOSE CELESTINO MUTIS"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "GUABITAS",
+          "direccion": "IE JOSE IGNACIO OSPINA SD JOSE IGNACIO OSPINA"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "LA MAGDALENA",
+          "direccion": "SEDE VIRGEN DE FATIMA I.E. GENERAL SANTANDER"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "PICHICHI",
+          "direccion": "INGENIO PICHICHI"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "PUENTE ROJO",
+          "direccion": "SEDE GENERAL SANTANDER I.E. GENERAL SANTANDER"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "SANTA ROSA DE TAPIAS",
+          "direccion": "SEDE SANTA ROSA DE LIMA I.E. GENERAL SANTANDER"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "SONSO",
+          "direccion": "SEDE MANUELA BELTRAN I.E. SIMON BOLIVAR"
+        }
+      ]
+    },
+    {
+      "codigo": 64,
+      "nombre": "JAMUNDI",
+      "total_puestos": 38,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "CIUDELA TERRANOVA COL. COMFANDI",
+          "direccion": "CLL 13B No. 49 SUR 30"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "IE ALFREDO BONILLA MONTAÑO",
+          "direccion": "CRA 50 SUR 19-05 CIUDADELA TERRANOVA"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "IE EL RODEO",
+          "direccion": "CRA 37 SUR # 20 E -40 EL RODEO II"
+        },
+        {
+          "zona": 1,
+          "puesto": "04",
+          "nombre": "INST. EDUCATIVA JUAN PABLO II",
+          "direccion": "CLL 15 No.4-117"
+        },
+        {
+          "zona": 1,
+          "puesto": "05",
+          "nombre": "CENTRO COMERCIAL HERRERIA EL CASTILLO",
+          "direccion": "KM 21 VIA CALI - JAMUNDI"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "ESC NUESTRA SEÑORA DEL PORTAL",
+          "direccion": "CRA 3 CLL 10 SUR"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "CENTRO EDUCATIVO TECNICO INTEGRAL \"CETI\"",
+          "direccion": "TRV 6A No 3-42 LA ADRIANITA"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "ESCUELA MANUEL MARIA VILLEGAS",
+          "direccion": "CLL 9 CR 5 ESQUINA"
+        },
+        {
+          "zona": 2,
+          "puesto": "04",
+          "nombre": "ESCUELA ROSALIA MAFLA",
+          "direccion": "CRA 6 10-02 ESQ."
+        },
+        {
+          "zona": 2,
+          "puesto": "05",
+          "nombre": "ESCUELA ANGEL MARIA CAMACHO",
+          "direccion": "CLL 7 No 7-37"
+        },
+        {
+          "zona": 3,
+          "puesto": "01",
+          "nombre": "IE CIRO VELASCO",
+          "direccion": "CRA 14 No 21-10"
+        },
+        {
+          "zona": 3,
+          "puesto": "02",
+          "nombre": "IE ESPAÑA",
+          "direccion": "CRA 14 No 12-11"
+        },
+        {
+          "zona": 3,
+          "puesto": "03",
+          "nombre": "IE MANUELA BELTRAN",
+          "direccion": "CLL 11 No 13-142 CIRO VELASCO"
+        },
+        {
+          "zona": 3,
+          "puesto": "04",
+          "nombre": "ESCUELA SIMON BOLIVAR",
+          "direccion": "CRA 12 CLL 12 ESQUINA"
+        },
+        {
+          "zona": 4,
+          "puesto": "01",
+          "nombre": "CENTRO COMERCIAL ALFAGUARA",
+          "direccion": "CLL 2 No. 22-175 VIA A CHIPAYA"
+        },
+        {
+          "zona": 4,
+          "puesto": "02",
+          "nombre": "COLEGIO GIMNASIO MODERNO DEL V",
+          "direccion": "CRA 11 No 1-180"
+        },
+        {
+          "zona": 4,
+          "puesto": "03",
+          "nombre": "IE NUESTRA SEÑORA DEL ROSARIO",
+          "direccion": "CLL 9 No 10-06"
+        },
+        {
+          "zona": 4,
+          "puesto": "04",
+          "nombre": "LICEO TECNICO COMERCIAL LITECOM",
+          "direccion": "CRA 11 CLL 11 ESQUINA"
+        },
+        {
+          "zona": 90,
+          "puesto": "01",
+          "nombre": "COL. CENTRAL DE BACHILLERATO INTEGRADO",
+          "direccion": "CR. 14 No. 12-11"
+        },
+        {
+          "zona": 98,
+          "puesto": "01",
+          "nombre": "CARCEL COJAM JAMUNDI",
+          "direccion": "KM 2 VIA CORREGIMIENTO BOCAS DEL PALO"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "BOCAS DEL PALO",
+          "direccion": "ESC. ANTONIO JOSE GALAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "AMPUDIA",
+          "direccion": "ESC. JUAN DE AMPUDIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "CHAGRES",
+          "direccion": "ESC. ONCE DE NOVIEMBRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "GUACHINTE",
+          "direccion": "ESC. MARIA AUXILIADORA"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "LA LIBERIA",
+          "direccion": "ESC. GABRIELA MISTRAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "LA MESETA",
+          "direccion": "ESC. 20 DE JULIO"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "LA VENTURA",
+          "direccion": "ESC. SAGRADO CORAZON DE JESUS"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "PASO DE LA BOLSA",
+          "direccion": "ESC. MARIA INMACULADA"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "POTRERITO",
+          "direccion": "ESC. ALFONSO LOPEZ PUMAREJO"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "PUENTE VELEZ",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "QUINAMAYO",
+          "direccion": "ESC. SIXTO MARIA ROJAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "ROBLES",
+          "direccion": "ESC. SANTA CECILIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "SAN ANTONIO",
+          "direccion": "UNIDAD EDUCATIVA SAN ANTONIO"
+        },
+        {
+          "zona": 99,
+          "puesto": "31",
+          "nombre": "SAN ISIDRO",
+          "direccion": "ESC. ALFREDO BONILLA MONTAÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "SAN VICENTE",
+          "direccion": "ESC. ANTONIO SALAZAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "TIMBA",
+          "direccion": "ESC. JOSE MARIA CORDOBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "41",
+          "nombre": "VILLA COLOMBIA",
+          "direccion": "ESC. LA GRAN COLOMBIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "45",
+          "nombre": "VILLA PAZ",
+          "direccion": "I.E. CAMILO TORRES"
+        }
+      ]
+    },
+    {
+      "codigo": 67,
+      "nombre": "LA CUMBRE",
+      "total_puestos": 10,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "01",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "I.E SAN PIO X - CRA 3 2-00 ESQ"
+        },
+        {
+          "zona": 0,
+          "puesto": "02",
+          "nombre": "CABECERA MUNICIPAL (LA VENTURA)",
+          "direccion": "ESC SIMON BOLIVAR"
+        },
+        {
+          "zona": 0,
+          "puesto": "03",
+          "nombre": "CABECERA MUNICIPAL (PAVITAS)",
+          "direccion": "ESC ANTONIO NARIÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "BITACO",
+          "direccion": "I.E. LAUREANO GOMEZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "ARBOLEDAS",
+          "direccion": "ESC CRISTOBAL COLON"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "LA MARIA",
+          "direccion": "ESC RAFAEL NUÑEZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "LOMITAS",
+          "direccion": "ESC MARIA AUXILIADORA"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "JIGUALES",
+          "direccion": "ESC SANTA TERESITA"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "PAVAS",
+          "direccion": "IE GENERAL FRANCISCO DE PAULA SANTANDER"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "PUENTE PALO",
+          "direccion": "ESC JORGE ROBLEDO"
+        }
+      ]
+    },
+    {
+      "codigo": 70,
+      "nombre": "LA UNION",
+      "total_puestos": 13,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "INST.EDUC. MAGDALENA ORTEGA",
+          "direccion": "KR 14 CL 16 ESQ"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "INST.EDUC. SAN JOSE",
+          "direccion": "KR 14 CL 13"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "I.E.SIMON BOLIVAR",
+          "direccion": "CARRERA 15 No. 11 - 41"
+        },
+        {
+          "zona": 1,
+          "puesto": "04",
+          "nombre": "INST. ED. ARGEMIRO ESCOBAR CARDONA",
+          "direccion": "CALLE 14 No. 7-73 B/LAS LAJAS"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "INST.EDUC. ANTONIO NARIÑO",
+          "direccion": "CL 21 #16 14"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "CENTRO VIDA SAN PABLO",
+          "direccion": "CLL 23 # 11-84"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "ID EDELMIRA RAMIREZ",
+          "direccion": "CRA 16 No 22 - 59"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "EL LINDERO",
+          "direccion": "ESC. SANTA TERESITA"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "CORCEGA",
+          "direccion": "ESC. TRINIDAD TAMAYO"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "LA DESPENSA",
+          "direccion": "ESC. GUILLERMO VALENCIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "LA AGUADA",
+          "direccion": "ESC. ALFONSO VINASCO "
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "QUEBRADAGRANDE",
+          "direccion": "ESC. JOSE ACEVEDO Y GOMEZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "SAN LUIS",
+          "direccion": "ESC. BELISARIO CAICEDO"
+        }
+      ]
+    },
+    {
+      "codigo": 73,
+      "nombre": "LA VICTORIA",
+      "total_puestos": 7,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "IE SANTA TERESITA CR 7 No.7-40"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "HOLGUIN",
+          "direccion": "ESC. ANTONIA SANTOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "MIRAVALLES",
+          "direccion": "ESCUELA SIMON BOLIVAR CORREMIENTO MIRAVALLES"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "RIVERALTA",
+          "direccion": "ESC. CAMILO TORRES "
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "SAN JOSE",
+          "direccion": "ESC. #8 MARIANO OSPINA"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "SAN PEDRO",
+          "direccion": "ESC. JOSE MARIA CORDOBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "36",
+          "nombre": "TAGUALES",
+          "direccion": "ESC. ELPIDIA LEMOS "
+        }
+      ]
+    },
+    {
+      "codigo": 76,
+      "nombre": "OBANDO",
+      "total_puestos": 10,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "CALLE 5 CARRERA 1 Y 2 COLISEO ALVARO AGUDELO SANZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "CRUCES",
+          "direccion": "C.E. ANTONIA SANTOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "EL CHUZO",
+          "direccion": "C.E. SAN JUAN BOSCO"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "JUAN DIAZ",
+          "direccion": "C.E. SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "LA ESMERALDA",
+          "direccion": "ALFONSO LOPEZ PUMAREJO"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "MOLINA",
+          "direccion": "C.E. ARNULFO DRADA"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "PUERTO SAMARIA",
+          "direccion": "C.E. ISIDORO PAULI"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "SAN ISIDRO",
+          "direccion": "POLICARPA SALAVARRIETA"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "SAN JOSE",
+          "direccion": "C.E MERCEDES ABREGO"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "VILLA RODAS",
+          "direccion": "C.E. MARIA ANALIA ORTIZ"
+        }
+      ]
+    },
+    {
+      "codigo": 79,
+      "nombre": "PALMIRA",
+      "total_puestos": 87,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "ESC. JOSE MANUEL GROOT",
+          "direccion": "CLL 65 No 31C- 95 BARRIO ZAMORANO"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "ESC. HAROLD EDDER ZAMORANO",
+          "direccion": "KR 32 #61-96 BR ZAMORANO"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "ESC. EDUARDO SANTOS",
+          "direccion": "CL 74 #24-00 BR MONTECLARO"
+        },
+        {
+          "zona": 1,
+          "puesto": "04",
+          "nombre": "SALON COMUNAL BARRIO ALAMEDA",
+          "direccion": "CL 70 #26 A-172 BR ALAMEDA"
+        },
+        {
+          "zona": 1,
+          "puesto": "05",
+          "nombre": "ESC. ROSA ZARATE DE PEÑA",
+          "direccion": "CL 63 #38-06 BR CORONADO"
+        },
+        {
+          "zona": 1,
+          "puesto": "06",
+          "nombre": "ESC. ANTONIO LIZARAZO",
+          "direccion": "CLL 54C No 42 -12 URB CAIMITOS"
+        },
+        {
+          "zona": 1,
+          "puesto": "07",
+          "nombre": "CASA DE JUSTICIA",
+          "direccion": "CLL 57 No 44 - 22 URB CAIMITOS"
+        },
+        {
+          "zona": 1,
+          "puesto": "08",
+          "nombre": "UNIV DEL VALLE SEDE PALMIRA",
+          "direccion": "CRA 31A No 60- 135 LA CARBONERA"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "ESC. JUAN PABLO II",
+          "direccion": "CL 47 #40-41 BR JUAN PABLO II"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "ESC. CARLOS ARTURO RODRIGUEZ",
+          "direccion": "CL 51 #34B-118 BR LA BENEDICTA"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "ESC. ROSA VIRGINIA",
+          "direccion": "KR 32 #46-10 BR ESTONIA"
+        },
+        {
+          "zona": 2,
+          "puesto": "04",
+          "nombre": "COLEGIO CARDENAS MIRRIÑAO",
+          "direccion": "CL 53 con KR 29 BR MIRRIÑAO"
+        },
+        {
+          "zona": 2,
+          "puesto": "05",
+          "nombre": "I.E. HUMBERTO RAFFO RIVERA",
+          "direccion": "CL 42 #19-00 BR SAN CAYETANO"
+        },
+        {
+          "zona": 2,
+          "puesto": "06",
+          "nombre": "ESC. TERESA CALDERON DE LASSO",
+          "direccion": "CL 42 #16-60 BR LA COMETA"
+        },
+        {
+          "zona": 2,
+          "puesto": "07",
+          "nombre": "ESC RICARDO NIETO",
+          "direccion": "CRA 34A No 50-73 LA BENEDICTA"
+        },
+        {
+          "zona": 3,
+          "puesto": "01",
+          "nombre": "ESC. MIGUEL ANGEL MERCADO",
+          "direccion": "CL 37 A #37 A-00 BR LA EMILIA"
+        },
+        {
+          "zona": 3,
+          "puesto": "02",
+          "nombre": "ESC. ANTONIA SANTOS",
+          "direccion": "KR 38 #37 A-47 BR LA EMILIA"
+        },
+        {
+          "zona": 3,
+          "puesto": "03",
+          "nombre": "ESC. JORGE ELIECER GAITAN",
+          "direccion": "CL 41 #40-41 BR LA EMILIA"
+        },
+        {
+          "zona": 3,
+          "puesto": "04",
+          "nombre": "ESC. TULIO RAFFO",
+          "direccion": "CL 37A #42A-110 BR EL PRADO"
+        },
+        {
+          "zona": 3,
+          "puesto": "05",
+          "nombre": "ESC. SANTA BARBARA",
+          "direccion": "KR 40 #31A-27 BR SANTA BARBARA"
+        },
+        {
+          "zona": 3,
+          "puesto": "06",
+          "nombre": "ESC. ENELIA RIVERA",
+          "direccion": "KR40 CL30 ESQ BR RIVERA ESCOBAR"
+        },
+        {
+          "zona": 3,
+          "puesto": "07",
+          "nombre": "COLISEO CUBIERTO",
+          "direccion": "KR 35 A #27-58 BR OLIMPICO"
+        },
+        {
+          "zona": 4,
+          "puesto": "01",
+          "nombre": "COLEGIO CARDENAS CENTRO",
+          "direccion": "KR 28 #36-29 BR SANTA RITA"
+        },
+        {
+          "zona": 4,
+          "puesto": "02",
+          "nombre": "I.E. LA MILAGROSA",
+          "direccion": "KR 28 #33-12 BR SANTA RITA"
+        },
+        {
+          "zona": 4,
+          "puesto": "03",
+          "nombre": "UNIV. SANTIAGO CALI SEDE PALM",
+          "direccion": "KR 29 #38-00 BR COLOMBIA"
+        },
+        {
+          "zona": 4,
+          "puesto": "04",
+          "nombre": "ESC. JULIO CESAR ARCE",
+          "direccion": "CL 38 #32-126 BR ALFONSO LOPEZ"
+        },
+        {
+          "zona": 4,
+          "puesto": "05",
+          "nombre": "ESC. GREGORIO HERNANDEZ",
+          "direccion": "CL 34 #31-71 BR COLOMBIA"
+        },
+        {
+          "zona": 4,
+          "puesto": "06",
+          "nombre": "ESC.LA NIÑA MARIA",
+          "direccion": "CARRERA 26 No. 37 - 01 BARRIO OBRERO"
+        },
+        {
+          "zona": 5,
+          "puesto": "01",
+          "nombre": "ESC. JOSE MARIA CALVACHE",
+          "direccion": "CRA 9 E #32-14 BR SAN JOSE"
+        },
+        {
+          "zona": 5,
+          "puesto": "02",
+          "nombre": "ESC. PRAXEDES ESPINOSA",
+          "direccion": "CRA 2 #31-20 BR MUNICIPAL"
+        },
+        {
+          "zona": 5,
+          "puesto": "03",
+          "nombre": "ESC POPULAR MODELO",
+          "direccion": "CRA 4E No 33-18 MUNICIPAL"
+        },
+        {
+          "zona": 5,
+          "puesto": "04",
+          "nombre": "ESC. LUIS FERNANDO VALLEJO",
+          "direccion": "CLL 33 # 1E-85 BR MARIA CANO"
+        },
+        {
+          "zona": 5,
+          "puesto": "05",
+          "nombre": "ESC. LAS PALMERAS",
+          "direccion": "CLL 35 CRA 3 ESQ BR LAS PALMERAS"
+        },
+        {
+          "zona": 6,
+          "puesto": "01",
+          "nombre": "ESC. ALFONSO CABAL MADRIÑAN",
+          "direccion": "CLL 40 #12-11 BR PROVIDENCIA"
+        },
+        {
+          "zona": 6,
+          "puesto": "02",
+          "nombre": "ESC. SOR MARIA LUISA MOLINA",
+          "direccion": "CRA 10 #39-00 BR LA LIBERTAD"
+        },
+        {
+          "zona": 6,
+          "puesto": "03",
+          "nombre": "ESC. PAULO VI",
+          "direccion": "CLL 39 #15-26 BR SAN PEDRO"
+        },
+        {
+          "zona": 6,
+          "puesto": "04",
+          "nombre": "ESC. MERCEDES ABREGO",
+          "direccion": "CRA 13 #36-09 BR SAN PEDRO"
+        },
+        {
+          "zona": 6,
+          "puesto": "05",
+          "nombre": "ESC. ALFONSO LOPEZ PUMAREJO",
+          "direccion": "CRA 16#32-02 PARQUE BOSQUE M/PAL"
+        },
+        {
+          "zona": 7,
+          "puesto": "01",
+          "nombre": "I.E. SAN VICENTE DE PAUL",
+          "direccion": "CLL 28 #29-41 BR CENTRO"
+        },
+        {
+          "zona": 7,
+          "puesto": "02",
+          "nombre": "CASA DE LA CULTURA",
+          "direccion": "CLL 30 No 24-00 LA TRINIDAD"
+        },
+        {
+          "zona": 7,
+          "puesto": "03",
+          "nombre": "I.E. SAGRADA FAMILIA",
+          "direccion": "CRA 23 #31-06 BR LA TRINIDAD"
+        },
+        {
+          "zona": 7,
+          "puesto": "04",
+          "nombre": "I.E. MATER DEI",
+          "direccion": "CLL 28 #19-35 BR LIBERTADORES"
+        },
+        {
+          "zona": 8,
+          "puesto": "01",
+          "nombre": "ESC. MARIA MONTESORI",
+          "direccion": "CLL 24 KR 8 ESQ BR EL TRIUNFO"
+        },
+        {
+          "zona": 8,
+          "puesto": "02",
+          "nombre": "ESC. EL PARAISO",
+          "direccion": "CRA 5C #25 T-17 BR EL PARAISO"
+        },
+        {
+          "zona": 9,
+          "puesto": "02",
+          "nombre": "ESC. DOMINGO IRURITA",
+          "direccion": "CLL 23 No 33A-37 B/ LOS ROBLES"
+        },
+        {
+          "zona": 9,
+          "puesto": "03",
+          "nombre": "CENTRO ALFONSO LOPEZ",
+          "direccion": "CRA 25 #21-52 BR EL RECREO"
+        },
+        {
+          "zona": 9,
+          "puesto": "04",
+          "nombre": "SALON COMUNAL BARRIO INDEPENDENCIA",
+          "direccion": "CRA 30 No 18-37 LA INDEPENDENCIA"
+        },
+        {
+          "zona": 9,
+          "puesto": "05",
+          "nombre": "ESC. MARIA ANTONIA PENAGOS",
+          "direccion": "CRA 31 No 15 A-41 BR CHAPINERO"
+        },
+        {
+          "zona": 10,
+          "puesto": "01",
+          "nombre": "ESC. SUSANA LOPEZ DE VALENCIA",
+          "direccion": "CRA 26 #11-48 BR SESQUICENTENARIO"
+        },
+        {
+          "zona": 10,
+          "puesto": "02",
+          "nombre": "COLISEO DE FERIAS",
+          "direccion": "CRA 24 No 19-00 BARRIO EL SEMBRADOR"
+        },
+        {
+          "zona": 10,
+          "puesto": "03",
+          "nombre": "UNIVERSIDAD NAL. SEDE PALMIRA",
+          "direccion": "CRA 32 No 12 - 00 VIA CANDELARIA"
+        },
+        {
+          "zona": 10,
+          "puesto": "04",
+          "nombre": "MEGACOLEGIO DEL SUR",
+          "direccion": "CLL 5 No 29 -107"
+        },
+        {
+          "zona": 90,
+          "puesto": "01",
+          "nombre": "UNIVERSIDAD ANTONIO NARIÑO",
+          "direccion": "AV 42 CARRERA 47 ESQUINA BARRIO LLANOGRANDE"
+        },
+        {
+          "zona": 98,
+          "puesto": "01",
+          "nombre": "CARCEL",
+          "direccion": "CL 23 KR 38 VIA AL I.C.A"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "LA ACEQUIA",
+          "direccion": "ESC. JULIA LOPEZ DE ESCOBAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "LA TORRE",
+          "direccion": "ESC. JOSE ASUNCION SILVA"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "ROZO ROGELIO VASQUEZ NIEVA",
+          "direccion": "I.E. ROGELIO VASQUEZ NIEVA"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "ROZO CARDENAS DE ROZO",
+          "direccion": "IE CARDENAS DE ROZO"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "LA HERRADURA",
+          "direccion": "ESC. JOSE MARIA CABAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "MATAPALO",
+          "direccion": "ESC. MANUELA BELTRAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "16",
+          "nombre": "OBANDO",
+          "direccion": "ESC. JOSE MARIA OBANDO"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "PALMASECA",
+          "direccion": "ESC. JOSE MARIA VIVAS BALCAZAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "22",
+          "nombre": "CAUCASECO",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "GUANABANAL",
+          "direccion": "ESC. SEBASTIAN DE BELALCAZAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "31",
+          "nombre": "LA DOLORES",
+          "direccion": "ESC. LA DOLORES"
+        },
+        {
+          "zona": 99,
+          "puesto": "36",
+          "nombre": "BOLO ALIZAL",
+          "direccion": "ESC. ANTONIO JOSE DE SUCRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "BOLO LA ITALIA",
+          "direccion": "ESC. LUIS EDUARDO NIETO CABALLERO"
+        },
+        {
+          "zona": 99,
+          "puesto": "40",
+          "nombre": "BOLO SAN ISIDRO",
+          "direccion": "ESC. MONS. JOSE MANUEL SALCEDO"
+        },
+        {
+          "zona": 99,
+          "puesto": "41",
+          "nombre": "AMAIME",
+          "direccion": "ESC. VASCO NUÑEZ DE BALBOA"
+        },
+        {
+          "zona": 99,
+          "puesto": "42",
+          "nombre": "BOYACA",
+          "direccion": "ESC. RODRIGO DE BASTIDAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "43",
+          "nombre": "LA PAMPA",
+          "direccion": "ESC. HELIODORO VILLEGAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "44",
+          "nombre": "BARRANCAS",
+          "direccion": "ESC. VICTOR MANUEL HOYOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "45",
+          "nombre": "GUAYABAL",
+          "direccion": "ESC. SANTA CATALINA"
+        },
+        {
+          "zona": 99,
+          "puesto": "46",
+          "nombre": "TABLONES",
+          "direccion": "ESC. DEPARTAMENTAL DE TABLONES"
+        },
+        {
+          "zona": 99,
+          "puesto": "47",
+          "nombre": "TIENDANUEVA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "49",
+          "nombre": "AGUACLARA",
+          "direccion": "ESC. SAN JUAN BAUTISTA"
+        },
+        {
+          "zona": 99,
+          "puesto": "50",
+          "nombre": "AYACUCHO (LA BUITRERA)",
+          "direccion": "INST. EDUC. FRANCISCO MIRANDA"
+        },
+        {
+          "zona": 99,
+          "puesto": "55",
+          "nombre": "CHONTADURO",
+          "direccion": "ESC. MARIA AUXILIADORA"
+        },
+        {
+          "zona": 99,
+          "puesto": "58",
+          "nombre": "LA ZAPATA",
+          "direccion": "ESC JORGE ROBLEDO"
+        },
+        {
+          "zona": 99,
+          "puesto": "61",
+          "nombre": "COMBIA",
+          "direccion": "ESC. ATANASIO GIRARDOT"
+        },
+        {
+          "zona": 99,
+          "puesto": "64",
+          "nombre": "TOCHE",
+          "direccion": "ESC. MIGUEL LOPEZ MUÑOZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "67",
+          "nombre": "CALUCE",
+          "direccion": "ESC. LUIS MARIA GONGORA"
+        },
+        {
+          "zona": 99,
+          "puesto": "70",
+          "nombre": "LA QUISQUINA",
+          "direccion": "ESC. PEDRO DE HEREDIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "73",
+          "nombre": "POTRERILLO",
+          "direccion": "I.E SAGRADA FAMILIA-POTRERILLO"
+        },
+        {
+          "zona": 99,
+          "puesto": "76",
+          "nombre": "TENJO",
+          "direccion": "ESC. JOSE ANTONIO ANZOATEGUI"
+        },
+        {
+          "zona": 99,
+          "puesto": "77",
+          "nombre": "JUANCHITO JULIA SAAVEDRA DE VILLAFANE",
+          "direccion": "ESC. JULIA SAAVEDRA DE VILLAFAÑE"
+        },
+        {
+          "zona": 99,
+          "puesto": "78",
+          "nombre": "JUANCHITO - CIUDAD DEL CAMPO",
+          "direccion": "COL. CIUDAD DEL CAMPO"
+        }
+      ]
+    },
+    {
+      "codigo": 82,
+      "nombre": "PRADERA",
+      "total_puestos": 32,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "COLEGIO ATENEO SEDE PRINCIPAL",
+          "direccion": "CL 6 #9-18"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "ESCUELA BENJAMIN VALENCIA",
+          "direccion": "CLL 5 #4-77"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "SEDE IMDER PRADERA",
+          "direccion": "CLL 3 CRA 5 ESQ"
+        },
+        {
+          "zona": 1,
+          "puesto": "04",
+          "nombre": "ESCUELA SAN JUAN BOSCO",
+          "direccion": "CRA 9 No 3-35"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "ESCUELA SANTA ISABEL",
+          "direccion": "CL 6 CRA 12 ESQ"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "COLEGIO FRANCISCO ANTONIO ZEA",
+          "direccion": "CL 6 KR 17 ESQ"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "ESCUELA LEONIDAS MOSQUERA",
+          "direccion": "CL 10 #3-107"
+        },
+        {
+          "zona": 2,
+          "puesto": "04",
+          "nombre": "ESCUELA BELLO HORIZONTE",
+          "direccion": "CLL 11 KR 15 ESQUINA"
+        },
+        {
+          "zona": 90,
+          "puesto": "01",
+          "nombre": "COLEGIO ANTONIO RICAURTE",
+          "direccion": "CL 6 KR 15 ESQ"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "BOLIVAR",
+          "direccion": "ESC. SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "BOLO AZUL",
+          "direccion": "ESC. PRESBITERO MANUEL JOSE"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "BOLO BLANCO",
+          "direccion": "ESC. SAN JULIAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "BOLO NEGRO (LA FERIA)",
+          "direccion": "ESC. GREGORIO RAMOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "EL ARENILLO",
+          "direccion": "ESC. SIMBAD ARTURO BUENO"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "EL HARTONAL",
+          "direccion": "ESC. JOSE MARIA VIVAS BELALCAZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "EL LIBANO",
+          "direccion": "ESC. JOSE CELESTINO MUTIS"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "EL NOGAL",
+          "direccion": "ESC. ANTONIA SANTOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "EL RECREO",
+          "direccion": "ESC. GABRIEL GARCIA MARQUEZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "EL RETIRO",
+          "direccion": "ESC. MERCEDES ABREGO"
+        },
+        {
+          "zona": 99,
+          "puesto": "27",
+          "nombre": "LA FLORESTA",
+          "direccion": "ESC. ELENA ROMERO DE MARTINEZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "28",
+          "nombre": "LA FRIA",
+          "direccion": "ESC. ATANASIO GIRARDOT"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "LA GRANJA",
+          "direccion": "ESC. DOLORES BUENO DE TEJADA"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "LA RUIZA",
+          "direccion": "HACIENDA LA RUIZA"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "LA TUPIA",
+          "direccion": "ESC.POLICARPA SALAVARRIETA"
+        },
+        {
+          "zona": 99,
+          "puesto": "39",
+          "nombre": "LA CARBONERA",
+          "direccion": "ESC. JORGE ELIECER GAITAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "41",
+          "nombre": "LOMITAS",
+          "direccion": "COL FRANCISCO ANTONIO ZEA"
+        },
+        {
+          "zona": 99,
+          "puesto": "44",
+          "nombre": "LOS PINOS",
+          "direccion": "ESC. ALFONSO LOPEZ PUMAREJO"
+        },
+        {
+          "zona": 99,
+          "puesto": "49",
+          "nombre": "PARRAGA",
+          "direccion": "CASA LA AVELINA"
+        },
+        {
+          "zona": 99,
+          "puesto": "53",
+          "nombre": "POTRERITO",
+          "direccion": "ESC. BLASS DE LESSO"
+        },
+        {
+          "zona": 99,
+          "puesto": "55",
+          "nombre": "SAN ANTONIO",
+          "direccion": "ESC. SAN ANTONIO"
+        },
+        {
+          "zona": 99,
+          "puesto": "57",
+          "nombre": "SAN ISIDRO",
+          "direccion": "ESC. MARCO FIDEL SUAREZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "67",
+          "nombre": "VALLECITO",
+          "direccion": "ESC. FRANCISCO DE PAULA SANTANDER"
+        }
+      ]
+    },
+    {
+      "codigo": 85,
+      "nombre": "RESTREPO",
+      "total_puestos": 14,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "CLL 6 No 16B-27"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "BAJO ZABALETAS",
+          "direccion": "ESC.JOSE ACEVEDO Y GOMEZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "EL DIAMANTE",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "ILAMA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "AGUA MONA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "LA PALMA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "MADROÑAL",
+          "direccion": "ESC GUILLERMO LEON VALENCIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "RIOBRAVO",
+          "direccion": "CASETA COMUNAL SECTOR CAMPO ALEGRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "RIOGRANDE",
+          "direccion": "CENTRO DOC.20 DE JULIO"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "ROMAN",
+          "direccion": "ESC. SAN ROMAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "SAN SALVADOR",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "LOS HISPANOS",
+          "direccion": "CENTRO DOC.ISABEL NAGETH ARIZA"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "TRAGEDIAS",
+          "direccion": "FINCA LAS VERANERAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "50",
+          "nombre": "TRES PUERTAS",
+          "direccion": "CASETA COMUNAL"
+        }
+      ]
+    },
+    {
+      "codigo": 88,
+      "nombre": "RIOFRIO",
+      "total_puestos": 9,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "ESCUELA PEDRO MARIA MARMOLEJO"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "EL RUBI",
+          "direccion": "ESCUELA PUBLICA VEREDA COROZAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "FENICIA",
+          "direccion": "INSTITUCIÓN EDUCATIVA NEMESIO RODRIGUEZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "LA CUCHILLA",
+          "direccion": "ESCUELA GRAN COLOMBIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "LA ZULIA",
+          "direccion": "INSTITUCIÓN EDUCATIVA CAMILO TORRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "MADRIGAL",
+          "direccion": "ESCUELA PUBLICA MELIDA CRUZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "PIEDRAS",
+          "direccion": "ESCUELA PUBLICA LA CARMELITA"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "PORTUGAL",
+          "direccion": "GUARDERIA INFANTIL"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "SALONICA",
+          "direccion": "COL JOSE MARIA CORDOBA"
+        }
+      ]
+    },
+    {
+      "codigo": 91,
+      "nombre": "ROLDANILLO",
+      "total_puestos": 31,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "IE BELISARIO PEÑA PIÑEIRO",
+          "direccion": "CALLE 11 CARRERA 6 Y 7"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "I.E.B.P.P. SEDE DIVINO NIÑO",
+          "direccion": "CRA 2N # 7 A ESQUINA"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "IE NORMAL SUPERIOR JORGE ISAAC",
+          "direccion": "CRA 7 B No 15-70"
+        },
+        {
+          "zona": 1,
+          "puesto": "04",
+          "nombre": "THOMAS IGNACIO ESQUIVEL",
+          "direccion": "CRA 3 A # 7 B - 31 - BARRIO 3 DE MAYO"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "IE NUESTRA SEÑORA DE CHINQUINQUIRA",
+          "direccion": "CALLE 4 No 5-38"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "IE JOHN F KENEDDY",
+          "direccion": "CLL 4 No 8 - 12"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "ESC NOR. SUP. JORGE ISAAC SD L.MADRID",
+          "direccion": "CRA 11B No 1B-1"
+        },
+        {
+          "zona": 98,
+          "puesto": "01",
+          "nombre": "CARCEL",
+          "direccion": "CL 7 #6-53 CENTRO"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "CAJAMARCA",
+          "direccion": "ESC. Rural Santa. Lucía"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "BELGICA",
+          "direccion": "ESC. Rural San Isidro"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "EL AGUACATE",
+          "direccion": "ESC. Rural Sede Belisario Peña"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "EL HOBO",
+          "direccion": "ESC. Rural Miguel A. Caro"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "EL RETIRO",
+          "direccion": "ESC. Rural La Paz"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "BUENAVISTA",
+          "direccion": "ESC. Rural Gerardo Bueno"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "HIGUERONCITO",
+          "direccion": "Esc. Heliodoro Peña"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "ISUGU",
+          "direccion": "ESC. Rural J. J. Jaramillo"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "LA CANDELARIA",
+          "direccion": "ESC. Rural Maria Auxiliadora #"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "LA MONTAÑUELA",
+          "direccion": "ESC. Rural Santa Isabel"
+        },
+        {
+          "zona": 99,
+          "puesto": "12",
+          "nombre": "MATADEGUADUA",
+          "direccion": "ESC. Rural Ntra Sra. Del Carme"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "MORELIA",
+          "direccion": "ESC. Rural Jose Acevedo y Góme"
+        },
+        {
+          "zona": 99,
+          "puesto": "14",
+          "nombre": "EL CASCARILLO",
+          "direccion": "ESC. Rural Gabriela Mistal"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "EL CIRUELO",
+          "direccion": "ESC. Rural Santa Ana"
+        },
+        {
+          "zona": 99,
+          "puesto": "16",
+          "nombre": "EL PIE",
+          "direccion": "ESC. Rural Francisco José de Caldas"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "PUERTO QUINTERO",
+          "direccion": "Esc. Antonia Santos"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "EL SILENCIO",
+          "direccion": "ESC. Rural Jose Eustacio Rivera"
+        },
+        {
+          "zona": 99,
+          "puesto": "20",
+          "nombre": "SANTA RITA",
+          "direccion": "ESC. Rural Satélite Belisario"
+        },
+        {
+          "zona": 99,
+          "puesto": "22",
+          "nombre": "EL CASTILLO",
+          "direccion": "ESC. Rural Santa Cecilia"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "GUAYABAL",
+          "direccion": "ESC. Rural Jose María Erazo #3"
+        },
+        {
+          "zona": 99,
+          "puesto": "30",
+          "nombre": "LA ARMENIA",
+          "direccion": "ESC. Rural Camilo Torres"
+        },
+        {
+          "zona": 99,
+          "puesto": "35",
+          "nombre": "REMOLINO",
+          "direccion": "ESC. Rural San Jose #35"
+        },
+        {
+          "zona": 99,
+          "puesto": "40",
+          "nombre": "TIERRABLANCA",
+          "direccion": "ESC. Rural Marco Fidel Suárez"
+        }
+      ]
+    },
+    {
+      "codigo": 94,
+      "nombre": "SAN PEDRO",
+      "total_puestos": 15,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "01",
+          "nombre": "COLISEO LUIS MARIO LOPEDA",
+          "direccion": "COLISEO LUIS MARIO LOPEDA CRA 6 S N 1"
+        },
+        {
+          "zona": 0,
+          "puesto": "02",
+          "nombre": "IE JOSE ANTONIO AGUILERA",
+          "direccion": "CRA 6 No 6-67"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "BUENOS AIRES",
+          "direccion": "IE JULIO CAICEDO TELLEZ SD PPAL SECUNDARIA Y MEDIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "ANGOSTURAS",
+          "direccion": "ESC. MARIA ANTONIA SANTOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "GUAQUEROS",
+          "direccion": "ESC. ANTONIO CARO"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "LA ESMERALDA (ESMERALDAS)",
+          "direccion": "ESC. JORGE ELIECER GAITAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "GUAYABAL",
+          "direccion": "ESC. SAN JUDAS TADEO"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "LA SIRIA",
+          "direccion": "ESC. SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "LOS CHANCOS",
+          "direccion": "ESC. ALEJANDRO HENAO"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "NARANJAL",
+          "direccion": "ESCUELA JOSE DEMETRIO GARCIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "PAVAS",
+          "direccion": "PAVAS FINCA LAS BRISAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "PLATANARES",
+          "direccion": "ESC FRANCISCO ANTONIO ZEA"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "PRESIDENTE",
+          "direccion": "ESC. MIGUEL ANTONIO CARO"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "SAN JOSE",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "TODOS SANTOS",
+          "direccion": "ESCUELA GABRIELA MISTRAL"
+        }
+      ]
+    },
+    {
+      "codigo": 97,
+      "nombre": "SEVILLA",
+      "total_puestos": 33,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "COLEG. LICEO MIXTO",
+          "direccion": "CL 48 # 50-69"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "ESC. MARIA INMACULADA",
+          "direccion": "CL 51 #48-16 CENTRO"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "ESCUELA HUGO TORO ECHEVERRY",
+          "direccion": "KR 47 #52-51 CENTRO"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "ESC. ARMANDO ROMERO",
+          "direccion": "CRA 48 CLL 62 ESQ."
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "IE SEVILLA - SEDE ANTONIA SANTOS",
+          "direccion": "CL 55 KR 53 ESQ"
+        },
+        {
+          "zona": 90,
+          "puesto": "01",
+          "nombre": "COLISEO DEP. MUNICIPAL OSCAR JARAM",
+          "direccion": "KR 48 CL 53"
+        },
+        {
+          "zona": 98,
+          "puesto": "01",
+          "nombre": "CARCEL",
+          "direccion": "CARCEL CAR 50 CL 62 PUYANA"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "ALEGRIAS",
+          "direccion": "ESC. SAN GERARDO"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "CANOAS",
+          "direccion": "ESC. LA MAGDALENA"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "BAJO CONGAL",
+          "direccion": "ESCUELA SANTA ISABEL"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "CEBOLLAL",
+          "direccion": "ESC. LA BETULIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "COLORADAS",
+          "direccion": "COLEGIO SATELITE COLORADAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "COMINALES",
+          "direccion": "ESC. SANTA LUCIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "COROZAL",
+          "direccion": "ESC. SANTA BARBARA"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "CRISTALES",
+          "direccion": "ESC. NUEVA GRANADA"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "CUMBARCO",
+          "direccion": "ESC. SANTA MARTA"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "EL VENADO",
+          "direccion": "CENTRO DE SALUD"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "ESTACION CAICEDONIA",
+          "direccion": "ESC. NUESTRA SEÑORA DE FATIMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "LA ASTELIA",
+          "direccion": "ESC. SANTA MATILDE"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "LA CUCHILLA",
+          "direccion": "ESC. JORGE ELIECER GAITAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "LA ESTRELLA (LA MONEDA)",
+          "direccion": "ESC. SANTA ANA"
+        },
+        {
+          "zona": 99,
+          "puesto": "35",
+          "nombre": "LA MELBA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "36",
+          "nombre": "LA RAQUELITA",
+          "direccion": "PORTAL TIENDA CASA #2"
+        },
+        {
+          "zona": 99,
+          "puesto": "38",
+          "nombre": "LAS BRISAS",
+          "direccion": "ESC. JOSE MARIA CARBONEL"
+        },
+        {
+          "zona": 99,
+          "puesto": "41",
+          "nombre": "MANZANILLO",
+          "direccion": "ESC. ANTONIO RICAURTE"
+        },
+        {
+          "zona": 99,
+          "puesto": "46",
+          "nombre": "MORRO AZUL",
+          "direccion": "ESC. FRAY BARTOLOME DE LAS CASAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "49",
+          "nombre": "PALOMINO",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "50",
+          "nombre": "QUEBRADA NUEVA",
+          "direccion": "ESCUELA SATELITE QUEBRADA NUEVA"
+        },
+        {
+          "zona": 99,
+          "puesto": "52",
+          "nombre": "PALMICHAL",
+          "direccion": "ESC. CAMILO TORRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "53",
+          "nombre": "SAN ANTONIO",
+          "direccion": "ESC. SANTA TERESITA DEL NIÑO JESUS"
+        },
+        {
+          "zona": 99,
+          "puesto": "55",
+          "nombre": "SAN MARCOS",
+          "direccion": "ESC. BENJAMIN HERRERA"
+        },
+        {
+          "zona": 99,
+          "puesto": "56",
+          "nombre": "TOTORO",
+          "direccion": "ESC. DOCE DE OCTUBRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "57",
+          "nombre": "TRES ESQUINAS",
+          "direccion": "ESC. CRISTOBAL COLON"
+        }
+      ]
+    },
+    {
+      "codigo": 100,
+      "nombre": "TORO",
+      "total_puestos": 12,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "CRA.3 No.6-19,I.E.NUESTRA SRA. DE LA CONSOLACION"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "SAN FRANCISCO",
+          "direccion": "COL SATELITE NUESTRA SEÑORA DE FATIMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "LA PRADERA",
+          "direccion": "ESCUELA MIXTA GUILLERMO LEON VALENCIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "SAN ANTONIO",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "EL CEDRO",
+          "direccion": "ESCUELA MIXTA SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "VENTAQUEMADA",
+          "direccion": "ESCUELA MIXTA CAICEDO Y CUERO"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "LA CONSOLIDA",
+          "direccion": "ESCUELA MIXTA  MARIANO OSPINA PEREZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "LA QUIEBRA",
+          "direccion": "ESCUELA MIXTA JOSE MARIA CORDOBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "BOHIO",
+          "direccion": "ESCUELA MIXTA SAN JUAN BOSCO"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "LA ROBLEDA",
+          "direccion": "ESCUELA MIXTA RESTREPO MEJIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "60",
+          "nombre": "PATIO BONITO",
+          "direccion": "ESCUELA MIXTA CRISTOBAL COLON"
+        },
+        {
+          "zona": 99,
+          "puesto": "80",
+          "nombre": "SAN JOSE",
+          "direccion": "ESCUELA MIXTA SAN JOSE DE LOS OSOS"
+        }
+      ]
+    },
+    {
+      "codigo": 103,
+      "nombre": "TRUJILLO",
+      "total_puestos": 17,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "01",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "COLISEO LEONEL GARCIA RESTREPO"
+        },
+        {
+          "zona": 0,
+          "puesto": "02",
+          "nombre": "CABECERA MUNICIPAL (PUEBLO NUEVO)",
+          "direccion": "CENTRO DE CAPACITACION ALFONSO LOPEZ PUMAREJO"
+        },
+        {
+          "zona": 0,
+          "puesto": "03",
+          "nombre": "CABECERA MUNICIPAL (LA CUCHILLA)",
+          "direccion": "ESCUELA ELIAS ENRIQUE QUIJANO"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "ALTO DE PAEZ",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "ANDINAPOLIS",
+          "direccion": "I.E. ANTONIO JOSE DE SUCRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "BAJO CACERES",
+          "direccion": "ESC. CARLOS E. RESTREPO"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "CRISTALES",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "DOS QUEBRADAS",
+          "direccion": "ESC. JOSE MARIA CORDOBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "EL TABOR",
+          "direccion": "INST. EDUCATIVA SAN ISIDRO"
+        },
+        {
+          "zona": 99,
+          "puesto": "12",
+          "nombre": "LA BOHEMIA",
+          "direccion": "ESC. SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "HUASANO",
+          "direccion": "COL. PANTALEON DE LA TORRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "14",
+          "nombre": "LA SONORA",
+          "direccion": "ESCUELA JUAN XXIII"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "ROBLEDO",
+          "direccion": "COL JORGE ROBLEDO"
+        },
+        {
+          "zona": 99,
+          "puesto": "18",
+          "nombre": "LA SOLEDAD",
+          "direccion": "ESC. ANTONIO NARIÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "LA MARINA",
+          "direccion": "ESC. MARCO FIDEL SUAREZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "SAN ISIDRO",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "VENECIA",
+          "direccion": "I.E. CRISTOBAL COLON"
+        }
+      ]
+    },
+    {
+      "codigo": 106,
+      "nombre": "TULUA",
+      "total_puestos": 65,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "IE GIMNASIO DEL PACIFICO SD PRINCIPAL",
+          "direccion": "CL 34 KR 36"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "IE MARIA ANTONIA RUIZ S.PRINCIPAL",
+          "direccion": "CLL 29 No 30-61"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "ESC. DEBORA GUERRERO LOZANO",
+          "direccion": "DIAG. BASE AEREA ANTINARCOTICOS - 30 MTS"
+        },
+        {
+          "zona": 1,
+          "puesto": "04",
+          "nombre": "I.E.G.P SEDE  JOSE JOAQUIN JARAMILLO",
+          "direccion": "CLL 33 # 34-00"
+        },
+        {
+          "zona": 1,
+          "puesto": "05",
+          "nombre": "I.E.M.A.R SEDE EL JAZMIN",
+          "direccion": "KR  44 CL 28B"
+        },
+        {
+          "zona": 1,
+          "puesto": "06",
+          "nombre": "I.E.J.R SEDE MARIA LUISA ROMAN",
+          "direccion": "CRA 36 # 27 - 81"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "IE JULIA RESTREPO S.PRINCIPAL",
+          "direccion": "CLL 27 No 33-42"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "I.E.J.R SEDE SANTA CLARA",
+          "direccion": "CL 22 No 33 A 03"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "I.E.C.V SEDE GUILLERMO E MARTINEZ",
+          "direccion": "CLL 16 No 28E 24"
+        },
+        {
+          "zona": 2,
+          "puesto": "04",
+          "nombre": "ESCUELA MERCANTIL",
+          "direccion": "CLL 13A KR 38C"
+        },
+        {
+          "zona": 2,
+          "puesto": "05",
+          "nombre": "I.E.C.V. SEDE SAN ANTONIO",
+          "direccion": "KR 28 BIS CL 14"
+        },
+        {
+          "zona": 2,
+          "puesto": "06",
+          "nombre": "I.E.C.V SEDE SAN JUDAS TADEO",
+          "direccion": "KR 28A CL 17"
+        },
+        {
+          "zona": 3,
+          "puesto": "01",
+          "nombre": "COL SAGRADO CORAZON DE JESUS",
+          "direccion": "CR 25 NO 24-47"
+        },
+        {
+          "zona": 3,
+          "puesto": "02",
+          "nombre": "CASA DE CULTURA \"ENRRIQUE URIBE WHITE\"",
+          "direccion": "CRA 26 # 24 - 28"
+        },
+        {
+          "zona": 3,
+          "puesto": "03",
+          "nombre": "IE CORAZON DEL VALLE TOMAS URIBE URIBE",
+          "direccion": "KR 27 No. 22 17"
+        },
+        {
+          "zona": 3,
+          "puesto": "04",
+          "nombre": "I.E.C.V.S JOSE ANTONIO GALAN",
+          "direccion": "KR 24 No 20A 60"
+        },
+        {
+          "zona": 3,
+          "puesto": "05",
+          "nombre": "I.E.C.V SEDE MARIA INMACULADA",
+          "direccion": "KR 23 No 21 73"
+        },
+        {
+          "zona": 4,
+          "puesto": "01",
+          "nombre": "I.E.G.P SEDE JULIA BECERRA",
+          "direccion": "CL 34 KR 22"
+        },
+        {
+          "zona": 4,
+          "puesto": "02",
+          "nombre": "U.VALLE SEDE PRINCIPE",
+          "direccion": "CR 22 No. 42-01"
+        },
+        {
+          "zona": 4,
+          "puesto": "03",
+          "nombre": "I.E.M.A.R SEDE FRANCISCO JOSE DE CALDAS",
+          "direccion": "KR 27 CL 37C ESQUINA"
+        },
+        {
+          "zona": 4,
+          "puesto": "04",
+          "nombre": "I.E.M.A.R. SD FORM. DEPOR OSMIRO COLONIA",
+          "direccion": "CRA. 26A No. 40-37"
+        },
+        {
+          "zona": 4,
+          "puesto": "05",
+          "nombre": "COLEGIO COMFANDI TULUA",
+          "direccion": "CLL 39A No 20A-21"
+        },
+        {
+          "zona": 5,
+          "puesto": "01",
+          "nombre": "I.E.A.L.P SINDICAL ANTONIO NARIÑO",
+          "direccion": "CLL 26B No 16-15"
+        },
+        {
+          "zona": 5,
+          "puesto": "02",
+          "nombre": "I.E.A.L.P MARIA JOSEFA HORMAZA",
+          "direccion": "CLL 26 N. 15-80"
+        },
+        {
+          "zona": 5,
+          "puesto": "03",
+          "nombre": "I.E.A.L.P SEDE JUAN DEL CORRAL",
+          "direccion": "CRA. 10 N. 26A - 29"
+        },
+        {
+          "zona": 5,
+          "puesto": "04",
+          "nombre": "I.E.M.A.R  SEDE ATANASIO GIRARDOT",
+          "direccion": "CLL 32 A N. 18-57"
+        },
+        {
+          "zona": 6,
+          "puesto": "01",
+          "nombre": "IE MODERNA DE TULUA SD PPAL LIC. MODERNO",
+          "direccion": "CLL 27 No 6AW-240"
+        },
+        {
+          "zona": 6,
+          "puesto": "02",
+          "nombre": "I.E.A.L.P SEDE RUBEN CRUZ VELEZ",
+          "direccion": "CL 21 No. 13 22"
+        },
+        {
+          "zona": 6,
+          "puesto": "03",
+          "nombre": "I.E.J.M.C SEDE FRAY MARTIN DE PORRES",
+          "direccion": "KR 22 CL 16 ESQUINA"
+        },
+        {
+          "zona": 7,
+          "puesto": "01",
+          "nombre": "I.E.J.M.C SEDE JHON F KENNEDY",
+          "direccion": "CALLE 14 CRA 15 ESQUINA"
+        },
+        {
+          "zona": 7,
+          "puesto": "02",
+          "nombre": "COL OCCIDENTE SEDE PRINCIPAL",
+          "direccion": "DIAGONAL 23 CON CLL 18 ESQUINA"
+        },
+        {
+          "zona": 7,
+          "puesto": "03",
+          "nombre": "I.E.M.T. SEDE MARINO DAVALOS GRISALES",
+          "direccion": "CL 21A KR 8 ESQUINA"
+        },
+        {
+          "zona": 8,
+          "puesto": "01",
+          "nombre": "IE JUAN MARIA CESPEDES SEDE PRINCIPAL",
+          "direccion": "CLL 7 No 18 - 33"
+        },
+        {
+          "zona": 8,
+          "puesto": "02",
+          "nombre": "I.E.M.T SEDE URBANA MARIA GORETTY",
+          "direccion": "TRANS. 10 DIAG. 22 ESQUINA"
+        },
+        {
+          "zona": 8,
+          "puesto": "03",
+          "nombre": "I.E.J.M.C SD MONS. MIGUEL ANGEL ZUÑIGA",
+          "direccion": "KR  23 No 3A 13"
+        },
+        {
+          "zona": 8,
+          "puesto": "04",
+          "nombre": "I.E.A.L.P SEDE MARCELINO GILIBERT",
+          "direccion": "KR  23 No. 13B ESQUINA"
+        },
+        {
+          "zona": 8,
+          "puesto": "05",
+          "nombre": "IE. ALFONSO LOPEZ PUMAREJO",
+          "direccion": "CRA. 23 N. 14-54"
+        },
+        {
+          "zona": 90,
+          "puesto": "01",
+          "nombre": "PUESTO CENSO",
+          "direccion": "CRA22 #45-49 COLISEO BENICIO ECHEVERRY"
+        },
+        {
+          "zona": 98,
+          "puesto": "01",
+          "nombre": "CARCEL",
+          "direccion": "CRA 29 # 15 ESQUINA"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "CAMPOALEGRE",
+          "direccion": "IE JULIA RESTREPO SEDE JULIO PEDROZA"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "NARIÑO",
+          "direccion": "UNIDAD DOCENTE JOVITA SANTA COLOMA SD PRINCIPAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "SAN CARLOS",
+          "direccion": "SAN CARLOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "BOCAS DE TULUA",
+          "direccion": "I.E JULIO CESAR ZULUAGA SD CAMILO TORRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "LA PALMERA",
+          "direccion": "I.E JULIO CESAR ZULUAGA SD FRANCISCO MARIA LOZANO"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "TRES ESQUINAS",
+          "direccion": "I.E JULIO CESAR ZULUAGA SD SIMON BOLIVAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "LOS CAIMOS",
+          "direccion": "I.E JULIO CESAR ZULUAGA SD JUAN JOSE SANCHEZ CABAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "EL PICACHO",
+          "direccion": "I.E LA MARINA SD LUIS IGNACIO LIBREROS"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "LA IBERIA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "LA MARINA",
+          "direccion": "I.E LA MARINA SD JOSE ANTONIO PAEZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "12",
+          "nombre": "MATEGUADUA",
+          "direccion": "IE GIMNASIO DEL PACIFICO SD LA MARIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "SAN LORENZO",
+          "direccion": "IE LA MARINA SD ANTONIO NARIÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "14",
+          "nombre": "LA MORALIA",
+          "direccion": "IE LA MORALIA SD PRINCIPAL ATANASIO GIRARDOT"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "VENUS",
+          "direccion": "IE LA MORALIA SEDE GUILLERMO VALENCIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "16",
+          "nombre": "FRAZADAS",
+          "direccion": "IE SAN RAFAEL SD JOSE MARIA CORDOBA"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "SAN RAFAEL",
+          "direccion": "IE SAN RAFAEL SD PRINCIPAL PEDRO PABLO PRIAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "18",
+          "nombre": "LA DIADEMA",
+          "direccion": "IE LA MORALIA SD JUAN MARIA CESPEDES"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "MONTELORO",
+          "direccion": "IE MONTELORO SD PRINCIPAL SAN VICENTE DE PAUL"
+        },
+        {
+          "zona": 99,
+          "puesto": "20",
+          "nombre": "JICARAMATA",
+          "direccion": "IE MONTELORO SD NUESTRA SEÑORA DE FATIMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "EL RETIRO",
+          "direccion": "IE ALTO ROCIO SD SANTA MANUELA"
+        },
+        {
+          "zona": 99,
+          "puesto": "22",
+          "nombre": "QUEBRADAGRANDE",
+          "direccion": "IE SAN RAFAEL SD AMALIA LOPEZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "TOCHECITO",
+          "direccion": "IE ALTO ROCIO SD CRISTOBAL COLON"
+        },
+        {
+          "zona": 99,
+          "puesto": "24",
+          "nombre": "BARRAGAN",
+          "direccion": "IE SAN JUAN DE BARRAGAN SD PRINCIPAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "SANTA LUCIA",
+          "direccion": "IE SAN JUAN DE BARRAGAN SD SAN FRANCISCO"
+        },
+        {
+          "zona": 99,
+          "puesto": "26",
+          "nombre": "AGUACLARA",
+          "direccion": "I E AGUACLARA SEDE PRINCIPAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "27",
+          "nombre": "AGUACLARA NUESTRA SEÑORA DEL CARMEN",
+          "direccion": "I E AGUACLARA SEDE NUESTRA SEÑORA DEL CARMEN"
+        }
+      ]
+    },
+    {
+      "codigo": 109,
+      "nombre": "ULLOA",
+      "total_puestos": 6,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "SD ANTONIO JOSE DE SUCRE CRA 3 No 7-32"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "CHAPINERO",
+          "direccion": "ESC SANTA TERESITA"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "CALAMONTE",
+          "direccion": "ESC 12 DE OCTUBRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "DINAMARCA",
+          "direccion": "ESC 11 DE NOVIEMBRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "MONTEZUMA",
+          "direccion": "IE MARIA INMACULADA"
+        },
+        {
+          "zona": 99,
+          "puesto": "30",
+          "nombre": "EL PLACER",
+          "direccion": "ESC ESTHER ZORRILLA"
+        }
+      ]
+    },
+    {
+      "codigo": 112,
+      "nombre": "VERSALLES",
+      "total_puestos": 16,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "COLISEO CUBIERTO MARIA ISABEL CRUZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "CAMPOALEGRE",
+          "direccion": "ESC. POLICARPA SALAVARRIETA"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "COCONUCO",
+          "direccion": "ESC. PROSPERO PINZON"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "EL BALSAL",
+          "direccion": "POLIDEPORTIVO PARQUE PRINCIPAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "EL CEDRO",
+          "direccion": "ESC. GENERAL SANTANDER"
+        },
+        {
+          "zona": 99,
+          "puesto": "10",
+          "nombre": "EL DIAMANTE",
+          "direccion": "ESC. MARCO FIDEL SUAREZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "12",
+          "nombre": "EL TULCAN",
+          "direccion": "ESC. ANTONIO GUENDICA"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "EL VERGEL",
+          "direccion": "ESC. SANTO TOMAS DE AQUINO"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "COSTARICA",
+          "direccion": "KIOSKO VEREDA"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "LA FLORIDA",
+          "direccion": "POLIDEPORTIVO"
+        },
+        {
+          "zona": 99,
+          "puesto": "18",
+          "nombre": "LA GUAIRA",
+          "direccion": "ESC. ATANASIO GIRARDOT"
+        },
+        {
+          "zona": 99,
+          "puesto": "19",
+          "nombre": "MORROÑATO (PINARES)",
+          "direccion": "ESC. SAN ROQUE"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "MURRAPAL",
+          "direccion": "ESC. JORGE TADEO LOZANO"
+        },
+        {
+          "zona": 99,
+          "puesto": "22",
+          "nombre": "LA BALSORA",
+          "direccion": "ESCUELA CAMILO TORRES"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "PUENTETIERRA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "50",
+          "nombre": "PUERTO NUEVO",
+          "direccion": "PUESTO DE SALUD"
+        }
+      ]
+    },
+    {
+      "codigo": 115,
+      "nombre": "VIJES",
+      "total_puestos": 10,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "KRA 4 CL 6 ESQ I.E. JORGE ROBLEDO"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "CACHIMBAL",
+          "direccion": "ESC. AYACUCHO"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "CARBONERO",
+          "direccion": "ESC. ATANASIO GIRARDOT"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "EL PORVENIR",
+          "direccion": "ESC. MARIANO OSPINA PEREZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "08",
+          "nombre": "EL TAMBOR",
+          "direccion": "ESC. ANTONIO NARIÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "LA FRESNEDA",
+          "direccion": "ESC. ANTONIO JOSE DE SUCRE"
+        },
+        {
+          "zona": 99,
+          "puesto": "11",
+          "nombre": "LA RIVERA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "12",
+          "nombre": "MOZAMBIQUE",
+          "direccion": "ESC. GUILLERMO VALENCIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "OCACHE",
+          "direccion": "ESC. JOSE ANTONIO GALAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "VILLAMARIA",
+          "direccion": "ESC. VEINTE DE JULIO"
+        }
+      ]
+    },
+    {
+      "codigo": 118,
+      "nombre": "YOTOCO",
+      "total_puestos": 13,
+      "puestos": [
+        {
+          "zona": 0,
+          "puesto": "00",
+          "nombre": "PUESTO CABECERA MUNICIPAL",
+          "direccion": "IE ALFONSO ZAWADZKY CRA 5 No 5-79"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "EL CANEY",
+          "direccion": "ESC. NUESTRA SEÑORA DE FATIMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "CAMPOALEGRE",
+          "direccion": "ESC. TAURINO IZQUIERDO"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "EL BOSQUE",
+          "direccion": "ESC. DIEGO RENGIFO SALAZAR"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "EL DORADO",
+          "direccion": "POLIDEPORTIVO CRUCERO EL DORADO"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "DOPO",
+          "direccion": "ESC. NUESTRA SEÑORA DEL CARMEN"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "JIGUALES",
+          "direccion": "ESC. VICENTE H. CRUZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "LA NEGRA",
+          "direccion": "ESC. CRISTO REY"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "LAS DELICIAS",
+          "direccion": "ESC. GUILLERMO VALENCIA"
+        },
+        {
+          "zona": 99,
+          "puesto": "21",
+          "nombre": "MEDIACANOA",
+          "direccion": "ESC. ANTONIA SANTOS"
+        },
+        {
+          "zona": 99,
+          "puesto": "23",
+          "nombre": "MIRAVALLE",
+          "direccion": "ESC. VEINTE DE JULIO"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "PUENTE TIERRA",
+          "direccion": "CASETA COMUNAL"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "SAN ANTONIO DE PIEDRAS",
+          "direccion": "ESC. SAN ANTONIO DE PIEDRAS"
+        }
+      ]
+    },
+    {
+      "codigo": 121,
+      "nombre": "YUMBO",
+      "total_puestos": 37,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "I.E. MANUEL MARIA SANCHEZ",
+          "direccion": "CLL 14 NUM 15A-02 PUERTO ISAACS"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "I.E. LAS AMERICAS",
+          "direccion": "TRV 10 NUM 17B-70 LAS AMERICAS"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "I.E. JUAN XXIII",
+          "direccion": "CLL 20 NUM 13A-16 LA ESTANCIA"
+        },
+        {
+          "zona": 1,
+          "puesto": "04",
+          "nombre": "I.E. PANORAMA",
+          "direccion": "TRV 7H NUM 16J-30 PANORAMA"
+        },
+        {
+          "zona": 1,
+          "puesto": "05",
+          "nombre": "CENTRO DE DESARROLLO COMUNITARIO",
+          "direccion": "CRA. 18 No 10-53 LAS AMERICAS"
+        },
+        {
+          "zona": 1,
+          "puesto": "06",
+          "nombre": "IE IRENE FERREROSA",
+          "direccion": "CRA 18G No 7A - 86 GUABINAS"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "I.E. ANTONIA SANTOS",
+          "direccion": "CRA 4 NUM 7-18 BELALCAZAR"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "I.E. FRANCISCO JAVIER",
+          "direccion": "CRA 3 NUM 5-50 BELALCAZAR"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "I.E. JOSE MARIA CORDOBA",
+          "direccion": "CRA 6 NUM 11-04 URIBE"
+        },
+        {
+          "zona": 2,
+          "puesto": "04",
+          "nombre": "I.E. MANUELA BELTRAN",
+          "direccion": "CRA. 5 No 7-70 BELALCAZAR"
+        },
+        {
+          "zona": 2,
+          "puesto": "05",
+          "nombre": "COL COOP TECNICO IND JOSE ANTONIO GALAN",
+          "direccion": "CRA. 9 No 12-66 URIBE"
+        },
+        {
+          "zona": 3,
+          "puesto": "01",
+          "nombre": "I.E. PEDRO SANCHEZ TELLO",
+          "direccion": "CRA 11 NUM 4-08 LAS CRUCES"
+        },
+        {
+          "zona": 3,
+          "puesto": "02",
+          "nombre": "I.E. MIGUEL ANTONIO CARO SEDE 2",
+          "direccion": "CRA 15A # 9A-30"
+        },
+        {
+          "zona": 3,
+          "puesto": "03",
+          "nombre": "I.E. HECTOR A. SAAVEDRA",
+          "direccion": "CRA 4 OE NUM 1-82 PEDREGAL"
+        },
+        {
+          "zona": 3,
+          "puesto": "04",
+          "nombre": "I.E. LA TRINIDAD",
+          "direccion": "CRA 4 NE NUM 17-55 LA TRINIDAD"
+        },
+        {
+          "zona": 4,
+          "puesto": "01",
+          "nombre": "I.E. JHON F. KENNEDY",
+          "direccion": "CRA 3AN NUM 8A-02 LLERAS"
+        },
+        {
+          "zona": 4,
+          "puesto": "02",
+          "nombre": "I.E. TITAN",
+          "direccion": "CLL 15AN NUM 2AN-06 GUACANDA"
+        },
+        {
+          "zona": 4,
+          "puesto": "03",
+          "nombre": "UNIVERSIDAD DEL VALLE SD YUMBO",
+          "direccion": "CLL 3N No 2N-17 MADRIGAL"
+        },
+        {
+          "zona": 4,
+          "puesto": "04",
+          "nombre": "I.E. CEAT GENERAL",
+          "direccion": "CRA 7N NUM 4N-80 BELLAVISTA"
+        },
+        {
+          "zona": 4,
+          "puesto": "05",
+          "nombre": "HOGAR INF INQUIETUDES ICBF",
+          "direccion": "CRA 6N No 15DN-07"
+        },
+        {
+          "zona": 4,
+          "puesto": "06",
+          "nombre": "I.E. FRANCISO JOSE DE CALDAS",
+          "direccion": "CLLE 8N NUM 16-76 LLERAS"
+        },
+        {
+          "zona": 4,
+          "puesto": "07",
+          "nombre": "CENTRO DEPORTIVO JAIRO LLANTEN",
+          "direccion": "CALLE 15C NUM 4-01 GUACANDA"
+        },
+        {
+          "zona": 4,
+          "puesto": "08",
+          "nombre": "CASETA COMUNAL DIONISIO HERNAN CALDERON",
+          "direccion": "CRA 2A OESTE # 2 - 08 OESTE"
+        },
+        {
+          "zona": 90,
+          "puesto": "01",
+          "nombre": "IE ALBERTO MENDOZA MAYOR",
+          "direccion": "CL 13 #7-00 URIBE"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "ARROYOHONDO",
+          "direccion": "I.E. LEONOR LOURIDO DE VELASCO"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "RINCON DAPA",
+          "direccion": "I.E ROSA ZARATE PEÑA"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "DAPA",
+          "direccion": "I.E. POLICARPA SALAVARRIETA"
+        },
+        {
+          "zona": 99,
+          "puesto": "06",
+          "nombre": "EL PEDREGAL",
+          "direccion": "I.E. JOSE ANTONIO GALAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "07",
+          "nombre": "MULALO",
+          "direccion": "I.E. SAN PEDRO CLAVER"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "SAN MARCOS",
+          "direccion": "I.E. JOSE ANTONIO GALAN"
+        },
+        {
+          "zona": 99,
+          "puesto": "12",
+          "nombre": "MIRAVALLE NORTE",
+          "direccion": "I.E. JUANA MARIA CALDAS"
+        },
+        {
+          "zona": 99,
+          "puesto": "13",
+          "nombre": "IE JOSE MARIA GARCIA DE TOLEDO",
+          "direccion": "JOSE MARIA GARCIA DE TOLEDO"
+        },
+        {
+          "zona": 99,
+          "puesto": "17",
+          "nombre": "YUMBILLO",
+          "direccion": "I.E. CRISTO REY"
+        },
+        {
+          "zona": 99,
+          "puesto": "25",
+          "nombre": "LA BUITRERA",
+          "direccion": "I.E. JOSE ANTONIO PAEZ"
+        },
+        {
+          "zona": 99,
+          "puesto": "29",
+          "nombre": "LA OLGA",
+          "direccion": "CASETA COMUNAL POLIDEPORTIVO"
+        },
+        {
+          "zona": 99,
+          "puesto": "33",
+          "nombre": "MONTAÑITAS",
+          "direccion": "I.E. GENERAL SANTANDER"
+        },
+        {
+          "zona": 99,
+          "puesto": "37",
+          "nombre": "IE SAN JOSE",
+          "direccion": "INSTITUCION EDUCATIVA SAN JOSE"
+        }
+      ]
+    },
+    {
+      "codigo": 124,
+      "nombre": "ZARZAL",
+      "total_puestos": 14,
+      "puestos": [
+        {
+          "zona": 1,
+          "puesto": "01",
+          "nombre": "COLISEO JOSE DOLORES GUTIERREZ",
+          "direccion": "CALLE 4 CARRERA 14 ESQUINA"
+        },
+        {
+          "zona": 1,
+          "puesto": "02",
+          "nombre": "ESC. FRANCISCO JOSE DE CALDAS",
+          "direccion": "CR 8 ENTRE CLL 6 Y 7"
+        },
+        {
+          "zona": 1,
+          "puesto": "03",
+          "nombre": "ESC. SAGRADO CORAZON DE JESUS",
+          "direccion": "CLL 9 CRA 7"
+        },
+        {
+          "zona": 2,
+          "puesto": "01",
+          "nombre": "ESC. NORMAL SUPERIOR",
+          "direccion": "CR 11 # 11-55"
+        },
+        {
+          "zona": 2,
+          "puesto": "02",
+          "nombre": "ESC. EFRAIN VARELA VACA",
+          "direccion": "CR 10 # 12-15"
+        },
+        {
+          "zona": 2,
+          "puesto": "03",
+          "nombre": "ESC.POLICARPA SALAVARRIETA",
+          "direccion": "CLL  9 CON CR 15 ESQUINA"
+        },
+        {
+          "zona": 2,
+          "puesto": "04",
+          "nombre": "ESC. FRANCISCO DE PAULA SANTANDER",
+          "direccion": "CLL 15 # 7 65"
+        },
+        {
+          "zona": 99,
+          "puesto": "01",
+          "nombre": "LA PAILA",
+          "direccion": "COL ANTONIO NARIÑO"
+        },
+        {
+          "zona": 99,
+          "puesto": "02",
+          "nombre": "LIMONES",
+          "direccion": "ESC. NUESTRA SEÑORA DE FATIMA"
+        },
+        {
+          "zona": 99,
+          "puesto": "03",
+          "nombre": "GUASIMAL",
+          "direccion": "ESC. ATANASIO GIRARDOT"
+        },
+        {
+          "zona": 99,
+          "puesto": "04",
+          "nombre": "EL VERGEL",
+          "direccion": "CASA COMUNAL CGTO EL VERGEL"
+        },
+        {
+          "zona": 99,
+          "puesto": "05",
+          "nombre": "QUEBRADANUEVA",
+          "direccion": "ESC. REPUBLICA DE VENEZUELA"
+        },
+        {
+          "zona": 99,
+          "puesto": "09",
+          "nombre": "VALLEJUELO",
+          "direccion": "COL. LUIS GABRIEL UMAÑA"
+        },
+        {
+          "zona": 99,
+          "puesto": "15",
+          "nombre": "EL ALISAL",
+          "direccion": "ESC. ROGACIANO PEREA"
+        }
+      ]
+    }
+  ]
+}

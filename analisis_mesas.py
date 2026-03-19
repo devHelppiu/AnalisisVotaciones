@@ -7,13 +7,15 @@ a nivel de mpio+zona+pto+mesa para calcular probabilidad de voto real.
 Estrategia de cruce:
 - Los datos electorales usan codigo numerico 'pto' para puestos
 - Los simpatizantes usan nombre texto 'Lugar' para puestos
-- Intentamos mapear Lugar -> pto usando la cantidad de mesas como fingerprint
-- Donde el mapeo es ambiguo, usamos el promedio de votos por mesa en la zona
+- Usamos el catalogo puestos_valle_del_cauca.json para mapear Lugar -> zona+pto
+  por nombre (exact + fuzzy matching)
+- Donde no hay match confiable, cruzamos por mpio+zona+mesa sumando todos los ptos
 """
 
 import pandas as pd
-import pickle, os, json
+import pickle, os, json, re
 from pathlib import Path
+from difflib import SequenceMatcher
 
 # --- CONFIG ---
 CANDIDATA_CODE = 107
@@ -90,77 +92,119 @@ def load_data():
     return df_cam, df_sim_valle
 
 
+def _normalize_name(s):
+    """Normalize a puesto name for comparison."""
+    s = s.upper().strip()
+    s = re.sub(r'[^A-Z0-9 ]', ' ', s)
+    s = re.sub(r'\s+', ' ', s).strip()
+    return s
+
+
 def build_lugar_to_pto_map(df_cam, df_sim_valle):
     """
-    Try to map Lugar (name) -> pto (code) within each mpio+zona.
+    Map Lugar (name) -> zona+pto using the puestos catalog JSON.
     
-    Strategy: count max mesa per pto in electoral and max mesa per Lugar in sympathizers.
-    If within a zone, a Lugar's max mesa count uniquely matches one pto's max mesa count,
-    we assign that mapping. Otherwise mark as ambiguous.
+    Strategy:
+    1. Load puestos_valle_del_cauca.json catalog (1152 puestos with nombre, zona, pto)
+    2. For each unique mpio+Lugar in simpatizantes, find best match in catalog by name
+    3. Exact normalized match -> 'exact'
+    4. Contains match or SequenceMatcher >= 0.8 -> 'fuzzy'
+    5. No match found -> 'no_match'
+    
+    Returns DataFrame with columns: mpio, zona, lugar, pto, match_type, nombre_catalogo
     """
-    # Electoral: max mesa per mpio+zona+pto
-    elec_mesas = (df_cam.groupby(['mpio', 'zona', 'pto'])['mesa']
-                  .max().reset_index()
-                  .rename(columns={'mesa': 'max_mesa_elec'}))
+    # Load catalog
+    cat_path = BASE_DIR / 'puestos_valle_del_cauca.json'
+    with open(cat_path, 'r', encoding='utf-8') as f:
+        cat_data = json.load(f)
 
-    # Sympathizers: max mesa per mpio+zona+Lugar
-    sim_mesas = (df_sim_valle.dropna(subset=['mesa_num'])
-                 .groupby(['mpio_code', 'zona_code', 'Lugar'])['mesa_num']
-                 .agg(max_mesa_sim='max', count_sim='count')
-                 .reset_index())
+    # Build lookup: mpio -> list of {zona, pto, nombre, nombre_norm}
+    cat_by_mpio = {}
+    for m in cat_data['municipios']:
+        entries = []
+        for p in m['puestos']:
+            entries.append({
+                'zona': p['zona'],
+                'pto': int(p['puesto']),
+                'nombre': p['nombre'].upper().strip(),
+                'nombre_norm': _normalize_name(p['nombre'])
+            })
+        cat_by_mpio[m['codigo']] = entries
+
+    # Get unique mpio+Lugar combinations from simpatizantes
+    lugares_unicos = (
+        df_sim_valle.dropna(subset=['Lugar', 'mpio_code'])
+        .groupby(['mpio_code', 'Lugar'])
+        .size().reset_index(name='count')
+    )
 
     mappings = []
-    ambiguous_count = 0
-    matched_count = 0
+    n_exact = 0
+    n_fuzzy = 0
+    n_no_match = 0
 
-    for (mpio, zona), grp_elec in elec_mesas.groupby(['mpio', 'zona']):
-        grp_sim = sim_mesas[(sim_mesas['mpio_code'] == mpio) & (sim_mesas['zona_code'] == zona)]
-        if grp_sim.empty:
+    for _, row in lugares_unicos.iterrows():
+        mpio = int(row['mpio_code'])
+        lugar = str(row['Lugar'])
+        lugar_norm = _normalize_name(lugar)
+
+        if mpio not in cat_by_mpio:
+            mappings.append({
+                'mpio': mpio, 'zona': None, 'lugar': lugar,
+                'pto': None, 'match_type': 'no_match', 'nombre_catalogo': ''
+            })
+            n_no_match += 1
             continue
 
-        # Build a dict: max_mesa -> list of ptos
-        mesa_to_ptos = {}
-        for _, row in grp_elec.iterrows():
-            mesa_to_ptos.setdefault(int(row['max_mesa_elec']), []).append(int(row['pto']))
+        entries = cat_by_mpio[mpio]
 
-        for _, sim_row in grp_sim.iterrows():
-            lugar = sim_row['Lugar']
-            max_mesa_sim = int(sim_row['max_mesa_sim'])
-
-            # Try exact match
-            candidates = mesa_to_ptos.get(max_mesa_sim, [])
-            if len(candidates) == 1:
+        # Pass 1: exact normalized match
+        found = False
+        for e in entries:
+            if lugar_norm == e['nombre_norm']:
                 mappings.append({
-                    'mpio': mpio, 'zona': zona, 'lugar': lugar,
-                    'pto': candidates[0], 'match_type': 'exact'
+                    'mpio': mpio, 'zona': e['zona'], 'lugar': lugar,
+                    'pto': e['pto'], 'match_type': 'exact',
+                    'nombre_catalogo': e['nombre']
                 })
-                matched_count += 1
+                n_exact += 1
+                found = True
+                break
+
+        if found:
+            continue
+
+        # Pass 2: contains match or fuzzy
+        best_score = 0
+        best_entry = None
+        for e in entries:
+            # Check contains (one inside the other)
+            if e['nombre_norm'] in lugar_norm or lugar_norm in e['nombre_norm']:
+                score = 0.92
             else:
-                # Try closest match (sim may not have all mesas)
-                # Find pto with closest max_mesa >= max_mesa_sim
-                best_pto = None
-                best_diff = 999
-                for max_m, ptos in mesa_to_ptos.items():
-                    if max_m >= max_mesa_sim and len(ptos) == 1:
-                        diff = max_m - max_mesa_sim
-                        if diff < best_diff:
-                            best_diff = diff
-                            best_pto = ptos[0]
-                if best_pto is not None and best_diff <= 3:
-                    mappings.append({
-                        'mpio': mpio, 'zona': zona, 'lugar': lugar,
-                        'pto': best_pto, 'match_type': 'approx'
-                    })
-                    matched_count += 1
-                else:
-                    mappings.append({
-                        'mpio': mpio, 'zona': zona, 'lugar': lugar,
-                        'pto': None, 'match_type': 'ambiguous'
-                    })
-                    ambiguous_count += 1
+                score = SequenceMatcher(None, lugar_norm, e['nombre_norm']).ratio()
+
+            if score > best_score:
+                best_score = score
+                best_entry = e
+
+        if best_score >= 0.75:
+            mappings.append({
+                'mpio': mpio, 'zona': best_entry['zona'], 'lugar': lugar,
+                'pto': best_entry['pto'], 'match_type': 'fuzzy',
+                'nombre_catalogo': best_entry['nombre']
+            })
+            n_fuzzy += 1
+        else:
+            mappings.append({
+                'mpio': mpio, 'zona': None, 'lugar': lugar,
+                'pto': None, 'match_type': 'no_match',
+                'nombre_catalogo': best_entry['nombre'] if best_entry else ''
+            })
+            n_no_match += 1
 
     map_df = pd.DataFrame(mappings)
-    print(f"  Lugar->pto mapping: {matched_count} matched, {ambiguous_count} ambiguous", flush=True)
+    print(f"  Lugar->pto catalogo: {n_exact} exact, {n_fuzzy} fuzzy, {n_no_match} sin match", flush=True)
     return map_df
 
 
@@ -212,54 +256,54 @@ def analisis_por_mesa(df_cam, df_sim_valle, lugar_pto_map):
                 .agg(simpatizantes=('Cédula', 'count'))
                 .reset_index())
 
-    # --- CRUCE: agregar pto mapping ---
+    # --- CRUCE: agregar pto mapping desde catalogo ---
     sim_mesa = sim_mesa.merge(
         lugar_pto_map[['mpio', 'zona', 'lugar', 'pto', 'match_type']],
-        left_on=['mpio_code', 'zona_code', 'Lugar'],
-        right_on=['mpio', 'zona', 'lugar'],
+        left_on=['mpio_code', 'Lugar'],
+        right_on=['mpio', 'lugar'],
         how='left'
     )
+    # Usar zona del catalogo cuando el mapeo es confiable
+    has_cat_zona = sim_mesa['match_type'].isin(['exact', 'fuzzy'])
+    sim_mesa.loc[has_cat_zona, 'zona_code'] = sim_mesa.loc[has_cat_zona, 'zona']
 
-    # --- GRUPO 1: Mapeo 'exact' → cruzar por mpio+zona+pto+mesa ---
-    exact = sim_mesa[sim_mesa['match_type'] == 'exact'].copy()
-    exact['pto'] = exact['pto'].astype(int)
-    exact['mesa_num'] = exact['mesa_num'].astype(int)
+    # --- GRUPO 1: Mapeo 'exact' o 'fuzzy' → cruzar por mpio+zona+pto+mesa ---
+    has_pto = sim_mesa[sim_mesa['match_type'].isin(['exact', 'fuzzy'])].copy()
+    has_pto['pto'] = has_pto['pto'].astype(int)
+    has_pto['mesa_num'] = has_pto['mesa_num'].astype(int)
 
-    result_exact = exact.merge(
+    result_matched = has_pto.merge(
         votos_mesa_pto,
         left_on=['mpio_code', 'zona_code', 'pto', 'mesa_num'],
         right_on=['mpio', 'zona', 'pto', 'mesa'],
         how='left'
     )
-    result_exact['match_type'] = 'exact'
 
-    # --- GRUPO 2: Todo lo demas → cruzar por mpio+zona+mesa (suma ptos) ---
-    not_exact = sim_mesa[sim_mesa['match_type'] != 'exact'].copy()
-    not_exact['mesa_num'] = not_exact['mesa_num'].astype(int)
+    # --- GRUPO 2: sin mapeo → cruzar por mpio+zona+mesa (suma ptos) ---
+    no_match = sim_mesa[~sim_mesa['match_type'].isin(['exact', 'fuzzy'])].copy()
+    no_match['mesa_num'] = no_match['mesa_num'].astype(int)
 
-    result_zona = not_exact.merge(
+    result_zona = no_match.merge(
         votos_mesa_zona,
         left_on=['mpio_code', 'zona_code', 'mesa_num'],
         right_on=['mpio', 'zona', 'mesa'],
         how='left',
         suffixes=('', '_zona')
     )
-    result_zona.loc[result_zona['match_type'].isna(), 'match_type'] = 'zona_mesa'
-    result_zona.loc[result_zona['match_type'] == 'ambiguous', 'match_type'] = 'zona_mesa'
-    result_zona.loc[result_zona['match_type'] == 'approx', 'match_type'] = 'zona_mesa'
+    result_zona['match_type'] = 'zona_mesa'
 
     # --- Combinar ---
     cols_final = ['Líder', 'Municipio', 'zona_code', 'Lugar', 'mesa_num',
                   'simpatizantes', 'votos_candidata_mesa', 'votos_totales_mesa', 'match_type']
 
     for col in cols_final:
-        if col not in result_exact.columns:
-            result_exact[col] = 0
+        if col not in result_matched.columns:
+            result_matched[col] = 0
         if col not in result_zona.columns:
             result_zona[col] = 0
 
     result = pd.concat([
-        result_exact[cols_final],
+        result_matched[cols_final],
         result_zona[cols_final]
     ], ignore_index=True)
 

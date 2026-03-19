@@ -104,40 +104,40 @@ def construir_reporte_individual(df_cam, df_sim_valle, lugar_pto_map):
     )
     sim['simp_otros'] = sim['simp_total'] - sim['simp_lider']
 
-    # --- Mapeo Lugar -> pto ---
+    # --- Mapeo Lugar -> pto desde catalogo ---
     sim = sim.merge(
         lugar_pto_map[['mpio', 'zona', 'lugar', 'pto', 'match_type']],
-        left_on=['mpio_code', 'zona_code', 'Lugar'],
-        right_on=['mpio', 'zona', 'lugar'],
+        left_on=['mpio_code', 'Lugar'],
+        right_on=['mpio', 'lugar'],
         how='left'
     )
+    # Usar zona del catalogo cuando el mapeo es confiable
+    has_cat_zona = sim['match_type'].isin(['exact', 'fuzzy'])
+    sim.loc[has_cat_zona, 'zona_code'] = sim.loc[has_cat_zona, 'zona']
 
-    # --- GRUPO 1: Mapeo 'exact' → cruzar por mpio+zona+pto+mesa ---
-    exact = sim[sim['match_type'] == 'exact'].copy()
-    exact['pto'] = exact['pto'].astype(int)
+    # --- GRUPO 1: Mapeo 'exact' o 'fuzzy' → cruzar por mpio+zona+pto+mesa ---
+    has_pto = sim[sim['match_type'].isin(['exact', 'fuzzy'])].copy()
+    has_pto['pto'] = has_pto['pto'].astype(int)
 
-    result_exact = exact.merge(
+    result_matched = has_pto.merge(
         votos_mesa_pto,
         left_on=['mpio_code', 'zona_code', 'pto', 'mesa_num'],
         right_on=['mpio', 'zona', 'pto', 'mesa'],
         how='left',
         suffixes=('', '_elec')
     )
-    result_exact['match_type'] = 'exact'
 
-    # --- GRUPO 2: Todo lo demas → cruzar por mpio+zona+mesa (suma ptos) ---
-    not_exact = sim[sim['match_type'] != 'exact'].copy()
+    # --- GRUPO 2: sin mapeo → cruzar por mpio+zona+mesa (suma ptos) ---
+    no_match = sim[~sim['match_type'].isin(['exact', 'fuzzy'])].copy()
 
-    result_zona = not_exact.merge(
+    result_zona = no_match.merge(
         votos_mesa_zona,
         left_on=['mpio_code', 'zona_code', 'mesa_num'],
         right_on=['mpio', 'zona', 'mesa'],
         how='left',
         suffixes=('', '_zona')
     )
-    result_zona.loc[result_zona['match_type'].isna(), 'match_type'] = 'zona_mesa'
-    result_zona.loc[result_zona['match_type'] == 'ambiguous', 'match_type'] = 'zona_mesa'
-    result_zona.loc[result_zona['match_type'] == 'approx', 'match_type'] = 'zona_mesa'
+    result_zona['match_type'] = 'zona_mesa'
 
     # --- Combinar ---
     cols = ['Cédula', 'Nombres', 'Apellidos', 'Líder', 'Categoría líder',
@@ -146,13 +146,13 @@ def construir_reporte_individual(df_cam, df_sim_valle, lugar_pto_map):
             'votos_candidata', 'votos_totales', 'match_type']
 
     for c in cols:
-        if c not in result_exact.columns:
-            result_exact[c] = None
+        if c not in result_matched.columns:
+            result_matched[c] = None
         if c not in result_zona.columns:
             result_zona[c] = None
 
     result = pd.concat([
-        result_exact[cols],
+        result_matched[cols],
         result_zona[cols]
     ], ignore_index=True)
 
