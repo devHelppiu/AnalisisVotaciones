@@ -360,11 +360,12 @@ def exportar_forense_excel(resumen_lider, detalle_puesto, detalle_mesa):
 def generar_datos_forense(resumen_lider, detalle_mesa):
     """Generate JSON data for the forensic dashboard."""
 
-    # --- Lideres ---
+    # --- Lideres con detalle de mesas ---
     lideres = []
     for _, r in resumen_lider.iterrows():
+        lider_name = r['Líder']
         d = {
-            'lider': r['Líder'],
+            'lider': lider_name,
             'total_simp': int(r['total_simpatizantes']),
             'votos_atribuidos': int(r['votos_atribuidos']),
             'cumplimiento': float(r['cumplimiento_%']),
@@ -377,6 +378,28 @@ def generar_datos_forense(resumen_lider, detalle_mesa):
         }
         for cat in ['CERO VOTOS', 'VOTO SEGURO', 'INCUMPLIMIENTO PARCIAL', 'VOTO PROBABLE', 'VOTO POSIBLE']:
             d['categorias'][cat] = int(r.get(cat, 0))
+
+        # --- Detalle mesa por mesa para este lider ---
+        lider_rows = detalle_mesa[detalle_mesa['Líder'] == lider_name]
+        mesas_detail = []
+        for _, m in lider_rows.iterrows():
+            mesas_detail.append({
+                'mpio': str(m['Municipio']),
+                'zona': int(m['zona_code']) if pd.notna(m['zona_code']) else 0,
+                'lugar': str(m['Lugar']),
+                'mesa': int(m['mesa_num']),
+                'sl': int(m['simp_lider']),
+                'so': int(m['simp_otros']),
+                'st': int(m['simp_total']),
+                'nl': int(m['n_lideres']),
+                'vc': int(m['votos_candidata']),
+                'vt': int(m['votos_totales']),
+                'cat': str(m['categoria']),
+                'va': int(m['votos_atribuidos']),
+                'tc': float(m['tasa_cumplimiento']) if pd.notna(m['tasa_cumplimiento']) else 0,
+                'exc': int(m['excedente']),
+            })
+        d['mesas'] = mesas_detail
         lideres.append(d)
 
     # --- Global ---

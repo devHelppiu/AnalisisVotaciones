@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Forense por Lider - Ana Maria Sanclemente</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --primary: #1a237e;
+            --primary-light: #283593;
+            --accent: #c62828;
+            --green: #2e7d32;
+            --orange: #e65100;
+            --yellow: #f9a825;
+            --blue: #1565c0;
+            --purple: #6a1b9a;
+            --bg: #f5f5f5;
+            --card-bg: #fff;
+            --text: #212121;
+            --text-light: #757575;
+            --border: #e0e0e0;
+            --shadow: 0 2px 8px rgba(0,0,0,.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,.12);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+
+        .header { background:linear-gradient(135deg,#1a237e 0%,#0d47a1 50%,#1565c0 100%); color:white; padding:1.5rem 0; text-align:center; position:relative; }
+        .header h1 { font-size:1.6rem; font-weight:800; }
+        .header .subtitle { font-size:.9rem; opacity:.8; margin-top:.2rem; }
+        .header .nav-links { margin-top:.6rem; }
+        .header .nav-links a { color:rgba(255,255,255,.85); text-decoration:none; padding:.3rem .8rem; border:1px solid rgba(255,255,255,.25); border-radius:2rem; font-size:.8rem; margin:0 .2rem; transition:all .2s; }
+        .header .nav-links a:hover { background:rgba(255,255,255,.15); }
+
+        .container { max-width:1400px; margin:0 auto; padding:0 1.5rem; }
+
+        /* Loading */
+        .loading { text-align:center; padding:4rem 0; }
+        .loading .spinner { display:inline-block; width:40px; height:40px; border:4px solid var(--border); border-top-color:var(--primary); border-radius:50%; animation:spin .8s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+
+        /* Leader selector */
+        .selector-bar { background:var(--card-bg); border-radius:.75rem; box-shadow:var(--shadow-lg); padding:1.25rem 1.5rem; margin:-1.5rem 0 1.5rem; position:relative; z-index:10; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+        .selector-bar label { font-weight:700; font-size:.85rem; color:var(--primary); }
+        .selector-bar select { padding:.5rem 1rem; border:2px solid var(--border); border-radius:.5rem; font-size:.9rem; min-width:300px; background:white; cursor:pointer; }
+        .selector-bar select:focus { border-color:var(--primary); outline:none; }
+        .selector-bar .leader-badge { display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .8rem; border-radius:2rem; font-size:.78rem; font-weight:700; }
+        .badge-cumplio { background:#c8e6c9; color:#1b5e20; }
+        .badge-parcial { background:#fff3e0; color:#e65100; }
+        .badge-no-cumplio { background:#ffcdd2; color:#b71c1c; }
+
+        /* Leader profile card */
+        .profile-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:.75rem; margin-bottom:1.5rem; }
+        .profile-card { background:var(--card-bg); border-radius:.6rem; padding:.9rem; box-shadow:var(--shadow); text-align:center; border-top:3px solid var(--primary); }
+        .profile-card.red { border-top-color:var(--accent); }
+        .profile-card.green { border-top-color:var(--green); }
+        .profile-card.orange { border-top-color:var(--orange); }
+        .profile-card.blue { border-top-color:var(--blue); }
+        .profile-card.purple { border-top-color:var(--purple); }
+        .pv { font-size:1.4rem; font-weight:800; }
+        .profile-card.red .pv { color:var(--accent); }
+        .profile-card.green .pv { color:var(--green); }
+        .profile-card.orange .pv { color:var(--orange); }
+        .profile-card.blue .pv { color:var(--blue); }
+        .profile-card.purple .pv { color:var(--purple); }
+        .pl { font-size:.68rem; color:var(--text-light); text-transform:uppercase; letter-spacing:.04em; margin-top:.1rem; }
+
+        /* Sections */
+        .section { margin-bottom:2rem; }
+        .section-title { font-size:1.15rem; font-weight:700; color:var(--primary); margin-bottom:.75rem; padding-bottom:.4rem; border-bottom:2px solid var(--border); }
+        .card { background:var(--card-bg); border-radius:.75rem; box-shadow:var(--shadow); padding:1.25rem; margin-bottom:1.25rem; }
+        .card h3 { margin-bottom:.6rem; font-size:.85rem; color:var(--text-light); text-transform:uppercase; letter-spacing:.04em; }
+        .charts-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(420px,1fr)); gap:1.25rem; }
+        .chart-container canvas { max-height:350px; }
+
+        /* Category colors */
+        .cat-cero { color:#c62828; }
+        .cat-seguro { color:#2e7d32; }
+        .cat-parcial { color:#e65100; }
+        .cat-probable { color:#1565c0; }
+        .cat-posible { color:#6a1b9a; }
+
+        /* Puesto section */
+        .puesto-group { margin-bottom:1.5rem; }
+        .puesto-header { background:linear-gradient(135deg,#e8eaf6,#c5cae9); border-radius:.5rem .5rem 0 0; padding:.7rem 1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none; }
+        .puesto-header:hover { background:linear-gradient(135deg,#c5cae9,#9fa8da); }
+        .puesto-header h4 { font-size:.85rem; color:var(--primary); }
+        .puesto-header .puesto-stats { display:flex; gap:.8rem; font-size:.72rem; color:var(--text-light); }
+        .puesto-header .puesto-stats span { font-weight:600; }
+        .puesto-body { border:1px solid var(--border); border-top:none; border-radius:0 0 .5rem .5rem; overflow:hidden; }
+        .puesto-body.collapsed { display:none; }
+
+        /* Tables */
+        table { width:100%; border-collapse:collapse; font-size:.78rem; }
+        thead th { background:var(--primary); color:white; padding:.45rem .4rem; text-align:left; font-weight:600; font-size:.68rem; text-transform:uppercase; letter-spacing:.03em; white-space:nowrap; position:sticky; top:0; z-index:2; }
+        tbody td { padding:.4rem .4rem; border-bottom:1px solid #f0f0f0; }
+        tbody tr:hover { background:#e3f2fd; }
+        tbody tr.row-cero { background:#fff5f5; }
+        tbody tr.row-seguro { background:#f1f8e9; }
+        tbody tr.row-parcial { background:#fff8e1; }
+        tbody tr.row-cero:hover { background:#ffebee; }
+        tbody tr.row-seguro:hover { background:#e8f5e9; }
+        tbody tr.row-parcial:hover { background:#fff3e0; }
+
+        /* Category dot */
+        .cat-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:4px; vertical-align:middle; }
+        .dot-cero { background:#e53935; }
+        .dot-seguro { background:#43a047; }
+        .dot-parcial { background:#fb8c00; }
+        .dot-probable { background:#1e88e5; }
+        .dot-posible { background:#8e24aa; }
+
+        /* Filter */
+        .filter-row { display:flex; gap:.75rem; margin-bottom:.75rem; flex-wrap:wrap; align-items:center; }
+        .filter-row select, .filter-row input { padding:.35rem .6rem; border:1px solid var(--border); border-radius:.4rem; font-size:.8rem; }
+        .filter-row label { font-size:.75rem; color:var(--text-light); font-weight:600; }
+
+        /* Summary bar in puesto header */
+        .mini-stack { display:flex; height:14px; border-radius:3px; overflow:hidden; width:100px; }
+        .mini-stack div { height:100%; }
+        .s-cero { background:#e53935; }
+        .s-seguro { background:#43a047; }
+        .s-parcial { background:#fb8c00; }
+        .s-probable { background:#1e88e5; }
+        .s-posible { background:#8e24aa; }
+
+        .scrollable-detail { max-height:600px; overflow-y:auto; }
+        .expand-all-btn { padding:.35rem .8rem; font-size:.78rem; border:1px solid var(--border); border-radius:.4rem; cursor:pointer; background:white; color:var(--primary); font-weight:600; }
+        .expand-all-btn:hover { background:#e8eaf6; }
+
+        @media(max-width:768px) {
+            .profile-grid { grid-template-columns:repeat(2,1fr); }
+            .charts-grid { grid-template-columns:1fr; }
+            .selector-bar select { min-width:200px; }
+        }
+
+        .no-data { text-align:center; padding:3rem; color:var(--text-light); font-size:1.1rem; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>&#128269; Detalle Forense por Lider</h1>
+        <div class="subtitle">Ana Maria Sanclemente &mdash; Camara, Valle del Cauca</div>
+        <div class="nav-links">
+            <a href="index.html">&larr; Dashboard Principal</a>
+            <a href="forense.html">Resumen Forense</a>
+            <a href="mesas.html">Probabilidad por Mesa</a>
+        </div>
+    </div>
+
+    <div class="container" style="padding-top:2.5rem;">
+        <div class="selector-bar" id="selector-bar">
+            <label>Seleccionar Lider:</label>
+            <select id="leader-select" onchange="onLeaderChange()">
+                <option value="">-- Cargando... --</option>
+            </select>
+            <span id="leader-badge"></span>
+        </div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p style="margin-top:1rem;color:var(--text-light);">Cargando datos forenses (58,896 registros)...</p>
+        </div>
+
+        <div id="content" style="display:none;">
+            <!-- Profile cards -->
+            <div class="profile-grid" id="profile-grid"></div>
+
+            <!-- Charts -->
+            <div class="section">
+                <div class="section-title">&#128202; Analisis Visual del Lider</div>
+                <div class="charts-grid">
+                    <div class="card">
+                        <h3>Distribucion de Simpatizantes por Categoria</h3>
+                        <div class="chart-container"><canvas id="chart-cat"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <h3>Simpatizantes vs Votos por Puesto (Top 15)</h3>
+                        <div class="chart-container"><canvas id="chart-puestos"></canvas></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="section">
+                <div class="section-title">&#128196; Detalle Mesa por Mesa</div>
+                <div class="filter-row">
+                    <label>Municipio:</label>
+                    <select id="filter-mpio" onchange="renderDetail()"><option value="ALL">Todos</option></select>
+                    <label>Categoria:</label>
+                    <select id="filter-cat" onchange="renderDetail()">
+                        <option value="ALL">Todas</option>
+                        <option value="CERO VOTOS">Cero Votos</option>
+                        <option value="VOTO SEGURO">Voto Seguro</option>
+                        <option value="INCUMPLIMIENTO PARCIAL">Inc. Parcial</option>
+                        <option value="VOTO PROBABLE">Voto Probable</option>
+                        <option value="VOTO POSIBLE">Voto Posible</option>
+                    </select>
+                    <label>Buscar puesto:</label>
+                    <input type="text" id="filter-lugar" oninput="renderDetail()" placeholder="Nombre puesto...">
+                    <button class="expand-all-btn" onclick="toggleAll()">&#9660; Expandir/Colapsar Todo</button>
+                </div>
+                <div id="detail-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    let DATA = null;
+    let currentLeader = null;
+    let chartCat = null;
+    let chartPuestos = null;
+    let allExpanded = false;
+
+    const CAT_COLORS = {
+        'CERO VOTOS': '#e53935',
+        'VOTO SEGURO': '#43a047',
+        'INCUMPLIMIENTO PARCIAL': '#fb8c00',
+        'VOTO PROBABLE': '#1e88e5',
+        'VOTO POSIBLE': '#8e24aa'
+    };
+    const CAT_ORDER = ['VOTO SEGURO','VOTO PROBABLE','VOTO POSIBLE','INCUMPLIMIENTO PARCIAL','CERO VOTOS'];
+    const CAT_SHORT = {'CERO VOTOS':'CERO','VOTO SEGURO':'SEGURO','INCUMPLIMIENTO PARCIAL':'INC.PARCIAL','VOTO PROBABLE':'PROBABLE','VOTO POSIBLE':'POSIBLE'};
+    const DOT_CLS = {'CERO VOTOS':'dot-cero','VOTO SEGURO':'dot-seguro','INCUMPLIMIENTO PARCIAL':'dot-parcial','VOTO PROBABLE':'dot-probable','VOTO POSIBLE':'dot-posible'};
+    const ROW_CLS = {'CERO VOTOS':'row-cero','VOTO SEGURO':'row-seguro','INCUMPLIMIENTO PARCIAL':'row-parcial'};
+
+    function fmt(n) { return n.toLocaleString('es-CO'); }
+
+    // ============ LOAD DATA ============
+    fetch('forense_data.json')
+        .then(r => r.json())
+        .then(data => {
+            DATA = data;
+            document.getElementById('loading').style.display = 'none';
+            populateSelector();
+            // Check URL param
+            const params = new URLSearchParams(window.location.search);
+            const liderParam = params.get('lider');
+            if (liderParam) {
+                document.getElementById('leader-select').value = liderParam;
+            }
+            onLeaderChange();
+        });
+
+    function populateSelector() {
+        const sel = document.getElementById('leader-select');
+        sel.innerHTML = '<option value="">-- Seleccione un lider --</option>';
+        DATA.lideres.forEach(l => {
+            const opt = document.createElement('option');
+            opt.value = l.lider;
+            opt.textContent = `${l.lider} (${fmt(l.total_simp)} simp. | ${l.cumplimiento}% | ${l.veredicto})`;
+            sel.appendChild(opt);
+        });
+    }
+
+    function onLeaderChange() {
+        const name = document.getElementById('leader-select').value;
+        if (!name) {
+            document.getElementById('content').style.display = 'none';
+            document.getElementById('leader-badge').innerHTML = '';
+            return;
+        }
+        currentLeader = DATA.lideres.find(l => l.lider === name);
+        if (!currentLeader) return;
+
+        // Update URL
+        const url = new URL(window.location);
+        url.searchParams.set('lider', name);
+        window.history.replaceState({}, '', url);
+
+        document.getElementById('content').style.display = 'block';
+        const badgeCls = currentLeader.veredicto === 'CUMPLIO' ? 'badge-cumplio' : currentLeader.veredicto === 'PARCIAL' ? 'badge-parcial' : 'badge-no-cumplio';
+        document.getElementById('leader-badge').innerHTML = `<span class="leader-badge ${badgeCls}">${currentLeader.veredicto}</span>`;
+
+        renderProfile();
+        renderCharts();
+        populateMpioFilter();
+        renderDetail();
+    }
+
+    // ============ PROFILE ============
+    function renderProfile() {
+        const l = currentLeader;
+        const cats = l.categorias;
+        const totalPositivo = (cats['VOTO SEGURO']||0) + (cats['VOTO PROBABLE']||0);
+        const pctPositivo = (totalPositivo / Math.max(l.total_simp,1) * 100).toFixed(1);
+        const pctCero = ((cats['CERO VOTOS']||0) / Math.max(l.total_simp,1) * 100).toFixed(1);
+
+        const cards = [
+            { v: fmt(l.total_simp), l: 'Simpatizantes', cls: '' },
+            { v: fmt(l.votos_atribuidos), l: 'Votos Atribuidos', cls: 'blue' },
+            { v: l.cumplimiento + '%', l: 'Cumplimiento', cls: l.cumplimiento >= 70 ? 'green' : l.cumplimiento >= 40 ? 'orange' : 'red' },
+            { v: fmt(l.mesas_presencia), l: 'Mesas Presencia', cls: '' },
+            { v: fmt(l.mesas_cero), l: 'Mesas 0 Votos', cls: 'red' },
+            { v: pctPositivo + '%', l: 'Simp. Voto Seguro+Probable', cls: 'green' },
+            { v: pctCero + '%', l: 'Simp. Cero Votos', cls: 'red' },
+            { v: l.municipios + ' mpios / ' + l.puestos + ' ptos', l: 'Cobertura', cls: 'purple' },
+        ];
+        document.getElementById('profile-grid').innerHTML = cards.map(c => `
+            <div class="profile-card ${c.cls}"><div class="pv">${c.v}</div><div class="pl">${c.l}</div></div>
+        `).join('');
+    }
+
+    // ============ CHARTS ============
+    function renderCharts() {
+        const l = currentLeader;
+
+        // Destroy old charts
+        if (chartCat) chartCat.destroy();
+        if (chartPuestos) chartPuestos.destroy();
+
+        // Category doughnut
+        const catLabels = CAT_ORDER;
+        const catValues = catLabels.map(c => l.categorias[c] || 0);
+        chartCat = new Chart(document.getElementById('chart-cat'), {
+            type: 'doughnut',
+            data: {
+                labels: catLabels,
+                datasets: [{ data: catValues, backgroundColor: catLabels.map(c => CAT_COLORS[c]), borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'right', labels: { font: { size: 11 }, padding: 10 } },
+                    tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${fmt(ctx.raw)} (${(ctx.raw/Math.max(l.total_simp,1)*100).toFixed(1)}%)` } }
+                }
+            }
+        });
+
+        // Puestos bar (top 15 by simpatizantes)
+        const mesas = l.mesas || [];
+        const puestoMap = {};
+        mesas.forEach(m => {
+            const key = m.mpio + ' / ' + m.lugar;
+            if (!puestoMap[key]) puestoMap[key] = { simp: 0, votos: 0, va: 0 };
+            puestoMap[key].simp += m.sl;
+            puestoMap[key].votos += m.vc;
+            puestoMap[key].va += m.va;
+        });
+        const puestos = Object.entries(puestoMap).map(([k,v]) => ({name:k, ...v})).sort((a,b) => b.simp - a.simp).slice(0,15);
+        const pLabels = puestos.map(p => p.name.length > 28 ? p.name.slice(0,26)+'..' : p.name);
+
+        chartPuestos = new Chart(document.getElementById('chart-puestos'), {
+            type: 'bar',
+            data: {
+                labels: pLabels,
+                datasets: [
+                    { label: 'Simpatizantes', data: puestos.map(p => p.simp), backgroundColor: '#7986cb', borderRadius: 3 },
+                    { label: 'Votos Candidata', data: puestos.map(p => p.votos), backgroundColor: '#ef5350', borderRadius: 3 },
+                    { label: 'Votos Atribuidos', data: puestos.map(p => p.va), backgroundColor: '#66bb6a', borderRadius: 3 }
+                ]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: { legend: { position: 'top', labels: { font: { size: 10 }, boxWidth: 12 } } },
+                scales: {
+                    x: { ticks: { callback: v => fmt(v) }, grid: { color: '#eee' } },
+                    y: { grid: { display: false }, ticks: { font: { size: 9 } } }
+                }
+            }
+        });
+    }
+
+    // ============ MPIO FILTER ============
+    function populateMpioFilter() {
+        const mesas = currentLeader.mesas || [];
+        const mpios = [...new Set(mesas.map(m => m.mpio))].sort();
+        const sel = document.getElementById('filter-mpio');
+        sel.innerHTML = '<option value="ALL">Todos (' + mpios.length + ')</option>';
+        mpios.forEach(mp => {
+            const count = mesas.filter(m => m.mpio === mp).length;
+            sel.innerHTML += `<option value="${mp}">${mp} (${count} mesas)</option>`;
+        });
+    }
+
+    // ============ DETAIL (grouped by puesto) ============
+    function renderDetail() {
+        const mesas = currentLeader.mesas || [];
+        const mpioFilter = document.getElementById('filter-mpio').value;
+        const catFilter = document.getElementById('filter-cat').value;
+        const lugarFilter = document.getElementById('filter-lugar').value.toUpperCase();
+
+        let filtered = mesas;
+        if (mpioFilter !== 'ALL') filtered = filtered.filter(m => m.mpio === mpioFilter);
+        if (catFilter !== 'ALL') filtered = filtered.filter(m => m.cat === catFilter);
+        if (lugarFilter) filtered = filtered.filter(m => m.lugar.toUpperCase().includes(lugarFilter));
+
+        // Group by mpio+lugar
+        const groups = {};
+        filtered.forEach(m => {
+            const key = m.mpio + '|' + m.lugar + '|' + m.zona;
+            if (!groups[key]) groups[key] = { mpio: m.mpio, lugar: m.lugar, zona: m.zona, mesas: [] };
+            groups[key].mesas.push(m);
+        });
+
+        const sortedGroups = Object.values(groups).sort((a, b) => {
+            const simpA = a.mesas.reduce((s,m) => s + m.sl, 0);
+            const simpB = b.mesas.reduce((s,m) => s + m.sl, 0);
+            return simpB - simpA;
+        });
+
+        if (sortedGroups.length === 0) {
+            document.getElementById('detail-container').innerHTML = '<div class="no-data">No hay registros con los filtros seleccionados</div>';
+            return;
+        }
+
+        let html = `<p style="font-size:.8rem;color:var(--text-light);margin-bottom:.75rem;">${fmt(filtered.length)} mesas en ${sortedGroups.length} puestos</p>`;
+
+        sortedGroups.forEach((g, gi) => {
+            const simp = g.mesas.reduce((s,m) => s + m.sl, 0);
+            const votos = g.mesas.reduce((s,m) => s + m.vc, 0);
+            const va = g.mesas.reduce((s,m) => s + m.va, 0);
+            const cero = g.mesas.filter(m => m.cat === 'CERO VOTOS').length;
+
+            // Category distribution for mini stack
+            const catCounts = {};
+            CAT_ORDER.forEach(c => catCounts[c] = 0);
+            g.mesas.forEach(m => { if (catCounts[m.cat] !== undefined) catCounts[m.cat] += m.sl; });
+            const totalS = Math.max(simp, 1);
+            const stackHTML = `<div class="mini-stack">
+                <div class="s-seguro" style="width:${(catCounts['VOTO SEGURO']/totalS*100)}%"></div>
+                <div class="s-probable" style="width:${(catCounts['VOTO PROBABLE']/totalS*100)}%"></div>
+                <div class="s-posible" style="width:${(catCounts['VOTO POSIBLE']/totalS*100)}%"></div>
+                <div class="s-parcial" style="width:${(catCounts['INCUMPLIMIENTO PARCIAL']/totalS*100)}%"></div>
+                <div class="s-cero" style="width:${(catCounts['CERO VOTOS']/totalS*100)}%"></div>
+            </div>`;
+
+            const cumpl = simp > 0 ? (va / simp * 100).toFixed(1) : '0.0';
+            const isCollapsed = !allExpanded;
+
+            html += `<div class="puesto-group">
+                <div class="puesto-header" onclick="togglePuesto(this)">
+                    <h4>${g.mpio} / ${g.lugar} <span style="font-weight:400;font-size:.75rem;color:var(--text-light);">(zona ${g.zona})</span></h4>
+                    <div class="puesto-stats">
+                        <span>${fmt(simp)} simp</span>
+                        <span>${g.mesas.length} mesas</span>
+                        <span style="color:${parseFloat(cumpl)>=50?'var(--green)':'var(--accent)'}">${cumpl}% cumpl</span>
+                        <span style="color:var(--accent)">${cero} cero</span>
+                        ${stackHTML}
+                    </div>
+                </div>
+                <div class="puesto-body ${isCollapsed?'collapsed':''}">
+                    <table>
+                        <thead><tr>
+                            <th>Mesa</th>
+                            <th>Simp. Lider</th>
+                            <th>Simp. Otros</th>
+                            <th>Simp. Total</th>
+                            <th>Lideres</th>
+                            <th>Votos Cand.</th>
+                            <th>Votos Tot.</th>
+                            <th>Categoria</th>
+                            <th>V. Atrib.</th>
+                            <th>Cumpl.%</th>
+                            <th>Exc.</th>
+                        </tr></thead>
+                        <tbody>`;
+
+            g.mesas.sort((a,b) => a.mesa - b.mesa).forEach(m => {
+                const rowCls = ROW_CLS[m.cat] || '';
+                const dotCls = DOT_CLS[m.cat] || '';
+                const tc = (m.tc * 100).toFixed(0);
+                html += `<tr class="${rowCls}">
+                    <td style="font-weight:600;">${m.mesa}</td>
+                    <td>${m.sl}</td>
+                    <td>${m.so}</td>
+                    <td>${m.st}</td>
+                    <td>${m.nl}</td>
+                    <td style="font-weight:600;color:${m.vc>0?'var(--blue)':'var(--accent)'}">${m.vc}</td>
+                    <td>${m.vt}</td>
+                    <td><span class="cat-dot ${dotCls}"></span>${CAT_SHORT[m.cat] || m.cat}</td>
+                    <td style="color:var(--green);font-weight:600;">${m.va}</td>
+                    <td style="color:${parseFloat(tc)>=50?'var(--green)':'var(--text-light)'}">${tc}%</td>
+                    <td>${m.exc ? '&#10004;' : ''}</td>
+                </tr>`;
+            });
+
+            html += `</tbody></table></div></div>`;
+        });
+
+        document.getElementById('detail-container').innerHTML = html;
+    }
+
+    function togglePuesto(el) {
+        const body = el.nextElementSibling;
+        body.classList.toggle('collapsed');
+    }
+
+    function toggleAll() {
+        allExpanded = !allExpanded;
+        document.querySelectorAll('.puesto-body').forEach(el => {
+            if (allExpanded) el.classList.remove('collapsed');
+            else el.classList.add('collapsed');
+        });
+    }
+    </script>
+</body>
+</html>

@@ -144,6 +144,7 @@
         <div class="subtitle">Ana Maria Sanclemente &mdash; Camara de Representantes, Valle del Cauca</div>
         <div class="nav-links">
             <a href="index.html">&larr; Dashboard Principal</a>
+            <a href="forense_detalle.html">Detalle por Lider</a>
             <a href="mesas.html">Probabilidad por Mesa</a>
         </div>
     </div>
@@ -231,6 +232,7 @@
                             <th>Mesas</th>
                             <th>Mesas 0</th>
                             <th>Mpios</th>
+                            <th>Detalle</th>
                         </tr>
                     </thead>
                     <tbody id="lider-tbody"></tbody>
@@ -464,6 +466,7 @@
                 <td>${fmt(r.mesas_presencia)}</td>
                 <td style="color:#c62828;">${fmt(r.mesas_cero)}</td>
                 <td>${r.municipios}</td>
+                <td><a href="forense_detalle.html?lider=${encodeURIComponent(r.lider)}" style="color:var(--blue);font-weight:600;font-size:.75rem;text-decoration:none;">Ver &rarr;</a></td>
             </tr>`;
         }).join('');
     }
