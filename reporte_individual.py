@@ -43,21 +43,37 @@ def construir_reporte_individual(df_cam, df_sim_valle, lugar_pto_map):
     cruzado con datos electorales de su mesa.
     """
     # --- VOTOS POR MESA (electoral) ---
-    votos_cand_mesa = (
-        df_cam[(df_cam['candidato'] == CANDIDATA_CODE) & (df_cam['partido'] == PARTIDO_CODE)]
+    cand_filter = (df_cam['candidato'] == CANDIDATA_CODE) & (df_cam['partido'] == PARTIDO_CODE)
+
+    # Votos por pto+mesa (para mapeos exact)
+    votos_cand_pto = (
+        df_cam[cand_filter]
         .groupby(['mpio', 'zona', 'pto', 'mesa'])['votos']
         .sum().reset_index()
         .rename(columns={'votos': 'votos_candidata'})
     )
-    votos_total_mesa = (
+    votos_total_pto = (
         df_cam.groupby(['mpio', 'zona', 'pto', 'mesa'])['votos']
         .sum().reset_index()
         .rename(columns={'votos': 'votos_totales'})
     )
-    votos_mesa = votos_total_mesa.merge(
-        votos_cand_mesa, on=['mpio', 'zona', 'pto', 'mesa'], how='left'
+    votos_mesa_pto = votos_total_pto.merge(votos_cand_pto, on=['mpio', 'zona', 'pto', 'mesa'], how='left')
+    votos_mesa_pto['votos_candidata'] = votos_mesa_pto['votos_candidata'].fillna(0).astype(int)
+
+    # Votos por zona+mesa (sumando todos los ptos — para mapeos no-exact)
+    votos_cand_zona = (
+        df_cam[cand_filter]
+        .groupby(['mpio', 'zona', 'mesa'])['votos']
+        .sum().reset_index()
+        .rename(columns={'votos': 'votos_candidata'})
     )
-    votos_mesa['votos_candidata'] = votos_mesa['votos_candidata'].fillna(0).astype(int)
+    votos_total_zona = (
+        df_cam.groupby(['mpio', 'zona', 'mesa'])['votos']
+        .sum().reset_index()
+        .rename(columns={'votos': 'votos_totales'})
+    )
+    votos_mesa_zona = votos_total_zona.merge(votos_cand_zona, on=['mpio', 'zona', 'mesa'], how='left')
+    votos_mesa_zona['votos_candidata'] = votos_mesa_zona['votos_candidata'].fillna(0).astype(int)
 
     # --- Simpatizantes individuales con zona inferida ---
     sim = df_sim_valle.dropna(subset=['mesa_num']).copy()
@@ -96,43 +112,32 @@ def construir_reporte_individual(df_cam, df_sim_valle, lugar_pto_map):
         how='left'
     )
 
-    # --- CRUCE CON VOTOS: registros con mapeo directo ---
-    matched = sim[sim['pto'].notna()].copy()
-    matched['pto'] = matched['pto'].astype(int)
+    # --- GRUPO 1: Mapeo 'exact' → cruzar por mpio+zona+pto+mesa ---
+    exact = sim[sim['match_type'] == 'exact'].copy()
+    exact['pto'] = exact['pto'].astype(int)
 
-    result_matched = matched.merge(
-        votos_mesa,
+    result_exact = exact.merge(
+        votos_mesa_pto,
         left_on=['mpio_code', 'zona_code', 'pto', 'mesa_num'],
         right_on=['mpio', 'zona', 'pto', 'mesa'],
         how='left',
         suffixes=('', '_elec')
     )
+    result_exact['match_type'] = 'exact'
 
-    # --- CRUCE SIN MAPEO: usar promedio zona ---
-    unmatched = sim[sim['pto'].isna()].copy()
+    # --- GRUPO 2: Todo lo demas → cruzar por mpio+zona+mesa (suma ptos) ---
+    not_exact = sim[sim['match_type'] != 'exact'].copy()
 
-    avg_votos_zona = (
-        votos_cand_mesa.groupby(['mpio', 'zona'])
-        .agg(votos_candidata_avg=('votos_candidata', 'mean'))
-        .reset_index()
-    )
-    avg_total_zona = (
-        votos_total_mesa.groupby(['mpio', 'zona'])
-        .agg(votos_totales_avg=('votos_totales', 'mean'))
-        .reset_index()
-    )
-    avg_zona = avg_votos_zona.merge(avg_total_zona, on=['mpio', 'zona'])
-
-    result_unmatched = unmatched.merge(
-        avg_zona,
-        left_on=['mpio_code', 'zona_code'],
-        right_on=['mpio', 'zona'],
+    result_zona = not_exact.merge(
+        votos_mesa_zona,
+        left_on=['mpio_code', 'zona_code', 'mesa_num'],
+        right_on=['mpio', 'zona', 'mesa'],
         how='left',
-        suffixes=('', '_avg')
+        suffixes=('', '_zona')
     )
-    result_unmatched['votos_candidata'] = result_unmatched['votos_candidata_avg'].round(0).fillna(0).astype(int)
-    result_unmatched['votos_totales'] = result_unmatched['votos_totales_avg'].round(0).fillna(0).astype(int)
-    result_unmatched['match_type'] = 'promedio_zona'
+    result_zona.loc[result_zona['match_type'].isna(), 'match_type'] = 'zona_mesa'
+    result_zona.loc[result_zona['match_type'] == 'ambiguous', 'match_type'] = 'zona_mesa'
+    result_zona.loc[result_zona['match_type'] == 'approx', 'match_type'] = 'zona_mesa'
 
     # --- Combinar ---
     cols = ['Cédula', 'Nombres', 'Apellidos', 'Líder', 'Categoría líder',
@@ -141,14 +146,14 @@ def construir_reporte_individual(df_cam, df_sim_valle, lugar_pto_map):
             'votos_candidata', 'votos_totales', 'match_type']
 
     for c in cols:
-        if c not in result_matched.columns:
-            result_matched[c] = None
-        if c not in result_unmatched.columns:
-            result_unmatched[c] = None
+        if c not in result_exact.columns:
+            result_exact[c] = None
+        if c not in result_zona.columns:
+            result_zona[c] = None
 
     result = pd.concat([
-        result_matched[cols],
-        result_unmatched[cols]
+        result_exact[cols],
+        result_zona[cols]
     ], ignore_index=True)
 
     result['votos_candidata'] = result['votos_candidata'].fillna(0).astype(int)

@@ -169,21 +169,42 @@ def analisis_por_mesa(df_cam, df_sim_valle, lugar_pto_map):
     Build mesa-level analysis:
     For each sympathizer record (lider + municipio + lugar + mesa),
     find the actual votes for the candidata at that mesa.
+
+    Estrategia de cruce:
+    - Mapeos 'exact': cruzar por mpio+zona+pto+mesa
+    - Todo lo demas: cruzar por mpio+zona+mesa sumando TODOS los ptos
     """
-    # --- VOTOS POR MESA (electoral) ---
-    # Votos de la candidata por mpio+zona+pto+mesa
-    votos_cand_mesa = (df_cam[(df_cam['candidato'] == CANDIDATA_CODE) & (df_cam['partido'] == PARTIDO_CODE)]
-                       .groupby(['mpio', 'zona', 'pto', 'mesa'])['votos']
-                       .sum().reset_index()
-                       .rename(columns={'votos': 'votos_candidata_mesa'}))
+    cand_filter = (df_cam['candidato'] == CANDIDATA_CODE) & (df_cam['partido'] == PARTIDO_CODE)
 
-    # Votos totales por mesa
-    votos_total_mesa = (df_cam.groupby(['mpio', 'zona', 'pto', 'mesa'])['votos']
-                        .sum().reset_index()
-                        .rename(columns={'votos': 'votos_totales_mesa'}))
+    # --- VOTOS POR PTO+MESA (para mapeos exact) ---
+    votos_cand_pto = (
+        df_cam[cand_filter]
+        .groupby(['mpio', 'zona', 'pto', 'mesa'])['votos']
+        .sum().reset_index()
+        .rename(columns={'votos': 'votos_candidata_mesa'})
+    )
+    votos_total_pto = (
+        df_cam.groupby(['mpio', 'zona', 'pto', 'mesa'])['votos']
+        .sum().reset_index()
+        .rename(columns={'votos': 'votos_totales_mesa'})
+    )
+    votos_mesa_pto = votos_total_pto.merge(votos_cand_pto, on=['mpio', 'zona', 'pto', 'mesa'], how='left')
+    votos_mesa_pto['votos_candidata_mesa'] = votos_mesa_pto['votos_candidata_mesa'].fillna(0).astype(int)
 
-    votos_mesa = votos_total_mesa.merge(votos_cand_mesa, on=['mpio', 'zona', 'pto', 'mesa'], how='left')
-    votos_mesa['votos_candidata_mesa'] = votos_mesa['votos_candidata_mesa'].fillna(0).astype(int)
+    # --- VOTOS POR ZONA+MESA (sumando todos los ptos — para no-exact) ---
+    votos_cand_zona = (
+        df_cam[cand_filter]
+        .groupby(['mpio', 'zona', 'mesa'])['votos']
+        .sum().reset_index()
+        .rename(columns={'votos': 'votos_candidata_mesa'})
+    )
+    votos_total_zona = (
+        df_cam.groupby(['mpio', 'zona', 'mesa'])['votos']
+        .sum().reset_index()
+        .rename(columns={'votos': 'votos_totales_mesa'})
+    )
+    votos_mesa_zona = votos_total_zona.merge(votos_cand_zona, on=['mpio', 'zona', 'mesa'], how='left')
+    votos_mesa_zona['votos_candidata_mesa'] = votos_mesa_zona['votos_candidata_mesa'].fillna(0).astype(int)
 
     # --- SIMPATIZANTES POR MESA ---
     sim_mesa = (df_sim_valle.dropna(subset=['mesa_num'])
@@ -199,59 +220,47 @@ def analisis_por_mesa(df_cam, df_sim_valle, lugar_pto_map):
         how='left'
     )
 
-    # --- Para registros CON mapeo: cruzar por mpio+zona+pto+mesa ---
-    sim_matched = sim_mesa[sim_mesa['pto'].notna()].copy()
-    sim_matched['pto'] = sim_matched['pto'].astype(int)
-    sim_matched['mesa_num'] = sim_matched['mesa_num'].astype(int)
+    # --- GRUPO 1: Mapeo 'exact' → cruzar por mpio+zona+pto+mesa ---
+    exact = sim_mesa[sim_mesa['match_type'] == 'exact'].copy()
+    exact['pto'] = exact['pto'].astype(int)
+    exact['mesa_num'] = exact['mesa_num'].astype(int)
 
-    result_matched = sim_matched.merge(
-        votos_mesa,
+    result_exact = exact.merge(
+        votos_mesa_pto,
         left_on=['mpio_code', 'zona_code', 'pto', 'mesa_num'],
         right_on=['mpio', 'zona', 'pto', 'mesa'],
         how='left'
     )
+    result_exact['match_type'] = 'exact'
 
-    # --- Para registros SIN mapeo: usar promedio de votos por mesa en la zona ---
-    sim_unmatched = sim_mesa[sim_mesa['pto'].isna()].copy()
+    # --- GRUPO 2: Todo lo demas → cruzar por mpio+zona+mesa (suma ptos) ---
+    not_exact = sim_mesa[sim_mesa['match_type'] != 'exact'].copy()
+    not_exact['mesa_num'] = not_exact['mesa_num'].astype(int)
 
-    # Promedio de votos candidata por mesa# dentro de cada mpio+zona
-    avg_votos_zona = (votos_cand_mesa.groupby(['mpio', 'zona'])
-                      .agg(votos_candidata_mesa=('votos_candidata_mesa', 'mean'),
-                           n_mesas=('votos_candidata_mesa', 'count'))
-                      .reset_index()
-                      .rename(columns={'votos_candidata_mesa': 'votos_candidata_mesa_avg'}))
-
-    avg_total_zona = (votos_total_mesa.groupby(['mpio', 'zona'])
-                      .agg(votos_totales_mesa=('votos_totales_mesa', 'mean'))
-                      .reset_index()
-                      .rename(columns={'votos_totales_mesa': 'votos_totales_mesa_avg'}))
-
-    avg_zona = avg_votos_zona.merge(avg_total_zona, on=['mpio', 'zona'])
-
-    result_unmatched = sim_unmatched.merge(
-        avg_zona,
-        left_on=['mpio_code', 'zona_code'],
-        right_on=['mpio', 'zona'],
-        how='left'
+    result_zona = not_exact.merge(
+        votos_mesa_zona,
+        left_on=['mpio_code', 'zona_code', 'mesa_num'],
+        right_on=['mpio', 'zona', 'mesa'],
+        how='left',
+        suffixes=('', '_zona')
     )
-    # Use avg values
-    result_unmatched['votos_candidata_mesa'] = result_unmatched['votos_candidata_mesa_avg'].round(0).fillna(0).astype(int)
-    result_unmatched['votos_totales_mesa'] = result_unmatched['votos_totales_mesa_avg'].round(0).fillna(0).astype(int)
-    result_unmatched['match_type'] = 'promedio_zona'
+    result_zona.loc[result_zona['match_type'].isna(), 'match_type'] = 'zona_mesa'
+    result_zona.loc[result_zona['match_type'] == 'ambiguous', 'match_type'] = 'zona_mesa'
+    result_zona.loc[result_zona['match_type'] == 'approx', 'match_type'] = 'zona_mesa'
 
     # --- Combinar ---
     cols_final = ['Líder', 'Municipio', 'zona_code', 'Lugar', 'mesa_num',
                   'simpatizantes', 'votos_candidata_mesa', 'votos_totales_mesa', 'match_type']
 
     for col in cols_final:
-        if col not in result_matched.columns:
-            result_matched[col] = 0
-        if col not in result_unmatched.columns:
-            result_unmatched[col] = 0
+        if col not in result_exact.columns:
+            result_exact[col] = 0
+        if col not in result_zona.columns:
+            result_zona[col] = 0
 
     result = pd.concat([
-        result_matched[cols_final],
-        result_unmatched[cols_final]
+        result_exact[cols_final],
+        result_zona[cols_final]
     ], ignore_index=True)
 
     result['votos_candidata_mesa'] = result['votos_candidata_mesa'].fillna(0).astype(int)
@@ -259,9 +268,6 @@ def analisis_por_mesa(df_cam, df_sim_valle, lugar_pto_map):
 
     # --- Calcular metricas ---
     result['tiene_votos'] = (result['votos_candidata_mesa'] > 0).astype(int)
-    # Probabilidad: min(votos, simpatizantes) / simpatizantes
-    # Si votos >= simp: prob=1.0 (todos votaron + hubo mas)
-    # Si votos < simp: prob = votos/simp (algunos no votaron)
     result['votos_atribuidos'] = result[['votos_candidata_mesa', 'simpatizantes']].min(axis=1)
     result['prob_voto'] = (result['votos_atribuidos'] / result['simpatizantes'].replace(0, float('nan'))).round(4)
     result['excedente'] = (result['votos_candidata_mesa'] - result['simpatizantes']).clip(lower=0)

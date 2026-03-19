@@ -37,21 +37,52 @@ def construir_detalle_mesas(df_cam, df_sim_valle, lugar_pto_map):
       - simpatizantes de OTROS lideres en esa mesa
       - votos de la candidata en esa mesa
       - votos totales en esa mesa
+
+    Estrategia de cruce:
+    - Para Lugares con mapeo 'exact' a un pto: cruzar por mpio+zona+pto+mesa
+    - Para todo lo demas: cruzar por mpio+zona+mesa sumando TODOS los ptos
+      (ya que no sabemos en que pto esta el simpatizante, usamos la suma de
+       votos de la candidata en todos los ptos de esa zona para esa mesa #)
     """
     # --- VOTOS POR MESA (electoral) ---
-    votos_cand_mesa = (
-        df_cam[(df_cam['candidato'] == CANDIDATA_CODE) & (df_cam['partido'] == PARTIDO_CODE)]
+    cand_filter = (df_cam['candidato'] == CANDIDATA_CODE) & (df_cam['partido'] == PARTIDO_CODE)
+
+    # Votos por pto+mesa (para mapeos exact)
+    votos_cand_pto = (
+        df_cam[cand_filter]
         .groupby(['mpio', 'zona', 'pto', 'mesa'])['votos']
         .sum().reset_index()
         .rename(columns={'votos': 'votos_candidata'})
     )
-    votos_total_mesa = (
+    votos_total_pto = (
         df_cam.groupby(['mpio', 'zona', 'pto', 'mesa'])['votos']
         .sum().reset_index()
         .rename(columns={'votos': 'votos_totales'})
     )
-    votos_mesa = votos_total_mesa.merge(votos_cand_mesa, on=['mpio', 'zona', 'pto', 'mesa'], how='left')
-    votos_mesa['votos_candidata'] = votos_mesa['votos_candidata'].fillna(0).astype(int)
+    votos_mesa_pto = votos_total_pto.merge(votos_cand_pto, on=['mpio', 'zona', 'pto', 'mesa'], how='left')
+    votos_mesa_pto['votos_candidata'] = votos_mesa_pto['votos_candidata'].fillna(0).astype(int)
+
+    # Votos por zona+mesa (sumando TODOS los ptos — para mapeos no-exact)
+    votos_cand_zona = (
+        df_cam[cand_filter]
+        .groupby(['mpio', 'zona', 'mesa'])['votos']
+        .sum().reset_index()
+        .rename(columns={'votos': 'votos_candidata'})
+    )
+    votos_total_zona = (
+        df_cam.groupby(['mpio', 'zona', 'mesa'])['votos']
+        .sum().reset_index()
+        .rename(columns={'votos': 'votos_totales'})
+    )
+    votos_mesa_zona = votos_total_zona.merge(votos_cand_zona, on=['mpio', 'zona', 'mesa'], how='left')
+    votos_mesa_zona['votos_candidata'] = votos_mesa_zona['votos_candidata'].fillna(0).astype(int)
+
+    # Numero de ptos por zona+mesa (para saber si la mesa esta en multiples ptos)
+    n_ptos = (
+        df_cam.groupby(['mpio', 'zona', 'mesa'])['pto'].nunique()
+        .reset_index().rename(columns={'pto': 'n_ptos_zona'})
+    )
+    votos_mesa_zona = votos_mesa_zona.merge(n_ptos, on=['mpio', 'zona', 'mesa'], how='left')
 
     # --- SIMPATIZANTES POR MESA (por lider) ---
     sim_mesa = (
@@ -85,44 +116,35 @@ def construir_detalle_mesas(df_cam, df_sim_valle, lugar_pto_map):
         how='left'
     )
 
-    # --- REGISTROS CON MAPEO: cruzar por mpio+zona+pto+mesa ---
-    matched = detalle[detalle['pto'].notna()].copy()
-    matched['pto'] = matched['pto'].astype(int)
-    matched['mesa_num'] = matched['mesa_num'].astype(int)
+    # --- GRUPO 1: Mapeo 'exact' → cruzar por mpio+zona+pto+mesa ---
+    exact = detalle[detalle['match_type'] == 'exact'].copy()
+    exact['pto'] = exact['pto'].astype(int)
+    exact['mesa_num'] = exact['mesa_num'].astype(int)
 
-    result_matched = matched.merge(
-        votos_mesa,
+    result_exact = exact.merge(
+        votos_mesa_pto,
         left_on=['mpio_code', 'zona_code', 'pto', 'mesa_num'],
         right_on=['mpio', 'zona', 'pto', 'mesa'],
         how='left',
         suffixes=('', '_elec')
     )
+    result_exact['match_type'] = 'exact'
 
-    # --- REGISTROS SIN MAPEO: usar promedio por zona ---
-    unmatched = detalle[detalle['pto'].isna()].copy()
+    # --- GRUPO 2: Todo lo demas → cruzar por mpio+zona+mesa (suma ptos) ---
+    not_exact = detalle[detalle['match_type'] != 'exact'].copy()
+    not_exact['mesa_num'] = not_exact['mesa_num'].astype(int)
 
-    avg_votos_zona = (
-        votos_cand_mesa.groupby(['mpio', 'zona'])
-        .agg(votos_candidata_avg=('votos_candidata', 'mean'))
-        .reset_index()
-    )
-    avg_total_zona = (
-        votos_total_mesa.groupby(['mpio', 'zona'])
-        .agg(votos_totales_avg=('votos_totales', 'mean'))
-        .reset_index()
-    )
-    avg_zona = avg_votos_zona.merge(avg_total_zona, on=['mpio', 'zona'])
-
-    result_unmatched = unmatched.merge(
-        avg_zona,
-        left_on=['mpio_code', 'zona_code'],
-        right_on=['mpio', 'zona'],
+    result_zona = not_exact.merge(
+        votos_mesa_zona,
+        left_on=['mpio_code', 'zona_code', 'mesa_num'],
+        right_on=['mpio', 'zona', 'mesa'],
         how='left',
-        suffixes=('', '_avg')
+        suffixes=('', '_zona')
     )
-    result_unmatched['votos_candidata'] = result_unmatched['votos_candidata_avg'].round(0).fillna(0).astype(int)
-    result_unmatched['votos_totales'] = result_unmatched['votos_totales_avg'].round(0).fillna(0).astype(int)
-    result_unmatched['match_type'] = 'promedio_zona'
+    # Marcar tipo de cruce
+    result_zona.loc[result_zona['match_type'].isna(), 'match_type'] = 'zona_mesa'
+    result_zona.loc[result_zona['match_type'] == 'ambiguous', 'match_type'] = 'zona_mesa'
+    result_zona.loc[result_zona['match_type'] == 'approx', 'match_type'] = 'zona_mesa'
 
     # --- COMBINAR ---
     cols = ['Líder', 'Municipio', 'zona_code', 'Lugar', 'mesa_num',
@@ -130,14 +152,14 @@ def construir_detalle_mesas(df_cam, df_sim_valle, lugar_pto_map):
             'votos_candidata', 'votos_totales', 'match_type']
 
     for col in cols:
-        if col not in result_matched.columns:
-            result_matched[col] = 0
-        if col not in result_unmatched.columns:
-            result_unmatched[col] = 0
+        if col not in result_exact.columns:
+            result_exact[col] = 0
+        if col not in result_zona.columns:
+            result_zona[col] = 0
 
     result = pd.concat([
-        result_matched[cols],
-        result_unmatched[cols]
+        result_exact[cols],
+        result_zona[cols]
     ], ignore_index=True)
 
     result['votos_candidata'] = result['votos_candidata'].fillna(0).astype(int)
