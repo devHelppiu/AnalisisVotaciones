@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Forense de Votos - Ana Maria Sanclemente</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --primary: #1a237e;
+            --primary-light: #283593;
+            --accent: #c62828;
+            --green: #2e7d32;
+            --green-light: #4caf50;
+            --orange: #e65100;
+            --orange-light: #ff9800;
+            --yellow: #f9a825;
+            --blue: #1565c0;
+            --blue-light: #42a5f5;
+            --purple: #6a1b9a;
+            --bg: #f5f5f5;
+            --card-bg: #ffffff;
+            --text: #212121;
+            --text-light: #757575;
+            --border: #e0e0e0;
+            --shadow: 0 2px 8px rgba(0,0,0,.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,.12);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+
+        .header { background:linear-gradient(135deg, #1a237e 0%, #0d47a1 50%, #1565c0 100%); color:white; padding:2rem 0; text-align:center; position:relative; overflow:hidden; }
+        .header::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .header h1 { font-size:1.9rem; font-weight:800; position:relative; letter-spacing:-.02em; }
+        .header .subtitle { font-size:1rem; opacity:.8; margin-top:.25rem; position:relative; }
+        .header .nav-links { margin-top:.75rem; position:relative; }
+        .header .nav-links a { color:rgba(255,255,255,.85); text-decoration:none; padding:.35rem .9rem; border:1px solid rgba(255,255,255,.25); border-radius:2rem; font-size:.82rem; margin:0 .2rem; transition:all .2s; }
+        .header .nav-links a:hover { background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.5); }
+
+        .container { max-width:1360px; margin:0 auto; padding:0 1.5rem; }
+
+        /* KPI Cards */
+        .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin:-2.5rem 0 2rem; position:relative; z-index:1; }
+        .kpi-card { background:var(--card-bg); border-radius:.75rem; padding:1.1rem; box-shadow:var(--shadow-lg); text-align:center; border-left:4px solid var(--primary); transition:transform .15s; }
+        .kpi-card:hover { transform:translateY(-2px); }
+        .kpi-card.red { border-left-color:var(--accent); }
+        .kpi-card.green { border-left-color:var(--green); }
+        .kpi-card.orange { border-left-color:var(--orange); }
+        .kpi-card.blue { border-left-color:var(--blue); }
+        .kpi-card.purple { border-left-color:var(--purple); }
+        .kpi-value { font-size:1.6rem; font-weight:800; color:var(--primary); }
+        .kpi-card.red .kpi-value { color:var(--accent); }
+        .kpi-card.green .kpi-value { color:var(--green); }
+        .kpi-card.orange .kpi-value { color:var(--orange); }
+        .kpi-card.blue .kpi-value { color:var(--blue); }
+        .kpi-card.purple .kpi-value { color:var(--purple); }
+        .kpi-label { font-size:.7rem; color:var(--text-light); text-transform:uppercase; letter-spacing:.05em; margin-top:.15rem; }
+        .kpi-sub { font-size:.65rem; color:var(--text-light); margin-top:.1rem; }
+
+        /* Sections */
+        .section { margin-bottom:2.5rem; }
+        .section-title { font-size:1.25rem; font-weight:700; color:var(--primary); margin-bottom:1rem; padding-bottom:.5rem; border-bottom:2px solid var(--border); display:flex; align-items:center; gap:.5rem; }
+        .card { background:var(--card-bg); border-radius:.75rem; box-shadow:var(--shadow); padding:1.5rem; margin-bottom:1.5rem; }
+        .card h3 { margin-bottom:.75rem; font-size:.9rem; color:var(--text-light); text-transform:uppercase; letter-spacing:.04em; }
+
+        /* Charts */
+        .charts-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(480px,1fr)); gap:1.5rem; }
+        .chart-container { position:relative; width:100%; }
+        .chart-container canvas { max-height:450px; }
+
+        /* Veredicto badges */
+        .veredicto-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.5rem; }
+        .veredicto-box { border-radius:.75rem; padding:1.25rem; text-align:center; color:white; box-shadow:var(--shadow); }
+        .veredicto-box.cumplio { background:linear-gradient(135deg,#2e7d32,#43a047); }
+        .veredicto-box.parcial { background:linear-gradient(135deg,#e65100,#f57c00); }
+        .veredicto-box.no-cumplio { background:linear-gradient(135deg,#b71c1c,#d32f2f); }
+        .veredicto-box .v-count { font-size:2.2rem; font-weight:800; }
+        .veredicto-box .v-label { font-size:.8rem; opacity:.9; text-transform:uppercase; letter-spacing:.05em; }
+
+        /* Category legend */
+        .cat-legend { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:1.5rem; }
+        .cat-badge { display:inline-flex; align-items:center; gap:.3rem; padding:.3rem .7rem; border-radius:2rem; font-size:.75rem; font-weight:600; }
+        .cat-badge.cero { background:#ffcdd2; color:#b71c1c; }
+        .cat-badge.seguro { background:#c8e6c9; color:#1b5e20; }
+        .cat-badge.parcial { background:#ffe0b2; color:#e65100; }
+        .cat-badge.probable { background:#bbdefb; color:#0d47a1; }
+        .cat-badge.posible { background:#e1bee7; color:#4a148c; }
+
+        .cat-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+        .cat-dot.cero { background:#e53935; }
+        .cat-dot.seguro { background:#43a047; }
+        .cat-dot.parcial { background:#fb8c00; }
+        .cat-dot.probable { background:#1e88e5; }
+        .cat-dot.posible { background:#8e24aa; }
+
+        /* Tables */
+        .table-wrapper { overflow-x:auto; }
+        table { width:100%; border-collapse:collapse; font-size:.82rem; }
+        thead th { background:var(--primary); color:white; padding:.6rem .5rem; text-align:left; font-weight:600; font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; position:sticky; top:0; z-index:2; white-space:nowrap; }
+        tbody td { padding:.5rem .5rem; border-bottom:1px solid var(--border); }
+        tbody tr:hover { background:#e3f2fd; }
+        .scrollable-table { max-height:550px; overflow-y:auto; border-radius:.75rem; border:1px solid var(--border); }
+
+        /* Bars in table */
+        .bar-cell { position:relative; }
+        .bar-bg { position:absolute; left:0; top:0; bottom:0; border-radius:2px; opacity:.15; }
+        .bar-text { position:relative; z-index:1; font-weight:600; }
+
+        /* Veredicto in table */
+        .badge { padding:.2rem .5rem; border-radius:1rem; font-size:.7rem; font-weight:700; }
+        .badge-cumplio { background:#c8e6c9; color:#1b5e20; }
+        .badge-parcial { background:#fff3e0; color:#e65100; }
+        .badge-no-cumplio { background:#ffcdd2; color:#b71c1c; }
+
+        /* Stacked bar (mini) */
+        .mini-stack { display:flex; height:18px; border-radius:3px; overflow:hidden; width:100%; min-width:120px; }
+        .mini-stack div { height:100%; }
+        .mini-stack .s-cero { background:#e53935; }
+        .mini-stack .s-seguro { background:#43a047; }
+        .mini-stack .s-parcial { background:#fb8c00; }
+        .mini-stack .s-probable { background:#1e88e5; }
+        .mini-stack .s-posible { background:#8e24aa; }
+
+        /* Filters */
+        .filter-row { display:flex; gap:.75rem; margin-bottom:1rem; flex-wrap:wrap; align-items:center; }
+        .filter-row select, .filter-row input { padding:.4rem .7rem; border:1px solid var(--border); border-radius:.4rem; font-size:.82rem; }
+        .filter-row label { font-size:.78rem; color:var(--text-light); font-weight:600; }
+
+        /* Responsive */
+        @media(max-width:768px) {
+            .kpi-grid { grid-template-columns:repeat(2,1fr); }
+            .charts-grid { grid-template-columns:1fr; }
+            .veredicto-grid { grid-template-columns:1fr; }
+            .header h1 { font-size:1.4rem; }
+        }
+
+        .explanation { background:#e8eaf6; border-left:4px solid var(--primary); padding:1rem 1.25rem; border-radius:0 .5rem .5rem 0; margin-bottom:1.5rem; font-size:.82rem; line-height:1.7; }
+        .explanation strong { color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>&#128269; Analisis Forense de Votos</h1>
+        <div class="subtitle">Ana Maria Sanclemente &mdash; Camara de Representantes, Valle del Cauca</div>
+        <div class="nav-links">
+            <a href="index.html">&larr; Dashboard Principal</a>
+            <a href="mesas.html">Probabilidad por Mesa</a>
+        </div>
+    </div>
+
+    <div class="container" style="padding-top:3.5rem;">
+        <!-- KPIs -->
+        <div class="kpi-grid" id="kpi-grid"></div>
+
+        <!-- Veredictos -->
+        <div class="section">
+            <div class="section-title"><span class="icon">&#9878;</span> Veredicto General</div>
+            <div class="veredicto-grid" id="veredicto-grid"></div>
+        </div>
+
+        <!-- Explicacion de categorias -->
+        <div class="explanation">
+            <strong>Metodologia Forense:</strong> Se cruza cada simpatizante registrado por lider con el resultado real de votacion en su mesa.
+            Se evalua si en esa mesa hay votos por la candidata y si hay simpatizantes de otros lideres.<br><br>
+            <span class="cat-dot cero"></span> <strong>CERO VOTOS:</strong> La candidata obtuvo 0 votos en esa mesa. Incumplimiento total.<br>
+            <span class="cat-dot seguro"></span> <strong>VOTO SEGURO:</strong> Solo este lider tiene simpatizantes en la mesa y hay votos suficientes. Alta certeza de voto.<br>
+            <span class="cat-dot parcial"></span> <strong>INCUMPLIMIENTO PARCIAL:</strong> Solo este lider en la mesa, pero hay menos votos que simpatizantes. Algunos no votaron.<br>
+            <span class="cat-dot probable"></span> <strong>VOTO PROBABLE:</strong> Mesa compartida con otros lideres, pero los votos alcanzan para todos. Muy probable que votaron.<br>
+            <span class="cat-dot posible"></span> <strong>VOTO POSIBLE:</strong> Mesa compartida, hay votos pero no alcanzan para todos. No se puede determinar quien voto.
+        </div>
+
+        <!-- Category summary -->
+        <div class="section">
+            <div class="section-title"><span class="icon">&#128202;</span> Distribucion Global de Simpatizantes</div>
+            <div class="charts-grid">
+                <div class="card">
+                    <h3>Distribucion por Categoria</h3>
+                    <div class="chart-container"><canvas id="chart-cat-pie"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3>Simpatizantes por Categoria (cantidad)</h3>
+                    <div class="chart-container"><canvas id="chart-cat-bar"></canvas></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaders chart -->
+        <div class="section">
+            <div class="section-title"><span class="icon">&#128101;</span> Cumplimiento Forense por Lider</div>
+            <div class="charts-grid">
+                <div class="card">
+                    <h3>Top 20 Lideres - Cumplimiento %</h3>
+                    <div class="chart-container"><canvas id="chart-lider-cumpl"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3>Top 20 Lideres - Composicion de Categorias</h3>
+                    <div class="chart-container"><canvas id="chart-lider-stack"></canvas></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaders Table -->
+        <div class="section">
+            <div class="section-title"><span class="icon">&#128196;</span> Tabla Forense de Lideres</div>
+            <div class="filter-row">
+                <label>Veredicto:</label>
+                <select id="filter-veredicto" onchange="renderTable()">
+                    <option value="ALL">Todos</option>
+                    <option value="CUMPLIO">Cumplio</option>
+                    <option value="PARCIAL">Parcial</option>
+                    <option value="NO CUMPLIO">No Cumplio</option>
+                </select>
+                <label>Buscar lider:</label>
+                <input type="text" id="filter-lider" oninput="renderTable()" placeholder="Nombre...">
+            </div>
+            <div class="scrollable-table">
+                <table id="lider-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Lider</th>
+                            <th>Simp.</th>
+                            <th>Cumpl.%</th>
+                            <th>Veredicto</th>
+                            <th>Distribucion</th>
+                            <th>Voto Seguro</th>
+                            <th>Probable</th>
+                            <th>Posible</th>
+                            <th>Inc. Parcial</th>
+                            <th>Cero Votos</th>
+                            <th>Mesas</th>
+                            <th>Mesas 0</th>
+                            <th>Mpios</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lider-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div style="text-align:center;padding:2rem 0;color:var(--text-light);font-size:.75rem;">
+            Analisis Forense de Votos &bull; Generado automaticamente &bull; Datos: Registradora Nacional
+        </div>
+    </div>
+
+    <script>
+    // DATA PLACEHOLDER - will be replaced by inject script
+    const DATA = {"lideres": [{"lider": "WALDIR  HANRRYR GOMEZ", "total_simp": 15136, "votos_atribuidos": 2633, "cumplimiento": 17.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 5661, "mesas_cero": 769, "municipios": 33, "puestos": 447, "categorias": {"CERO VOTOS": 1957, "VOTO SEGURO": 63, "INCUMPLIMIENTO PARCIAL": 16, "VOTO PROBABLE": 209, "VOTO POSIBLE": 12891}}, {"lider": "CESAR  MONTES REINA", "total_simp": 10782, "votos_atribuidos": 2064, "cumplimiento": 19.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 5101, "mesas_cero": 670, "municipios": 31, "puestos": 462, "categorias": {"CERO VOTOS": 1215, "VOTO SEGURO": 90, "INCUMPLIMIENTO PARCIAL": 8, "VOTO PROBABLE": 203, "VOTO POSIBLE": 9266}}, {"lider": "JUAN  LOPEZ MOSQUERA", "total_simp": 9714, "votos_atribuidos": 1231, "cumplimiento": 12.7, "veredicto": "NO CUMPLIO", "mesas_presencia": 4198, "mesas_cero": 567, "municipios": 33, "puestos": 405, "categorias": {"CERO VOTOS": 1339, "VOTO SEGURO": 20, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 144, "VOTO POSIBLE": 8211}}, {"lider": "JONATHAN  RAMIREZ QUIÑONEZ", "total_simp": 5348, "votos_atribuidos": 711, "cumplimiento": 13.3, "veredicto": "NO CUMPLIO", "mesas_presencia": 3410, "mesas_cero": 453, "municipios": 29, "puestos": 393, "categorias": {"CERO VOTOS": 696, "VOTO SEGURO": 46, "INCUMPLIMIENTO PARCIAL": 2, "VOTO PROBABLE": 84, "VOTO POSIBLE": 4520}}, {"lider": "MAROLIN  RAMIREZ SARRIA", "total_simp": 5044, "votos_atribuidos": 643, "cumplimiento": 12.7, "veredicto": "NO CUMPLIO", "mesas_presencia": 3164, "mesas_cero": 462, "municipios": 28, "puestos": 398, "categorias": {"CERO VOTOS": 718, "VOTO SEGURO": 30, "INCUMPLIMIENTO PARCIAL": 9, "VOTO PROBABLE": 84, "VOTO POSIBLE": 4203}}, {"lider": "ANGIE  GRISALES MOSQUERA", "total_simp": 4003, "votos_atribuidos": 509, "cumplimiento": 12.7, "veredicto": "NO CUMPLIO", "mesas_presencia": 2751, "mesas_cero": 415, "municipios": 23, "puestos": 339, "categorias": {"CERO VOTOS": 615, "VOTO SEGURO": 38, "INCUMPLIMIENTO PARCIAL": 11, "VOTO PROBABLE": 80, "VOTO POSIBLE": 3259}}, {"lider": "WILLIAM HENAO GARCIA", "total_simp": 3504, "votos_atribuidos": 1406, "cumplimiento": 40.1, "veredicto": "PARCIAL", "mesas_presencia": 668, "mesas_cero": 60, "municipios": 21, "puestos": 188, "categorias": {"CERO VOTOS": 113, "VOTO SEGURO": 10, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 81, "VOTO POSIBLE": 3300}}, {"lider": "JORGE ELIECER LOZANO AGUDELO", "total_simp": 3121, "votos_atribuidos": 361, "cumplimiento": 11.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 2162, "mesas_cero": 281, "municipios": 22, "puestos": 256, "categorias": {"CERO VOTOS": 398, "VOTO SEGURO": 14, "INCUMPLIMIENTO PARCIAL": 3, "VOTO PROBABLE": 44, "VOTO POSIBLE": 2662}}, {"lider": "ALEJANDRO  VASQUEZ ZAWAZKY", "total_simp": 2504, "votos_atribuidos": 291, "cumplimiento": 11.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 1854, "mesas_cero": 273, "municipios": 27, "puestos": 363, "categorias": {"CERO VOTOS": 337, "VOTO SEGURO": 22, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 50, "VOTO POSIBLE": 2095}}, {"lider": "VICTOR MANUEL GARCIA GIRALDO", "total_simp": 2419, "votos_atribuidos": 347, "cumplimiento": 14.3, "veredicto": "NO CUMPLIO", "mesas_presencia": 1933, "mesas_cero": 222, "municipios": 29, "puestos": 349, "categorias": {"CERO VOTOS": 268, "VOTO SEGURO": 24, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 66, "VOTO POSIBLE": 2061}}, {"lider": "LEIDY  VELASQUEZ OTALVARO", "total_simp": 2099, "votos_atribuidos": 269, "cumplimiento": 12.8, "veredicto": "NO CUMPLIO", "mesas_presencia": 1540, "mesas_cero": 190, "municipios": 20, "puestos": 259, "categorias": {"CERO VOTOS": 237, "VOTO SEGURO": 7, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 39, "VOTO POSIBLE": 1816}}, {"lider": "LEYDI TATIANA MARTINEZ IDROBO", "total_simp": 1917, "votos_atribuidos": 186, "cumplimiento": 9.7, "veredicto": "NO CUMPLIO", "mesas_presencia": 1211, "mesas_cero": 173, "municipios": 18, "puestos": 258, "categorias": {"CERO VOTOS": 247, "VOTO SEGURO": 9, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 16, "VOTO POSIBLE": 1645}}, {"lider": "ANDRES FELIPE COLLAZOS MARTINEZ", "total_simp": 1894, "votos_atribuidos": 729, "cumplimiento": 38.5, "veredicto": "NO CUMPLIO", "mesas_presencia": 632, "mesas_cero": 41, "municipios": 14, "puestos": 181, "categorias": {"CERO VOTOS": 55, "VOTO SEGURO": 5, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 47, "VOTO POSIBLE": 1787}}, {"lider": "JORGE ELIECER RAMIREZ MOSQUERA", "total_simp": 1446, "votos_atribuidos": 175, "cumplimiento": 12.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 510, "mesas_cero": 61, "municipios": 14, "puestos": 181, "categorias": {"CERO VOTOS": 173, "VOTO SEGURO": 13, "INCUMPLIMIENTO PARCIAL": 42, "VOTO PROBABLE": 17, "VOTO POSIBLE": 1201}}, {"lider": "No encontrado No encontrado", "total_simp": 1438, "votos_atribuidos": 116, "cumplimiento": 8.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 991, "mesas_cero": 153, "municipios": 18, "puestos": 229, "categorias": {"CERO VOTOS": 212, "VOTO SEGURO": 2, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 13, "VOTO POSIBLE": 1211}}, {"lider": "PEDRO KADIR ZAMORA RENGIFO", "total_simp": 1377, "votos_atribuidos": 95, "cumplimiento": 6.9, "veredicto": "NO CUMPLIO", "mesas_presencia": 1102, "mesas_cero": 161, "municipios": 14, "puestos": 242, "categorias": {"CERO VOTOS": 194, "VOTO SEGURO": 7, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 22, "VOTO POSIBLE": 1154}}, {"lider": "JORGE ENRIQUE CASALINS TELLO", "total_simp": 1354, "votos_atribuidos": 123, "cumplimiento": 9.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 1051, "mesas_cero": 160, "municipios": 20, "puestos": 260, "categorias": {"CERO VOTOS": 205, "VOTO SEGURO": 5, "INCUMPLIMIENTO PARCIAL": 2, "VOTO PROBABLE": 22, "VOTO POSIBLE": 1120}}, {"lider": "GLORIA JIMENA ARAGON VELEZ", "total_simp": 1307, "votos_atribuidos": 104, "cumplimiento": 8.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 964, "mesas_cero": 171, "municipios": 14, "puestos": 226, "categorias": {"CERO VOTOS": 278, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 15, "VOTO POSIBLE": 1011}}, {"lider": "WILMER  VALENCIA GARCIA", "total_simp": 1240, "votos_atribuidos": 129, "cumplimiento": 10.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 587, "mesas_cero": 110, "municipios": 9, "puestos": 112, "categorias": {"CERO VOTOS": 246, "VOTO SEGURO": 5, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 15, "VOTO POSIBLE": 974}}, {"lider": "WILMAR  ORTEGA GARCIA", "total_simp": 1172, "votos_atribuidos": 130, "cumplimiento": 11.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 957, "mesas_cero": 121, "municipios": 15, "puestos": 229, "categorias": {"CERO VOTOS": 148, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 3, "VOTO PROBABLE": 16, "VOTO POSIBLE": 1002}}, {"lider": "WILINTON LUIS ARTEAGA MANRIQUE", "total_simp": 1148, "votos_atribuidos": 145, "cumplimiento": 12.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 710, "mesas_cero": 95, "municipios": 14, "puestos": 206, "categorias": {"CERO VOTOS": 108, "VOTO SEGURO": 6, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 20, "VOTO POSIBLE": 1014}}, {"lider": "JAVIER GUILLERMO SANTANDER LOPEZ", "total_simp": 1062, "votos_atribuidos": 452, "cumplimiento": 42.6, "veredicto": "PARCIAL", "mesas_presencia": 374, "mesas_cero": 12, "municipios": 11, "puestos": 80, "categorias": {"CERO VOTOS": 35, "VOTO SEGURO": 4, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 42, "VOTO POSIBLE": 981}}, {"lider": "JUAN  ANGULO RIASCOS", "total_simp": 1025, "votos_atribuidos": 148, "cumplimiento": 14.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 406, "mesas_cero": 86, "municipios": 11, "puestos": 69, "categorias": {"CERO VOTOS": 171, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 5, "VOTO POSIBLE": 846}}, {"lider": "JUAN CARLOS BARONA", "total_simp": 898, "votos_atribuidos": 91, "cumplimiento": 10.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 485, "mesas_cero": 65, "municipios": 18, "puestos": 160, "categorias": {"CERO VOTOS": 128, "VOTO SEGURO": 2, "INCUMPLIMIENTO PARCIAL": 3, "VOTO PROBABLE": 9, "VOTO POSIBLE": 756}}, {"lider": "WALTER URRESTE", "total_simp": 890, "votos_atribuidos": 65, "cumplimiento": 7.3, "veredicto": "NO CUMPLIO", "mesas_presencia": 418, "mesas_cero": 86, "municipios": 5, "puestos": 56, "categorias": {"CERO VOTOS": 156, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 6, "VOTO POSIBLE": 728}}, {"lider": "JESUS EFREN BANGUERO VALENCIA", "total_simp": 885, "votos_atribuidos": 98, "cumplimiento": 11.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 762, "mesas_cero": 85, "municipios": 14, "puestos": 232, "categorias": {"CERO VOTOS": 92, "VOTO SEGURO": 9, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 27, "VOTO POSIBLE": 757}}, {"lider": "JHON  ORTIZ SALAZAR", "total_simp": 884, "votos_atribuidos": 22, "cumplimiento": 2.5, "veredicto": "NO CUMPLIO", "mesas_presencia": 513, "mesas_cero": 105, "municipios": 8, "puestos": 84, "categorias": {"CERO VOTOS": 216, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 667}}, {"lider": "DIEGO FERNANDO ARBOLEDA BUITRAGO", "total_simp": 822, "votos_atribuidos": 59, "cumplimiento": 7.2, "veredicto": "NO CUMPLIO", "mesas_presencia": 717, "mesas_cero": 97, "municipios": 9, "puestos": 185, "categorias": {"CERO VOTOS": 118, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 13, "VOTO POSIBLE": 691}}, {"lider": "CLARA INES IDARRAGA ZUÑIGA", "total_simp": 811, "votos_atribuidos": 84, "cumplimiento": 10.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 654, "mesas_cero": 87, "municipios": 14, "puestos": 212, "categorias": {"CERO VOTOS": 112, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 14, "VOTO POSIBLE": 682}}, {"lider": "CARLOS  MUÑOZ JARAMILLO", "total_simp": 810, "votos_atribuidos": 54, "cumplimiento": 6.7, "veredicto": "NO CUMPLIO", "mesas_presencia": 664, "mesas_cero": 83, "municipios": 18, "puestos": 211, "categorias": {"CERO VOTOS": 108, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 16, "VOTO POSIBLE": 685}}, {"lider": "CARLOS MUÑOZ", "total_simp": 809, "votos_atribuidos": 56, "cumplimiento": 6.9, "veredicto": "NO CUMPLIO", "mesas_presencia": 664, "mesas_cero": 83, "municipios": 18, "puestos": 211, "categorias": {"CERO VOTOS": 108, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 16, "VOTO POSIBLE": 685}}, {"lider": "ANGEL TOVAR", "total_simp": 772, "votos_atribuidos": 70, "cumplimiento": 9.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 253, "mesas_cero": 52, "municipios": 5, "puestos": 59, "categorias": {"CERO VOTOS": 164, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 6, "VOTO POSIBLE": 602}}, {"lider": "IVAN DARIO ROJAS LOPERA", "total_simp": 657, "votos_atribuidos": 85, "cumplimiento": 12.9, "veredicto": "NO CUMPLIO", "mesas_presencia": 382, "mesas_cero": 46, "municipios": 14, "puestos": 142, "categorias": {"CERO VOTOS": 53, "VOTO SEGURO": 4, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 4, "VOTO POSIBLE": 596}}, {"lider": "MARIA  JUANILLO OLANO", "total_simp": 652, "votos_atribuidos": 38, "cumplimiento": 5.8, "veredicto": "NO CUMPLIO", "mesas_presencia": 553, "mesas_cero": 83, "municipios": 16, "puestos": 180, "categorias": {"CERO VOTOS": 93, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 8, "VOTO POSIBLE": 548}}, {"lider": "MARIA ALEJANDRA ARIAS RIVERA", "total_simp": 550, "votos_atribuidos": 39, "cumplimiento": 7.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 516, "mesas_cero": 68, "municipios": 14, "puestos": 221, "categorias": {"CERO VOTOS": 72, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 10, "VOTO POSIBLE": 465}}, {"lider": "DANIELA  MONCADA JIMENEZ", "total_simp": 526, "votos_atribuidos": 56, "cumplimiento": 10.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 414, "mesas_cero": 44, "municipios": 16, "puestos": 146, "categorias": {"CERO VOTOS": 52, "VOTO SEGURO": 2, "INCUMPLIMIENTO PARCIAL": 4, "VOTO PROBABLE": 19, "VOTO POSIBLE": 449}}, {"lider": "JAMES ALBERTO RAMIREZ MONTILLA", "total_simp": 515, "votos_atribuidos": 177, "cumplimiento": 34.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 384, "mesas_cero": 60, "municipios": 18, "puestos": 157, "categorias": {"CERO VOTOS": 63, "VOTO SEGURO": 32, "INCUMPLIMIENTO PARCIAL": 14, "VOTO PROBABLE": 40, "VOTO POSIBLE": 366}}, {"lider": "ANDRES ERNESTO HURTADO VELA", "total_simp": 495, "votos_atribuidos": 65, "cumplimiento": 13.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 232, "mesas_cero": 44, "municipios": 5, "puestos": 51, "categorias": {"CERO VOTOS": 59, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 2, "VOTO POSIBLE": 433}}, {"lider": "HERNAN ALONSO RAMIREZ HINCAPIE", "total_simp": 459, "votos_atribuidos": 132, "cumplimiento": 28.8, "veredicto": "NO CUMPLIO", "mesas_presencia": 148, "mesas_cero": 15, "municipios": 17, "puestos": 59, "categorias": {"CERO VOTOS": 30, "VOTO SEGURO": 9, "INCUMPLIMIENTO PARCIAL": 67, "VOTO PROBABLE": 18, "VOTO POSIBLE": 335}}, {"lider": "FRANCISCO ANTONIO CALVACHE PAZ", "total_simp": 452, "votos_atribuidos": 68, "cumplimiento": 15.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 243, "mesas_cero": 20, "municipios": 13, "puestos": 114, "categorias": {"CERO VOTOS": 20, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 5, "VOTO POSIBLE": 424}}, {"lider": "Yeslin Karina Jori Karina9402@gmail.com", "total_simp": 438, "votos_atribuidos": 99, "cumplimiento": 22.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 385, "mesas_cero": 27, "municipios": 12, "puestos": 137, "categorias": {"CERO VOTOS": 29, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 13, "VOTO POSIBLE": 393}}, {"lider": "VICTOR  CAPACHO PINTO", "total_simp": 424, "votos_atribuidos": 34, "cumplimiento": 8.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 367, "mesas_cero": 57, "municipios": 12, "puestos": 135, "categorias": {"CERO VOTOS": 64, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 3, "VOTO POSIBLE": 354}}, {"lider": "JUAN PABLO ANGULO ANGULO", "total_simp": 416, "votos_atribuidos": 29, "cumplimiento": 7.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 237, "mesas_cero": 44, "municipios": 4, "puestos": 46, "categorias": {"CERO VOTOS": 68, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 1, "VOTO POSIBLE": 347}}, {"lider": "MARGARITA  SEGURA BANDERAS", "total_simp": 402, "votos_atribuidos": 100, "cumplimiento": 24.9, "veredicto": "NO CUMPLIO", "mesas_presencia": 259, "mesas_cero": 37, "municipios": 5, "puestos": 59, "categorias": {"CERO VOTOS": 52, "VOTO SEGURO": 5, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 6, "VOTO POSIBLE": 339}}, {"lider": "CAROLINA  LASSO CORDOBA", "total_simp": 390, "votos_atribuidos": 21, "cumplimiento": 5.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 308, "mesas_cero": 35, "municipios": 8, "puestos": 110, "categorias": {"CERO VOTOS": 41, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 1, "VOTO POSIBLE": 345}}, {"lider": "LUIS  TOBAR MURILLO", "total_simp": 364, "votos_atribuidos": 13, "cumplimiento": 3.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 241, "mesas_cero": 48, "municipios": 5, "puestos": 58, "categorias": {"CERO VOTOS": 77, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 3, "VOTO POSIBLE": 284}}, {"lider": "Andres Pachely Bustos", "total_simp": 354, "votos_atribuidos": 32, "cumplimiento": 9.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 335, "mesas_cero": 34, "municipios": 13, "puestos": 158, "categorias": {"CERO VOTOS": 34, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 7, "VOTO POSIBLE": 310}}, {"lider": "FABIO  MORENO CASTAÑO", "total_simp": 344, "votos_atribuidos": 42, "cumplimiento": 12.2, "veredicto": "NO CUMPLIO", "mesas_presencia": 318, "mesas_cero": 25, "municipios": 8, "puestos": 122, "categorias": {"CERO VOTOS": 27, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 4, "VOTO POSIBLE": 313}}, {"lider": "FARITH  VICTORIA CABEZAS", "total_simp": 336, "votos_atribuidos": 36, "cumplimiento": 10.7, "veredicto": "NO CUMPLIO", "mesas_presencia": 319, "mesas_cero": 42, "municipios": 8, "puestos": 152, "categorias": {"CERO VOTOS": 46, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 5, "VOTO POSIBLE": 285}}, {"lider": "RAMON ARTURO MONTOYA MUÑOZ", "total_simp": 335, "votos_atribuidos": 72, "cumplimiento": 21.5, "veredicto": "NO CUMPLIO", "mesas_presencia": 238, "mesas_cero": 32, "municipios": 9, "puestos": 82, "categorias": {"CERO VOTOS": 39, "VOTO SEGURO": 9, "INCUMPLIMIENTO PARCIAL": 5, "VOTO PROBABLE": 8, "VOTO POSIBLE": 274}}, {"lider": "JHON JAIME HERRERA PARRA", "total_simp": 328, "votos_atribuidos": 92, "cumplimiento": 28.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 152, "mesas_cero": 24, "municipios": 7, "puestos": 39, "categorias": {"CERO VOTOS": 50, "VOTO SEGURO": 2, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 6, "VOTO POSIBLE": 270}}, {"lider": "JHON  QUINTERO JIMENEZ", "total_simp": 310, "votos_atribuidos": 122, "cumplimiento": 39.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 192, "mesas_cero": 6, "municipios": 4, "puestos": 44, "categorias": {"CERO VOTOS": 7, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 10, "VOTO POSIBLE": 292}}, {"lider": "JHON FREDY GRIJALBA", "total_simp": 308, "votos_atribuidos": 32, "cumplimiento": 10.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 284, "mesas_cero": 47, "municipios": 12, "puestos": 149, "categorias": {"CERO VOTOS": 48, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 7, "VOTO POSIBLE": 252}}, {"lider": "ROBERT  CORREA PLAZAS", "total_simp": 301, "votos_atribuidos": 28, "cumplimiento": 9.3, "veredicto": "NO CUMPLIO", "mesas_presencia": 271, "mesas_cero": 22, "municipios": 10, "puestos": 101, "categorias": {"CERO VOTOS": 22, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 4, "VOTO POSIBLE": 274}}, {"lider": "JHON  ARANA RODRIGUEZ", "total_simp": 300, "votos_atribuidos": 142, "cumplimiento": 47.3, "veredicto": "PARCIAL", "mesas_presencia": 176, "mesas_cero": 26, "municipios": 4, "puestos": 29, "categorias": {"CERO VOTOS": 49, "VOTO SEGURO": 24, "INCUMPLIMIENTO PARCIAL": 21, "VOTO PROBABLE": 38, "VOTO POSIBLE": 168}}, {"lider": "JHON HERRERA", "total_simp": 296, "votos_atribuidos": 85, "cumplimiento": 28.7, "veredicto": "NO CUMPLIO", "mesas_presencia": 140, "mesas_cero": 20, "municipios": 8, "puestos": 34, "categorias": {"CERO VOTOS": 40, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 6, "VOTO POSIBLE": 250}}, {"lider": "DARSIN  MORAN VALLEJO", "total_simp": 279, "votos_atribuidos": 14, "cumplimiento": 5.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 222, "mesas_cero": 24, "municipios": 8, "puestos": 101, "categorias": {"CERO VOTOS": 26, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 5, "VOTO POSIBLE": 247}}, {"lider": "MARLENY  REYES BARRERA", "total_simp": 277, "votos_atribuidos": 76, "cumplimiento": 27.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 241, "mesas_cero": 33, "municipios": 18, "puestos": 125, "categorias": {"CERO VOTOS": 36, "VOTO SEGURO": 18, "INCUMPLIMIENTO PARCIAL": 2, "VOTO PROBABLE": 18, "VOTO POSIBLE": 203}}, {"lider": "JOSE  RAMOS DIAZ", "total_simp": 273, "votos_atribuidos": 35, "cumplimiento": 12.8, "veredicto": "NO CUMPLIO", "mesas_presencia": 190, "mesas_cero": 22, "municipios": 10, "puestos": 87, "categorias": {"CERO VOTOS": 23, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 4, "VOTO POSIBLE": 246}}, {"lider": "ALEXANDRA  MEJIA PRIETO", "total_simp": 267, "votos_atribuidos": 32, "cumplimiento": 12.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 220, "mesas_cero": 30, "municipios": 8, "puestos": 112, "categorias": {"CERO VOTOS": 34, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 1, "VOTO POSIBLE": 229}}, {"lider": "PAOLA YANETH VALENCIA SUAREZ", "total_simp": 266, "votos_atribuidos": 35, "cumplimiento": 13.2, "veredicto": "NO CUMPLIO", "mesas_presencia": 97, "mesas_cero": 9, "municipios": 7, "puestos": 38, "categorias": {"CERO VOTOS": 9, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 1, "VOTO POSIBLE": 256}}, {"lider": "BEATRIZ  ARCE MOLINA", "total_simp": 245, "votos_atribuidos": 21, "cumplimiento": 8.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 230, "mesas_cero": 23, "municipios": 9, "puestos": 113, "categorias": {"CERO VOTOS": 24, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 3, "VOTO POSIBLE": 218}}, {"lider": "RUBY EDITH QUIÑONEZ LOPEZ", "total_simp": 238, "votos_atribuidos": 39, "cumplimiento": 16.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 84, "mesas_cero": 2, "municipios": 9, "puestos": 27, "categorias": {"CERO VOTOS": 2, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 2, "VOTO POSIBLE": 233}}, {"lider": "HUGO FREDY CABAL GRACIA", "total_simp": 235, "votos_atribuidos": 25, "cumplimiento": 10.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 210, "mesas_cero": 38, "municipios": 5, "puestos": 82, "categorias": {"CERO VOTOS": 40, "VOTO SEGURO": 6, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 5, "VOTO POSIBLE": 184}}, {"lider": "ALEXANDER  DAZA GALINDO", "total_simp": 234, "votos_atribuidos": 85, "cumplimiento": 36.3, "veredicto": "NO CUMPLIO", "mesas_presencia": 174, "mesas_cero": 6, "municipios": 7, "puestos": 48, "categorias": {"CERO VOTOS": 6, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 9, "VOTO POSIBLE": 218}}, {"lider": "JORGE  GASCA RAMIREZ", "total_simp": 220, "votos_atribuidos": 11, "cumplimiento": 5.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 188, "mesas_cero": 46, "municipios": 11, "puestos": 88, "categorias": {"CERO VOTOS": 54, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 3, "VOTO POSIBLE": 162}}, {"lider": "ALINSON  GOMEZ VENTE", "total_simp": 210, "votos_atribuidos": 75, "cumplimiento": 35.7, "veredicto": "NO CUMPLIO", "mesas_presencia": 129, "mesas_cero": 3, "municipios": 1, "puestos": 28, "categorias": {"CERO VOTOS": 7, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 1, "VOTO POSIBLE": 202}}, {"lider": "EDWIN  ROJAS PULGARIN", "total_simp": 206, "votos_atribuidos": 27, "cumplimiento": 13.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 85, "mesas_cero": 9, "municipios": 6, "puestos": 30, "categorias": {"CERO VOTOS": 24, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 1, "VOTO POSIBLE": 181}}, {"lider": "ALVARO  LOPEZ ZAMBRANO", "total_simp": 205, "votos_atribuidos": 40, "cumplimiento": 19.5, "veredicto": "NO CUMPLIO", "mesas_presencia": 173, "mesas_cero": 11, "municipios": 7, "puestos": 73, "categorias": {"CERO VOTOS": 13, "VOTO SEGURO": 2, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 7, "VOTO POSIBLE": 183}}, {"lider": "JULIAN  VARELA CEBALLOS", "total_simp": 196, "votos_atribuidos": 35, "cumplimiento": 17.9, "veredicto": "NO CUMPLIO", "mesas_presencia": 116, "mesas_cero": 21, "municipios": 7, "puestos": 37, "categorias": {"CERO VOTOS": 29, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 5, "VOTO POSIBLE": 161}}, {"lider": "JUAN  SANDOVAL IZQUIERDO", "total_simp": 186, "votos_atribuidos": 13, "cumplimiento": 7.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 174, "mesas_cero": 28, "municipios": 11, "puestos": 92, "categorias": {"CERO VOTOS": 32, "VOTO SEGURO": 3, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 3, "VOTO POSIBLE": 148}}, {"lider": "LUIS FELIPE CARMONA GIRALDO", "total_simp": 184, "votos_atribuidos": 12, "cumplimiento": 6.5, "veredicto": "NO CUMPLIO", "mesas_presencia": 179, "mesas_cero": 24, "municipios": 11, "puestos": 110, "categorias": {"CERO VOTOS": 24, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 2, "VOTO POSIBLE": 157}}, {"lider": "LUIS FELIPE CARMONA", "total_simp": 168, "votos_atribuidos": 12, "cumplimiento": 7.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 155, "mesas_cero": 20, "municipios": 11, "puestos": 93, "categorias": {"CERO VOTOS": 20, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 2, "VOTO POSIBLE": 146}}, {"lider": "ANGIE  GALINDEZ VALENCIA", "total_simp": 161, "votos_atribuidos": 9, "cumplimiento": 5.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 108, "mesas_cero": 14, "municipios": 7, "puestos": 64, "categorias": {"CERO VOTOS": 19, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 2, "VOTO POSIBLE": 139}}, {"lider": "CATALINA  GIL GOMEZ", "total_simp": 151, "votos_atribuidos": 33, "cumplimiento": 21.9, "veredicto": "NO CUMPLIO", "mesas_presencia": 139, "mesas_cero": 32, "municipios": 7, "puestos": 77, "categorias": {"CERO VOTOS": 33, "VOTO SEGURO": 2, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 8, "VOTO POSIBLE": 108}}, {"lider": "MATEO  VALDES ESTRADA", "total_simp": 149, "votos_atribuidos": 55, "cumplimiento": 36.9, "veredicto": "NO CUMPLIO", "mesas_presencia": 119, "mesas_cero": 2, "municipios": 2, "puestos": 26, "categorias": {"CERO VOTOS": 2, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 3, "VOTO POSIBLE": 144}}, {"lider": "CHRISTIAN  CORREA TORO", "total_simp": 145, "votos_atribuidos": 54, "cumplimiento": 37.2, "veredicto": "NO CUMPLIO", "mesas_presencia": 62, "mesas_cero": 7, "municipios": 11, "puestos": 20, "categorias": {"CERO VOTOS": 17, "VOTO SEGURO": 13, "INCUMPLIMIENTO PARCIAL": 26, "VOTO PROBABLE": 5, "VOTO POSIBLE": 84}}, {"lider": "DAVID  ESCOBAR PRADO", "total_simp": 121, "votos_atribuidos": 14, "cumplimiento": 11.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 98, "mesas_cero": 17, "municipios": 3, "puestos": 42, "categorias": {"CERO VOTOS": 21, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 2, "VOTO POSIBLE": 97}}, {"lider": "LUIS  LOPEZ MOSQUERA", "total_simp": 116, "votos_atribuidos": 6, "cumplimiento": 5.2, "veredicto": "NO CUMPLIO", "mesas_presencia": 103, "mesas_cero": 9, "municipios": 2, "puestos": 56, "categorias": {"CERO VOTOS": 10, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 106}}, {"lider": "JHOAN FELIPE ZUÑIGA ESTRADA", "total_simp": 113, "votos_atribuidos": 31, "cumplimiento": 27.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 93, "mesas_cero": 4, "municipios": 4, "puestos": 27, "categorias": {"CERO VOTOS": 5, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 3, "VOTO POSIBLE": 104}}, {"lider": "JOSE GOMEZ RAMIREZ", "total_simp": 105, "votos_atribuidos": 36, "cumplimiento": 34.3, "veredicto": "NO CUMPLIO", "mesas_presencia": 82, "mesas_cero": 19, "municipios": 1, "puestos": 20, "categorias": {"CERO VOTOS": 22, "VOTO SEGURO": 12, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 9, "VOTO POSIBLE": 62}}, {"lider": "DANIELA  PATIÑO RODRIGUEZ", "total_simp": 99, "votos_atribuidos": 15, "cumplimiento": 15.2, "veredicto": "NO CUMPLIO", "mesas_presencia": 89, "mesas_cero": 13, "municipios": 2, "puestos": 41, "categorias": {"CERO VOTOS": 15, "VOTO SEGURO": 2, "INCUMPLIMIENTO PARCIAL": 2, "VOTO PROBABLE": 3, "VOTO POSIBLE": 77}}, {"lider": "JULIO  OBREGON ESTUPIÑAN", "total_simp": 85, "votos_atribuidos": 1, "cumplimiento": 1.2, "veredicto": "NO CUMPLIO", "mesas_presencia": 55, "mesas_cero": 16, "municipios": 2, "puestos": 18, "categorias": {"CERO VOTOS": 30, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 55}}, {"lider": "ANDRES  CARDENAS BRICEÑO", "total_simp": 85, "votos_atribuidos": 24, "cumplimiento": 28.2, "veredicto": "NO CUMPLIO", "mesas_presencia": 77, "mesas_cero": 4, "municipios": 6, "puestos": 34, "categorias": {"CERO VOTOS": 4, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 2, "VOTO POSIBLE": 79}}, {"lider": "JUAN  CARBONELL GARCIA", "total_simp": 84, "votos_atribuidos": 2, "cumplimiento": 2.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 83, "mesas_cero": 11, "municipios": 2, "puestos": 49, "categorias": {"CERO VOTOS": 11, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 73}}, {"lider": "DIEGO  CABALLERO VALENCIA", "total_simp": 75, "votos_atribuidos": 3, "cumplimiento": 4.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 30, "mesas_cero": 0, "municipios": 2, "puestos": 2, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 75}}, {"lider": "ALEJANDRA  MOSQUERA", "total_simp": 68, "votos_atribuidos": 7, "cumplimiento": 10.3, "veredicto": "NO CUMPLIO", "mesas_presencia": 68, "mesas_cero": 7, "municipios": 3, "puestos": 33, "categorias": {"CERO VOTOS": 7, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 2, "VOTO POSIBLE": 59}}, {"lider": "SONIA  CASTRO SANCHEZ", "total_simp": 66, "votos_atribuidos": 2, "cumplimiento": 3.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 55, "mesas_cero": 15, "municipios": 6, "puestos": 29, "categorias": {"CERO VOTOS": 17, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 49}}, {"lider": "JESUS  GARCIA MICOLTA", "total_simp": 64, "votos_atribuidos": 10, "cumplimiento": 15.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 62, "mesas_cero": 6, "municipios": 3, "puestos": 36, "categorias": {"CERO VOTOS": 6, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 3, "VOTO POSIBLE": 54}}, {"lider": "CARLOS ANDRES ORDOÑEZ PALADINES", "total_simp": 63, "votos_atribuidos": 23, "cumplimiento": 36.5, "veredicto": "NO CUMPLIO", "mesas_presencia": 52, "mesas_cero": 1, "municipios": 1, "puestos": 13, "categorias": {"CERO VOTOS": 1, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 1, "VOTO POSIBLE": 60}}, {"lider": "JULIANA  TELLEZ MURCIA", "total_simp": 47, "votos_atribuidos": 3, "cumplimiento": 6.4, "veredicto": "NO CUMPLIO", "mesas_presencia": 44, "mesas_cero": 3, "municipios": 6, "puestos": 23, "categorias": {"CERO VOTOS": 3, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 43}}, {"lider": "ROSA ALEJANDRA MORENO SOTO", "total_simp": 44, "votos_atribuidos": 6, "cumplimiento": 13.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 40, "mesas_cero": 4, "municipios": 2, "puestos": 23, "categorias": {"CERO VOTOS": 4, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 1, "VOTO POSIBLE": 39}}, {"lider": "CATALINA  ZULUAGA RODRIGUEZ", "total_simp": 37, "votos_atribuidos": 8, "cumplimiento": 21.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 37, "mesas_cero": 0, "municipios": 2, "puestos": 26, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 1, "VOTO POSIBLE": 35}}, {"lider": "WILLIAM  HENAO GARCIA", "total_simp": 35, "votos_atribuidos": 13, "cumplimiento": 37.1, "veredicto": "NO CUMPLIO", "mesas_presencia": 33, "mesas_cero": 1, "municipios": 2, "puestos": 14, "categorias": {"CERO VOTOS": 1, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 1, "VOTO POSIBLE": 32}}, {"lider": "ASLY  LABRADA GARCIA", "total_simp": 33, "votos_atribuidos": 5, "cumplimiento": 15.2, "veredicto": "NO CUMPLIO", "mesas_presencia": 33, "mesas_cero": 2, "municipios": 3, "puestos": 20, "categorias": {"CERO VOTOS": 2, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 2, "VOTO POSIBLE": 28}}, {"lider": "Phanor peña carabali", "total_simp": 29, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 29, "mesas_cero": 7, "municipios": 2, "puestos": 16, "categorias": {"CERO VOTOS": 7, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 22}}, {"lider": "LUZ  RODRIGUEZ GUAQUETA", "total_simp": 26, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 23, "mesas_cero": 1, "municipios": 2, "puestos": 8, "categorias": {"CERO VOTOS": 1, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 25}}, {"lider": "LUZ  URBANO PERLAZA", "total_simp": 24, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 20, "mesas_cero": 2, "municipios": 3, "puestos": 10, "categorias": {"CERO VOTOS": 2, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 22}}, {"lider": "James Ramirez", "total_simp": 23, "votos_atribuidos": 1, "cumplimiento": 4.3, "veredicto": "NO CUMPLIO", "mesas_presencia": 23, "mesas_cero": 3, "municipios": 2, "puestos": 21, "categorias": {"CERO VOTOS": 3, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 20}}, {"lider": "ALBERNEY  ARIAS GOMEZ", "total_simp": 22, "votos_atribuidos": 3, "cumplimiento": 13.6, "veredicto": "NO CUMPLIO", "mesas_presencia": 21, "mesas_cero": 3, "municipios": 8, "puestos": 12, "categorias": {"CERO VOTOS": 3, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 3, "VOTO POSIBLE": 16}}, {"lider": "EYDER  PAZ GAVIRIA", "total_simp": 21, "votos_atribuidos": 5, "cumplimiento": 23.8, "veredicto": "NO CUMPLIO", "mesas_presencia": 18, "mesas_cero": 1, "municipios": 2, "puestos": 10, "categorias": {"CERO VOTOS": 1, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 19}}, {"lider": "JUAN PABLO LOPEZ RUALES", "total_simp": 20, "votos_atribuidos": 2, "cumplimiento": 10.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 19, "mesas_cero": 3, "municipios": 6, "puestos": 15, "categorias": {"CERO VOTOS": 3, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 2, "VOTO POSIBLE": 15}}, {"lider": "ANDRES FELIPE MARIN BONILLA", "total_simp": 19, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 16, "mesas_cero": 0, "municipios": 3, "puestos": 5, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 19}}, {"lider": "Mariana Q", "total_simp": 17, "votos_atribuidos": 1, "cumplimiento": 5.9, "veredicto": "NO CUMPLIO", "mesas_presencia": 16, "mesas_cero": 2, "municipios": 3, "puestos": 13, "categorias": {"CERO VOTOS": 2, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 15}}, {"lider": "MARTIN  CAÑAS VINASCO", "total_simp": 15, "votos_atribuidos": 1, "cumplimiento": 6.7, "veredicto": "NO CUMPLIO", "mesas_presencia": 14, "mesas_cero": 1, "municipios": 2, "puestos": 9, "categorias": {"CERO VOTOS": 1, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 14}}, {"lider": "MARIA  CAICEDO PECHENE", "total_simp": 15, "votos_atribuidos": 3, "cumplimiento": 20.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 15, "mesas_cero": 1, "municipios": 5, "puestos": 9, "categorias": {"CERO VOTOS": 1, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 14}}, {"lider": "ORLANDO  CHAVES RAMOS", "total_simp": 14, "votos_atribuidos": 2, "cumplimiento": 14.3, "veredicto": "NO CUMPLIO", "mesas_presencia": 14, "mesas_cero": 1, "municipios": 4, "puestos": 11, "categorias": {"CERO VOTOS": 1, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 13}}, {"lider": "PAOLA  OCAMPO MUÑOZ", "total_simp": 13, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 13, "mesas_cero": 0, "municipios": 2, "puestos": 4, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 13}}, {"lider": "CARLOS ANDRES ORDOÑEZ", "total_simp": 13, "votos_atribuidos": 5, "cumplimiento": 38.5, "veredicto": "NO CUMPLIO", "mesas_presencia": 11, "mesas_cero": 0, "municipios": 2, "puestos": 7, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 13}}, {"lider": "Veyanir Cifuentes", "total_simp": 10, "votos_atribuidos": 2, "cumplimiento": 20.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 10, "mesas_cero": 1, "municipios": 2, "puestos": 10, "categorias": {"CERO VOTOS": 1, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 9}}, {"lider": "JORGE ARMANDO VERGARA AGUDELO", "total_simp": 9, "votos_atribuidos": 6, "cumplimiento": 66.7, "veredicto": "PARCIAL", "mesas_presencia": 9, "mesas_cero": 2, "municipios": 2, "puestos": 6, "categorias": {"CERO VOTOS": 2, "VOTO SEGURO": 2, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 2, "VOTO POSIBLE": 3}}, {"lider": "VALERY  SANCLEMENTE JARAMILLO", "total_simp": 5, "votos_atribuidos": 1, "cumplimiento": 20.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 5, "mesas_cero": 0, "municipios": 2, "puestos": 3, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 1, "VOTO POSIBLE": 4}}, {"lider": "UsuarioLider Silva Celis Celiss", "total_simp": 5, "votos_atribuidos": 2, "cumplimiento": 40.0, "veredicto": "PARCIAL", "mesas_presencia": 5, "mesas_cero": 1, "municipios": 1, "puestos": 4, "categorias": {"CERO VOTOS": 1, "VOTO SEGURO": 1, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 3}}, {"lider": "ALEJANDRO  CAICEDO RAMOS", "total_simp": 4, "votos_atribuidos": 1, "cumplimiento": 25.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 4, "mesas_cero": 0, "municipios": 1, "puestos": 4, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 4}}, {"lider": "DIEGO FERNANDO DURANGO HERNANDEZ", "total_simp": 4, "votos_atribuidos": 2, "cumplimiento": 50.0, "veredicto": "PARCIAL", "mesas_presencia": 4, "mesas_cero": 1, "municipios": 1, "puestos": 3, "categorias": {"CERO VOTOS": 1, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 3}}, {"lider": "ANDRES  CAICEDO MONTENEGRO", "total_simp": 3, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 3, "mesas_cero": 0, "municipios": 1, "puestos": 1, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 3}}, {"lider": "DANIELA  DIEZ LOPEZ", "total_simp": 3, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 3, "mesas_cero": 0, "municipios": 1, "puestos": 3, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 3}}, {"lider": "JORGE DIDIER ZAPATA MESA", "total_simp": 2, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 2, "mesas_cero": 0, "municipios": 1, "puestos": 2, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 2}}, {"lider": "JUAN EVARISTO LOAIZA OSORIO", "total_simp": 2, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 2, "mesas_cero": 0, "municipios": 1, "puestos": 2, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 2}}, {"lider": "DANIEL  ROJAS GARCIA", "total_simp": 2, "votos_atribuidos": 2, "cumplimiento": 100.0, "veredicto": "CUMPLIO", "mesas_presencia": 2, "mesas_cero": 0, "municipios": 1, "puestos": 2, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 2}}, {"lider": "--", "total_simp": 2, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 2, "mesas_cero": 0, "municipios": 1, "puestos": 2, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 2}}, {"lider": "ANA MARIA SANCLEMENTE JARAMILLO", "total_simp": 1, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 1, "mesas_cero": 0, "municipios": 1, "puestos": 1, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 1}}, {"lider": "HECTOR FABIO RAMOS ALVEAR", "total_simp": 1, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 1, "mesas_cero": 0, "municipios": 1, "puestos": 1, "categorias": {"CERO VOTOS": 0, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 1}}, {"lider": "ALEXANDER  CAICEDO CEDEÑO", "total_simp": 1, "votos_atribuidos": 0, "cumplimiento": 0.0, "veredicto": "NO CUMPLIO", "mesas_presencia": 1, "mesas_cero": 1, "municipios": 1, "puestos": 1, "categorias": {"CERO VOTOS": 1, "VOTO SEGURO": 0, "INCUMPLIMIENTO PARCIAL": 0, "VOTO PROBABLE": 0, "VOTO POSIBLE": 0}}], "global": {"total_simpatizantes": 103747, "total_votos_atribuidos": 16221, "cumplimiento_global": 15.6, "total_mesas": 58896, "mesas_cero_votos": 7922, "mesas_excedente": 1099, "total_votos_candidata": 30237, "categorias": {"CERO VOTOS": 12966, "INCUMPLIMIENTO PARCIAL": 240, "VOTO POSIBLE": 88107, "VOTO PROBABLE": 1797, "VOTO SEGURO": 637}, "veredictos": {"NO CUMPLIO": 117, "PARCIAL": 6, "CUMPLIO": 1}}};
+
+    const CAT_COLORS = {
+        'CERO VOTOS': '#e53935',
+        'VOTO SEGURO': '#43a047',
+        'INCUMPLIMIENTO PARCIAL': '#fb8c00',
+        'VOTO PROBABLE': '#1e88e5',
+        'VOTO POSIBLE': '#8e24aa'
+    };
+    const CAT_ORDER = ['VOTO SEGURO', 'VOTO PROBABLE', 'VOTO POSIBLE', 'INCUMPLIMIENTO PARCIAL', 'CERO VOTOS'];
+
+    function fmt(n) { return n.toLocaleString('es-CO'); }
+
+    // ===================== KPIs =====================
+    function renderKPIs() {
+        const g = DATA.global;
+        const cards = [
+            { value: fmt(g.total_simpatizantes), label: 'Simpatizantes Analizados', cls: '' },
+            { value: fmt(g.total_votos_atribuidos), label: 'Votos Atribuidos', cls: 'blue' },
+            { value: g.cumplimiento_global + '%', label: 'Cumplimiento Global', cls: g.cumplimiento_global >= 50 ? 'green' : 'red' },
+            { value: fmt(g.total_votos_candidata), label: 'Total Votos Candidata', cls: 'purple' },
+            { value: fmt(g.total_mesas), label: 'Registros Mesa-Lider', cls: '' },
+            { value: fmt(g.mesas_cero_votos), label: 'Mesas con 0 Votos', sub: ((g.mesas_cero_votos/g.total_mesas*100).toFixed(1))+'%', cls: 'red' },
+            { value: fmt(g.mesas_excedente), label: 'Mesas con Excedente', sub: 'Apoyo externo', cls: 'green' },
+        ];
+        const grid = document.getElementById('kpi-grid');
+        grid.innerHTML = cards.map(c => `
+            <div class="kpi-card ${c.cls}">
+                <div class="kpi-value">${c.value}</div>
+                <div class="kpi-label">${c.label}</div>
+                ${c.sub ? '<div class="kpi-sub">'+c.sub+'</div>' : ''}
+            </div>
+        `).join('');
+    }
+
+    // ===================== Veredictos =====================
+    function renderVeredictos() {
+        const v = DATA.global.veredictos;
+        const grid = document.getElementById('veredicto-grid');
+        const items = [
+            { key: 'CUMPLIO', cls: 'cumplio', icon: '&#10004;' },
+            { key: 'PARCIAL', cls: 'parcial', icon: '&#9888;' },
+            { key: 'NO CUMPLIO', cls: 'no-cumplio', icon: '&#10008;' }
+        ];
+        grid.innerHTML = items.map(i => `
+            <div class="veredicto-box ${i.cls}">
+                <div class="v-count">${v[i.key] || 0}</div>
+                <div class="v-label">${i.icon} ${i.key}</div>
+            </div>
+        `).join('');
+    }
+
+    // ===================== Category Charts =====================
+    function renderCategoryCharts() {
+        const cats = DATA.global.categorias;
+        const labels = CAT_ORDER;
+        const values = labels.map(l => cats[l] || 0);
+        const colors = labels.map(l => CAT_COLORS[l]);
+
+        // Pie
+        new Chart(document.getElementById('chart-cat-pie'), {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{ data: values, backgroundColor: colors, borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'right', labels: { font: { size: 11 }, padding: 12 } },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => {
+                                const total = values.reduce((a,b)=>a+b,0);
+                                return ` ${ctx.label}: ${fmt(ctx.raw)} (${(ctx.raw/total*100).toFixed(1)}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Bar
+        new Chart(document.getElementById('chart-cat-bar'), {
+            type: 'bar',
+            data: {
+                labels: labels.map(l => l.length > 18 ? l.slice(0,16)+'...' : l),
+                datasets: [{ data: values, backgroundColor: colors, borderRadius: 4 }]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { label: ctx => ` ${fmt(ctx.raw)} simpatizantes` } }
+                },
+                scales: {
+                    x: { ticks: { callback: v => fmt(v) }, grid: { color: '#eee' } },
+                    y: { grid: { display: false } }
+                }
+            }
+        });
+    }
+
+    // ===================== Leader Charts =====================
+    function renderLeaderCharts() {
+        const top = DATA.lideres.slice(0, 20);
+        const labels = top.map(l => {
+            const parts = l.lider.split(' ').filter(p=>p);
+            return parts.length > 2 ? parts[0] + ' ' + parts[parts.length-1] : l.lider;
+        });
+
+        // Cumplimiento bar
+        new Chart(document.getElementById('chart-lider-cumpl'), {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Cumplimiento %',
+                    data: top.map(l => l.cumplimiento),
+                    backgroundColor: top.map(l => l.cumplimiento >= 70 ? '#43a047' : l.cumplimiento >= 40 ? '#fb8c00' : '#e53935'),
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => {
+                                const d = top[ctx.dataIndex];
+                                return [
+                                    ` Cumplimiento: ${d.cumplimiento}%`,
+                                    ` Simpatizantes: ${fmt(d.total_simp)}`,
+                                    ` Votos atribuidos: ${fmt(d.votos_atribuidos)}`,
+                                    ` Veredicto: ${d.veredicto}`
+                                ];
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: { max: 100, ticks: { callback: v => v+'%' }, grid: { color: '#eee' } },
+                    y: { grid: { display: false }, ticks: { font: { size: 10 } } }
+                }
+            }
+        });
+
+        // Stacked bar
+        const datasets = CAT_ORDER.map(cat => ({
+            label: cat,
+            data: top.map(l => l.categorias[cat] || 0),
+            backgroundColor: CAT_COLORS[cat]
+        }));
+
+        new Chart(document.getElementById('chart-lider-stack'), {
+            type: 'bar',
+            data: { labels: labels, datasets: datasets },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { position: 'top', labels: { font: { size: 10 }, boxWidth: 12 } },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ` ${ctx.dataset.label}: ${fmt(ctx.raw)} simp.`
+                        }
+                    }
+                },
+                scales: {
+                    x: { stacked: true, ticks: { callback: v => fmt(v) }, grid: { color: '#eee' } },
+                    y: { stacked: true, grid: { display: false }, ticks: { font: { size: 10 } } }
+                }
+            }
+        });
+    }
+
+    // ===================== Table =====================
+    function renderTable() {
+        const vFilter = document.getElementById('filter-veredicto').value;
+        const nameFilter = document.getElementById('filter-lider').value.toUpperCase();
+
+        let rows = DATA.lideres;
+        if (vFilter !== 'ALL') rows = rows.filter(r => r.veredicto === vFilter);
+        if (nameFilter) rows = rows.filter(r => r.lider.toUpperCase().includes(nameFilter));
+
+        const tbody = document.getElementById('lider-tbody');
+        tbody.innerHTML = rows.map((r, i) => {
+            const cats = r.categorias;
+            const total = r.total_simp || 1;
+            const badgeCls = r.veredicto === 'CUMPLIO' ? 'badge-cumplio' : r.veredicto === 'PARCIAL' ? 'badge-parcial' : 'badge-no-cumplio';
+
+            // Mini stacked bar
+            const pcts = CAT_ORDER.map(cat => ((cats[cat]||0)/total*100));
+            const stackHTML = `<div class="mini-stack" title="${CAT_ORDER.map((c,j)=>c+': '+pcts[j].toFixed(1)+'%').join(' | ')}">
+                <div class="s-seguro" style="width:${pcts[0]}%"></div>
+                <div class="s-probable" style="width:${pcts[1]}%"></div>
+                <div class="s-posible" style="width:${pcts[2]}%"></div>
+                <div class="s-parcial" style="width:${pcts[3]}%"></div>
+                <div class="s-cero" style="width:${pcts[4]}%"></div>
+            </div>`;
+
+            return `<tr>
+                <td>${i+1}</td>
+                <td style="font-weight:600;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis;" title="${r.lider}">${r.lider}</td>
+                <td>${fmt(r.total_simp)}</td>
+                <td style="font-weight:700;color:${r.cumplimiento>=70?'#2e7d32':r.cumplimiento>=40?'#e65100':'#c62828'}">${r.cumplimiento}%</td>
+                <td><span class="badge ${badgeCls}">${r.veredicto}</span></td>
+                <td>${stackHTML}</td>
+                <td style="color:#2e7d32;font-weight:600;">${fmt(cats['VOTO SEGURO']||0)}</td>
+                <td style="color:#1565c0;font-weight:600;">${fmt(cats['VOTO PROBABLE']||0)}</td>
+                <td style="color:#6a1b9a;">${fmt(cats['VOTO POSIBLE']||0)}</td>
+                <td style="color:#e65100;">${fmt(cats['INCUMPLIMIENTO PARCIAL']||0)}</td>
+                <td style="color:#c62828;font-weight:600;">${fmt(cats['CERO VOTOS']||0)}</td>
+                <td>${fmt(r.mesas_presencia)}</td>
+                <td style="color:#c62828;">${fmt(r.mesas_cero)}</td>
+                <td>${r.municipios}</td>
+            </tr>`;
+        }).join('');
+    }
+
+    // ===================== INIT =====================
+    renderKPIs();
+    renderVeredictos();
+    renderCategoryCharts();
+    renderLeaderCharts();
+    renderTable();
+    </script>
+</body>
+</html>
