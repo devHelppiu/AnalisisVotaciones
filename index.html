@@ -245,16 +245,16 @@
             <div class="kpi-label">Votos Candidata</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-value">108,765</div>
+            <div class="kpi-value">135,335</div>
             <div class="kpi-label">Simpatizantes Registrados</div>
         </div>
         <div class="kpi-card orange">
-            <div class="kpi-value">27.8%</div>
+            <div class="kpi-value">22.3%</div>
             <div class="kpi-label">Cumplimiento Global</div>
             <div class="kpi-sub">Votos / Simpatizantes</div>
         </div>
         <div class="kpi-card green">
-            <div class="kpi-value">124</div>
+            <div class="kpi-value">117</div>
             <div class="kpi-label">Lideres Activos</div>
         </div>
         <div class="kpi-card">
@@ -422,137 +422,897 @@
 <script>
 // ========== DATA ==========
 const dataLideres = [
-    {"lider":"WALDIR  HANRRYR GOMEZ","simpatizantes":15598,"municipios":40,"puestos":547,"votos_cand":18203,"votos_part":56514,"ratio":1.17},
-    {"lider":"CESAR  MONTES REINA","simpatizantes":10945,"municipios":37,"puestos":543,"votos_cand":25006,"votos_part":82524,"ratio":2.28},
-    {"lider":"JUAN  LOPEZ MOSQUERA","simpatizantes":10003,"municipios":38,"puestos":496,"votos_cand":16029,"votos_part":48183,"ratio":1.60},
-    {"lider":"JONATHAN  RAMIREZ QUIÑONEZ","simpatizantes":5506,"municipios":34,"puestos":462,"votos_cand":4443,"votos_part":12915,"ratio":0.81},
-    {"lider":"MAROLIN  RAMIREZ SARRIA","simpatizantes":5260,"municipios":40,"puestos":506,"votos_cand":15049,"votos_part":45709,"ratio":2.86},
-    {"lider":"ANGIE  GRISALES MOSQUERA","simpatizantes":4136,"municipios":28,"puestos":393,"votos_cand":2179,"votos_part":4515,"ratio":0.53},
-    {"lider":"WILLIAM HENAO GARCIA","simpatizantes":3504,"municipios":21,"puestos":188,"votos_cand":19988,"votos_part":65094,"ratio":5.70},
-    {"lider":"JORGE ELIECER LOZANO AGUDELO","simpatizantes":3205,"municipios":26,"puestos":288,"votos_cand":7681,"votos_part":23720,"ratio":2.40},
-    {"lider":"VICTOR MANUEL GARCIA GIRALDO","simpatizantes":2761,"municipios":38,"puestos":460,"votos_cand":3365,"votos_part":8661,"ratio":1.22},
-    {"lider":"ALEJANDRO  VASQUEZ ZAWAZKY","simpatizantes":2657,"municipios":35,"puestos":442,"votos_cand":13609,"votos_part":44454,"ratio":5.12},
-    {"lider":"LEIDY  VELASQUEZ OTALVARO","simpatizantes":2189,"municipios":25,"puestos":296,"votos_cand":859,"votos_part":1995,"ratio":0.39},
-    {"lider":"ANDRES FELIPE COLLAZOS MARTINEZ","simpatizantes":2051,"municipios":16,"puestos":202,"votos_cand":4467,"votos_part":11381,"ratio":2.18},
-    {"lider":"LEYDI TATIANA MARTINEZ IDROBO","simpatizantes":1951,"municipios":27,"puestos":283,"votos_cand":2781,"votos_part":6707,"ratio":1.43},
-    {"lider":"JORGE ELIECER RAMIREZ MOSQUERA","simpatizantes":1547,"municipios":18,"puestos":199,"votos_cand":1251,"votos_part":5267,"ratio":0.81},
-    {"lider":"JORGE ENRIQUE CASALINS TELLO","simpatizantes":1483,"municipios":27,"puestos":293,"votos_cand":2211,"votos_part":4249,"ratio":1.49},
-    {"lider":"No encontrado No encontrado","simpatizantes":1448,"municipios":19,"puestos":234,"votos_cand":2274,"votos_part":5308,"ratio":1.57},
-    {"lider":"PEDRO KADIR ZAMORA RENGIFO","simpatizantes":1410,"municipios":19,"puestos":265,"votos_cand":2336,"votos_part":9532,"ratio":1.66},
-    {"lider":"GLORIA JIMENA ARAGON VELEZ","simpatizantes":1360,"municipios":20,"puestos":252,"votos_cand":600,"votos_part":1422,"ratio":0.44},
-    {"lider":"WILMER  VALENCIA GARCIA","simpatizantes":1273,"municipios":10,"puestos":130,"votos_cand":6815,"votos_part":24118,"ratio":5.35},
-    {"lider":"WILINTON LUIS ARTEAGA MANRIQUE","simpatizantes":1201,"municipios":19,"puestos":225,"votos_cand":1871,"votos_part":3870,"ratio":1.56}
+    {
+        "lider": "Cesar montes",
+        "simpatizantes": 25283,
+        "municipios": 41,
+        "puestos": 646,
+        "votos_cand": 49284,
+        "votos_part": 88671,
+        "ratio": 1.95
+    },
+    {
+        "lider": "Juan Carlos Lopez",
+        "simpatizantes": 16409,
+        "municipios": 27,
+        "puestos": 384,
+        "votos_cand": 44362,
+        "votos_part": 78051,
+        "ratio": 2.7
+    },
+    {
+        "lider": "WALDIR  HANRRYR GOMEZ",
+        "simpatizantes": 15592,
+        "municipios": 40,
+        "puestos": 559,
+        "votos_cand": 48398,
+        "votos_part": 87648,
+        "ratio": 3.1
+    },
+    {
+        "lider": "Victor Garcia",
+        "simpatizantes": 5686,
+        "municipios": 39,
+        "puestos": 573,
+        "votos_cand": 47094,
+        "votos_part": 84120,
+        "ratio": 8.28
+    },
+    {
+        "lider": "JONATHAN  RAMIREZ QUIÑONEZ",
+        "simpatizantes": 5486,
+        "municipios": 34,
+        "puestos": 466,
+        "votos_cand": 47484,
+        "votos_part": 85179,
+        "ratio": 8.66
+    },
+    {
+        "lider": "MAROLIN  RAMIREZ SARRIA",
+        "simpatizantes": 5225,
+        "municipios": 40,
+        "puestos": 519,
+        "votos_cand": 50175,
+        "votos_part": 89549,
+        "ratio": 9.6
+    },
+    {
+        "lider": "ANGIE  GRISALES MOSQUERA",
+        "simpatizantes": 4135,
+        "municipios": 27,
+        "puestos": 400,
+        "votos_cand": 45490,
+        "votos_part": 81162,
+        "ratio": 11.0
+    },
+    {
+        "lider": "WILLIAM HENAO GARCIA",
+        "simpatizantes": 3504,
+        "municipios": 21,
+        "puestos": 193,
+        "votos_cand": 38487,
+        "votos_part": 65094,
+        "ratio": 10.98
+    },
+    {
+        "lider": "JORGE ELIECER LOZANO AGUDELO",
+        "simpatizantes": 3194,
+        "municipios": 26,
+        "puestos": 298,
+        "votos_cand": 41464,
+        "votos_part": 71321,
+        "ratio": 12.98
+    },
+    {
+        "lider": "VICTOR MANUEL GARCIA GIRALDO",
+        "simpatizantes": 2729,
+        "municipios": 38,
+        "puestos": 472,
+        "votos_cand": 46544,
+        "votos_part": 82957,
+        "ratio": 17.06
+    },
+    {
+        "lider": "ALEJANDRO  VASQUEZ ZAWAZKY",
+        "simpatizantes": 2652,
+        "municipios": 36,
+        "puestos": 438,
+        "votos_cand": 45594,
+        "votos_part": 81386,
+        "ratio": 17.19
+    },
+    {
+        "lider": "Daniela Plaza",
+        "simpatizantes": 2194,
+        "municipios": 25,
+        "puestos": 294,
+        "votos_cand": 41386,
+        "votos_part": 71369,
+        "ratio": 18.86
+    },
+    {
+        "lider": "LEIDY  VELASQUEZ OTALVARO",
+        "simpatizantes": 2179,
+        "municipios": 25,
+        "puestos": 303,
+        "votos_cand": 42140,
+        "votos_part": 72393,
+        "ratio": 19.34
+    },
+    {
+        "lider": "ANDRES FELIPE COLLAZOS MARTINEZ",
+        "simpatizantes": 2048,
+        "municipios": 15,
+        "puestos": 185,
+        "votos_cand": 39306,
+        "votos_part": 67134,
+        "ratio": 19.19
+    },
+    {
+        "lider": "LEYDI TATIANA MARTINEZ IDROBO",
+        "simpatizantes": 1926,
+        "municipios": 27,
+        "puestos": 286,
+        "votos_cand": 43720,
+        "votos_part": 76583,
+        "ratio": 22.7
+    },
+    {
+        "lider": "CARLOS  MUÑOZ JARAMILLO",
+        "simpatizantes": 1618,
+        "municipios": 18,
+        "puestos": 212,
+        "votos_cand": 36701,
+        "votos_part": 61982,
+        "ratio": 22.68
+    },
+    {
+        "lider": "JORGE ELIECER RAMIREZ MOSQUERA",
+        "simpatizantes": 1542,
+        "municipios": 18,
+        "puestos": 205,
+        "votos_cand": 37207,
+        "votos_part": 64066,
+        "ratio": 24.13
+    },
+    {
+        "lider": "JORGE ENRIQUE CASALINS TELLO",
+        "simpatizantes": 1475,
+        "municipios": 27,
+        "puestos": 302,
+        "votos_cand": 42453,
+        "votos_part": 74625,
+        "ratio": 28.78
+    },
+    {
+        "lider": "No encontrado No encontrado",
+        "simpatizantes": 1448,
+        "municipios": 19,
+        "puestos": 239,
+        "votos_cand": 37093,
+        "votos_part": 62456,
+        "ratio": 25.62
+    },
+    {
+        "lider": "PEDRO KADIR ZAMORA RENGIFO",
+        "simpatizantes": 1399,
+        "municipios": 19,
+        "puestos": 271,
+        "votos_cand": 38909,
+        "votos_part": 67457,
+        "ratio": 27.81
+    }
 ];
 
 const dataMunicipios = [
-    {"municipio":"CALI","votos_candidata":13422,"simpatizantes":75624,"ratio":0.18},
-    {"municipio":"BUENAVENTURA","votos_candidata":1156,"simpatizantes":8793,"ratio":0.13},
-    {"municipio":"YUMBO","votos_candidata":3545,"simpatizantes":8034,"ratio":0.44},
-    {"municipio":"PALMIRA","votos_candidata":788,"simpatizantes":2354,"ratio":0.33},
-    {"municipio":"CANDELARIA","votos_candidata":343,"simpatizantes":2299,"ratio":0.15},
-    {"municipio":"TULUA","votos_candidata":738,"simpatizantes":2090,"ratio":0.35},
-    {"municipio":"JAMUNDI","votos_candidata":788,"simpatizantes":1978,"ratio":0.40},
-    {"municipio":"DAGUA","votos_candidata":90,"simpatizantes":1852,"ratio":0.05},
-    {"municipio":"FLORIDA","votos_candidata":345,"simpatizantes":1321,"ratio":0.26},
-    {"municipio":"BUGA","votos_candidata":422,"simpatizantes":985,"ratio":0.43},
-    {"municipio":"GINEBRA","votos_candidata":120,"simpatizantes":488,"ratio":0.25},
-    {"municipio":"EL CERRITO","votos_candidata":257,"simpatizantes":369,"ratio":0.70},
-    {"municipio":"PRADERA","votos_candidata":273,"simpatizantes":256,"ratio":1.07},
-    {"municipio":"RESTREPO","votos_candidata":126,"simpatizantes":252,"ratio":0.50},
-    {"municipio":"CARTAGO","votos_candidata":2581,"simpatizantes":244,"ratio":10.58},
-    {"municipio":"ROLDANILLO","votos_candidata":130,"simpatizantes":203,"ratio":0.64},
-    {"municipio":"BUGALAGRANDE","votos_candidata":344,"simpatizantes":154,"ratio":2.23},
-    {"municipio":"GUACARI","votos_candidata":98,"simpatizantes":126,"ratio":0.78},
-    {"municipio":"LA VICTORIA","votos_candidata":126,"simpatizantes":125,"ratio":1.01},
-    {"municipio":"LA CUMBRE","votos_candidata":152,"simpatizantes":117,"ratio":1.30},
-    {"municipio":"ANDALUCIA","votos_candidata":363,"simpatizantes":103,"ratio":3.52},
-    {"municipio":"VIJES","votos_candidata":56,"simpatizantes":100,"ratio":0.56},
-    {"municipio":"ZARZAL","votos_candidata":495,"simpatizantes":90,"ratio":5.50},
-    {"municipio":"SEVILLA","votos_candidata":139,"simpatizantes":84,"ratio":1.65},
-    {"municipio":"YOTOCO","votos_candidata":42,"simpatizantes":74,"ratio":0.57},
-    {"municipio":"CALIMA","votos_candidata":1393,"simpatizantes":70,"ratio":19.90},
-    {"municipio":"RIOFRIO","votos_candidata":27,"simpatizantes":65,"ratio":0.42},
-    {"municipio":"SAN PEDRO","votos_candidata":348,"simpatizantes":65,"ratio":5.35},
-    {"municipio":"CAICEDONIA","votos_candidata":100,"simpatizantes":63,"ratio":1.59},
-    {"municipio":"LA UNION","votos_candidata":68,"simpatizantes":62,"ratio":1.10},
-    {"municipio":"EL AGUILA","votos_candidata":442,"simpatizantes":57,"ratio":7.75},
-    {"municipio":"TORO","votos_candidata":90,"simpatizantes":43,"ratio":2.09},
-    {"municipio":"BOLIVAR","votos_candidata":19,"simpatizantes":42,"ratio":0.45},
-    {"municipio":"TRUJILLO","votos_candidata":50,"simpatizantes":37,"ratio":1.35},
-    {"municipio":"OBANDO","votos_candidata":122,"simpatizantes":31,"ratio":3.94},
-    {"municipio":"VERSALLES","votos_candidata":92,"simpatizantes":28,"ratio":3.29},
-    {"municipio":"ANSERMANUEVO","votos_candidata":49,"simpatizantes":26,"ratio":1.88},
-    {"municipio":"EL CAIRO","votos_candidata":5,"simpatizantes":20,"ratio":0.25},
-    {"municipio":"EL DOVIO","votos_candidata":125,"simpatizantes":17,"ratio":7.35},
-    {"municipio":"ALCALA","votos_candidata":54,"simpatizantes":10,"ratio":5.40},
-    {"municipio":"ULLOA","votos_candidata":304,"simpatizantes":8,"ratio":38.00},
-    {"municipio":"ARGELIA","votos_candidata":10,"simpatizantes":6,"ratio":1.67}
+    {
+        "municipio": "CALI",
+        "votos_candidata": 28279,
+        "simpatizantes": 99188,
+        "ratio": 0.29
+    },
+    {
+        "municipio": "BUENAVENTURA",
+        "votos_candidata": 1642,
+        "simpatizantes": 8891,
+        "ratio": 0.18
+    },
+    {
+        "municipio": "YUMBO",
+        "votos_candidata": 4339,
+        "simpatizantes": 8416,
+        "ratio": 0.52
+    },
+    {
+        "municipio": "TULUA",
+        "votos_candidata": 1651,
+        "simpatizantes": 2879,
+        "ratio": 0.57
+    },
+    {
+        "municipio": "PALMIRA",
+        "votos_candidata": 2421,
+        "simpatizantes": 2866,
+        "ratio": 0.84
+    },
+    {
+        "municipio": "CANDELARIA",
+        "votos_candidata": 814,
+        "simpatizantes": 2438,
+        "ratio": 0.33
+    },
+    {
+        "municipio": "JAMUNDI",
+        "votos_candidata": 1671,
+        "simpatizantes": 2207,
+        "ratio": 0.76
+    },
+    {
+        "municipio": "DAGUA",
+        "votos_candidata": 151,
+        "simpatizantes": 1944,
+        "ratio": 0.08
+    },
+    {
+        "municipio": "FLORIDA",
+        "votos_candidata": 491,
+        "simpatizantes": 1393,
+        "ratio": 0.35
+    },
+    {
+        "municipio": "BUGA",
+        "votos_candidata": 800,
+        "simpatizantes": 1326,
+        "ratio": 0.6
+    },
+    {
+        "municipio": "GINEBRA",
+        "votos_candidata": 191,
+        "simpatizantes": 485,
+        "ratio": 0.39
+    },
+    {
+        "municipio": "EL CERRITO",
+        "votos_candidata": 479,
+        "simpatizantes": 405,
+        "ratio": 1.18
+    },
+    {
+        "municipio": "CARTAGO",
+        "votos_candidata": 3113,
+        "simpatizantes": 283,
+        "ratio": 11.0
+    },
+    {
+        "municipio": "PRADERA",
+        "votos_candidata": 466,
+        "simpatizantes": 272,
+        "ratio": 1.71
+    },
+    {
+        "municipio": "RESTREPO",
+        "votos_candidata": 187,
+        "simpatizantes": 261,
+        "ratio": 0.72
+    },
+    {
+        "municipio": "ROLDANILLO",
+        "votos_candidata": 234,
+        "simpatizantes": 211,
+        "ratio": 1.11
+    },
+    {
+        "municipio": "LA CUMBRE",
+        "votos_candidata": 205,
+        "simpatizantes": 156,
+        "ratio": 1.31
+    },
+    {
+        "municipio": "GUACARI",
+        "votos_candidata": 219,
+        "simpatizantes": 155,
+        "ratio": 1.41
+    },
+    {
+        "municipio": "ZARZAL",
+        "votos_candidata": 625,
+        "simpatizantes": 146,
+        "ratio": 4.28
+    },
+    {
+        "municipio": "BUGALAGRANDE",
+        "votos_candidata": 444,
+        "simpatizantes": 142,
+        "ratio": 3.13
+    },
+    {
+        "municipio": "ANDALUCIA",
+        "votos_candidata": 479,
+        "simpatizantes": 128,
+        "ratio": 3.74
+    },
+    {
+        "municipio": "VIJES",
+        "votos_candidata": 80,
+        "simpatizantes": 115,
+        "ratio": 0.7
+    },
+    {
+        "municipio": "SEVILLA",
+        "votos_candidata": 236,
+        "simpatizantes": 101,
+        "ratio": 2.34
+    },
+    {
+        "municipio": "CAICEDONIA",
+        "votos_candidata": 192,
+        "simpatizantes": 98,
+        "ratio": 1.96
+    },
+    {
+        "municipio": "RIOFRIO",
+        "votos_candidata": 77,
+        "simpatizantes": 92,
+        "ratio": 0.84
+    },
+    {
+        "municipio": "SAN PEDRO",
+        "votos_candidata": 438,
+        "simpatizantes": 89,
+        "ratio": 4.92
+    },
+    {
+        "municipio": "CALIMA",
+        "votos_candidata": 1988,
+        "simpatizantes": 88,
+        "ratio": 22.59
+    },
+    {
+        "municipio": "YOTOCO",
+        "votos_candidata": 90,
+        "simpatizantes": 80,
+        "ratio": 1.12
+    },
+    {
+        "municipio": "TRUJILLO",
+        "votos_candidata": 99,
+        "simpatizantes": 74,
+        "ratio": 1.34
+    },
+    {
+        "municipio": "LA UNION",
+        "votos_candidata": 169,
+        "simpatizantes": 72,
+        "ratio": 2.35
+    },
+    {
+        "municipio": "EL AGUILA",
+        "votos_candidata": 494,
+        "simpatizantes": 56,
+        "ratio": 8.82
+    },
+    {
+        "municipio": "BOLIVAR",
+        "votos_candidata": 55,
+        "simpatizantes": 49,
+        "ratio": 1.12
+    },
+    {
+        "municipio": "LA VICTORIA",
+        "votos_candidata": 163,
+        "simpatizantes": 37,
+        "ratio": 4.41
+    },
+    {
+        "municipio": "TORO",
+        "votos_candidata": 152,
+        "simpatizantes": 35,
+        "ratio": 4.34
+    },
+    {
+        "municipio": "ANSERMANUEVO",
+        "votos_candidata": 87,
+        "simpatizantes": 32,
+        "ratio": 2.72
+    },
+    {
+        "municipio": "OBANDO",
+        "votos_candidata": 160,
+        "simpatizantes": 30,
+        "ratio": 5.33
+    },
+    {
+        "municipio": "VERSALLES",
+        "votos_candidata": 114,
+        "simpatizantes": 26,
+        "ratio": 4.38
+    },
+    {
+        "municipio": "EL CAIRO",
+        "votos_candidata": 12,
+        "simpatizantes": 21,
+        "ratio": 0.57
+    },
+    {
+        "municipio": "EL DOVIO",
+        "votos_candidata": 177,
+        "simpatizantes": 19,
+        "ratio": 9.32
+    },
+    {
+        "municipio": "ALCALA",
+        "votos_candidata": 89,
+        "simpatizantes": 11,
+        "ratio": 8.09
+    },
+    {
+        "municipio": "ARGELIA",
+        "votos_candidata": 21,
+        "simpatizantes": 9,
+        "ratio": 2.33
+    },
+    {
+        "municipio": "ULLOA",
+        "votos_candidata": 327,
+        "simpatizantes": 9,
+        "ratio": 36.33
+    }
 ];
 
 const dataZonas = [
-    {"municipio":"YUMBO","zona":4,"simpatizantes":888,"votos_candidata":822,"ratio":0.93},
-    {"municipio":"YUMBO","zona":2,"simpatizantes":823,"votos_candidata":850,"ratio":1.03},
-    {"municipio":"YUMBO","zona":1,"simpatizantes":687,"votos_candidata":880,"ratio":1.28},
-    {"municipio":"BUENAVENTURA","zona":6,"simpatizantes":495,"votos_candidata":249,"ratio":0.50},
-    {"municipio":"YUMBO","zona":3,"simpatizantes":423,"votos_candidata":526,"ratio":1.24},
-    {"municipio":"BUENAVENTURA","zona":2,"simpatizantes":368,"votos_candidata":297,"ratio":0.81},
-    {"municipio":"CALI","zona":21,"simpatizantes":292,"votos_candidata":235,"ratio":0.80},
-    {"municipio":"BUENAVENTURA","zona":99,"simpatizantes":286,"votos_candidata":157,"ratio":0.55},
-    {"municipio":"BUENAVENTURA","zona":4,"simpatizantes":283,"votos_candidata":112,"ratio":0.40},
-    {"municipio":"YUMBO","zona":99,"simpatizantes":276,"votos_candidata":353,"ratio":1.28},
-    {"municipio":"CALI","zona":1,"simpatizantes":275,"votos_candidata":341,"ratio":1.24},
-    {"municipio":"CALI","zona":22,"simpatizantes":274,"votos_candidata":259,"ratio":0.95},
-    {"municipio":"CALI","zona":8,"simpatizantes":257,"votos_candidata":361,"ratio":1.40},
-    {"municipio":"BUENAVENTURA","zona":3,"simpatizantes":253,"votos_candidata":131,"ratio":0.52},
-    {"municipio":"CALI","zona":6,"simpatizantes":252,"votos_candidata":808,"ratio":3.21},
-    {"municipio":"CALI","zona":32,"simpatizantes":247,"votos_candidata":390,"ratio":1.58},
-    {"municipio":"CALI","zona":5,"simpatizantes":241,"votos_candidata":523,"ratio":2.17},
-    {"municipio":"CALI","zona":23,"simpatizantes":228,"votos_candidata":482,"ratio":2.11},
-    {"municipio":"CALI","zona":18,"simpatizantes":225,"votos_candidata":409,"ratio":1.82},
-    {"municipio":"CALI","zona":25,"simpatizantes":220,"votos_candidata":774,"ratio":3.52},
-    {"municipio":"CALI","zona":11,"simpatizantes":206,"votos_candidata":346,"ratio":1.68},
-    {"municipio":"CALI","zona":19,"simpatizantes":203,"votos_candidata":289,"ratio":1.42},
-    {"municipio":"CALI","zona":7,"simpatizantes":199,"votos_candidata":365,"ratio":1.83},
-    {"municipio":"BUENAVENTURA","zona":5,"simpatizantes":187,"votos_candidata":108,"ratio":0.58},
-    {"municipio":"CALI","zona":14,"simpatizantes":180,"votos_candidata":444,"ratio":2.47},
-    {"municipio":"CALI","zona":2,"simpatizantes":179,"votos_candidata":567,"ratio":3.17},
-    {"municipio":"CALI","zona":24,"simpatizantes":178,"votos_candidata":414,"ratio":2.33},
-    {"municipio":"CALI","zona":20,"simpatizantes":169,"votos_candidata":242,"ratio":1.43},
-    {"municipio":"CALI","zona":29,"simpatizantes":169,"votos_candidata":449,"ratio":2.66},
-    {"municipio":"CALI","zona":9,"simpatizantes":161,"votos_candidata":326,"ratio":2.02}
+    {
+        "municipio": "CALI",
+        "zona": 21,
+        "simpatizantes": 5689,
+        "votos_candidata": 601,
+        "ratio": 0.11
+    },
+    {
+        "municipio": "CALI",
+        "zona": 22,
+        "simpatizantes": 5313,
+        "votos_candidata": 586,
+        "ratio": 0.11
+    },
+    {
+        "municipio": "CALI",
+        "zona": 32,
+        "simpatizantes": 5260,
+        "votos_candidata": 902,
+        "ratio": 0.17
+    },
+    {
+        "municipio": "CALI",
+        "zona": 23,
+        "simpatizantes": 5219,
+        "votos_candidata": 1064,
+        "ratio": 0.2
+    },
+    {
+        "municipio": "CALI",
+        "zona": 24,
+        "simpatizantes": 4232,
+        "votos_candidata": 936,
+        "ratio": 0.22
+    },
+    {
+        "municipio": "CALI",
+        "zona": 19,
+        "simpatizantes": 3943,
+        "votos_candidata": 666,
+        "ratio": 0.17
+    },
+    {
+        "municipio": "CALI",
+        "zona": 6,
+        "simpatizantes": 3905,
+        "votos_candidata": 1580,
+        "ratio": 0.4
+    },
+    {
+        "municipio": "CALI",
+        "zona": 20,
+        "simpatizantes": 3432,
+        "votos_candidata": 527,
+        "ratio": 0.15
+    },
+    {
+        "municipio": "CALI",
+        "zona": 18,
+        "simpatizantes": 3316,
+        "votos_candidata": 803,
+        "ratio": 0.24
+    },
+    {
+        "municipio": "CALI",
+        "zona": 5,
+        "simpatizantes": 3223,
+        "votos_candidata": 1075,
+        "ratio": 0.33
+    },
+    {
+        "municipio": "CALI",
+        "zona": 9,
+        "simpatizantes": 3147,
+        "votos_candidata": 591,
+        "ratio": 0.19
+    },
+    {
+        "municipio": "CALI",
+        "zona": 8,
+        "simpatizantes": 3027,
+        "votos_candidata": 921,
+        "ratio": 0.3
+    },
+    {
+        "municipio": "CALI",
+        "zona": 7,
+        "simpatizantes": 3018,
+        "votos_candidata": 930,
+        "ratio": 0.31
+    },
+    {
+        "municipio": "CALI",
+        "zona": 99,
+        "simpatizantes": 3001,
+        "votos_candidata": 1060,
+        "ratio": 0.35
+    },
+    {
+        "municipio": "CALI",
+        "zona": 25,
+        "simpatizantes": 2806,
+        "votos_candidata": 1581,
+        "ratio": 0.56
+    },
+    {
+        "municipio": "CALI",
+        "zona": 2,
+        "simpatizantes": 2783,
+        "votos_candidata": 1166,
+        "ratio": 0.42
+    },
+    {
+        "municipio": "CALI",
+        "zona": 11,
+        "simpatizantes": 2651,
+        "votos_candidata": 657,
+        "ratio": 0.25
+    },
+    {
+        "municipio": "CALI",
+        "zona": 1,
+        "simpatizantes": 2594,
+        "votos_candidata": 687,
+        "ratio": 0.26
+    },
+    {
+        "municipio": "CALI",
+        "zona": 3,
+        "simpatizantes": 2437,
+        "votos_candidata": 1508,
+        "ratio": 0.62
+    },
+    {
+        "municipio": "CALI",
+        "zona": 10,
+        "simpatizantes": 2390,
+        "votos_candidata": 526,
+        "ratio": 0.22
+    },
+    {
+        "municipio": "CALI",
+        "zona": 16,
+        "simpatizantes": 2347,
+        "votos_candidata": 722,
+        "ratio": 0.31
+    },
+    {
+        "municipio": "CALI",
+        "zona": 27,
+        "simpatizantes": 2212,
+        "votos_candidata": 656,
+        "ratio": 0.3
+    },
+    {
+        "municipio": "YUMBO",
+        "zona": 4,
+        "simpatizantes": 2189,
+        "votos_candidata": 995,
+        "ratio": 0.45
+    },
+    {
+        "municipio": "CALI",
+        "zona": 15,
+        "simpatizantes": 2121,
+        "votos_candidata": 760,
+        "ratio": 0.36
+    },
+    {
+        "municipio": "CALI",
+        "zona": 14,
+        "simpatizantes": 2107,
+        "votos_candidata": 750,
+        "ratio": 0.36
+    },
+    {
+        "municipio": "BUENAVENTURA",
+        "zona": 6,
+        "simpatizantes": 2106,
+        "votos_candidata": 349,
+        "ratio": 0.17
+    },
+    {
+        "municipio": "YUMBO",
+        "zona": 1,
+        "simpatizantes": 2050,
+        "votos_candidata": 1107,
+        "ratio": 0.54
+    },
+    {
+        "municipio": "CALI",
+        "zona": 26,
+        "simpatizantes": 2032,
+        "votos_candidata": 1043,
+        "ratio": 0.51
+    },
+    {
+        "municipio": "YUMBO",
+        "zona": 2,
+        "simpatizantes": 2006,
+        "votos_candidata": 1022,
+        "ratio": 0.51
+    },
+    {
+        "municipio": "CALI",
+        "zona": 31,
+        "simpatizantes": 1992,
+        "votos_candidata": 510,
+        "ratio": 0.26
+    }
 ];
 
 const dataPuestos = [
-    {"municipio":"YUMBO","lugar":"I.E. JOSE MARIA CORDOBA","zona":2,"simpatizantes":289,"votos_cand_zona":850,"lideres":"ANDRES FELIPE COLLAZOS MARTINEZ, Andres Pachely Bustos, CESAR  MONTES REINA, JUAN  LOPEZ MOSQUERA, LUIS FELIPE CARMONA, WILLIAM HENAO GARCIA"},
-    {"municipio":"YUMBO","lugar":"I.E. JHON F. KENNEDY","zona":4,"simpatizantes":235,"votos_cand_zona":822,"lideres":"Andres Pachely Bustos, CESAR  MONTES REINA, JAVIER GUILLERMO SANTANDER LOPEZ, WILLIAM HENAO GARCIA"},
-    {"municipio":"YUMBO","lugar":"I.E. JUAN XXIII","zona":1,"simpatizantes":226,"votos_cand_zona":880,"lideres":"CARLOS ANDRES ORDOÑEZ, CARLOS MUÑOZ, CESAR  MONTES REINA, WILLIAM HENAO GARCIA"},
-    {"municipio":"YUMBO","lugar":"I.E. PEDRO SANCHEZ TELLO","zona":3,"simpatizantes":199,"votos_cand_zona":526,"lideres":"CARLOS MUÑOZ, CESAR  MONTES REINA, WILLIAM HENAO GARCIA"},
-    {"municipio":"YUMBO","lugar":"I.E. FRANCISCO JAVIER","zona":2,"simpatizantes":198,"votos_cand_zona":850,"lideres":"CARLOS ANDRES ORDOÑEZ, CESAR  MONTES REINA, WILLIAM HENAO GARCIA"},
-    {"municipio":"BUENAVENTURA","lugar":"IE SIMON BOLIVAR","zona":6,"simpatizantes":196,"votos_cand_zona":249,"lideres":"ANGEL TOVAR, CESAR  MONTES REINA, JUAN  LOPEZ MOSQUERA, LUIS  TOBAR MURILLO, WALTER URRESTE, WILMER  VALENCIA GARCIA"},
-    {"municipio":"YUMBO","lugar":"I.E. MANUEL MARIA SANCHEZ","zona":1,"simpatizantes":189,"votos_cand_zona":880,"lideres":"Andres Pachely Bustos, CESAR  MONTES REINA, LUIS FELIPE CARMONA, WALDIR  HANRRYR GOMEZ, WILLIAM HENAO GARCIA"},
-    {"municipio":"BUENAVENTURA","lugar":"IE TEOFILO ROBERTO POTES","zona":4,"simpatizantes":158,"votos_cand_zona":112,"lideres":"ANGEL TOVAR, CESAR  MONTES REINA, JUAN CARLOS BARONA, WALTER URRESTE, WILMER  VALENCIA GARCIA"},
-    {"municipio":"YUMBO","lugar":"I.E. CEAT GENERAL","zona":4,"simpatizantes":156,"votos_cand_zona":822,"lideres":"ANDRES FELIPE COLLAZOS MARTINEZ, CESAR  MONTES REINA, JHOAN FELIPE ZUÑIGA ESTRADA, WILLIAM HENAO GARCIA"},
-    {"municipio":"YUMBO","lugar":"I.E. ANTONIA SANTOS","zona":2,"simpatizantes":149,"votos_cand_zona":850,"lideres":"Andres Pachely Bustos, CARLOS ANDRES ORDOÑEZ, CESAR  MONTES REINA, JAVIER GUILLERMO SANTANDER LOPEZ, JORGE ELIECER LOZANO AGUDELO, LUIS FELIPE CARMONA, WILLIAM HENAO GARCIA"},
-    {"municipio":"BUENAVENTURA","lugar":"IE JUAN JOSE RONDON","zona":3,"simpatizantes":147,"votos_cand_zona":131,"lideres":"ANGEL TOVAR, CESAR  MONTES REINA, JUAN  LOPEZ MOSQUERA, No encontrado No encontrado, WALTER URRESTE, WILLIAM HENAO GARCIA, WILMER  VALENCIA GARCIA"},
-    {"municipio":"CALI","lugar":"COLISEO DEL PUEBLO","zona":90,"simpatizantes":138,"votos_cand_zona":148,"lideres":"Andres Pachely Bustos, CARLOS MUÑOZ, CAROLINA  LASSO CORDOBA, CESAR  MONTES REINA, CLARA INES IDARRAGA ZUÑIGA, JORGE ELIECER LOZANO AGUDELO, JUAN  LOPEZ MOSQUERA, JUAN CARLOS BARONA, James Ramirez, LUIS FELIPE CARMONA, MAROLIN  RAMIREZ SARRIA, WALDIR  HANRRYR GOMEZ, WALTER URRESTE, WILLIAM HENAO GARCIA"},
-    {"municipio":"YUMBO","lugar":"COL COOP TECNICO IND JOSE ANTONIO GALAN","zona":2,"simpatizantes":131,"votos_cand_zona":850,"lideres":"ANDRES FELIPE COLLAZOS MARTINEZ, CESAR  MONTES REINA, JAVIER GUILLERMO SANTANDER LOPEZ, JHON  QUINTERO JIMENEZ, JHON FREDY GRIJALBA, JUAN CARLOS BARONA, WILLIAM HENAO GARCIA"},
-    {"municipio":"YUMBO","lugar":"IE ALBERTO MENDOZA MAYOR","zona":90,"simpatizantes":131,"votos_cand_zona":114,"lideres":"CESAR  MONTES REINA, LUIS FELIPE CARMONA, WILLIAM HENAO GARCIA"},
-    {"municipio":"BUENAVENTURA","lugar":"IE FRANCISCO JOSE DE CALDAS","zona":2,"simpatizantes":128,"votos_cand_zona":297,"lideres":"ANGEL TOVAR, CESAR  MONTES REINA, JHON FREDY GRIJALBA, WALTER URRESTE, WILLIAM HENAO GARCIA, WILMER  VALENCIA GARCIA"},
-    {"municipio":"CALI","lugar":"IE PEDRO ANTONIO MOLINA","zona":8,"simpatizantes":127,"votos_cand_zona":361,"lideres":"ANGEL TOVAR, Andres Pachely Bustos, CARLOS MUÑOZ, CESAR  MONTES REINA, CLARA INES IDARRAGA ZUÑIGA, JUAN  LOPEZ MOSQUERA, JUAN CARLOS BARONA, LUIS FELIPE CARMONA, WALDIR  HANRRYR GOMEZ"},
-    {"municipio":"CALI","lugar":"IE LA ANUNCIACION","zona":21,"simpatizantes":121,"votos_cand_zona":235,"lideres":"CARLOS MUÑOZ, CESAR  MONTES REINA, CLARA INES IDARRAGA ZUÑIGA, JHON FREDY GRIJALBA, JORGE ELIECER LOZANO AGUDELO, JUAN  LOPEZ MOSQUERA, JUAN CARLOS BARONA, LUIS FELIPE CARMONA, MAROLIN  RAMIREZ SARRIA, Phanor peña carabali, WALDIR  HANRRYR GOMEZ"},
-    {"municipio":"YUMBO","lugar":"CENTRO DEPORTIVO JAIRO LLANTEN","zona":4,"simpatizantes":121,"votos_cand_zona":822,"lideres":"ANDRES FELIPE COLLAZOS MARTINEZ, CARLOS MUÑOZ, CESAR  MONTES REINA, WILLIAM HENAO GARCIA"},
-    {"municipio":"BUENAVENTURA","lugar":"IE JOSE MARIA CABAL","zona":5,"simpatizantes":114,"votos_cand_zona":108,"lideres":"ALEJANDRO  VASQUEZ ZAWAZKY, ANGEL TOVAR, CESAR  MONTES REINA, WALTER URRESTE, WILMER  VALENCIA GARCIA"},
-    {"municipio":"YUMBO","lugar":"HOGAR INF INQUIETUDES ICBF","zona":4,"simpatizantes":114,"votos_cand_zona":822,"lideres":"CESAR  MONTES REINA, JAVIER GUILLERMO SANTANDER LOPEZ, MAROLIN  RAMIREZ SARRIA, WALDIR  HANRRYR GOMEZ, WILLIAM HENAO GARCIA"},
-    {"municipio":"YUMBO","lugar":"I.E. LAS AMERICAS","zona":1,"simpatizantes":111,"votos_cand_zona":880,"lideres":"CARLOS ANDRES ORDOÑEZ, CESAR  MONTES REINA, WILLIAM HENAO GARCIA"},
-    {"municipio":"YUMBO","lugar":"I.E. MIGUEL ANTONIO CARO SEDE 2","zona":3,"simpatizantes":109,"votos_cand_zona":526,"lideres":"CARLOS ANDRES ORDOÑEZ, CESAR  MONTES REINA, WILLIAM HENAO GARCIA"},
-    {"municipio":"YUMBO","lugar":"MULALO","zona":99,"simpatizantes":106,"votos_cand_zona":353,"lideres":"CESAR  MONTES REINA, WILLIAM HENAO GARCIA"},
-    {"municipio":"CALI","lugar":"IE GABRIELA MISTRAL","zona":22,"simpatizantes":96,"votos_cand_zona":259,"lideres":"CARLOS MUÑOZ, CESAR  MONTES REINA, CLARA INES IDARRAGA ZUÑIGA, JUAN  LOPEZ MOSQUERA, JUAN CARLOS BARONA, LUIS FELIPE CARMONA, Phanor peña carabali, WILLIAM HENAO GARCIA"},
-    {"municipio":"BUENAVENTURA","lugar":"CORDOBA","zona":99,"simpatizantes":93,"votos_cand_zona":157,"lideres":"ANGEL TOVAR, CESAR  MONTES REINA, WALTER URRESTE, WILMER  VALENCIA GARCIA"},
-    {"municipio":"BUENAVENTURA","lugar":"IE EMILIO CARVAJAL","zona":6,"simpatizantes":93,"votos_cand_zona":249,"lideres":"ANGEL TOVAR, CARLOS MUÑOZ, CESAR  MONTES REINA, No encontrado No encontrado, WALTER URRESTE, WILMER  VALENCIA GARCIA"},
-    {"municipio":"YUMBO","lugar":"I.E. PANORAMA","zona":1,"simpatizantes":93,"votos_cand_zona":880,"lideres":"WILLIAM HENAO GARCIA"},
-    {"municipio":"YUMBO","lugar":"I.E. TITAN","zona":4,"simpatizantes":90,"votos_cand_zona":822,"lideres":"CESAR  MONTES REINA, WILLIAM HENAO GARCIA"},
-    {"municipio":"BUENAVENTURA","lugar":"IE REPUBLICA DE VENEZUELA","zona":2,"simpatizantes":89,"votos_cand_zona":297,"lideres":"ALEJANDRO  VASQUEZ ZAWAZKY, ANDRES ERNESTO HURTADO VELA, ANGEL TOVAR, CESAR  MONTES REINA, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JUAN  LOPEZ MOSQUERA, MARIA  JUANILLO OLANO, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, WALDIR  HANRRYR GOMEZ, WALTER URRESTE, WILINTON LUIS ARTEAGA MANRIQUE, WILMER  VALENCIA GARCIA"},
-    {"municipio":"CALI","lugar":"ESCUELA LAS AMERICAS","zona":7,"simpatizantes":88,"votos_cand_zona":365,"lideres":"ALEJANDRO  VASQUEZ ZAWAZKY, Andres Pachely Bustos, CARLOS MUÑOZ, CESAR  MONTES REINA, JUAN  LOPEZ MOSQUERA, JUAN CARLOS BARONA, LUIS FELIPE CARMONA, MAROLIN  RAMIREZ SARRIA, WALDIR  HANRRYR GOMEZ, WILLIAM HENAO GARCIA"}
+    {
+        "municipio": "CALI",
+        "lugar": "IE LA ANUNCIACION",
+        "zona": 21,
+        "simpatizantes": 2213,
+        "votos_cand_zona": 601,
+        "lideres": "ALEJANDRA  MOSQUERA, ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HERNAN ALONSO RAMIREZ HINCAPIE, HUGO FREDY CABAL GRACIA, JAMES ALBERTO RAMIREZ MONTILLA, JAVIER GUILLERMO SANTANDER LOPEZ, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JOSE  RAMOS DIAZ, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, JULIAN  VARELA CEBALLOS, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MARLENY  REYES BARRERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, Phanor peña carabali, ROBERT  CORREA PLAZAS, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILMAR  ORTEGA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "COLISEO DEL PUEBLO",
+        "zona": 90,
+        "simpatizantes": 1921,
+        "votos_cand_zona": 360,
+        "lideres": "ALEJANDRA  MOSQUERA, ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDER  DAZA GALINDO, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANDRES  CARDENAS BRICEÑO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DAVID  ESCOBAR PRADO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, EYDER  PAZ GAVIRIA, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HERNAN ALONSO RAMIREZ HINCAPIE, HUGO FREDY CABAL GRACIA, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JESUS  GARCIA MICOLTA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JOSE  RAMOS DIAZ, JUAN  CARBONELL GARCIA, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, JULIANA  TELLEZ MURCIA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, LUZ  RODRIGUEZ GUAQUETA, MARIA ALEJANDRA ARIAS RIVERA, MARLENY  REYES BARRERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, RAMON ARTURO MONTOYA MUÑOZ, ROBERT  CORREA PLAZAS, SONIA  CASTRO SANCHEZ, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WALTER URRESTE, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "IE GABRIELA MISTRAL",
+        "zona": 22,
+        "simpatizantes": 1475,
+        "votos_cand_zona": 586,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, IVAN DARIO ROJAS LOPERA, JHON  ORTIZ SALAZAR, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, Phanor peña carabali, ROBERT  CORREA PLAZAS, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "IE NUEVO LATIR",
+        "zona": 22,
+        "simpatizantes": 1358,
+        "votos_cand_zona": 586,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HERNAN ALONSO RAMIREZ HINCAPIE, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JHON HERRERA, JHON JAIME HERRERA PARRA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  ANGULO RIASCOS, JUAN  CARBONELL GARCIA, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, Phanor peña carabali, ROBERT  CORREA PLAZAS, SONIA  CASTRO SANCHEZ, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "STA ISABEL DE HUNGRIA CALIMIO DECEPAZ",
+        "zona": 32,
+        "simpatizantes": 1213,
+        "votos_cand_zona": 902,
+        "lideres": "ALEJANDRA  MOSQUERA, ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDER  DAZA GALINDO, ALEXANDRA  MEJIA PRIETO, ANDRES  CARDENAS BRICEÑO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CATALINA  ZULUAGA RODRIGUEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HUGO FREDY CABAL GRACIA, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JOSE  RAMOS DIAZ, JUAN  CARBONELL GARCIA, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, Phanor peña carabali, RAMON ARTURO MONTOYA MUÑOZ, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "ESCUELA RAUL SILVA HOLGUIN",
+        "zona": 21,
+        "simpatizantes": 1187,
+        "votos_cand_zona": 601,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ANGIE  GRISALES MOSQUERA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CATALINA  ZULUAGA RODRIGUEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HUGO FREDY CABAL GRACIA, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  ANGULO RIASCOS, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, Phanor peña carabali, RAMON ARTURO MONTOYA MUÑOZ, ROBERT  CORREA PLAZAS, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "COL STA ISABEL  HUNGRIA ALFONSO LOPEZ",
+        "zona": 9,
+        "simpatizantes": 1151,
+        "votos_cand_zona": 591,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANDRES  CARDENAS BRICEÑO, ANDRES ERNESTO HURTADO VELA, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HERNAN ALONSO RAMIREZ HINCAPIE, IVAN DARIO ROJAS LOPERA, JHON  ORTIZ SALAZAR, JHON  QUINTERO JIMENEZ, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JOSE  RAMOS DIAZ, JUAN  CARBONELL GARCIA, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, RAMON ARTURO MONTOYA MUÑOZ, ROBERT  CORREA PLAZAS, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "IE MONSEÑOR RAMON ARCILA",
+        "zona": 21,
+        "simpatizantes": 1146,
+        "votos_cand_zona": 601,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ANGIE  GRISALES MOSQUERA, ASLY  LABRADA GARCIA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HUGO FREDY CABAL GRACIA, JAMES ALBERTO RAMIREZ MONTILLA, JAVIER GUILLERMO SANTANDER LOPEZ, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  ANGULO RIASCOS, JUAN  CARBONELL GARCIA, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, LUZ  URBANO PERLAZA, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PAOLA YANETH VALENCIA SUAREZ, PEDRO KADIR ZAMORA RENGIFO, Phanor peña carabali, ROBERT  CORREA PLAZAS, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "ESCUELA OLAYA HERRERA",
+        "zona": 23,
+        "simpatizantes": 1106,
+        "votos_cand_zona": 1064,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CATALINA  GIL GOMEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HUGO FREDY CABAL GRACIA, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  CARBONELL GARCIA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, RAMON ARTURO MONTOYA MUÑOZ, ROBERT  CORREA PLAZAS, RUBY EDITH QUIÑONEZ LOPEZ, SONIA  CASTRO SANCHEZ, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILMAR  ORTEGA GARCIA"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "COLEGIO FUNDACION COMPARTIR",
+        "zona": 32,
+        "simpatizantes": 1064,
+        "votos_cand_zona": 902,
+        "lideres": "ALBERNEY  ARIAS GOMEZ, ALEJANDRO  VASQUEZ ZAWAZKY, ALVARO  LOPEZ ZAMBRANO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, JULIAN  VARELA CEBALLOS, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, LUZ  URBANO PERLAZA, MARGARITA  SEGURA BANDERAS, MARIA ALEJANDRA ARIAS RIVERA, MARLENY  REYES BARRERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, ROBERT  CORREA PLAZAS, SONIA  CASTRO SANCHEZ, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "IE HERNANDO NAVIA VARON",
+        "zona": 18,
+        "simpatizantes": 1042,
+        "votos_cand_zona": 803,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ANDRES FELIPE COLLAZOS MARTINEZ, ANDRES FELIPE MARIN BONILLA, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CATALINA  ZULUAGA RODRIGUEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HUGO FREDY CABAL GRACIA, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  CARBONELL GARCIA, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, ROBERT  CORREA PLAZAS, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "IE CELMIRA BUENO DE OREJUELA",
+        "zona": 6,
+        "simpatizantes": 1036,
+        "votos_cand_zona": 1580,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDER  DAZA GALINDO, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CATALINA  GIL GOMEZ, CATALINA  ZULUAGA RODRIGUEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  DIEZ LOPEZ, DANIELA  MONCADA JIMENEZ, DANIELA  PATIÑO RODRIGUEZ, DARSIN  MORAN VALLEJO, DAVID  ESCOBAR PRADO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HUGO FREDY CABAL GRACIA, IVAN DARIO ROJAS LOPERA, JAVIER GUILLERMO SANTANDER LOPEZ, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JOSE  RAMOS DIAZ, JULIAN  VARELA CEBALLOS, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MARLENY  REYES BARRERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, ROBERT  CORREA PLAZAS, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "ESCUELA MARIANO OSPINA PEREZ",
+        "zona": 6,
+        "simpatizantes": 974,
+        "votos_cand_zona": 1580,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDER  DAZA GALINDO, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CATALINA  GIL GOMEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DANIELA  PATIÑO RODRIGUEZ, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JOSE  RAMOS DIAZ, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, ROBERT  CORREA PLAZAS, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "IE PEDRO ANTONIO MOLINA",
+        "zona": 8,
+        "simpatizantes": 964,
+        "votos_cand_zona": 921,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGEL TOVAR, ANGIE  GRISALES MOSQUERA, ASLY  LABRADA GARCIA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DANIELA  PATIÑO RODRIGUEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, EYDER  PAZ GAVIRIA, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HUGO FREDY CABAL GRACIA, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHOAN FELIPE ZUÑIGA ESTRADA, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, LUIS  TOBAR MURILLO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, ORLANDO  CHAVES RAMOS, PEDRO KADIR ZAMORA RENGIFO, RAMON ARTURO MONTOYA MUÑOZ, ROBERT  CORREA PLAZAS, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILMAR  ORTEGA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "SEDE PUERTA DEL SOL",
+        "zona": 21,
+        "simpatizantes": 921,
+        "votos_cand_zona": 601,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALVARO  LOPEZ ZAMBRANO, ANDRES  CARDENAS BRICEÑO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, JAMES ALBERTO RAMIREZ MONTILLA, JHOAN FELIPE ZUÑIGA ESTRADA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, ROBERT  CORREA PLAZAS, ROSA ALEJANDRA MORENO SOTO, SONIA  CASTRO SANCHEZ, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "IE VICENTE BORRERO COSTA",
+        "zona": 9,
+        "simpatizantes": 903,
+        "votos_cand_zona": 591,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ANDRES  CARDENAS BRICEÑO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CATALINA  ZULUAGA RODRIGUEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HERNAN ALONSO RAMIREZ HINCAPIE, HUGO FREDY CABAL GRACIA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ENRIQUE CASALINS TELLO, JOSE  RAMOS DIAZ, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, ROBERT  CORREA PLAZAS, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "COL FRAY LUIS AMIGO FE Y ALEGRIA",
+        "zona": 22,
+        "simpatizantes": 892,
+        "votos_cand_zona": 586,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HERNAN ALONSO RAMIREZ HINCAPIE, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  CARBONELL GARCIA, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, JUAN PABLO LOPEZ RUALES, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, PEDRO KADIR ZAMORA RENGIFO, Phanor peña carabali, ROBERT  CORREA PLAZAS, ROSA ALEJANDRA MORENO SOTO, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "SANTA ISABEL DE HUNGRIA SAN FELIPE",
+        "zona": 32,
+        "simpatizantes": 881,
+        "votos_cand_zona": 902,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDER  DAZA GALINDO, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HUGO FREDY CABAL GRACIA, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, Phanor peña carabali, ROBERT  CORREA PLAZAS, SONIA  CASTRO SANCHEZ, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "COL PARROQUIAL SAN FRANCISCO JAVIER",
+        "zona": 22,
+        "simpatizantes": 873,
+        "votos_cand_zona": 586,
+        "lideres": "ALEJANDRA  MOSQUERA, ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, CARLOS  MUÑOZ JARAMILLO, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DAVID  ESCOBAR PRADO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN CARLOS BARONA, JULIANA  TELLEZ MURCIA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, LUZ  RODRIGUEZ GUAQUETA, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, Phanor peña carabali, ROBERT  CORREA PLAZAS, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "COL PARROQUIAL SEÑOR DE LOS MILAGROS",
+        "zona": 19,
+        "simpatizantes": 871,
+        "votos_cand_zona": 666,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JULIANA  TELLEZ MURCIA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, ROSA ALEJANDRA MORENO SOTO, SONIA  CASTRO SANCHEZ, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "IE AGUSTIN NIETO CABALLERO",
+        "zona": 16,
+        "simpatizantes": 862,
+        "votos_cand_zona": 722,
+        "lideres": "ALBERNEY  ARIAS GOMEZ, ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CATALINA  ZULUAGA RODRIGUEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DANIELA  PATIÑO RODRIGUEZ, DARSIN  MORAN VALLEJO, DAVID  ESCOBAR PRADO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, JESUS  GARCIA MICOLTA, JHON  QUINTERO JIMENEZ, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JOSE  RAMOS DIAZ, JUAN  SANDOVAL IZQUIERDO, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MARLENY  REYES BARRERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILMAR  ORTEGA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "ESCUELA LAS AMERICAS",
+        "zona": 7,
+        "simpatizantes": 861,
+        "votos_cand_zona": 930,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, Giovanny Peña, HERNAN ALONSO RAMIREZ HINCAPIE, IVAN DARIO ROJAS LOPERA, JAVIER GUILLERMO SANTANDER LOPEZ, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ENRIQUE CASALINS TELLO, JOSE  RAMOS DIAZ, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, RAMON ARTURO MONTOYA MUÑOZ, ROBERT  CORREA PLAZAS, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "IE MANUEL MARIA MALLARINO CEIBAS",
+        "zona": 10,
+        "simpatizantes": 848,
+        "votos_cand_zona": 526,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDER  DAZA GALINDO, ALEXANDRA  MEJIA PRIETO, ALVARO  LOPEZ ZAMBRANO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CATALINA  GIL GOMEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HUGO FREDY CABAL GRACIA, IVAN DARIO ROJAS LOPERA, JAVIER GUILLERMO SANTANDER LOPEZ, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  ANGULO RIASCOS, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, JULIANA  TELLEZ MURCIA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, MATEO  VALDES ESTRADA, No encontrado No encontrado, PAOLA YANETH VALENCIA SUAREZ, PEDRO KADIR ZAMORA RENGIFO, RAMON ARTURO MONTOYA MUÑOZ, ROBERT  CORREA PLAZAS, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "IE CUDAD CORDOBA",
+        "zona": 23,
+        "simpatizantes": 844,
+        "votos_cand_zona": 1064,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ANGEL TOVAR, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CATALINA  GIL GOMEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HUGO FREDY CABAL GRACIA, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, LUIS  TOBAR MURILLO, LUIS FELIPE CARMONA, MARGARITA  SEGURA BANDERAS, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, Phanor peña carabali, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "UNIVALLE SEDE MELENDEZ",
+        "zona": 25,
+        "simpatizantes": 828,
+        "votos_cand_zona": 1581,
+        "lideres": "ALEJANDRA  MOSQUERA, ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGEL TOVAR, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DANIELA  PATIÑO RODRIGUEZ, DARSIN  MORAN VALLEJO, DAVID  ESCOBAR PRADO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HERNAN ALONSO RAMIREZ HINCAPIE, HUGO FREDY CABAL GRACIA, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JESUS  GARCIA MICOLTA, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  ANGULO RIASCOS, JUAN PABLO ANGULO ANGULO, JULIAN  VARELA CEBALLOS, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  TOBAR MURILLO, MARGARITA  SEGURA BANDERAS, MARIA ALEJANDRA ARIAS RIVERA, MARLENY  REYES BARRERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WALTER URRESTE, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "COLEGIO COMFANDI CALIPSO",
+        "zona": 19,
+        "simpatizantes": 813,
+        "votos_cand_zona": 666,
+        "lideres": "ALEJANDRA  MOSQUERA, ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DAVID  ESCOBAR PRADO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  CARBONELL GARCIA, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, JULIAN  VARELA CEBALLOS, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, MARIA ALEJANDRA ARIAS RIVERA, MARLENY  REYES BARRERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Veyanir Cifuentes, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA"
+    },
+    {
+        "municipio": "BUENAVENTURA",
+        "lugar": "IE LA ANUNCIACION (IFA)",
+        "zona": 2,
+        "simpatizantes": 803,
+        "votos_cand_zona": 417,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ANDRES ERNESTO HURTADO VELA, ANGEL TOVAR, ANGIE  GRISALES MOSQUERA, CARLOS  MUÑOZ JARAMILLO, Cesar montes, GLORIA JIMENA ARAGON VELEZ, HUGO FREDY CABAL GRACIA, JAVIER GUILLERMO SANTANDER LOPEZ, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ENRIQUE CASALINS TELLO, JUAN  ANGULO RIASCOS, JUAN  SANDOVAL IZQUIERDO, JUAN PABLO ANGULO ANGULO, Juan Carlos Lopez, LEYDI TATIANA MARTINEZ IDROBO, LUIS  TOBAR MURILLO, MARGARITA  SEGURA BANDERAS, MARIA ALEJANDRA ARIAS RIVERA, MARLENY  REYES BARRERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WALTER URRESTE, WILMER  VALENCIA GARCIA"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "IE PROGRESANDO JUNTOS",
+        "zona": 32,
+        "simpatizantes": 796,
+        "votos_cand_zona": 902,
+        "lideres": "ALEJANDRA  MOSQUERA, ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ANGIE  GRISALES MOSQUERA, CARLOS  MUÑOZ JARAMILLO, CAROLINA  LASSO CORDOBA, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DARSIN  MORAN VALLEJO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HUGO FREDY CABAL GRACIA, JAMES ALBERTO RAMIREZ MONTILLA, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE  GASCA RAMIREZ, JORGE ELIECER LOZANO AGUDELO, JORGE ENRIQUE CASALINS TELLO, JUAN  ANGULO RIASCOS, JUAN  SANDOVAL IZQUIERDO, JUAN CARLOS BARONA, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LEYDI TATIANA MARTINEZ IDROBO, LUIS  LOPEZ MOSQUERA, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, LUZ  URBANO PERLAZA, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PAOLA YANETH VALENCIA SUAREZ, PEDRO KADIR ZAMORA RENGIFO, Phanor peña carabali, RAMON ARTURO MONTOYA MUÑOZ, ROBERT  CORREA PLAZAS, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "COLEGIO REYES CATOLICOS",
+        "zona": 25,
+        "simpatizantes": 790,
+        "votos_cand_zona": 1581,
+        "lideres": "ALEJANDRA  MOSQUERA, ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ANDRES FELIPE COLLAZOS MARTINEZ, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CARLOS  MUÑOZ JARAMILLO, CATALINA  GIL GOMEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DANIELA  PATIÑO RODRIGUEZ, DAVID  ESCOBAR PRADO, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FABIO  MORENO CASTAÑO, FARITH  VICTORIA CABEZAS, FRANCISCO ANTONIO CALVACHE PAZ, GLORIA JIMENA ARAGON VELEZ, IVAN DARIO ROJAS LOPERA, JAMES ALBERTO RAMIREZ MONTILLA, JAVIER GUILLERMO SANTANDER LOPEZ, JHON  ORTIZ SALAZAR, JHON FREDY GRIJALBA, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ELIECER LOZANO AGUDELO, JORGE ENRIQUE CASALINS TELLO, JUAN  SANDOVAL IZQUIERDO, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LUIS FELIPE CARMONA GIRALDO, MARIA ALEJANDRA ARIAS RIVERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PEDRO KADIR ZAMORA RENGIFO, ROBERT  CORREA PLAZAS, ROSA ALEJANDRA MORENO SOTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILLIAM HENAO GARCIA, WILMAR  ORTEGA GARCIA, WILMER  VALENCIA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    },
+    {
+        "municipio": "CALI",
+        "lugar": "CENTRO PARROQUIAL SAN JUAN BAUTISTA",
+        "zona": 15,
+        "simpatizantes": 788,
+        "votos_cand_zona": 760,
+        "lideres": "ALEJANDRO  VASQUEZ ZAWAZKY, ALEXANDRA  MEJIA PRIETO, ANDRES FELIPE COLLAZOS MARTINEZ, ANDRES FELIPE MARIN BONILLA, ANGIE  GRISALES MOSQUERA, Andres Pachely Bustos, BEATRIZ  ARCE MOLINA, CATALINA  GIL GOMEZ, CLARA INES IDARRAGA ZUÑIGA, Cesar montes, DANIELA  MONCADA JIMENEZ, DIEGO FERNANDO ARBOLEDA BUITRAGO, Daniela Plaza, FARITH  VICTORIA CABEZAS, GLORIA JIMENA ARAGON VELEZ, Giovanny Peña, HERNAN ALONSO RAMIREZ HINCAPIE, JONATHAN  RAMIREZ QUIÑONEZ, JORGE ELIECER LOZANO AGUDELO, JORGE ELIECER RAMIREZ MOSQUERA, JORGE ENRIQUE CASALINS TELLO, JUAN  ANGULO RIASCOS, JUAN  CARBONELL GARCIA, JUAN CARLOS BARONA, JUAN PABLO ANGULO ANGULO, Juan Carlos Lopez, LEIDY  VELASQUEZ OTALVARO, LUIS FELIPE CARMONA, LUIS FELIPE CARMONA GIRALDO, MARGARITA  SEGURA BANDERAS, MARIA ALEJANDRA ARIAS RIVERA, MARLENY  REYES BARRERA, MAROLIN  RAMIREZ SARRIA, No encontrado No encontrado, PAOLA YANETH VALENCIA SUAREZ, PEDRO KADIR ZAMORA RENGIFO, ROBERT  CORREA PLAZAS, ROSA ALEJANDRA MORENO SOTO, VICTOR  CAPACHO PINTO, VICTOR MANUEL GARCIA GIRALDO, Victor Garcia, WALDIR  HANRRYR GOMEZ, WILINTON LUIS ARTEAGA MANRIQUE, WILMAR  ORTEGA GARCIA, Yeslin Karina Jori Karina9402@gmail.com"
+    }
 ];
 
 // ========== UTILITY ==========

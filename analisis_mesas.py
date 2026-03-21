@@ -55,7 +55,7 @@ def load_data():
         df_sim = pickle.load(open(CACHE_SIM, 'rb'))
     else:
         print("Loading Simpatizantes from xlsx (slow, caching)...", flush=True)
-        df_sim = pd.read_excel(BASE_DIR / 'Registros_simpatizantes_13Mar.xlsx')
+        df_sim = pd.read_excel(BASE_DIR / 'Registros_simpatizantes_20Mar_Actualizado.xlsx')
         pickle.dump(df_sim, open(CACHE_SIM, 'wb'))
 
     # Enrich electoral
